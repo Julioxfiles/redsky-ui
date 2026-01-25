@@ -1,0 +1,15 @@
+.blink {
+    animation:blink 1s linear infinite alternate 1s;
+  }
+  
+  @keyframes blink {
+    80% {
+      color:black;
+    }
+    90% {
+      color:white;
+    }
+    100% {
+      color:black;
+    }
+  }

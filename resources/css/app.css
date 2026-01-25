@@ -1,0 +1,43 @@
+/* ================================
+   Archivo: style.css
+   Proyecto: Mi sitio web
+   Autor: Tu nombre
+   Fecha: 2026-01-18
+================================ */
+
+/* 1. Reset / Normalización básica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Estilos globales */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* 3. Enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 4. Listas */
+ul, ol {
+    list-style: none;
+}
+
+/* 5. Imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+}

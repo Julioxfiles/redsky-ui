@@ -1,0 +1,39 @@
+# =========================
+# Environment files (SECRETS)
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Dependencies
+# =========================
+/vendor/
+
+# =========================
+# Cache / logs / runtime
+# =========================
+*.log
+/cache/
+/storage/
+/tmp/
+
+# =========================
+# IDE / OS files
+# =========================
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# =========================
+# PHPUnit
+# =========================
+.phpunit.result.cache
+
+# =========================
+# Composer
+# =========================
+composer.lock

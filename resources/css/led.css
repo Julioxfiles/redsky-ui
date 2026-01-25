@@ -1,0 +1,20 @@
+
+.led { 
+    display:block;float:left;width:7px;height:17px;
+    margin-left:3px;margin-right:3px;font-size:11px;
+ }
+
+.led-no-requested {background-color: grey;}
+.led-requested { background-color:blue }
+.led-approved { background-color:#FB7922; }
+.led-denied { background-color: red }
+.led-cancelled { background-color: red }
+.led-working { background-color: yellow}
+.led-done { background-color:cyan}
+.led-picking-up{ background-color: #662BFF;}
+.led-delivering {display: block; float: left;width:7px;height: 17px;background-color: #00A2E8 }
+.led-delivered { background-color:#ABFF00;}
+.led-code-deliverd {background-color: #ABFF00;}
+
+.led-off {background-color: grey;}
+.led-on {background-color: #ABFF00;}
