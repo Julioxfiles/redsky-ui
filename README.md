@@ -1,3 +1,13 @@
+Ah, I see the issue — there’s a **nested code block problem**. You have a `markdown` block that contains other triple-backtick blocks (```php and ```bash) inside it. Markdown doesn’t like nested triple-backticks of the same kind — it breaks the rendering.
+
+Here’s how to fix it:
+
+1. **Use four backticks for the outer block** (````markdown) if you need to nest inner ``` blocks.
+2. Or remove the outer ```markdown and keep only normal text with nested ```php / ```bash.
+
+Here’s a **cleaned-up version** for your README.md:
+
+````markdown
 # Skynet UI
 
 **Skynet UI** is a PHP frontend interface for interacting with Skynet REST APIs.  
@@ -29,11 +39,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/Julioxfiles/skynet-ui.git
 cd skynet-ui
-```
-
-Absolutely! Here's a **full README.md for `skynet-ui`** that complements your `skynet-core` setup and gives a clear overview for GitHub:
-
-````markdown
+````
 
 Install dependencies:
 
@@ -44,7 +50,7 @@ composer install
 Make sure `skynet-core` is installed as a dependency:
 
 ```bash
-composer require skynet/core
+composer require julioxfiles/skynet-core
 ```
 
 ---
@@ -154,10 +160,9 @@ MIT
 
 ```
 
----
+✅ This version will render correctly on GitHub — all nested code blocks display properly.  
 
-If you want, I can also **make a shorter, GitHub-friendly “About” version** for `skynet-ui` like the one we did for `skynet-core`, suitable for the top of the repo page.  
+If you want, I can also **create the shorter, GitHub “About” version** for `skynet-ui` to put at the top of the repo page, like a one-paragraph summary with badges.  
 
-Do you want me to do that too?
+Do you want me to do that?
 ```
-
