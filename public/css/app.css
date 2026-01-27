@@ -1,43 +1,216 @@
 /* ================================
-   Archivo: style.css
-   Proyecto: Mi sitio web
+   Dark Mode - Laravel Style
    Autor: Tu nombre
-   Fecha: 2026-01-18
+   Fecha: 2026-01-27
 ================================ */
 
-/* 1. Reset / Normalización básica */
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 2. Estilos globales */
 html {
     font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
+    background-color: #1f2937; /* gris oscuro */
+    color: #f3f4f6; /* gris claro */
 }
 
+/* Contenedores */
 body {
-    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
-    color: #f4f4f4;
-    background-color: #333;
+    background-color: #1f2937;
+    color: #f3f4f6;
 }
 
-/* 3. Enlaces */
+.container {
+    max-width: 640px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+/* Enlaces */
 a {
+    color: #3b82f6; /* azul */
     text-decoration: none;
-    color: inherit;
+}
+a:hover {
+    text-decoration: underline;
 }
 
-/* 4. Listas */
-ul, ol {
-    list-style: none;
+/* Formulario general */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
-/* 5. Imágenes */
-img {
-    max-width: 100%;
-    height: auto;
+/* Inputs, textarea, select */
+input,
+textarea,
+select {
+    background-color: #374151; /* gris más oscuro */
+    border: 1px solid #4b5563;
+    color: #f3f4f6;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Placeholder */
+::placeholder {
+    color: #9ca3af;
+}
+
+/* Botones */
+button {
+    background-color: #3b82f6;
+    color: #f3f4f6;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #2563eb;
+}
+
+/* Mensajes de error */
+.error, .text-red-600 {
+    color: #f87171;
+    font-size: 0.875rem;
+    margin-top: -0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Mensaje de éxito */
+.alert-success {
+    background-color: #16a34a;
+    color: #f3f4f6;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+}
+
+/* Toolbar / Toolbox */
+.toolbox {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.toolbox-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #f3f4f6;
+    font-size: 1.25rem;
+    transition: color 0.2s;
+}
+
+.toolbox-btn:hover {
+    color: #3b82f6;
+}
+
+/* Misc */
+hr {
+    border: none;
+    border-top: 1px solid #4b5563;
+    margin: 1rem 0;
+}
+
+/* ================================
+   Centrado de formulario en pantalla
+================================ */
+
+/* Contenedor que ocupa toda la pantalla y centra el formulario */
+.form-container {
+    display: flex;
+    justify-content: center; /* centro horizontal */
+    align-items: center;     /* centro vertical */
+    min-height: 100vh;       /* altura completa de la ventana */
+    padding: 1rem;
+    background-color: #1f2937; /* fondo oscuro */
+}
+
+/* Formulario centrado y con estilo */
+.form.center {
+    width: 100%;
+    max-width: 400px;              /* ancho máximo */
+    background-color: #374151;     /* gris oscuro */
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Inputs, textarea y select */
+.form.center input,
+.form.center textarea,
+.form.center select {
+    background-color: #1f2937;
+    border: 1px solid #4b5563;
+    color: #f3f4f6;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form.center input:focus,
+.form.center textarea:focus,
+.form.center select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Placeholder */
+.form.center ::placeholder {
+    color: #9ca3af;
+}
+
+/* Botón */
+.form.center button {
+    background-color: #3b82f6;
+    color: #f3f4f6;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.form.center button:hover {
+    background-color: #2563eb;
+}
+
+/* Mensajes de error */
+.text-red-600 {
+    color: #f87171;
+    font-size: 0.875rem;
+    margin-top: -0.25rem;
+    margin-bottom: 0.5rem;
 }

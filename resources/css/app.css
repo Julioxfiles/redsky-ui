@@ -41,3 +41,11 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.toolbox {
+  display: block !important;
+  position: relative !important;
+  z-index: 9999 !important;
+  opacity: 1 !important;
+}
+
