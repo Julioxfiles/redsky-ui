@@ -5,26 +5,7 @@ Register
 @endsection
 
 @section('content')
-<h1>Register</h1>
-<h2>Create an Account</h2>
-
-
-<div class="toolbar">
-    <?= toolbox([
-        [
-            'icon' => 'fas fa-eye',
-            'title' => 'Ver',
-            'onclick' => 'viewUser(5)',
-            'color'=> 'orangerd'
-        ],
-        [
-            'icon' => 'fas fa-trash',
-            'title' => 'Eliminar',
-            'onclick' => 'confirmDelete(5)',
-            'class' => 'text-red-600',
-        ],
-    ]) ?>
-</div>    
+<h4>Register</h4>
 
 <div class="form-container">
  <form class="form center" method="POST" action="/register">
@@ -36,13 +17,13 @@ Register
     @endif
     <br>
 
-    <input type="email" name="email" placeholder='Email' ="<?= e($old['email'] ?? '') ?>">
+    <input type="email" name="email" placeholder="Email" value="<?= e($old['email'] ?? '') ?>">
     @if(isset($errors['email']))
         <span class="text-red-600">{{ $errors['email'] }}</span>
     @endif
     <br>
 
-    <input class='dark' type="password" placeholder="Password" name="password" placeholder="Password">
+    <input class='dark' type="password" name="password" placeholder="Password">
     @if(isset($errors['password']))
         <span class="text-red-600">{{ $errors['password'] }}</span>
     @endif

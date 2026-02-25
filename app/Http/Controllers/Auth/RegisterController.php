@@ -37,7 +37,8 @@ class RegisterController extends Controller
 
         try {
             $api = new ApiClient();
-            $response = $api->post('/auth/register', $data);
+            //$response = $api->post('/auth/register', $data);
+            $response = $api->post('/api/users', $data);
 
             // Registrar mensaje de éxito desde la respuesta de la API
             $_SESSION['success'] = $response->message() ?: 'Account created successfully';
