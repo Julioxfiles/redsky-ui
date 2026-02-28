@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Request;
+
 class AuthController
 {
     public function showLoginForm(): void
@@ -16,10 +18,17 @@ class AuthController
     }
 
 
-    public function login(): void
+    public function login(Request $request): void
     {
-        $email = $_POST['email'] ?? '';
-        $password = $_POST['password'] ?? '';
+        /* Antes
+           $email = $_POST['email'] ?? '';
+           $password = $_POST['password'] ?? '';
+        */
+        // Ahora usando Request $request
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        //die($email." - ".$password);
 
         $response = $this->apiLogin($email, $password);
 
@@ -31,9 +40,11 @@ class AuthController
         redirect('/login?error=1');
     }
 
-    private function apiLogin(string $email, string $password): array
+    private function apiLogin(string $email, string $password): ?array
     {
-        $ch = curl_init('http://api.local/auth/login');
+        /** @var resource $ch */
+        $ch = curl_init(config('api.base_url') . '/api/auth/login');
+        
 
         curl_setopt_array($ch, [
             CURLOPT_POST => true,
@@ -42,14 +53,29 @@ class AuthController
             CURLOPT_POSTFIELDS => json_encode([
                 'email' => $email,
                 'password' => $password
-            ])
+            ]),
         ]);
 
         $response = curl_exec($ch);
+
+        if ($response === false) {
+            $error = curl_error($ch);
+            curl_close($ch);
+
+            // Esto nos dirá EXACTAMENTE qué pasa
+            die('cURL error: ' . $error);
+        }
+
+        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
+
+        if ($status !== 200) {
+            // La API respondió, pero con error
+            die("API error HTTP {$status}: " . $response);
+        }
 
         return json_decode($response, true);
     }
 
 
-}
+}   

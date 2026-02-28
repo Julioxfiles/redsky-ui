@@ -13,6 +13,9 @@ define('BASE_URI', '/skynet-ui/public');
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+// Aquí incluimos nuestros helpers y aliases globales
+require_once __DIR__ . '/../bootstrap/helpers.php';
+
 use Dotenv\Dotenv;
 // Cargar variables de entorno
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));

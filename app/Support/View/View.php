@@ -2,6 +2,9 @@
 
 namespace App\Support\View;
 
+use App\Support\View\ViewCompiler;
+use App\Support\View\ViewState;
+
 class View
 {
     public static function make(string $view, array $data = []): void
@@ -11,29 +14,19 @@ class View
 
         extract($data, EXTR_SKIP);
 
+        // 1️⃣ Capturamos contenido de la vista hija
         ob_start();
         require $compiled;
-        $content = ob_get_clean();
+        ob_end_flush();
 
-        // ¿Tiene layout?
+        // 2️⃣ Si hay layout, renderizamos después con secciones ya listas
         if ($layout = ViewState::getExtends()) {
-
             ViewState::setExtends(null);
-
-            // Compilamos el layout
             $layoutCompiled = $compiler->compile($layout);
-
-            // Renderizamos el layout (YA con secciones cargadas)
             require $layoutCompiled;
-
-            ViewState::clear();
-            return;
         }
 
-
-        // Vista final (layout o vista simple)
-        echo $content;
+        // 3️⃣ Limpiamos todo
         ViewState::clear();
     }
-
 }
