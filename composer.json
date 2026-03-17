@@ -1,5 +1,5 @@
 {
-  "name": "tu-usuario/ui",
+  "name": "redsky/ui",
   "description": "Interface de Usuario (UI) para usar la API REST skynet-api",
   "type": "project",
   "require": {

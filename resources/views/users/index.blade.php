@@ -4,14 +4,6 @@
 
 @section('content')
 
-<h2>Listado de usuarios</h2>
-
-<ul>
-@foreach($users as $user)
-    <li>{{ $user['name'] ?? '' }}</li>
-@endforeach
-</ul>
-
 <?php
 use App\Http\Components\Windows;
 
