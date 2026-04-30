@@ -9,7 +9,6 @@ declare(strict_types=1);
  */
 
 if (! function_exists('session')) {
-
     /**
      * Get or set session values.
      *
@@ -17,25 +16,48 @@ if (! function_exists('session')) {
      *  session('user_id');
      *  session('user_id', 10);
      *  session()->all();
+     * 
+     * Tambien puedes hacer:
+     * $session = new \App\Core\Session\Session();
+     * $session->put('user_id', 10);
+     * $session->get('user_id');
      */
-    function session(?string $key = null, mixed $value = null): mixed
+    
+    function session($key = null, $value = null)
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
+        static $session;
+
+        if (!$session) {
+            $session = new \App\Core\Session\Session();
         }
 
-        // Get full session array
-        if ($key === null) {
-            return $_SESSION;
+        // SET multiple
+        if (is_array($key)) {
+            foreach ($key as $k => $v) {
+                $session->put($k, $v);
+            }
+            return $session;
         }
 
-        // Setter
-        if (func_num_args() === 2) {
-            $_SESSION[$key] = $value;
-            return $value;
+        // SET single
+        if ($value !== null) {
+            $session->put($key, $value);
+            return $session;
         }
 
-        // Getter
-        return $_SESSION[$key] ?? null;
+        // GET ALL (tipo Laravel)
+        if ($key === 'all') {
+            return $session->all();
+        }
+
+        // GET single
+        /*
+        if ($key !== null) {
+            return $session->get($key);
+        }
+        */
+
+        // return store (Laravel style)
+        return $session;
     }
 }

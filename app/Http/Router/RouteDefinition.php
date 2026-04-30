@@ -5,6 +5,7 @@ namespace App\Http\Router;
 class RouteDefinition
 {
     public ?string $name = null;
+    protected array $middlewares = [];
 
     public function __construct(
         public string $method,
@@ -16,6 +17,17 @@ class RouteDefinition
     {
         $this->name = $name;
         return $this;
+    }
+
+    public function middleware(array $middlewares): static
+    {
+        $this->middlewares = $middlewares;
+        return $this;
+    }
+
+    public function getMiddlewares(): array
+    {
+        return $this->middlewares;
     }
 }
 

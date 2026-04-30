@@ -10,9 +10,11 @@ use App\Support\View\ViewState;
 use App\Support\Security\Csrf;
 
 if (! function_exists('view')) {
-    function view(string $view, array $data = []): void
+    function view(string $view, array $data = []): \App\Http\Response
     {
-        View::make($view, $data);
+        $content = \App\Support\View\View::make($view, $data);
+
+        return \App\Http\Response::html($content);
     }
 }
 

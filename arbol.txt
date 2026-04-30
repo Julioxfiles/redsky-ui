@@ -1,0 +1,429 @@
+Folder PATH listing
+Volume serial number is E686-F950
+C:.
+|   .env
+|   .env.exmple
+|   .htaccess
+|   arbol.txt
+|   composer.json
+|   composer.lock
+|   powershell
+|   README.md
+|   
++---app
+|   +---Http
+|   |   |   Request.php
+|   |   |   
+|   |   +---Components
+|   |   |       Form.php
+|   |   |       Html.php
+|   |   |       Windows.php
+|   |   |       
+|   |   +---Controllers
+|   |   |   |   Controller.php
+|   |   |   |   DashboardController.php
+|   |   |   |   UserController.php
+|   |   |   |   
+|   |   |   \---Auth
+|   |   |           AuthController.php
+|   |   |           RegisterController.php
+|   |   |           
+|   |   +---Middleware
+|   |   |       VerifyCsrfToken.php
+|   |   |       
+|   |   \---Router
+|   |           Route.php
+|   |           RouteDefinition.php
+|   |           Router.php
+|   |           
+|   +---Support
+|   |   |   Helpers.php
+|   |   |   
+|   |   +---Security
+|   |   |       Csrf.php
+|   |   |       
+|   |   \---View
+|   |           View.php
+|   |           ViewCompiler.md
+|   |           ViewCompiler.php
+|   |           ViewState.php
+|   |           
+|   \---View
+|       helpers.php
+|       
++---config
+|       api.php
+|       
++---database
++---notes
+|       01 Create the folders for the IU.md
+|       02 Create the composer json file.md
+|       03 Add htaccess files.md
+|       04 Create the needed files.md
+|       05 Clean IU Architecture.md
+|       After changing helpers to core.php
+|       Apache Virtualhost.md
+|       ApiClient y ApiResponse update.md
+|       ApiClient.md
+|       Blade Ingine Flow.md
+|       Blade Real.md
+|       blade.md
+|       Como hacer que chatgpt recuerde.md
+|       Como hacer tu core framework un respositorio composer.md
+|       composer json para ApliClient.md
+|       composer skynet-core.md
+|       Controller.md
+|       csrf.md
+|       Helpers files updated.md
+|       How Middlewares work.md
+|       Ruta login.post.md
+|       SignUp.md
+|       The assets helper.md
+|       The new response helper file.md
+|       The new url helper file.md
+|       The new view helper file.md
+|       The redirect helper.md
+|       The Request Class.md
+|       The Router must pass a Request.md
+|       Use this-view in the controllers.md
+|       view('auth.login');.md
+|       What is next.md
+|       Why it is better to use a core folder.md
+|       
++---old-core
+|   +---Http
+|   +---Routing
+|   +---Security
+|   +---Support
+|   |   +---Container
+|   |   \---Helpers
+|   |           container.php
+|   |           dev.php
+|   |           response.php
+|   |           session.php
+|   |           url.php
+|   |           view.php
+|   |           
+|   \---View
+|   |   .htaccess
+|   |   curl_test.php
+|   |   index.php
+|   |   test_write.php
+|   |   
+|   +---assets
+|   |   \---fontawesome-free-5.15.4-web
+|   |       |   attribution.js
+|   |       |   LICENSE.txt
+|   |       |   main.css
+|   |       |   
+|   |       +---css
+|   |       |       all.css
+|   |       |       all.min.css
+|   |       |       brands.css
+|   |       |       brands.min.css
+|   |       |       fontawesome.css
+|   |       |       fontawesome.min.css
+|   |       |       regular.css
+|   |       |       regular.min.css
+|   |       |       solid.css
+|   |       |       solid.min.css
+|   |       |       svg-with-js.css
+|   |       |       svg-with-js.min.css
+|   |       |       v4-shims.css
+|   |       |       v4-shims.min.css
+|   |       |       
+|   |       +---js
+|   |       |       all.js
+|   |       |       all.min.js
+|   |       |       brands.js
+|   |       |       brands.min.js
+|   |       |       conflict-detection.js
+|   |       |       conflict-detection.min.js
+|   |       |       fontawesome.js
+|   |       |       fontawesome.min.js
+|   |       |       regular.js
+|   |       |       regular.min.js
+|   |       |       solid.js
+|   |       |       solid.min.js
+|   |       |       v4-shims.js
+|   |       |       v4-shims.min.js
+|   |       |       
+|   |       +---less
+|   |       |       brands.less
+|   |       |       fontawesome.less
+|   |       |       regular.less
+|   |       |       solid.less
+|   |       |       v4-shims.less
+|   |       |       _animated.less
+|   |       |       _bordered-pulled.less
+|   |       |       _core.less
+|   |       |       _fixed-width.less
+|   |       |       _icons.less
+|   |       |       _larger.less
+|   |       |       _list.less
+|   |       |       _mixins.less
+|   |       |       _rotated-flipped.less
+|   |       |       _screen-reader.less
+|   |       |       _shims.less
+|   |       |       _stacked.less
+|   |       |       _variables.less
+|   |       |       
+|   |       +---metadata
+|   |       |       categories.yml
+|   |       |       icons.json
+|   |       |       icons.yml
+|   |       |       shims.json
+|   |       |       shims.yml
+|   |       |       sponsors.yml
+|   |       |       
+|   |       +---scss
+|   |       |       brands.css
+|   |       |           
+|   |       \---webfonts
+|   |               fa-brands-400.eot
+|   |               fa-brands-400.svg
+|   |               fa-brands-400.ttf
+|   |               fa-brands-400.woff
+|   |               fa-brands-400.woff2
+|   |               fa-regular-400.eot
+|   |               fa-regular-400.svg
+|   |               fa-regular-400.ttf
+|   |               fa-regular-400.woff
+|   |               fa-regular-400.woff2
+|   |               fa-solid-900.eot
+|   |               fa-solid-900.svg
+|   |               fa-solid-900.ttf
+|   |               fa-solid-900.woff
+|   |               fa-solid-900.woff2
+|   |               
+|   +---js
+|   |       app.js
+|   |       bottom_menu.js
+|   |       functions.js
+|   |       jquery-1-12-1-ui.min.js
+|   |       jquery-1.12.0-ui.js
+|   |       jquery-1.12.4.js
+|   |       jquery-3.1.1.min.js
+|   |       jquery-3.5.1.min.js
+|   |       jquery-3.6.0.js
+|   |       jquery-ui.js
+|   |       table_crud.js
+|   |       users.js
+|   |       videos.js
+|   |       windows.js
+|   |       
+|   +---lang
+|   +---sass
+|   |       app.scss
+|   |       _variables.scss
+|   |       
+|   \---views
+|       +---auth
+|       |       login.blade.php
+|       |       register.blade.php
+|       |       
+|       +---components
+|       |       alert.blade.php
+|       |       card.blade.php
+|       |       
+|       +---dashboard
+|       |       index.blade.php
+|       |       
+|       +---layouts
+|       |       app.blade.php
+|       |       
+|       \---users
+|               create.blade.php
+|               index.blade.php
+|               
++---routes
+|       web.php
+|       
+|   \---views
+|           0eff0b458e295e9002e5f9b5df070fec.php
+|           6d18d7b5c9e117b58277bc1f55140015.php
+|           
++---tests
+    |   autoload.php
+    |   
+    +---bin
+    +---composer
+    |       autoload_classmap.php
+    |       autoload_files.php
+    |       autoload_namespaces.php
+    |       autoload_psr4.php
+    |       autoload_real.php
+    |       autoload_static.php
+    |       ClassLoader.php
+    |       installed.json
+    |       installed.php
+    |       InstalledVersions.php
+    |       LICENSE
+    |       platform_check.php
+    |       
+    +---graham-campbell
+    |   \---result-type
+    |       |   composer.json
+    |       |   LICENSE
+    |       |   
+    |       \---src
+    |               Error.php
+    |               Result.php
+    |               Success.php
+    |               
+    +---phpoption
+    |   \---phpoption
+    |       |   composer.json
+    |       |   LICENSE
+    |       |   
+    |       \---src
+    |           \---PhpOption
+    |                   LazyOption.php
+    |                   None.php
+    |                   Option.php
+    |                   Some.php
+    |                   
+    +---skynet
+    |   \---core
+    |       |   composer.json
+    |       |   README.md
+    |       |   
+    |       +---src
+    |       |   +---Http
+    |       |   |   +---Client
+    |       |   |   |       ApiClient.php
+    |       |   |   |       ApiResponse.php
+    |       |   |   |       
+    |       |   |   \---Exceptions
+    |       |   |           ApiException.php
+    |       |   |           ApiServerException.php
+    |       |   |           ApiValidationException.php
+    |       |   |           NetworkException.php
+    |       |   |           ValidationException.php
+    |       |   |           
+    |       |   \---Support
+    |       |       +---Config
+    |       |       |       Config.php
+    |       |       |       
+    |       |       \---Helpers
+    |       |               container.php
+    |       |               dev.php
+    |       |               html.php
+    |       |               response.php
+    |       |               session.php
+    |       |               ui.php
+    |       |               url.php
+    |       |               view.php
+    |       |               
+    |           |   autoload.php
+    |           |   
+    |           \---composer
+    |                   autoload_classmap.php
+    |                   autoload_files.php
+    |                   autoload_namespaces.php
+    |                   autoload_psr4.php
+    |                   autoload_real.php
+    |                   autoload_static.php
+    |                   ClassLoader.php
+    |                   LICENSE
+    |                   platform_check.php
+    |                   
+    +---symfony
+    |   +---polyfill-ctype
+    |   |       composer.json
+    |   |       Ctype.php
+    |   |       LICENSE
+    |   |       README.md
+    |   |       
+    |   +---polyfill-mbstring
+    |   |   |   composer.json
+    |   |   |   LICENSE
+    |   |   |   Mbstring.php
+    |   |   |   README.md
+    |   |   |   
+    |   |   \---Resources
+    |   |       \---unidata
+    |   |               caseFolding.php
+    |   |               lowerCase.php
+    |   |               titleCaseRegexp.php
+    |   |               upperCase.php
+    |   |               
+    |   \---polyfill-php80
+    |       |   composer.json
+    |       |   LICENSE
+    |       |   Php80.php
+    |       |   PhpToken.php
+    |       |   README.md
+    |       |   
+    |       \---Resources
+    |           \---stubs
+    |                   Attribute.php
+    |                   PhpToken.php
+    |                   Stringable.php
+    |                   UnhandledMatchError.php
+    |                   ValueError.php
+    |                   
+    \---vlucas
+        \---phpdotenv
+            |   composer.json
+            |   LICENSE
+            |   
+            \---src
+                |   Dotenv.php
+                |   Validator.php
+                |   
+                +---Exception
+                |       ExceptionInterface.php
+                |       InvalidEncodingException.php
+                |       InvalidFileException.php
+                |       InvalidPathException.php
+                |       ValidationException.php
+                |       
+                +---Loader
+                |       Loader.php
+                |       LoaderInterface.php
+                |       Resolver.php
+                |       
+                +---Parser
+                |       Entry.php
+                |       EntryParser.php
+                |       Lexer.php
+                |       Lines.php
+                |       Parser.php
+                |       ParserInterface.php
+                |       Value.php
+                |       
+                +---Repository
+                |   |   AdapterRepository.php
+                |   |   RepositoryBuilder.php
+                |   |   RepositoryInterface.php
+                |   |   
+                |   \---Adapter
+                |           AdapterInterface.php
+                |           ApacheAdapter.php
+                |           ArrayAdapter.php
+                |           EnvConstAdapter.php
+                |           GuardedWriter.php
+                |           ImmutableWriter.php
+                |           MultiReader.php
+                |           MultiWriter.php
+                |           PutenvAdapter.php
+                |           ReaderInterface.php
+                |           ReplacingWriter.php
+                |           ServerConstAdapter.php
+                |           WriterInterface.php
+                |           
+                +---Store
+                |   |   FileStore.php
+                |   |   StoreBuilder.php
+                |   |   StoreInterface.php
+                |   |   StringStore.php
+                |   |   
+                |   \---File
+                |           Paths.php
+                |           Reader.php
+                |           
+                \---Util
+                        Regex.php
+                        Str.php
+                        

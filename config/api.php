@@ -1,6 +1,7 @@
 <?php
 
 return [
-    //'base_url' => 'http://localhost:8001',
-    'base_url' => 'http://api.skynet.local',
+    'api' => [
+        'base_url' => $_ENV['API_BASE_URL'] ?? 'http://localhost',
+    ],
 ];

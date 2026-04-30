@@ -1,39 +1,91 @@
 <?php
-// public/index.php
-// HTTP Entry Point - http://localhost/skynet-ui/api
 declare(strict_types=1);
+
+/**
+ * =========================================================
+ *  REDSKY UI - FRONT CONTROLLER
+ * =========================================================
+ */
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+/**
+ * Base paths
+ */
 define('BASE_PATH', dirname(__DIR__));
-//echo "BASE_PATH:".var_dump(BASE_PATH)."<br/>";
-define('BASE_URI', '/skynet-ui/public');
-//echo "BASE_URI:".var_dump(BASE_URI)."<br/>";
+define('BASE_URI', '/redsky-ui/public');
 
-require_once __DIR__ . '/../vendor/autoload.php';
+/**
+ * Composer autoload
+ */
+require_once BASE_PATH . '/vendor/autoload.php';
 
-// Aquí incluimos nuestros helpers y aliases globales
-require_once __DIR__ . '/../bootstrap/helpers.php';
+/**
+ * Bootstrap (AQUÍ se crea y configura el Router)
+ */
+require_once BASE_PATH . '/bootstrap/app.php';
+require_once BASE_PATH . '/bootstrap/helpers.php';
 
+/**
+ * Load environment variables (.env)
+ */
 use Dotenv\Dotenv;
-// Cargar variables de entorno
-$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+
+$dotenv = Dotenv::createImmutable(BASE_PATH);
 $dotenv->load();
 
+/**
+ * Use core classes
+ */
+use App\Http\Request;
 use App\Http\Router\Router;
-use App\Http\Router\Route;
 
-// cargar rutas
-require_once __DIR__ . '/../routes/web.php';
-
-// Create router
-// despachar la request
-Router::getInstance()->dispatch(
-    $_SERVER['REQUEST_METHOD'],
-    $_SERVER['REQUEST_URI']
-);
-
+/**
+ * ============================
+ * 1. START SESSION
+ * ============================
+ */
 session_start();
-use App\Http\Middleware\VerifyCsrfToken;
-VerifyCsrfToken::handle();
+
+/**
+ * ============================
+ * 2. CREATE REQUEST
+ * ============================
+ */
+$request = Request::capture();
+
+/**
+ * ============================
+ * 3. LOAD ROUTES
+ * ============================
+ */
+require_once BASE_PATH . '/routes/web.php';
+
+/**
+ * ============================
+ * 4. DISPATCH ROUTER
+ * ============================
+ */
+
+/* Probando AuthMiddleware
+
+*/
+use App\Core\Session\Session;
+$session = new Session;
+//$session->put('user',10);
+$session->forget("user");
+
+//session()->forget('user');
+//session('user', null);
+
+$router = Router::getInstance(); // Ya fue creado/configurado en app.php solo devuelve la misma instancia.
+$response = $router->dispatch($request);
+
+/**
+ * ============================
+ * 5. SEND RESPONSE
+ * ============================
+ */
+$response->send();
