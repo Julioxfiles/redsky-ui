@@ -9,18 +9,22 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
+
   "autoload": {
     "psr-4": {
       "App\\": "app/"
     },
     "files": [
-            "app/Support/helpers.php"
-        ]
+      "app/Support/Helpers/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
     },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "C:/php-framework/skynet-core"
-    }
-  ]
+    "files": [
+      "app/Support/Helpers/dev_helpers.php"
+    ]
+  }
+  
 }

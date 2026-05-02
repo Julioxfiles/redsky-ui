@@ -3,44 +3,44 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Request;
+use App\Http\Response;
 use App\Support\ApiClient;
+use App\Http\Controllers\Controller;
 
-class AuthController
+class AuthController extends Controller
 {
     /**
      * Show login page (UI responsibility only)
      */
-    public function showLoginForm(): void
+    public function loginForm()
     {
-        view('auth.login', [
-            'title' => 'Login'
+        return view('auth.login', [
+            'title' => 'Login'            
         ]);
+
     }
 
     /**
      * Handle login form submission
      * UI layer: only reads input + calls API + redirects
      */
-    public function login(Request $request): void
+    public function login(Request $request)
     {
         $email = $request->input('email');
         $password = $request->input('password');
 
-        // Call backend API through centralized client
         $response = ApiClient::post('/api/auth/login', [
             'email' => $email,
             'password' => $password
         ]);
 
-        // Success flow
         if (!empty($response['success'])) {
             $_SESSION['token'] = $response['token'] ?? null;
-            redirect('/dashboard');
-            return;
+
+            return redirect('/dashboard');
         }
 
-        // Failure flow
-        redirect('/login?error=1');
+        return redirect('/login?error=1');
     }
 
     /**

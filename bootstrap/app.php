@@ -3,10 +3,34 @@
 use App\Http\Router\Router;
 use App\Http\Middleware\AuthMiddleware;
 
-// Crear instancia (singleton o manual)
+/*
+|--------------------------------------------------------------------------
+| Router Instance (Singleton)
+|--------------------------------------------------------------------------
+*/
+
 $router = Router::getInstance();
 
-// Registrar middlewares
+/*
+|--------------------------------------------------------------------------
+| Middleware Aliases
+|--------------------------------------------------------------------------
+*/
+
 $router->aliasMiddleware('auth', AuthMiddleware::class);
 
-// (opcional) guardar en contenedor o variable global
+/*
+|--------------------------------------------------------------------------
+| (Opcional) Registrar otros middlewares aquí
+|--------------------------------------------------------------------------
+*/
+
+//$router->aliasMiddleware('guest', \App\Http\Middleware\GuestMiddleware::class ?? null);
+
+/*
+|--------------------------------------------------------------------------
+| Bind global (opcional pero útil en tu arquitectura actual)
+|--------------------------------------------------------------------------
+*/
+
+$GLOBALS['router'] = $router;

@@ -23,13 +23,13 @@ define('BASE_URI', '/redsky-ui/public');
 require_once BASE_PATH . '/vendor/autoload.php';
 
 /**
- * Bootstrap (AQUÍ se crea y configura el Router)
+ * Bootstrap
  */
 require_once BASE_PATH . '/bootstrap/app.php';
 require_once BASE_PATH . '/bootstrap/helpers.php';
 
 /**
- * Load environment variables (.env)
+ * Env
  */
 use Dotenv\Dotenv;
 
@@ -37,10 +37,10 @@ $dotenv = Dotenv::createImmutable(BASE_PATH);
 $dotenv->load();
 
 /**
- * Use core classes
+ * Core classes
  */
 use App\Http\Request;
-use App\Http\Router\Router;
+use App\Http\Kernel;
 
 /**
  * ============================
@@ -51,7 +51,7 @@ session_start();
 
 /**
  * ============================
- * 2. CREATE REQUEST
+ * 2. REQUEST
  * ============================
  */
 $request = Request::capture();
@@ -65,23 +65,24 @@ require_once BASE_PATH . '/routes/web.php';
 
 /**
  * ============================
- * 4. DISPATCH ROUTER
+ * 4. KERNEL HANDLES EVERYTHING
  * ============================
  */
 
-/* Probando AuthMiddleware
-
-*/
+use App\Http\Router\Router;
 use App\Core\Session\Session;
-$session = new Session;
-//$session->put('user',10);
-$session->forget("user");
 
-//session()->forget('user');
-//session('user', null);
+// (tu test actual de sesión lo puedes dejar aquí)
+$session = new Session();
+// $session->forget("user");
 
-$router = Router::getInstance(); // Ya fue creado/configurado en app.php solo devuelve la misma instancia.
-$response = $router->dispatch($request);
+$kernel = new Kernel();
+
+/**
+ * IMPORTANT:
+ * Kernel ahora es el ORQUESTADOR
+ */
+$response = $kernel->handle($request);
 
 /**
  * ============================

@@ -8,9 +8,9 @@ abstract class Controller
     /**
      * Render a blade view
      */
-    protected function view(string $view, array $data = []): void
+    protected function view(string $view, array $data = [])
     {
-        view($view, $data);
+        return (new \App\View\View())->render($view, $data);
     }
 
     /**

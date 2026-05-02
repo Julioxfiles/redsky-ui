@@ -4,20 +4,17 @@ namespace App\Http\Middleware;
 
 use App\Http\Contracts\Middleware;
 use App\Http\Request;
+use App\Http\Response;
 use Closure;
 
-class AuthMiddleware implements Middleware
+class AuthMiddleware
 {
-   
-    public function handle(Request $request, Closure $next)
+    public function handle($request, $next)
     {
-
-        $session = new \App\Core\Session\Session;
-        if (!$session->has('user')) {
-            return redirect('/login');
+        if (!$request->has('token')) {
+            return Response::json(['error' => 'Unauthorized'], 401);
         }
 
         return $next($request);
     }
-
 }
