@@ -3,42 +3,31 @@
 namespace App\Http\Router;
 
 use App\Http\Request;
+use App\Core\Container\Container;
 use Closure;
 
 class Router
 {
-    protected static ?self $instance = null;
 
     protected array $routes = [];
     protected array $middlewareAliases = [];
+    protected Container $container;
 
-    /**
-     * Singleton
-     */
-    public static function getInstance(): self
+    public function __construct(Container $container)
     {
-        return static::$instance ??= new self();
+        $this->container = $container;
     }
 
-    /**
-     * Register GET route
-     */
     public function get(string $uri, $action): RouteDefinition
     {
         return $this->addRoute('GET', $uri, $action);
     }
 
-    /**
-     * Register POST route
-     */
     public function post(string $uri, $action): RouteDefinition
     {
         return $this->addRoute('POST', $uri, $action);
     }
 
-    /**
-     * Store route definition
-     */
     protected function addRoute(string $method, string $uri, $action): RouteDefinition
     {
         $route = new RouteDefinition($method, $uri, $action);
@@ -48,9 +37,6 @@ class Router
         return $route;
     }
 
-    /**
-     * Find route by name
-     */
     public function routeByName(string $name): ?RouteDefinition
     {
         foreach ($this->routes as $route) {
@@ -63,24 +49,20 @@ class Router
     }
 
     /**
-     * MAIN RESPONSIBILITY:
-     * Only resolve route and return raw result
+     * MAIN DISPATCH (PIPELINE VERSION)
      */
     public function dispatch(Request $request)
     {
         $method = $request->method();
 
-        // ============================
-        // URI NORMALIZATION (FIX)
-        // ============================
         $uri = parse_url($request->uri(), PHP_URL_PATH);
 
         if (!empty(BASE_URI)) {
             $uri = str_replace(BASE_URI, '', $uri);
         }
 
-       // $uri = '/' . trim($uri, '/');       
         $uri = rtrim($uri, '/') ?: '/';
+        //dd($this->routes); die();
 
         foreach ($this->routes as $route) {
 
@@ -89,20 +71,18 @@ class Router
                 $middlewares = $this->resolveMiddleware(
                     $route->getMiddlewares()
                 );
+                
+                // 🔥 PIPELINE AHORA ES EL CORE (NO array_reduce aquí)
 
-                return $this->runRouteMiddleware(
-                    $middlewares,
-                    $request,
-                    fn ($request) => $this->runAction(
-                        $route->action,
-                        $request
-                    )
-                );
-
+                return (new \App\Core\Pipeline\Pipeline($this->container))
+                    ->send($request)
+                    ->through($middlewares)
+                    ->then(function ($request) use ($route) {
+                        return $this->runAction($route->action, $request);
+                    });
             }
         }
 
-        // Not found (RAW result, Kernel decides response)
         return [
             'error' => '404 Not Found',
             'status' => 404
@@ -110,16 +90,14 @@ class Router
     }
 
     /**
-     * Execute controller or closure
+     * EXECUTE CONTROLLER / CLOSURE
      */
     protected function runAction($action, Request $request)
     {
-        // Closure route
         if (is_callable($action)) {
             return $action($request);
         }
 
-        // Controller route
         if (is_array($action)) {
             [$class, $method] = $action;
 
@@ -131,42 +109,12 @@ class Router
         throw new \Exception('Invalid route action');
     }
 
-    protected function runRouteMiddleware(
-        array $middlewares,
-        Request $request,
-        Closure $destination
-    ) {
-
-        $pipeline = array_reduce(
-
-            array_reverse($middlewares),
-
-            function ($next, $middlewareClass) {
-
-                return function ($request) use (
-                    $middlewareClass,
-                    $next
-                ) {
-
-                    $middleware = app()->make(
-                        $middlewareClass
-                    );
-
-                    return $middleware->handle(
-                        $request,
-                        $next
-                    );
-                };
-            },
-
-            $destination
-        );
-
-        return $pipeline($request);
-    }
+    /**
+     * REMOVE runRouteMiddleware (NO LONGER NEEDED)
+     */
 
     /**
-     * Middleware alias system (kept for future, NOT used here yet)
+     * Middleware alias system
      */
     public function aliasMiddleware(string $name, string $class): void
     {
@@ -179,5 +127,6 @@ class Router
             return $this->middlewareAliases[$middleware] ?? $middleware;
         }, $middlewares);
     }
-    
+
+   
 }

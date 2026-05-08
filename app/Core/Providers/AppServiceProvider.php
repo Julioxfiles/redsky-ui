@@ -2,18 +2,26 @@
 
 namespace App\Core\Providers;
 
-use App\Http\Middleware\AuthMiddleware;
+use App\Http\Kernel;
+use App\Http\Router\Router;
+use App\Http\Middlewares\AuthMiddleware;
+use Override;
 
 class AppServiceProvider extends ServiceProvider
 {
+    protected Kernel $kernel;
+
+    public function __construct(Kernel $kernel)
+    {
+        $this->kernel = $kernel;
+    }
+
     public function register(): void
     {
-        // Middleware globales
-        $this->kernel->addMiddleware([
-            // \App\Http\Middleware\ShareSessionMiddleware::class,
-        ]);
-
-        // Middleware aliases
-        $this->kernel->routeMiddleware('auth', AuthMiddleware::class);
+        // Middleware aliases (route middleware system)
+        $this->kernel->getRouter()->aliasMiddleware(
+            'auth',
+            AuthMiddleware::class
+        );
     }
 }

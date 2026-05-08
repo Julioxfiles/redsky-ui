@@ -12,9 +12,14 @@ use App\Http\Response;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return 'Home page';
+Route::get('/home', function ($request) {
+    return 'Home OK';
 });
+
+// Ruta protegida con middleware alias
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------

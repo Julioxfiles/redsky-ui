@@ -2,17 +2,24 @@
 
 namespace App\Http\Router;
 
-namespace App\Http\Router;
+use App\Http\Router\Router;
 
 class Route
 {
+    protected static Router $router;
+
+    public static function setRouter(Router $router): void
+    {
+        self::$router = $router;
+    }
+
     public static function get(string $uri, $action): RouteDefinition
     {
-        return Router::getInstance()->get($uri, $action);
+        return self::$router->get($uri, $action);
     }
 
     public static function post(string $uri, $action): RouteDefinition
     {
-        return Router::getInstance()->post($uri, $action);
+        return self::$router->post($uri, $action);
     }
 }

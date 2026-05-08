@@ -1,19 +1,44 @@
 <?php
 
 use App\Http\Kernel;
+use App\Core\Container\Container;
+use App\Http\Router\Router;
+use App\Http\Router\Route;
+use App\Core\Providers\AppServiceProvider;
 
 /*
 |--------------------------------------------------------------------------
-| KERNEL INSTANCE
+| BOOTSTRAP LAYER
 |--------------------------------------------------------------------------
+| Construye la aplicación (NO ejecuta HTTP)
 */
 
-$kernel = new Kernel();
+$container = new Container();
+$kernel = new Kernel($container, new Router($container));
+Route::setRouter($kernel->getRouter());
 
 /*
 |--------------------------------------------------------------------------
-| EXPORT KERNEL
+| SERVICE PROVIDERS (bootstrap responsibility)
+|--------------------------------------------------------------------------
+*/
+foreach ([AppServiceProvider::class] as $providerClass) {
+    $provider = new $providerClass($kernel);
+    $provider->register();
+}
+
+/*
+|--------------------------------------------------------------------------
+| ROUTES
 |--------------------------------------------------------------------------
 */
 
-$app = $kernel;
+require BASE_PATH . '/routes/web.php';
+
+/*
+|--------------------------------------------------------------------------
+| EXPORT READY KERNEL
+|--------------------------------------------------------------------------
+*/
+
+return $kernel;

@@ -35,7 +35,7 @@ foreach ($attributes as $key => $val) {
     } else {
 
         $attrString .= " {$key}=\"" .
-            htmlspecialchars($val) .
+            e($val) .
             "\"";
     }
 }
@@ -43,13 +43,13 @@ foreach ($attributes as $key => $val) {
 /**
  * Resolve content
  */
-$content = $slot ?? htmlspecialchars($message);
+$content = $slot ?? e($message);
 
 ?>
 
 <div
-    <?= $id ? 'id="' . htmlspecialchars($id) . '"' : '' ?>
-    class="<?= htmlspecialchars($class) ?>"
+    <?= $id ? 'id="' . e($id) . '"' : '' ?>
+    class="<?= e($class) ?>"
     <?= $attrString ?>
 >
     <?= $content ?>

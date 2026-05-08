@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -13,13 +12,21 @@ require_once BASE_PATH . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
 $dotenv->load();
 
-use App\Http\Request;
-use App\Http\Kernel;
+/**
+ * BOOTSTRAP LAYER
+ */
+$app = require BASE_PATH . '/bootstrap/app.php';
 
+use App\Http\Request;
+
+/**
+ * REQUEST
+ */
 $request = Request::capture();
 
-$kernel = new Kernel();
-
-$response = $kernel->handle($request);
+/**
+ * HANDLE REQUEST
+ */
+$response = $app->handle($request);
 
 $response->send();

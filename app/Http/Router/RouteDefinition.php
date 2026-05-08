@@ -19,9 +19,13 @@ class RouteDefinition
         return $this;
     }
 
-    public function middleware(array $middlewares): static
+    public function middleware(array|string $middlewares): static
     {
-        $this->middlewares = $middlewares;
+        $this->middlewares = array_merge(
+            $this->middlewares,
+            (array) $middlewares
+        );
+
         return $this;
     }
 

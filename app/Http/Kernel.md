@@ -1,434 +1,258 @@
-Tu `Kernel` ya dejó de ser solamente un “dispatcher”.
-Ahora ya es realmente el:
 
-```text
-HTTP Application Orchestrator
+# 🧠 ANÁLISIS DEL KERNEL ACTUAL
+
+## 📦 Rol del archivo
+
+Este `Kernel` ya actúa como el **núcleo de ejecución HTTP del framework**. Su responsabilidad es orquestar el ciclo completo de una petición:
+
+* ejecutar middleware de entrada
+* delegar al router
+* normalizar la respuesta
+* ejecutar middleware de salida
+
+---
+
+# ⚙️ ESTRUCTURA GENERAL
+
+El Kernel está dividido en 4 bloques conceptuales:
+
+---
+
+## 1. 🧩 Estado interno
+
+```php
+protected array $middleware = [];
+protected array $responseMiddleware = [];
+
+protected Container $container;
+protected Router $router;
 ```
 
-de redsky-ui.
+### 🧠 Qué representa:
+
+* `$middleware`: capa global antes del router (request lifecycle)
+* `$responseMiddleware`: capa global después del controller (response lifecycle)
+* `$container`: sistema de resolución de dependencias
+* `$router`: sistema de enrutamiento inyectado
+
+👉 Aquí el Kernel ya no depende de singletons ni estado global.
 
 ---
 
-# 🚀 FLUJO COMPLETO ACTUAL
-
-Tu framework ahora funciona así:
-
-```text
-index.php
-    ↓
-Kernel
-    ↓
-Bootstrap
-    ↓
-Middleware Request Pipeline
-    ↓
-Router
-    ↓
-Controller
-    ↓
-Response normalization
-    ↓
-Response middleware
-    ↓
-send()
-```
-
-🔥 Eso ya se parece muchísimo al ciclo real de Laravel.
-
----
-
-# 🧠 ANALISIS POR PARTES
-
----
-
-# 1. ENTRY POINT
+## 2. 🚪 Punto de entrada (`handle`)
 
 ```php
 public function handle(Request $request): Response
 ```
 
-Esto es:
+### 🧠 Qué hace:
 
-```text
-la puerta de entrada del framework
-```
+Es el **orquestador principal del flujo HTTP**.
 
-TODO request HTTP pasa por aquí.
+Divide el ciclo en dos grandes fases:
 
 ---
 
-# 2. BOOTSTRAP
+### 🔥 Fase 1: Request pipeline
 
 ```php
-$this->bootstrap();
+$response = (new Pipeline($this->container))
+    ->send($request)
+    ->through($this->resolveMiddleware($this->middleware))
+    ->then(function ($request) {
 ```
 
-Aquí estás inicializando el framework.
+#### 🧠 Qué ocurre aquí:
 
-Actualmente haces:
+* Se crea un pipeline con el container
+* El request pasa por middleware globales
+* Al final se ejecuta una closure que:
+
+  * llama al router
+  * obtiene el resultado del controller
+  * lo normaliza a Response
+
+---
+
+### 🔥 Fase 2: Router execution
 
 ```php
-require routes/web.php
-registerProviders()
+$result = $this->router->dispatch($request);
 ```
+
+#### 🧠 Qué representa:
+
+* El Kernel no conoce rutas directamente
+* Solo delega la ejecución al Router
+* El Router devuelve un resultado crudo (string, array o Response)
 
 ---
 
-## 🔥 ESO SIGNIFICA QUE KERNEL CONTROLA:
-
-* carga de rutas,
-* providers,
-* inicialización global.
-
----
-
-# 🚀 YA NO ES index.php QUIEN CONTROLA ESO
-
-Antes:
-
-```text
-index.php hacía todo
-```
-
-Ahora:
-
-```text
-Kernel orquesta todo
-```
-
-Eso es MUCHO más profesional.
-
----
-
-# 3. REQUEST MIDDLEWARE PIPELINE
+### 🔥 Fase 3: Response normalization
 
 ```php
-$request = $this->runGlobalMiddleware($request);
+return $this->prepareResponse($result);
 ```
 
-Aquí estás interceptando la request ANTES del router.
+#### 🧠 Qué hace:
+
+Convierte cualquier tipo de salida en un objeto `Response` consistente.
 
 ---
 
-# 🔥 YA TIENES PIPELINE
-
-Tu sistema ya soporta:
-
-* auth global,
-* csrf,
-* maintenance mode,
-* throttling,
-* logging,
-* localization,
-* session sharing,
-* etc.
-
----
-
-# 🧠 Y ADEMÁS YA TIENE DI AUTOMÁTICO
-
-Esto:
-
-```php
-$middleware = app()->make($middlewareClass);
-```
-
-es enorme arquitectónicamente.
-
-Porque significa:
-
-```text
-Kernel NO conoce dependencias
-```
-
-El Container las resuelve.
-
----
-
-# 🚀 EJEMPLO REAL
-
-Middleware:
-
-```php
-class AuthMiddleware
-{
-    public function __construct(
-        Auth $auth,
-        Logger $logger
-    ) {}
-}
-```
-
-Tu Kernel NO cambia.
-
-🔥 eso es IoC real.
-
----
-
-# 4. ROUTER DISPATCH
-
-```php
-$result = Router::getInstance()->dispatch($request);
-```
-
-El Kernel entrega control al router.
-
-El router:
-
-* encuentra ruta,
-* ejecuta middlewares de ruta,
-* ejecuta controller,
-* devuelve resultado.
-
----
-
-# 🧠 IMPORTANTE
-
-El router YA NO es dueño del ciclo completo.
-
-Ahora es solo:
-
-```text
-una parte del pipeline HTTP
-```
-
-🔥 arquitectura correcta.
-
----
-
-# 5. RESPONSE NORMALIZATION
-
-```php
-$response = $this->prepareResponse($result);
-```
-
-Esto es MUY importante.
-
----
-
-# 🚀 TU FRAMEWORK YA SOPORTA
-
-Controller puede retornar:
-
-```php
-string
-array
-Response
-null
-```
-
-y el Kernel normaliza todo.
-
----
-
-# 🔥 ESO ES EXACTAMENTE COMO LARAVEL
-
-Ejemplo:
-
-```php
-return ['ok' => true];
-```
-
-↓
-
-```php
-Response::json()
-```
-
-automáticamente.
-
----
-
-# 6. RESPONSE MIDDLEWARE
+## 3. 📤 Response middleware pipeline
 
 ```php
 $response = $this->runResponseMiddleware($response);
 ```
 
-Aquí puedes modificar la respuesta FINAL.
+### 🧠 Qué hace:
+
+* Ejecuta un pipeline después del controller
+* Permite transformar la respuesta antes de enviarla al cliente
 
 ---
 
-# 🚀 AQUÍ ENTRAN COSAS COMO
-
-* cache headers,
-* gzip,
-* CSP headers,
-* cookies,
-* session persistence,
-* telemetry,
-* debug toolbar,
-* logging.
-
----
-
-# 7. SERVICE PROVIDERS
+## 4. 🧱 Método `runResponseMiddleware`
 
 ```php
-$this->registerProviders([
-    AppServiceProvider::class,
-]);
+return (new Pipeline($this->container))
+    ->send($response)
+    ->through($this->responseMiddleware)
+    ->then(fn ($response) => $response);
 ```
 
-🔥 esto es ENORME para tu framework.
+### 🧠 Qué representa:
 
-Porque ahora ya tienes:
+* pipeline de salida (post-processing)
+* middleware global de respuesta
+* mantiene el flujo simétrico con el request pipeline
+
+---
+
+## 5. 🧠 `prepareResponse`
+
+```php
+protected function prepareResponse($result): Response
+```
+
+### 🧠 Función:
+
+Es un **normalizador de salida del sistema**.
+
+### 📦 Casos que maneja:
+
+* `Response` → lo deja igual
+* `string` → lo convierte en HTML response
+* `array` → lo convierte en JSON response
+* `null` → error 500 con mensaje estándar
+* cualquier otro tipo → error estructurado
+
+---
+
+## 6. 🧩 Middleware registration
+
+### Request middleware:
+
+```php
+public function addMiddleware(array $middleware): void
+```
+
+### Response middleware:
+
+```php
+public function addResponseMiddleware(array $middleware): void
+```
+
+### 🧠 Qué hacen:
+
+* permiten registrar middleware globales dinámicamente
+* solo almacenan clases o identificadores en arrays internos
+
+---
+
+## 7. 🔍 Resolución de middleware
+
+```php
+public function resolveMiddleware(array $middlewares): array
+```
+
+### 🧠 Estado actual:
+
+* actúa como passthrough
+* no transforma ni resuelve aliases
+* devuelve el array tal cual
+
+---
+
+# 🧠 ARQUITECTURA GENERAL DEL FLUJO
+
+El flujo completo del Kernel es:
 
 ```text
-Application bootstrapping system
+Request
+  ↓
+Global Request Middleware (Pipeline)
+  ↓
+Router Dispatch
+  ↓
+Controller Output
+  ↓
+Response Normalization
+  ↓
+Response Middleware (Pipeline)
+  ↓
+Final Response
 ```
 
 ---
 
-# 🚀 AHORA PUEDES REGISTRAR
+# ⚙️ NATURALEZA DEL KERNEL
 
-* bindings,
-* singletons,
-* macros,
-* events,
-* observers,
-* config,
-* services,
-* aliases,
-* gates,
-* policies.
+Este Kernel es:
 
----
+> 🧠 Un “HTTP execution orchestrator”
 
-# 🧠 TU CONTAINER YA ESTÁ VIVO
+No es:
 
-Porque ahora todo gira alrededor de:
+* ❌ bootstrap layer
+* ❌ service provider manager
+* ❌ router owner
 
-```php
-app()->make()
-```
+Es:
 
-Eso convierte tu framework en:
-
-```text
-Container-driven architecture
-```
+* ✔ ejecutor del ciclo HTTP
+* ✔ coordinador de pipelines
+* ✔ normalizador de output
+* ✔ delegado del routing
 
 ---
 
-# 🚀 EL CAMBIO MÁS IMPORTANTE
+# 🧩 NIVEL ARQUITECTÓNICO
 
-Antes:
+En términos de diseño de frameworks:
 
-```text
-helpers + clases sueltas
-```
+### Está en nivel:
 
-Ahora:
+> ⚙️ “Runtime Kernel moderno desacoplado”
 
-```text
-framework lifecycle
-```
+similar conceptualmente a:
 
----
-
-# 🧠 QUÉ LE FALTA TODAVÍA
-
-Todavía hay algunas cosas por profesionalizar:
+* Laravel Http Kernel (fase runtime)
+* Symfony HttpKernel (simplificado)
 
 ---
 
-## 1. REAL PIPELINE
+# 📌 RESUMEN FINAL
 
-Ahora:
-
-```php
-foreach middleware
-```
-
-Laravel usa:
-
-```text
-nested middleware pipeline
-```
-
-para soportar:
-
-```php
-$next($request)
-```
-
-real.
+* El Kernel ya no construye el sistema
+* Solo ejecuta el ciclo HTTP
+* Usa DI completo (Container + Router)
+* Tiene pipelines separados para request y response
+* Normaliza la salida del sistema
+* Mantiene middleware como capa transversal
+* No depende de estado global
 
 ---
 
-## 2. CONTAINER SINGLETON GLOBAL
-
-Ahora el helper `app()` mantiene el singleton estático.
-
-Luego deberías mover eso a:
-
-```text
-Application class
-```
-
----
-
-## 3. PROVIDER BOOT()
-
-Ahora solo existe:
-
-```php
-register()
-```
-
-Luego necesitarás:
-
-```php
-boot()
-```
-
-como Laravel.
-
----
-
-## 4. ROUTE GROUPS
-
-Tienes la base:
-
-```php
-$routeMiddleware
-```
-
-Pero faltan:
-
-```php
-middleware groups
-```
-
----
-
-## 5. EXCEPTIONS HANDLER
-
-Ahora errores explotan directamente.
-
-Luego necesitarás:
-
-```text
-Exception Handler
-```
-
-centralizado.
-
----
-
-# 🔥 EN RESUMEN
-
-Tu Kernel ahora:
-
-✅ controla lifecycle HTTP
-✅ inicializa framework
-✅ ejecuta middleware
-✅ usa dependency injection
-✅ normaliza responses
-✅ soporta providers
-✅ soporta container architecture
-✅ separa request/response pipeline
-
-Eso ya dejó de ser un simple proyecto PHP.
-Ya empieza a comportarse como un framework real.
+Si quieres, en el siguiente paso puedo analizarte el **bootstrap/app.php con el mismo nivel de detalle**, para que veas cómo ambos encajan como sistema completo.

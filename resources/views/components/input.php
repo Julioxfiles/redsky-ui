@@ -23,7 +23,7 @@ foreach ($attributes as $key => $val) {
             $attrString .= " {$key}";
         }
     } else {
-        $attrString .= " {$key}=\"" . htmlspecialchars($val) . "\"";
+        $attrString .= " {$key}=\"" . e($val) . "\"";
     }
 }
 
@@ -32,24 +32,24 @@ foreach ($attributes as $key => $val) {
 <div class="mb-3">
 
     <?php if ($label): ?>
-        <label for="<?= htmlspecialchars($id) ?>" class="form-label">
-            <?= htmlspecialchars($label) ?>
+        <label for="<?= e($id) ?>" class="form-label">
+            <?= e($label) ?>
         </label>
     <?php endif; ?>
 
     <input
-        type="<?= htmlspecialchars($type) ?>"
-        name="<?= htmlspecialchars($name) ?>"
-        id="<?= htmlspecialchars($id) ?>"
-        value="<?= htmlspecialchars($value) ?>"
-        placeholder="<?= htmlspecialchars($placeholder) ?>"
-        class="<?= htmlspecialchars($class) ?>"
+        type="<?= e($type) ?>"
+        name="<?= e($name) ?>"
+        id="<?= e($id) ?>"
+        value="<?= e($value) ?>"
+        placeholder="<?= e($placeholder) ?>"
+        class="<?= e($class) ?>"
         <?= $attrString ?>
     >
 
     <?php if ($error): ?>
         <div class="invalid-feedback">
-            <?= htmlspecialchars($error) ?>
+            <?= e($error) ?>
         </div>
     <?php endif; ?>
 

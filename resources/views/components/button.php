@@ -30,7 +30,7 @@ foreach ($attributes as $key => $val) {
             $attrString .= " {$key}";
         }
     } else {
-        $attrString .= " {$key}=\"" . htmlspecialchars($val) . "\"";
+        $attrString .= " {$key}=\"" . e($val) . "\"";
     }
 }
 
@@ -38,14 +38,14 @@ foreach ($attributes as $key => $val) {
  * Resolve content:
  * slot > text
  */
-$content = $slot ?? htmlspecialchars($text);
+$content = $slot ?? e($text);
 
 ?>
 
 <button
-    type="<?= htmlspecialchars($type) ?>"
-    <?= $id ? 'id="' . htmlspecialchars($id) . '"' : '' ?>
-    class="<?= htmlspecialchars($class) ?>"
+    type="<?= e($type) ?>"
+    <?= $id ? 'id="' . e($id) . '"' : '' ?>
+    class="<?= e($class) ?>"
     <?= $attrString ?>
 >
     <?= $content ?>

@@ -6,89 +6,57 @@ use App\Http\Request;
 use App\Http\Response;
 use App\Http\Router\Router;
 use App\Http\Contracts\ResponseMiddleware;
-use App\Http\Contracts\Middleware as MiddlewareContract;
+use App\Core\Pipeline\Pipeline;
+use App\Core\Container\Container;
+
 
 class Kernel
 {
     /**
-     * Request middleware stack
+     * Global request middleware
      */
     protected array $middleware = [];
 
     /**
-     * Response middleware stack
+     * Global response middleware
      */
     protected array $responseMiddleware = [];
+    
+    protected Container $container;
+    protected Router $router;
 
-    /**
-     * Route middleware aliases
-     */
-    protected array $routeMiddleware = [];
+    public function __construct(Container $container, Router $router) {
+        $this->container = $container;
+        $this->router = $router;
+    }
 
+    public function getRouter(): Router
+    {
+        return $this->router;
+    }
+    
     /**
-     * Registered service providers
-     */
-    protected array $providers = [];
-    protected bool $bootstrapped = false;
-    /**
-     * Entry point
+     * ENTRY POINT
      */
     public function handle(Request $request): Response
     {
-        // 1. Bootstrap (routes, providers, config)
-        $this->bootstrap();
+        // 🔥 1. GLOBAL PIPELINE (request lifecycle)
+        $response = (new Pipeline($this->container))
+            ->send($request)
+            ->through($this->resolveMiddleware($this->middleware))
+            ->then(function ($request) {
 
-        // 2. Run request middleware
-        $request = $this->runGlobalMiddleware($request);
+                // 🔥 2. ROUTER (ahora el router maneja su propio pipeline interno)
+                $result =$this->router->dispatch($request);
 
-        // 3. Router dispatch
-        $result = Router::getInstance()->dispatch($request);
+                // 🔥 3. normalize controller output
+                return $this->prepareResponse($result);
+            });
 
-        // 4. Normalize response
-        $response = $this->prepareResponse($result);
-
-        // 5. Run response middleware
+        // 🔥 4. RESPONSE MIDDLEWARE PIPELINE
         $response = $this->runResponseMiddleware($response);
 
         return $response;
-    }
-
-    /**
-     * BOOTSTRAP LAYER
-     */
-    
-
-    protected function bootstrap(): void
-    {
-        if ($this->bootstrapped) {
-            return;
-        }
-
-        require BASE_PATH . '/routes/web.php';
-
-        $this->registerProviders([
-            \App\Core\Providers\AppServiceProvider::class,
-        ]);
-
-        $this->bootstrapped = true;
-    }
-    /**
-     * REQUEST MIDDLEWARE PIPELINE
-     */
-    protected function runGlobalMiddleware(Request $request): Request
-    {
-        foreach ($this->middleware as $middlewareClass) {
-
-            $middleware = app()->make($middlewareClass);
-
-            if ($middleware instanceof MiddlewareContract) {
-                $request = $middleware->handle($request, function ($req) {
-                    return $req;
-                });
-            }
-        }
-
-        return $request;
     }
 
     /**
@@ -96,16 +64,11 @@ class Kernel
      */
     protected function runResponseMiddleware(Response $response): Response
     {
-        foreach ($this->responseMiddleware as $middlewareClass) {
+        return (new Pipeline($this->container))
+            ->send($response)
+            ->through($this->responseMiddleware)
+            ->then(fn ($response) => $response);
 
-            $middleware = app()->make($middlewareClass);
-
-            if ($middleware instanceof ResponseMiddleware) {
-                $response = $middleware->after($response);
-            }
-        }
-
-        return $response;
     }
 
     /**
@@ -153,36 +116,12 @@ class Kernel
     }
 
     /**
-     * REGISTER ROUTE MIDDLEWARE ALIASES
-     */
-    public function routeMiddleware(string $key, string $class): void
-    {
-        $this->routeMiddleware[$key] = $class;
-    }
-
-    /**
-     * RESOLVE ROUTE MIDDLEWARE ALIASES
+     * RESOLVE MIDDLEWARE ALIASES (GLOBAL ONLY)
      */
     public function resolveMiddleware(array $middlewares): array
     {
-        return array_map(function ($mw) {
-            return $this->routeMiddleware[$mw] ?? $mw;
-        }, $middlewares);
+        return $middlewares;
     }
 
-    /**
-     * REGISTER SERVICE PROVIDERS
-     */
-    public function registerProviders(array $providers): void
-    {
-        foreach ($providers as $providerClass) {
-
-            $provider = new $providerClass($this);
-
-            $provider->register();
-
-            $this->providers[] = $provider;
-        }
-    }
-
+        
 }

@@ -1,284 +1,225 @@
-Sí. Ahora tu clase `Router` ya ejecuta middleware de rutas correctamente y además ya tiene una arquitectura bastante cercana a Laravel internamente.
 
-Análisis de lo que ya lograste:
+# 🧠 1. RESPONSABILIDAD DEL ROUTER (ESTADO ACTUAL)
 
-1. El Router ya soporta middleware por ruta
+Tu Router ahora hace esto:
 
-Ahora esto funciona realmente:
+### ✔ Bien separado
 
-```php
-Route::get('/dashboard', function () {
-    return 'Dashboard';
-})->middleware(['auth']);
+* registra rutas (`get`, `post`)
+* hace matching de URI
+* resuelve middleware aliases
+* ejecuta pipeline
+* ejecuta controller
+
+---
+
+# 🔴 2. PROBLEMA PRINCIPAL ACTUAL
+
+## ❗ Router todavía hace DEMASIADO
+
+Este método es el punto crítico:
+
+```php id="core1"
+public function dispatch(Request $request)
 ```
 
-Porque:
+Hace 4 cosas distintas:
 
-* `RouteDefinition` guarda:
-
-```php
-protected array $middlewares = [];
-```
-
-* Luego el Router los obtiene aquí:
+### 1. Routing
 
 ```php
-$route->getMiddlewares()
+foreach ($this->routes as $route)
 ```
 
-* Después resuelve aliases:
+### 2. Middleware resolution
 
 ```php
-$middlewares = $this->resolveMiddleware(
-    $route->getMiddlewares()
-);
+$this->resolveMiddleware(...)
 ```
 
-Entonces:
+### 3. Pipeline execution
 
 ```php
-['auth']
+new Pipeline($this->container)
 ```
 
-se convierte automáticamente en:
+### 4. Controller execution
 
 ```php
-[
-    App\Http\Middleware\AuthMiddleware::class
-]
+$this->runAction(...)
 ```
 
-gracias a:
+---
+
+# 🧠 PROBLEMA REAL
+
+Esto convierte el Router en:
+
+> ⚠️ Router + Dispatcher + Middleware Engine + Controller Resolver
+
+---
+
+# 🟡 3. LO QUE YA MEJORASTE (IMPORTANTE)
+
+Antes tenías:
+
+## ❌ singleton global
 
 ```php
-$this->kernel->routeMiddleware('auth', AuthMiddleware::class);
+Router::getInstance()
 ```
 
-que registraste en:
+## ✔ ahora tienes DI real
 
 ```php
-AppServiceProvider
+protected Container $container;
 ```
 
-Eso ya es arquitectura real de framework.
+👉 esto es un gran avance arquitectónico
 
-2. Ya tienes pipeline real de middleware
+---
 
-Esto:
+# 🟡 4. PROBLEMA SECUNDARIO: BASE_URI
 
 ```php
-return $this->runRouteMiddleware(
-    $middlewares,
-    $request,
-    fn ($request) => $this->runAction(
-        $route->action,
-        $request
-    )
-);
-```
-
-es MUY importante.
-
-Porque el Router ya no ejecuta directamente el controller.
-
-Ahora hace:
-
-```text
-Request
-   ↓
-Middleware 1
-   ↓
-Middleware 2
-   ↓
-Controller
-```
-
-Exactamente como Laravel.
-
-3. Tu array_reduce construye el pipeline dinámicamente
-
-Esta parte:
-
-```php
-$pipeline = array_reduce(
-    array_reverse($middlewares),
-```
-
-crea una cadena de ejecución.
-
-Ejemplo mental:
-
-```php
-['auth', 'csrf']
-```
-
-termina convirtiéndose en algo parecido a:
-
-```php
-AuthMiddleware(
-    CsrfMiddleware(
-        Controller()
-    )
-)
-```
-
-Eso ya es middleware composition real.
-
-4. Tu Closure $next ya funciona correctamente
-
-Aquí:
-
-```php
-return $middleware->handle(
-    $request,
-    $next
-);
-```
-
-el middleware recibe:
-
-* Request
-* Closure siguiente
-
-Igual que Laravel:
-
-```php
-public function handle($request, Closure $next)
-{
-    return $next($request);
+if (!empty(BASE_URI)) {
+    $uri = str_replace(BASE_URI, '', $uri);
 }
 ```
 
-Tu framework ya soporta middleware encadenado real.
+## ❗ Problema
 
-5. Ya estás usando el Container correctamente
+Router depende de:
 
-Esto:
+* constante global (`BASE_URI`)
+* entorno HTTP global
 
-```php
-$middleware = app()->make(
-    $middlewareClass
-);
-```
+👉 esto lo hace menos portable
 
-es un salto arquitectónico importante.
+---
 
-Porque ahora:
+# 🧠 5. PROBLEMA DE RESPONSABILIDAD DE SALIDA
 
-* Router NO crea middleware manualmente
-* Router NO conoce dependencias
-* Router NO hace:
+Este return:
 
 ```php
-new AuthMiddleware(new Auth())
+return [
+    'error' => '404 Not Found',
+    'status' => 404
+];
 ```
 
-Ahora el Container resuelve todo.
+## ❗ problema
 
-6. Tu Router ya dejó de estar acoplado
+Router devuelve:
 
-Antes:
+* array
+* Response (pipeline)
+* output mixto
+
+👉 no tiene contrato de salida único
+
+---
+
+# 🟢 6. COSAS BIEN HECHAS (IMPORTANTE RECONOCER)
+
+## ✔ Pipeline inyectado correctamente
 
 ```php
-$middleware = new $middlewareClass;
+new Pipeline($this->container)
 ```
 
-Ahora:
+✔ correcto, sin globals
+
+---
+
+## ✔ Middleware alias system
 
 ```php
-$middleware = app()->make($middlewareClass);
+aliasMiddleware()
+resolveMiddleware()
 ```
 
-Eso elimina acoplamiento directo.
+✔ buena abstracción tipo Laravel
 
-Ahora puedes meter:
+---
 
-* Auth
-* Session
-* Logger
-* Cache
-* Config
-* Events
-
-como dependencias automáticamente.
-
-7. El Router ya tiene responsabilidades mucho más limpias
-
-Tu Router ahora:
-
-Responsabilidades actuales:
-
-* registrar rutas
-* resolver rutas
-* ejecutar middleware
-* ejecutar controllers
-* normalizar URI
-
-Y NO:
-
-* crear dependencias manualmente
-* manejar sesiones directamente
-* manejar auth directamente
-* generar respuestas HTTP
-
-Eso está mucho más desacoplado.
-
-8. Lo que todavía NO hace (pero ya está listo para hacerlo)
-
-Tu Router todavía no soporta:
-
-* route groups
-* prefix()
-* middleware groups
-* controller groups
-* named middleware parameters
-* priority middleware
-* terminable middleware
-* nested groups
-
-PERO:
-la arquitectura ya quedó lista para soportarlo.
-
-9. Tu arquitectura actual ya se parece bastante a:
-
-Internamente ya tienes piezas estilo:
-
-* Laravel Kernel
-* Laravel Container
-* Laravel Router
-* Laravel Service Providers
-* Laravel Middleware Pipeline
-* Laravel Route Definitions
-
-Y todo ya está conectado entre sí correctamente.
-
-10. Hay una mejora MUY importante pendiente
-
-Aquí:
+## ✔ runAction está aislado
 
 ```php
-$controller = new $class;
+protected function runAction()
 ```
 
-todavía NO usas el Container.
+✔ bien separado del dispatch principal
 
-Debería eventualmente ser:
+---
 
-```php
-$controller = app()->make($class);
+# 🧠 7. NIVEL ARQUITECTÓNICO ACTUAL
+
+Tu Router está en este estado:
+
+```text id="arch1"
+Router = Routing + Execution Engine (semi-framework core)
 ```
 
-Porque ahorita los controllers todavía NO pueden recibir dependencias automáticas.
+No es malo, pero aún no está “limpio”.
 
-Por ejemplo esto aún NO funcionaría:
+---
 
-```php
-class UserController
-{
-    public function __construct(
-        Auth $auth
-    ) {}
-}
-```
+# 🚀 8. MEJOR INTERPRETACIÓN DE TU DISEÑO
 
-Ese es probablemente el siguiente gran paso arquitectónico.
+Actualmente estás construyendo:
+
+> 🧠 un mini-Laravel donde el Router actúa como Dispatcher central
+
+---
+
+# 🧩 9. MEJORA CLAVE (CONCEPTUAL, NO CAMBIO OBLIGATORIO)
+
+Tu Router debería idealmente separarse así:
+
+### 1. Router (solo matching)
+
+* find route
+* return RouteDefinition
+
+### 2. Dispatcher (ejecución)
+
+* middleware
+* pipeline
+* controller execution
+
+---
+
+# 🧠 10. CONCLUSIÓN CLARA
+
+## ✔ Lo bueno
+
+* DI correcto (container inyectado)
+* pipeline limpio sin globals
+* middleware alias system sólido
+* router ya no singleton
+
+## ⚠️ Lo que aún existe
+
+* Router hace demasiadas responsabilidades
+* output no estandarizado
+* dependencia a BASE_URI global
+
+---
+
+# 🧠 RESUMEN FINAL
+
+Tu Router hoy es:
+
+> ⚙️ “Router + Mini Kernel de ejecución”
+
+Y eso está bien para tu nivel actual, pero conceptualmente:
+
+> 🔥 ya estás en el punto donde Laravel separa Router vs Dispatcher
+
+---
+
+Si quieres, el siguiente paso natural es interesante:
+
+👉 separar tu Router en “RouterCollection + Dispatcher Pipeline” (eso es el salto a arquitectura Laravel real interna).
