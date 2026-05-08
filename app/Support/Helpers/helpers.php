@@ -3,29 +3,104 @@ declare(strict_types=1);
 
 use App\Support\Security\Csrf;
 use App\Http\Router\Router;
+use App\Core\Container\Container;
+
+/*
+|--------------------------------------------------------------------------
+| APP
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('app')) {
+
+    function app(?string $class = null)
+    {
+        static $container;
+
+        if (!$container) {
+            $container = new Container();
+        }
+
+        if ($class === null) {
+            return $container;
+        }
+
+        return $container->get($class);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| REQUEST
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('request')) {
+
+    function request()
+    {
+        return app(\App\Http\Request::class);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| RESPONSE
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('response')) {
+
+    function response()
+    {
+        return app(\App\Http\Response::class);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('auth')) {
+
+    function auth()
+    {
+        return app(\App\Core\Auth\Auth::class);
+    }
+}
 
 /*
 |--------------------------------------------------------------------------
 | VIEW
 |--------------------------------------------------------------------------
 */
+
 if (!function_exists('view')) {
-    function view(string $view, array $data = [])
+
+    function view($view, $data = [])
     {
-        return (new \App\View\View())->render($view, $data);
+        return app(\App\View\View::class)
+            ->render($view, $data);
     }
-}    
+}
 
 /*
 |--------------------------------------------------------------------------
-| ESCAPE (CRÍTICO PARA BLADE)
+| ESCAPE
 |--------------------------------------------------------------------------
 */
 
 if (!function_exists('e')) {
+
     function e($value): string
     {
-        return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
+        return htmlspecialchars(
+            (string) ($value ?? ''),
+            ENT_QUOTES,
+            'UTF-8'
+        );
     }
 }
 
@@ -36,6 +111,7 @@ if (!function_exists('e')) {
 */
 
 if (!function_exists('csrf_token')) {
+
     function csrf_token(): string
     {
         return Csrf::token();
@@ -43,9 +119,12 @@ if (!function_exists('csrf_token')) {
 }
 
 if (!function_exists('csrf_field')) {
+
     function csrf_field(): string
     {
-        return '<input type="hidden" name="_token" value="' . e(csrf_token()) . '">';
+        return '<input type="hidden" name="_token" value="' .
+            e(csrf_token()) .
+            '">';
     }
 }
 
@@ -56,13 +135,17 @@ if (!function_exists('csrf_field')) {
 */
 
 if (!function_exists('config')) {
+
     function config(?string $key = null, $default = null)
     {
         static $configs = [];
 
         if (empty($configs)) {
+
             foreach (glob(base_path('config/*.php')) as $file) {
+
                 $name = basename($file, '.php');
+
                 $configs[$name] = require $file;
             }
         }
@@ -72,12 +155,18 @@ if (!function_exists('config')) {
         }
 
         $segments = explode('.', $key);
+
         $value = $configs;
 
         foreach ($segments as $segment) {
-            if (!is_array($value) || !array_key_exists($segment, $value)) {
+
+            if (
+                !is_array($value) ||
+                !array_key_exists($segment, $value)
+            ) {
                 return $default;
             }
+
             $value = $value[$segment];
         }
 
@@ -92,16 +181,16 @@ if (!function_exists('config')) {
 */
 
 if (!function_exists('route')) {
+
     function route(string $name): string
     {
-        if (!class_exists(Router::class)) {
-            throw new RuntimeException("Router not available.");
-        }
-
-        $route = Router::getInstance()->routeByName($name);
+        $route = Router::getInstance()
+            ->routeByName($name);
 
         if (!$route) {
-            throw new RuntimeException("Route '{$name}' not found.");
+            throw new RuntimeException(
+                "Route '{$name}' not found."
+            );
         }
 
         return $route->uri;
@@ -110,32 +199,12 @@ if (!function_exists('route')) {
 
 /*
 |--------------------------------------------------------------------------
-| URL / ASSET
+| URL
 |--------------------------------------------------------------------------
 */
 
-if (!function_exists('asset')) {
-    function asset(string $path): string
-    {
-        $path = ltrim($path, '/');
-
-        $appUrl = config('app.url');
-
-        if ($appUrl) {
-            return rtrim($appUrl, '/') . '/' . $path;
-        }
-
-        $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-            ? 'https'
-            : 'http';
-
-        $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-
-        return "{$scheme}://{$host}/{$path}";
-    }
-}
-
 if (!function_exists('url')) {
+
     function url(string $path = ''): string
     {
         $path = ltrim($path, '/');
@@ -143,16 +212,34 @@ if (!function_exists('url')) {
         $appUrl = config('app.url');
 
         if ($appUrl) {
-            return rtrim($appUrl, '/') . ($path ? '/' . $path : '');
+
+            return rtrim($appUrl, '/') .
+                ($path ? '/' . $path : '');
         }
 
-        $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-            ? 'https'
-            : 'http';
+        $scheme = (
+            !empty($_SERVER['HTTPS']) &&
+            $_SERVER['HTTPS'] !== 'off'
+        ) ? 'https' : 'http';
 
         $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 
-        return "{$scheme}://{$host}" . ($path ? '/' . $path : '');
+        return "{$scheme}://{$host}" .
+            ($path ? '/' . $path : '');
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| ASSET
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('asset')) {
+
+    function asset(string $path): string
+    {
+        return url('assets/' . ltrim($path, '/'));
     }
 }
 
@@ -163,6 +250,7 @@ if (!function_exists('url')) {
 */
 
 if (!function_exists('base_path')) {
+
     function base_path(string $path = ''): string
     {
         $base = rtrim(BASE_PATH, '/');
@@ -180,23 +268,24 @@ if (!function_exists('base_path')) {
 */
 
 if (!function_exists('session')) {
+
     function session($key = null, $value = null)
     {
-        static $session;
-
-        if (!$session) {
-            $session = new \App\Core\Session\Session();
-        }
+        $session = app(\App\Core\Session\Session::class);
 
         if (is_array($key)) {
+
             foreach ($key as $k => $v) {
                 $session->put($k, $v);
             }
+
             return $session;
         }
 
         if ($value !== null) {
+
             $session->put($key, $value);
+
             return $session;
         }
 
@@ -215,14 +304,13 @@ if (!function_exists('session')) {
 */
 
 if (!function_exists('redirect')) {
+
     function redirect(string $url, int $status = 302): void
     {
-        if (headers_sent()) {
-            echo "<script>window.location.href='{$url}';</script>";
-            exit;
-        }
+        response()
+            ->redirect($url, $status)
+            ->send();
 
-        header("Location: {$url}", true, $status);
         exit;
     }
 }
@@ -234,9 +322,12 @@ if (!function_exists('redirect')) {
 */
 
 if (!function_exists('back')) {
+
     function back(): void
     {
-        redirect($_SERVER['HTTP_REFERER'] ?? '/');
+        redirect(
+            $_SERVER['HTTP_REFERER'] ?? '/'
+        );
     }
 }
 
@@ -247,10 +338,125 @@ if (!function_exists('back')) {
 */
 
 if (!function_exists('abort')) {
-    function abort(int $status = 404, string $message = ''): void
-    {
-        http_response_code($status);
-        echo $message;
+
+    function abort(
+        int $status = 404,
+        string $message = ''
+    ): void {
+
+        response()
+            ->html($message, $status)
+            ->send();
+
         exit;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| COMPONENT
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('component')) {
+
+    function component(
+        string $name,
+        array $props = []
+    ) {
+        return view(
+            "components.$name",
+            $props
+        );
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| OLD INPUT
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('flash_old_input')) {
+
+    function flash_old_input(array $data): void
+    {
+        unset(
+            $data['password'],
+            $data['password_confirmation']
+        );
+
+        session()->put('_old_input', $data);
+    }
+}
+
+if (!function_exists('old')) {
+
+    function old(string $key, $default = null)
+    {
+        $value = session()->get('_old_input', []);
+
+        foreach (explode('.', $key) as $segment) {
+
+            if (
+                !is_array($value) ||
+                !array_key_exists($segment, $value)
+            ) {
+                return $default;
+            }
+
+            $value = $value[$segment];
+        }
+
+        return $value;
+    }
+}
+
+if (!function_exists('clear_old_input')) {
+
+    function clear_old_input(): void
+    {
+        session()->forget('_old_input');
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| ERRORS
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('errors')) {
+
+    function errors($key = null)
+    {
+        $errors = session()->getFlash('_errors') ?? [];
+
+        if ($key === null) {
+            return $errors;
+        }
+
+        return $errors[$key][0] ?? null;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| VALIDATE
+|--------------------------------------------------------------------------
+*/
+
+if (!function_exists('validate')) {
+
+    function validate(
+        array $data,
+        array $rules,
+        array $messages = []
+    ) {
+        return \App\Validation\Validator::make(
+            $data,
+            $rules,
+            $messages
+        );
     }
 }

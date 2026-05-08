@@ -42,6 +42,7 @@ if (!function_exists('dd')) {
 
         echo '</div>';
         exit(1);
+        
     }
 
     /**

@@ -1,36 +1,19 @@
 <?php
 
-use App\Http\Router\Router;
-use App\Http\Middleware\AuthMiddleware;
+use App\Http\Kernel;
 
 /*
 |--------------------------------------------------------------------------
-| Router Instance (Singleton)
+| KERNEL INSTANCE
 |--------------------------------------------------------------------------
 */
 
-$router = Router::getInstance();
+$kernel = new Kernel();
 
 /*
 |--------------------------------------------------------------------------
-| Middleware Aliases
+| EXPORT KERNEL
 |--------------------------------------------------------------------------
 */
 
-$router->aliasMiddleware('auth', AuthMiddleware::class);
-
-/*
-|--------------------------------------------------------------------------
-| (Opcional) Registrar otros middlewares aquí
-|--------------------------------------------------------------------------
-*/
-
-//$router->aliasMiddleware('guest', \App\Http\Middleware\GuestMiddleware::class ?? null);
-
-/*
-|--------------------------------------------------------------------------
-| Bind global (opcional pero útil en tu arquitectura actual)
-|--------------------------------------------------------------------------
-*/
-
-$GLOBALS['router'] = $router;
+$app = $kernel;

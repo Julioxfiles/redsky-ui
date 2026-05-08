@@ -1,8 +1,8 @@
-<?php $title = 'Login'; ?>
+<?php $title = 'Register'; ?>
 
-<h4>Login</h4>
+<h4>Create account</h4>
 
-<form action="<?= url('/login') ?>" method="POST">
+<form action="<?= url('/register') ?>" method="POST">
 
     <?= component('input', [
         'type' => 'email',
@@ -22,14 +22,30 @@
         'placeholder' => 'Enter your password',
         'attributes' => [
             'required' => true,
-            'autocomplete' => 'current-password'
+            'autocomplete' => 'new-password'
+        ]
+    ]) ?>
+
+    <?= component('input', [
+        'type' => 'password',
+        'name' => 'password_confirmation',
+        'label' => 'Confirm password',
+        'placeholder' => 'Repeat your password',
+        'attributes' => [
+            'required' => true,
+            'autocomplete' => 'new-password'
         ]
     ]) ?>
 
     <?= component('button', [
         'type' => 'submit',
         'class' => 'btn btn-primary',
-        'text' => 'Login'
+        'text' => 'Create account'
     ]) ?>
 
 </form>
+
+<p style="margin-top: 10px;">
+    Already have an account?
+    <a href="<?= url('/login') ?>">Login</a>
+</p>

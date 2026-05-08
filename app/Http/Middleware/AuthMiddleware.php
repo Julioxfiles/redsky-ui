@@ -2,19 +2,35 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Contracts\Middleware;
+use Closure;
+use App\Core\Auth\Auth;
 use App\Http\Request;
 use App\Http\Response;
-use Closure;
+use App\Http\Contracts\Middleware;
 
-class AuthMiddleware
+class AuthMiddleware implements Middleware
 {
-    public function handle($request, $next)
+    protected Auth $auth;
+
+    public function __construct(Auth $auth)
     {
-        if (!$request->has('token')) {
-            return Response::json(['error' => 'Unauthorized'], 401);
+        $this->auth = $auth;
+    }
+
+    public function handle(Request $request, Closure $next)
+    {
+        if ($this->auth->guest()) {
+
+            if ($request->wantsJson()) {
+                return Response::json([
+                    'message' => 'Unauthenticated'
+                ], 401);
+            }
+
+            return Response::redirect('/login');
         }
 
         return $next($request);
     }
+    
 }

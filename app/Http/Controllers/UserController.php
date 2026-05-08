@@ -2,32 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Request;
+use App\Support\ApiClient;
+
 class UserController extends Controller
 {
     public function index(): void
     {
-        $response = $this->fetchUsersFromApi();
+        //$response = $this->fetchUsersFromApi();
 
         view('users.index', [
             'users' => $response['data'] ?? []
         ]);
     }
     
-    private function fetchUsersFromApi(): array
+    public function login(Request $request)
     {
-        $ch = curl_init(config('api.base_url') . '/api/users');
+        $email = $request->input('email');
+        $password = $request->input('password');
 
-        curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HTTPHEADER => [
-                'Content-Type: application/json',
-                'Authorization: Bearer ' . ($_SESSION['token'] ?? '')
-            ],
+        // Validación básica
+        if (empty($email) || empty($password)) {
+
+            flash_old_input($request->all());
+
+            return redirect('/login');
+        }
+
+        // Llamada a API usando service
+        $response = ApiClient::service('redsky')
+            ->post('/login', [
+                'email' => $email,
+                'password' => $password,
+            ]);
+
+        // Error de autenticación
+        if (!$response['success']) {
+
+            flash_old_input($request->all());
+
+            return redirect('/login');
+        }
+
+        // Login OK (usar Session helper)
+        session([
+            'token' => $response['data']['token'] ?? null,
+            'user'  => $response['data']['user'] ?? null,
         ]);
 
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        return json_decode($response, true) ?? [];
+        return redirect('/dashboard');
     }
+
+    private function fetchUsersFromApi(): array
+    {
+        return ApiClient::service('redsky')
+            ->withToken(session('token'))
+            ->get('/users');
+    }
+
 }

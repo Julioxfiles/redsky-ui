@@ -4,59 +4,98 @@ namespace App\Support;
 
 class ApiClient
 {
-    /**
-     * Base URL for redsky-api
-     */
-    protected static string $baseUrl;
+    protected string $baseUrl;
+    protected array $headers = [];
+    protected int $timeout = 10;
 
     /**
-     * Initialize base URL from config or env
+     * Create instance
      */
-    protected static function baseUrl(): string
+    public function __construct(string $baseUrl, array $headers = [], int $timeout = 10)
     {
-        if (!isset(self::$baseUrl)) {
-            self::$baseUrl = rtrim(config('api.base_url'), '/');
+        $this->baseUrl = rtrim($baseUrl, '/');
+        $this->headers = $headers;
+        $this->timeout = $timeout;
+    }
+
+    /**
+     * Resolve client by service name
+     */
+    public static function service(string $name): self
+    {
+        $config = config("services.$name");
+
+        if (!$config) {
+            throw new \Exception("Service [$name] not configured.");
         }
 
-        return self::$baseUrl;
+        return new self(
+            $config['base_url'],
+            $config['headers'] ?? [],
+            $config['timeout'] ?? 10
+        );
     }
 
     /**
-     * Send POST request to API
+     * Add Bearer token
      */
-    public static function post(string $endpoint, array $data = [], array $headers = []): array
+    public function withToken(?string $token): self
     {
-        return self::request('POST', $endpoint, $data, $headers);
-    }
-
-    /**
-     * Send GET request to API
-     */
-    public static function get(string $endpoint, array $query = [], array $headers = []): array
-    {
-        $url = self::baseUrl() . $endpoint;
-
-        if (!empty($query)) {
-            $url .= '?' . http_build_query($query);
+        if ($token) {
+            $this->headers[] = "Authorization: Bearer {$token}";
         }
 
-        return self::request('GET', $url, [], $headers, false);
+        return $this;
     }
 
     /**
-     * Core HTTP request handler
+     * Merge custom headers
      */
-    protected static function request(
-        string $method,
-        string $endpoint,
-        array $data = [],
-        array $headers = [],
-        bool $prependBase = true
-    ): array {
-        $url = $prependBase
-            ? self::baseUrl() . $endpoint
-            : $endpoint;
+    public function withHeaders(array $headers): self
+    {
+        $this->headers = array_merge($this->headers, $this->normalizeHeaders($headers));
+        return $this;
+    }
 
+    /**
+     * GET request
+     */
+    public function get(string $endpoint, array $query = []): array
+    {
+        $url = $this->buildUrl($endpoint, $query);
+
+        return $this->request('GET', $url);
+    }
+
+    /**
+     * POST request
+     */
+    public function post(string $endpoint, array $data = []): array
+    {
+        return $this->request('POST', $this->buildUrl($endpoint), $data);
+    }
+
+    /**
+     * PUT request
+     */
+    public function put(string $endpoint, array $data = []): array
+    {
+        return $this->request('PUT', $this->buildUrl($endpoint), $data);
+    }
+
+    /**
+     * DELETE request
+     */
+    public function delete(string $endpoint): array
+    {
+        return $this->request('DELETE', $this->buildUrl($endpoint));
+    }
+
+    /**
+     * Core request handler
+     */
+    protected function request(string $method, string $url, array $data = []): array
+    {
         $ch = curl_init();
 
         $defaultHeaders = [
@@ -64,16 +103,17 @@ class ApiClient
             'Accept: application/json',
         ];
 
-        $headers = array_merge($defaultHeaders, $headers);
+        $headers = array_merge($defaultHeaders, $this->headers);
 
         $options = [
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_TIMEOUT => $this->timeout,
         ];
 
-        if ($method === 'POST') {
-            $options[CURLOPT_POST] = true;
+        if (in_array($method, ['POST', 'PUT', 'PATCH'])) {
             $options[CURLOPT_POSTFIELDS] = json_encode($data);
         }
 
@@ -87,7 +127,9 @@ class ApiClient
 
             return [
                 'success' => false,
-                'message' => 'cURL error: ' . $error
+                'status' => 0,
+                'message' => 'cURL error: ' . $error,
+                'data' => null,
             ];
         }
 
@@ -99,8 +141,39 @@ class ApiClient
         return [
             'success' => $status >= 200 && $status < 300,
             'status'  => $status,
-            'data'    => $decoded ?? $response
+            'data'    => $decoded ?? $response,
         ];
     }
-    
+
+    /**
+     * Build full URL
+     */
+    protected function buildUrl(string $endpoint, array $query = []): string
+    {
+        $url = $this->baseUrl . $endpoint;
+
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
+        }
+
+        return $url;
+    }
+
+    /**
+     * Normalize headers array
+     */
+    protected function normalizeHeaders(array $headers): array
+    {
+        $normalized = [];
+
+        foreach ($headers as $key => $value) {
+            if (is_string($key)) {
+                $normalized[] = "{$key}: {$value}";
+            } else {
+                $normalized[] = $value;
+            }
+        }
+
+        return $normalized;
+    }
 }

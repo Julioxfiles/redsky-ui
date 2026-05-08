@@ -4,107 +4,112 @@ namespace App\Http;
 
 use App\Http\Request;
 use App\Http\Response;
-//use App\Http\Pipeline;
 use App\Http\Router\Router;
+use App\Http\Contracts\ResponseMiddleware;
+use App\Http\Contracts\Middleware as MiddlewareContract;
 
 class Kernel
 {
     /**
-     * Global middleware stack
+     * Request middleware stack
      */
     protected array $middleware = [];
 
     /**
-     * Route middleware groups (Laravel-style)
+     * Response middleware stack
      */
-    protected array $middlewareGroups = [
-        'web' => [],
-        'api' => [],
-    ];
+    protected array $responseMiddleware = [];
 
     /**
-     * Named middleware aliases
+     * Route middleware aliases
      */
     protected array $routeMiddleware = [];
 
+    /**
+     * Registered service providers
+     */
+    protected array $providers = [];
+    protected bool $bootstrapped = false;
     /**
      * Entry point
      */
     public function handle(Request $request): Response
     {
-        // 1. Bootstrap request lifecycle
-        $request = $this->bootstrap($request);
+        // 1. Bootstrap (routes, providers, config)
+        $this->bootstrap();
 
-        // 2. Run global middleware pipeline (future use)
+        // 2. Run request middleware
         $request = $this->runGlobalMiddleware($request);
 
-        // 3. Dispatch router
+        // 3. Router dispatch
         $result = Router::getInstance()->dispatch($request);
 
-        // 4. Convert to Response
+        // 4. Normalize response
         $response = $this->prepareResponse($result);
 
-        // 5. Run response middleware (future use)
+        // 5. Run response middleware
         $response = $this->runResponseMiddleware($response);
 
         return $response;
     }
 
-    /*
-        use App\Http\Pipeline;
-        use App\Http\Router\Router;
-        use App\Http\Response;
-
-        public function handle(Request $request): Response
-        {
-            $router = Router::getInstance();
-
-            $routeResult = (new Pipeline())
-                ->send($request)
-                ->through([
-                    // aquí middleware globales si quieres
-                ])
-                ->then(function ($request) use ($router) {
-
-                    return $router->dispatch($request);
-                });
-
-            return $this->prepareResponse($routeResult);
-        }
-    */
-
     /**
-     * Bootstrapping logic (config, env, bindings, etc)
+     * BOOTSTRAP LAYER
      */
-    protected function bootstrap(Request $request): Request
+    
+
+    protected function bootstrap(): void
     {
-        // Aquí luego puedes:
-        // - cargar config
-        // - iniciar container
-        // - sessions
-        // - auth
+        if ($this->bootstrapped) {
+            return;
+        }
 
-        return $request;
+        require BASE_PATH . '/routes/web.php';
+
+        $this->registerProviders([
+            \App\Core\Providers\AppServiceProvider::class,
+        ]);
+
+        $this->bootstrapped = true;
     }
-
     /**
-     * Global middleware pipeline (LIKE Laravel)
+     * REQUEST MIDDLEWARE PIPELINE
      */
     protected function runGlobalMiddleware(Request $request): Request
     {
-        foreach ($this->middleware as $middleware) {
-            $instance = new $middleware;
+        foreach ($this->middleware as $middlewareClass) {
 
-            $request = $instance->handle($request, function ($req) {
-                return $req;
-            });
+            $middleware = app()->make($middlewareClass);
+
+            if ($middleware instanceof MiddlewareContract) {
+                $request = $middleware->handle($request, function ($req) {
+                    return $req;
+                });
+            }
         }
 
         return $request;
     }
 
     /**
-     * Normalize ANY controller output into Response
+     * RESPONSE MIDDLEWARE PIPELINE
+     */
+    protected function runResponseMiddleware(Response $response): Response
+    {
+        foreach ($this->responseMiddleware as $middlewareClass) {
+
+            $middleware = app()->make($middlewareClass);
+
+            if ($middleware instanceof ResponseMiddleware) {
+                $response = $middleware->after($response);
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * NORMALIZE CONTROLLER OUTPUT
      */
     protected function prepareResponse($result): Response
     {
@@ -128,30 +133,27 @@ class Kernel
     }
 
     /**
-     * Response middleware (future: headers, compression, etc)
+     * REGISTER REQUEST MIDDLEWARE
      */
-    protected function runResponseMiddleware(Response $response): Response
+    public function addMiddleware(array $middleware): void
     {
-        foreach ($this->middleware as $middleware) {
-            if (method_exists($middleware, 'after')) {
-                $instance = new $middleware;
-                $response = $instance->after($response);
-            }
+        foreach ($middleware as $mw) {
+            $this->middleware[] = $mw;
         }
-
-        return $response;
     }
 
     /**
-     * Register global middleware
+     * REGISTER RESPONSE MIDDLEWARE
      */
-    public function addMiddleware(string $middleware): void
+    public function addResponseMiddleware(array $middleware): void
     {
-        $this->middleware[] = $middleware;
+        foreach ($middleware as $mw) {
+            $this->responseMiddleware[] = $mw;
+        }
     }
 
     /**
-     * Register route middleware alias
+     * REGISTER ROUTE MIDDLEWARE ALIASES
      */
     public function routeMiddleware(string $key, string $class): void
     {
@@ -159,7 +161,7 @@ class Kernel
     }
 
     /**
-     * Resolve middleware aliases
+     * RESOLVE ROUTE MIDDLEWARE ALIASES
      */
     public function resolveMiddleware(array $middlewares): array
     {
@@ -167,4 +169,20 @@ class Kernel
             return $this->routeMiddleware[$mw] ?? $mw;
         }, $middlewares);
     }
+
+    /**
+     * REGISTER SERVICE PROVIDERS
+     */
+    public function registerProviders(array $providers): void
+    {
+        foreach ($providers as $providerClass) {
+
+            $provider = new $providerClass($this);
+
+            $provider->register();
+
+            $this->providers[] = $provider;
+        }
+    }
+
 }

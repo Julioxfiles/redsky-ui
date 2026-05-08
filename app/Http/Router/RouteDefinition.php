@@ -31,8 +31,3 @@ class RouteDefinition
     }
 }
 
-/*
-✔ Holds the route name
-✔ Returns $this for chaining
-✔ No framework coupling
-*/

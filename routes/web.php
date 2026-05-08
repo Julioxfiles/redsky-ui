@@ -2,25 +2,56 @@
 
 use App\Http\Router\Route;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Response;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/', function () {
-    echo 'Home page';
+    return 'Home page';
 });
+
+/*
+|--------------------------------------------------------------------------
+| Auth
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+Route::get('/register', [AuthController::class, 'registerForm'])->name('register.form');
+Route::get('/register', [AuthController::class, 'register'])->name('register.post');
 
-//Route::get('/dashboard', [DashboardController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| Protected Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/users', [UserController::class, 'index']);
+Route::get('/dashboard', function () {
+    return 'Dashboard OK';
+})->middleware(['auth']);
+
+/*
+|--------------------------------------------------------------------------
+| Users
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/users', [UserController::class, 'index'])->middleware(['auth']);
+
+/*
+|--------------------------------------------------------------------------
+| Debug
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/test', function ($request) {
     return Response::ok([
@@ -30,6 +61,3 @@ Route::get('/test', function ($request) {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return 'Dashboard OK';
-})->middleware(['auth']);

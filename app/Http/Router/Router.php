@@ -3,6 +3,7 @@
 namespace App\Http\Router;
 
 use App\Http\Request;
+use Closure;
 
 class Router
 {
@@ -85,7 +86,19 @@ class Router
 
             if ($route->method === $method && $route->uri === $uri) {
 
-                return $this->runAction($route->action, $request);
+                $middlewares = $this->resolveMiddleware(
+                    $route->getMiddlewares()
+                );
+
+                return $this->runRouteMiddleware(
+                    $middlewares,
+                    $request,
+                    fn ($request) => $this->runAction(
+                        $route->action,
+                        $request
+                    )
+                );
+
             }
         }
 
@@ -116,6 +129,40 @@ class Router
         }
 
         throw new \Exception('Invalid route action');
+    }
+
+    protected function runRouteMiddleware(
+        array $middlewares,
+        Request $request,
+        Closure $destination
+    ) {
+
+        $pipeline = array_reduce(
+
+            array_reverse($middlewares),
+
+            function ($next, $middlewareClass) {
+
+                return function ($request) use (
+                    $middlewareClass,
+                    $next
+                ) {
+
+                    $middleware = app()->make(
+                        $middlewareClass
+                    );
+
+                    return $middleware->handle(
+                        $request,
+                        $next
+                    );
+                };
+            },
+
+            $destination
+        );
+
+        return $pipeline($request);
     }
 
     /**

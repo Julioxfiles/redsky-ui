@@ -41,14 +41,24 @@ class Request
 
     public function all(): array
     {
-        return array_merge($this->get, $this->post);
+        $input = $this->post;
+
+        if (empty($input)) {
+            $json = json_decode(file_get_contents('php://input'), true);
+
+            if (is_array($json)) {
+                $input = $json;
+            }
+        }
+
+        return $input;
     }
 
     public function input(string $key, mixed $default = null): mixed
     {
-        return $this->post[$key]
-            ?? $this->get[$key]
-            ?? $default;
+        $all = $this->all();
+
+        return $all[$key] ?? $default;
     }
 
     public function has(string $key): bool

@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/fontawesome-free-5.15.4-web/css/all.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ time() }}">
-    <link rel="stylesheet" href="{{ asset('css/windows.css') }}?v={{ time() }}">
-
+    <link rel="stylesheet" href="<?= asset('css/app.css') ?>">
+    <link rel="stylesheet" href="<?= asset('css/windows.css') ?>">
     <title><?= $title ?? 'App' ?></title>
 </head>
 <body>
 
 <?php
+ //echo "START-" . microtime(true) . "<br>"; 
  $content = $content ?? '';
  echo $content;
+ //echo "END-" . microtime(true) . "<br>";
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('js/windows.js') }}?v={{ time() }}"></script>
+<script src="<?= asset('js/windows.js') ?>"></script>
 
 </body>
 </html>

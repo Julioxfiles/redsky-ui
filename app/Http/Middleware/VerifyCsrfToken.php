@@ -2,19 +2,31 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Contracts\Middleware;
+use App\Http\Request;
+use App\Http\Response;
 use App\Support\Security\Csrf;
+use Closure;
 
-class VerifyCsrfToken
+class VerifyCsrfToken implements Middleware
 {
-    public static function handle(): void
+    public function handle(Request $request, Closure $next)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $token = $_POST['_token'] ?? null;
+        // Solo validar métodos que modifican estado
+        if ($request->isPost()) {
+
+            $token = $request->input('_token');
 
             if (!Csrf::verify($token)) {
-                http_response_code(419);
-                exit('CSRF token mismatch.');
+
+                return Response::html(
+                    'CSRF token mismatch.',
+                    419
+                );
             }
         }
+
+        return $next($request);
     }
+    
 }
