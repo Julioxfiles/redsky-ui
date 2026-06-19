@@ -239,7 +239,7 @@ if (!function_exists('asset')) {
 
     function asset(string $path): string
     {
-        return url('assets/' . ltrim($path, '/'));
+        return base_uri() . '/' . ltrim($path, '/');
     }
 }
 
@@ -258,6 +258,23 @@ if (!function_exists('base_path')) {
         return $path
             ? $base . '/' . ltrim($path, '/')
             : $base;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| URI
+|--------------------------------------------------------------------------
+*/
+if (!function_exists('base_uri')) {
+
+    function base_uri(string $path = ''): string
+    {
+        $uri = rtrim(BASE_URI, '/');
+
+        return $path
+            ? $uri . '/' . ltrim($path, '/')
+            : $uri;
     }
 }
 
@@ -360,14 +377,10 @@ if (!function_exists('abort')) {
 
 if (!function_exists('component')) {
 
-    function component(
-        string $name,
-        array $props = []
-    ) {
-        return view(
-            "components.$name",
-            $props
-        );
+    function component($name, $data = [])
+    {
+        return app(\App\View\Component::class)
+            ->render($name, $data);
     }
 }
 
