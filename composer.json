@@ -1,6 +1,6 @@
 {
   "name": "redsky/ui",
-  "description": "Interface de Usuario (UI) para usar la API REST redsky-api",
+  "description": "The PHP user interface for redsky/mvc-api",
   "type": "project",
   "license": "proprietary",
   "require": {
