@@ -1,44 +1,45 @@
 <?php
 
-use App\Http\Kernel;
-use App\Core\Container\Container;
-use App\Http\Router\Router;
-use App\Http\Router\Route;
-use App\Core\Providers\AppServiceProvider;
+declare(strict_types=1);
+
+use App\Providers\AppServiceProvider;
+use RedSky\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------
-| BOOTSTRAP LAYER
+| Create Application
 |--------------------------------------------------------------------------
-| Construye la aplicación (NO ejecuta HTTP)
 */
 
-$container = new Container();
-$kernel = new Kernel($container, new Router($container));
-Route::setRouter($kernel->getRouter());
+$app = Application::getInstance();
+
 
 /*
 |--------------------------------------------------------------------------
-| SERVICE PROVIDERS (bootstrap responsibility)
+| Register Application Service Providers
 |--------------------------------------------------------------------------
 */
-foreach ([AppServiceProvider::class] as $providerClass) {
-    $provider = new $providerClass($kernel);
-    $provider->register();
+
+foreach ([
+    AppServiceProvider::class,
+] as $provider) {
+    (new $provider($app))->register();
 }
 
 /*
 |--------------------------------------------------------------------------
-| ROUTES
+| Load Application Routes
 |--------------------------------------------------------------------------
 */
 
-require BASE_PATH . '/routes/web.php';
+$app->loadRoutes(
+    BASE_PATH . '/routes/web.php'
+);
 
 /*
 |--------------------------------------------------------------------------
-| EXPORT READY KERNEL
+| Ready
 |--------------------------------------------------------------------------
 */
 
-return $kernel;
+return $app;

@@ -1,0 +1,2155 @@
+Listado de rutas de carpetas para el volumen WinToUSB
+El n£mero de serie del volumen es BCC5-AC22
+C:.
+³   .env
+³   .env.exmple
+³   .gitattributes
+³   .gitignore
+³   .htaccess
+³   arbol.txt
+³   composer.json
+³   composer.lock
+³   LICENSE
+³   powershell
+³   README.md
+³   tree_redsky-ui.txt
+³   
+ÃÄÄÄapp
+³   ÃÄÄÄCore
+³   ³   ÃÄÄÄAuth
+³   ³   ³       Auth.md
+³   ³   ³       Auth.php
+³   ³   ³       
+³   ³   ÃÄÄÄContainer
+³   ³   ³       Container.md
+³   ³   ³       Container.php
+³   ³   ³       
+³   ³   ÃÄÄÄPipeline
+³   ³   ³       Pipeline.md
+³   ³   ³       Pipeline.php
+³   ³   ³       
+³   ³   ÃÄÄÄProviders
+³   ³   ³       AppServiceProvider.md
+³   ³   ³       AppServiceProvider.php
+³   ³   ³       ServiceProvider.md
+³   ³   ³       ServiceProvider.php
+³   ³   ³       
+³   ³   ÀÄÄÄSession
+³   ³           Session.md
+³   ³           Session.php
+³   ³           
+³   ÃÄÄÄHttp
+³   ³   ³   Kernel.md
+³   ³   ³   Kernel.php
+³   ³   ³   Pipeline.php
+³   ³   ³   Request.php
+³   ³   ³   Response.php
+³   ³   ³   
+³   ³   ÃÄÄÄComponents
+³   ³   ³       Form.php
+³   ³   ³       Html.php
+³   ³   ³       Windows.php
+³   ³   ³       
+³   ³   ÃÄÄÄContracts
+³   ³   ³       Middleware.php
+³   ³   ³       ResponseMiddleware.php
+³   ³   ³       
+³   ³   ÃÄÄÄControllers
+³   ³   ³   ³   Controller.php
+³   ³   ³   ³   DashboardController.php
+³   ³   ³   ³   UserController.php
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄAuth
+³   ³   ³           AuthController.php
+³   ³   ³           RegisterController.php
+³   ³   ³           
+³   ³   ÃÄÄÄMiddlewares
+³   ³   ³       AuthMiddleware.php
+³   ³   ³       VerifyCsrfToken.php
+³   ³   ³       
+³   ³   ÀÄÄÄRouter
+³   ³           Route.md
+³   ³           Route.php
+³   ³           RouteDefinition.md
+³   ³           RouteDefinition.php
+³   ³           Router.md
+³   ³           Router.php
+³   ³           
+³   ÃÄÄÄSupport
+³   ³   ³   ApiClient.php
+³   ³   ³   
+³   ³   ÃÄÄÄHelpers
+³   ³   ³       dev_helpers.php
+³   ³   ³       helpers.php
+³   ³   ³       
+³   ³   ÀÄÄÄSecurity
+³   ³           Csrf.php
+³   ³           
+³   ÃÄÄÄValidation
+³   ³       Validator.php
+³   ³       
+³   ÀÄÄÄView
+³           BladeCompiler.php
+³           Component.php
+³           View.php
+³           
+ÃÄÄÄbootstrap
+³       app.md
+³       app.php
+³       helpers.php
+³       
+ÃÄÄÄconfig
+³       api.php
+³       services.php
+³       
+ÃÄÄÄdatabase
+ÃÄÄÄnotes
+³   ³   01 Create the folders for the IU.md
+³   ³   02 Create the composer json file.md
+³   ³   03 Add htaccess files.md
+³   ³   04 Create the needed files.md
+³   ³   05 Clean IU Architecture.md
+³   ³   After changing helpers to core.php
+³   ³   Apache Virtualhost.md
+³   ³   ApiClient y ApiResponse update.md
+³   ³   ApiClient.md
+³   ³   Blade Ingine Flow.md
+³   ³   Blade Real.md
+³   ³   blade.md
+³   ³   Como hacer que chatgpt recuerde.md
+³   ³   Como hacer tu core framework un respositorio composer.md
+³   ³   composer json para ApliClient.md
+³   ³   composer skynet-core.md
+³   ³   Controller.md
+³   ³   csrf.md
+³   ³   Helpers files updated.md
+³   ³   How Middlewares work.md
+³   ³   No public folder in the url.md
+³   ³   Ruta login.post.md
+³   ³   SignUp.md
+³   ³   The assets helper.md
+³   ³   The new response helper file.md
+³   ³   The new url helper file.md
+³   ³   The new view helper file.md
+³   ³   The redirect helper.md
+³   ³   The Request Class.md
+³   ³   The Router must pass a Request.md
+³   ³   Use this-view in the controllers.md
+³   ³   view('auth.login');.md
+³   ³   What is next.md
+³   ³   Why it is better to use a core folder.md
+³   ³   
+³   ÀÄÄÄupdates
+³           20260427.md
+³           20260430.MD
+³           20260505 - memory.md
+³           20260505.md
+³           20260507 - memory.md
+³           20260507 - Middlewares.md
+³           20260507 - redsky-ui - memory.md
+³           20260507 - redsky-ui Middleware.md
+³           20260507 - SSR vs SPA.md
+³           20260507 -0330- memoria.md
+³           20260507 Arquitectura Actual.md
+³           20260508 - Kernel y Router.md
+³           20260508 - memoria.md
+³           20260508- Pendiente.md
+³           ui vs api.md
+³           
+ÃÄÄÄpublic
+³   ³   .htaccess
+³   ³   index.md
+³   ³   index.php
+³   ³   
+³   ÃÄÄÄassets
+³   ÃÄÄÄcss
+³   ³       app.css
+³   ³       bootstrap.min.css
+³   ³       windows.css
+³   ³       
+³   ÀÄÄÄjs
+³           windows.js
+³           
+ÃÄÄÄresources
+³   ÃÄÄÄcss
+³   ³   ³   app.css
+³   ³   ³   blink.css
+³   ³   ³   bootstrap-theme.css
+³   ³   ³   bootstrap-theme.css.map
+³   ³   ³   bootstrap-theme.min.css
+³   ³   ³   bootstrap-theme.min.css.map
+³   ³   ³   bootstrap.css
+³   ³   ³   bootstrap.css.map
+³   ³   ³   bootstrap.min.css
+³   ³   ³   bootstrap.min.css.map
+³   ³   ³   bootstrap5.min.css
+³   ³   ³   jquery-1.13.0-ui.css
+³   ³   ³   led.css
+³   ³   ³   loading.css
+³   ³   ³   main.css
+³   ³   ³   menus.css
+³   ³   ³   new_admin.css
+³   ³   ³   onclick_on-off-button.css
+³   ³   ³   onclick_on-off-option-button.css
+³   ³   ³   onoffandroidbuttons.css
+³   ³   ³   pdf.css
+³   ³   ³   print.css
+³   ³   ³   table_crud.css
+³   ³   ³   tooltip.css
+³   ³   ³   windows.css
+³   ³   ³   
+³   ³   ÀÄÄÄfontawesome-free-5.15.4-web
+³   ³       ³   attribution.js
+³   ³       ³   LICENSE.txt
+³   ³       ³   main.css
+³   ³       ³   
+³   ³       ÃÄÄÄcss
+³   ³       ³       all.css
+³   ³       ³       all.min.css
+³   ³       ³       brands.css
+³   ³       ³       brands.min.css
+³   ³       ³       fontawesome.css
+³   ³       ³       fontawesome.min.css
+³   ³       ³       regular.css
+³   ³       ³       regular.min.css
+³   ³       ³       solid.css
+³   ³       ³       solid.min.css
+³   ³       ³       svg-with-js.css
+³   ³       ³       svg-with-js.min.css
+³   ³       ³       v4-shims.css
+³   ³       ³       v4-shims.min.css
+³   ³       ³       
+³   ³       ÃÄÄÄjs
+³   ³       ³       all.js
+³   ³       ³       all.min.js
+³   ³       ³       brands.js
+³   ³       ³       brands.min.js
+³   ³       ³       conflict-detection.js
+³   ³       ³       conflict-detection.min.js
+³   ³       ³       fontawesome.js
+³   ³       ³       fontawesome.min.js
+³   ³       ³       regular.js
+³   ³       ³       regular.min.js
+³   ³       ³       solid.js
+³   ³       ³       solid.min.js
+³   ³       ³       v4-shims.js
+³   ³       ³       v4-shims.min.js
+³   ³       ³       
+³   ³       ÃÄÄÄless
+³   ³       ³       brands.less
+³   ³       ³       fontawesome.less
+³   ³       ³       regular.less
+³   ³       ³       solid.less
+³   ³       ³       v4-shims.less
+³   ³       ³       _animated.less
+³   ³       ³       _bordered-pulled.less
+³   ³       ³       _core.less
+³   ³       ³       _fixed-width.less
+³   ³       ³       _icons.less
+³   ³       ³       _larger.less
+³   ³       ³       _list.less
+³   ³       ³       _mixins.less
+³   ³       ³       _rotated-flipped.less
+³   ³       ³       _screen-reader.less
+³   ³       ³       _shims.less
+³   ³       ³       _stacked.less
+³   ³       ³       _variables.less
+³   ³       ³       
+³   ³       ÃÄÄÄmetadata
+³   ³       ³       categories.yml
+³   ³       ³       icons.json
+³   ³       ³       icons.yml
+³   ³       ³       shims.json
+³   ³       ³       shims.yml
+³   ³       ³       sponsors.yml
+³   ³       ³       
+³   ³       ÃÄÄÄscss
+³   ³       ³       brands.css
+³   ³       ³       brands.css.map
+³   ³       ³       brands.scss
+³   ³       ³       fontawesome.css
+³   ³       ³       fontawesome.css.map
+³   ³       ³       fontawesome.scss
+³   ³       ³       regular.css
+³   ³       ³       regular.css.map
+³   ³       ³       regular.scss
+³   ³       ³       solid.css
+³   ³       ³       solid.css.map
+³   ³       ³       solid.scss
+³   ³       ³       v4-shims.css
+³   ³       ³       v4-shims.css.map
+³   ³       ³       v4-shims.scss
+³   ³       ³       _animated.scss
+³   ³       ³       _bordered-pulled.scss
+³   ³       ³       _core.scss
+³   ³       ³       _fixed-width.scss
+³   ³       ³       _icons.scss
+³   ³       ³       _larger.scss
+³   ³       ³       _list.scss
+³   ³       ³       _mixins.scss
+³   ³       ³       _rotated-flipped.scss
+³   ³       ³       _screen-reader.scss
+³   ³       ³       _shims.scss
+³   ³       ³       _stacked.scss
+³   ³       ³       _variables.scss
+³   ³       ³       
+³   ³       ÃÄÄÄsprites
+³   ³       ³       brands.svg
+³   ³       ³       regular.svg
+³   ³       ³       solid.svg
+³   ³       ³       
+³   ³       ÃÄÄÄsvgs
+³   ³       ³   ÃÄÄÄbrands
+³   ³       ³   ³       500px.svg
+³   ³       ³   ³       accessible-icon.svg
+³   ³       ³   ³       accusoft.svg
+³   ³       ³   ³       acquisitions-incorporated.svg
+³   ³       ³   ³       adn.svg
+³   ³       ³   ³       adversal.svg
+³   ³       ³   ³       affiliatetheme.svg
+³   ³       ³   ³       airbnb.svg
+³   ³       ³   ³       algolia.svg
+³   ³       ³   ³       alipay.svg
+³   ³       ³   ³       amazon-pay.svg
+³   ³       ³   ³       amazon.svg
+³   ³       ³   ³       amilia.svg
+³   ³       ³   ³       android.svg
+³   ³       ³   ³       angellist.svg
+³   ³       ³   ³       angrycreative.svg
+³   ³       ³   ³       angular.svg
+³   ³       ³   ³       app-store-ios.svg
+³   ³       ³   ³       app-store.svg
+³   ³       ³   ³       apper.svg
+³   ³       ³   ³       apple-pay.svg
+³   ³       ³   ³       apple.svg
+³   ³       ³   ³       artstation.svg
+³   ³       ³   ³       asymmetrik.svg
+³   ³       ³   ³       atlassian.svg
+³   ³       ³   ³       audible.svg
+³   ³       ³   ³       autoprefixer.svg
+³   ³       ³   ³       avianex.svg
+³   ³       ³   ³       aviato.svg
+³   ³       ³   ³       aws.svg
+³   ³       ³   ³       bandcamp.svg
+³   ³       ³   ³       battle-net.svg
+³   ³       ³   ³       behance-square.svg
+³   ³       ³   ³       behance.svg
+³   ³       ³   ³       bimobject.svg
+³   ³       ³   ³       bitbucket.svg
+³   ³       ³   ³       bitcoin.svg
+³   ³       ³   ³       bity.svg
+³   ³       ³   ³       black-tie.svg
+³   ³       ³   ³       blackberry.svg
+³   ³       ³   ³       blogger-b.svg
+³   ³       ³   ³       blogger.svg
+³   ³       ³   ³       bluetooth-b.svg
+³   ³       ³   ³       bluetooth.svg
+³   ³       ³   ³       bootstrap.svg
+³   ³       ³   ³       btc.svg
+³   ³       ³   ³       buffer.svg
+³   ³       ³   ³       buromobelexperte.svg
+³   ³       ³   ³       buy-n-large.svg
+³   ³       ³   ³       buysellads.svg
+³   ³       ³   ³       canadian-maple-leaf.svg
+³   ³       ³   ³       cc-amazon-pay.svg
+³   ³       ³   ³       cc-amex.svg
+³   ³       ³   ³       cc-apple-pay.svg
+³   ³       ³   ³       cc-diners-club.svg
+³   ³       ³   ³       cc-discover.svg
+³   ³       ³   ³       cc-jcb.svg
+³   ³       ³   ³       cc-mastercard.svg
+³   ³       ³   ³       cc-paypal.svg
+³   ³       ³   ³       cc-stripe.svg
+³   ³       ³   ³       cc-visa.svg
+³   ³       ³   ³       centercode.svg
+³   ³       ³   ³       centos.svg
+³   ³       ³   ³       chrome.svg
+³   ³       ³   ³       chromecast.svg
+³   ³       ³   ³       cloudflare.svg
+³   ³       ³   ³       cloudscale.svg
+³   ³       ³   ³       cloudsmith.svg
+³   ³       ³   ³       cloudversify.svg
+³   ³       ³   ³       codepen.svg
+³   ³       ³   ³       codiepie.svg
+³   ³       ³   ³       confluence.svg
+³   ³       ³   ³       connectdevelop.svg
+³   ³       ³   ³       contao.svg
+³   ³       ³   ³       cotton-bureau.svg
+³   ³       ³   ³       cpanel.svg
+³   ³       ³   ³       creative-commons-by.svg
+³   ³       ³   ³       creative-commons-nc-eu.svg
+³   ³       ³   ³       creative-commons-nc-jp.svg
+³   ³       ³   ³       creative-commons-nc.svg
+³   ³       ³   ³       creative-commons-nd.svg
+³   ³       ³   ³       creative-commons-pd-alt.svg
+³   ³       ³   ³       creative-commons-pd.svg
+³   ³       ³   ³       creative-commons-remix.svg
+³   ³       ³   ³       creative-commons-sa.svg
+³   ³       ³   ³       creative-commons-sampling-plus.svg
+³   ³       ³   ³       creative-commons-sampling.svg
+³   ³       ³   ³       creative-commons-share.svg
+³   ³       ³   ³       creative-commons-zero.svg
+³   ³       ³   ³       creative-commons.svg
+³   ³       ³   ³       critical-role.svg
+³   ³       ³   ³       css3-alt.svg
+³   ³       ³   ³       css3.svg
+³   ³       ³   ³       cuttlefish.svg
+³   ³       ³   ³       d-and-d-beyond.svg
+³   ³       ³   ³       d-and-d.svg
+³   ³       ³   ³       dailymotion.svg
+³   ³       ³   ³       dashcube.svg
+³   ³       ³   ³       deezer.svg
+³   ³       ³   ³       delicious.svg
+³   ³       ³   ³       deploydog.svg
+³   ³       ³   ³       deskpro.svg
+³   ³       ³   ³       dev.svg
+³   ³       ³   ³       deviantart.svg
+³   ³       ³   ³       dhl.svg
+³   ³       ³   ³       diaspora.svg
+³   ³       ³   ³       digg.svg
+³   ³       ³   ³       digital-ocean.svg
+³   ³       ³   ³       discord.svg
+³   ³       ³   ³       discourse.svg
+³   ³       ³   ³       dochub.svg
+³   ³       ³   ³       docker.svg
+³   ³       ³   ³       draft2digital.svg
+³   ³       ³   ³       dribbble-square.svg
+³   ³       ³   ³       dribbble.svg
+³   ³       ³   ³       dropbox.svg
+³   ³       ³   ³       drupal.svg
+³   ³       ³   ³       dyalog.svg
+³   ³       ³   ³       earlybirds.svg
+³   ³       ³   ³       ebay.svg
+³   ³       ³   ³       edge-legacy.svg
+³   ³       ³   ³       edge.svg
+³   ³       ³   ³       elementor.svg
+³   ³       ³   ³       ello.svg
+³   ³       ³   ³       ember.svg
+³   ³       ³   ³       empire.svg
+³   ³       ³   ³       envira.svg
+³   ³       ³   ³       erlang.svg
+³   ³       ³   ³       ethereum.svg
+³   ³       ³   ³       etsy.svg
+³   ³       ³   ³       evernote.svg
+³   ³       ³   ³       expeditedssl.svg
+³   ³       ³   ³       facebook-f.svg
+³   ³       ³   ³       facebook-messenger.svg
+³   ³       ³   ³       facebook-square.svg
+³   ³       ³   ³       facebook.svg
+³   ³       ³   ³       fantasy-flight-games.svg
+³   ³       ³   ³       fedex.svg
+³   ³       ³   ³       fedora.svg
+³   ³       ³   ³       figma.svg
+³   ³       ³   ³       firefox-browser.svg
+³   ³       ³   ³       firefox.svg
+³   ³       ³   ³       first-order-alt.svg
+³   ³       ³   ³       first-order.svg
+³   ³       ³   ³       firstdraft.svg
+³   ³       ³   ³       flickr.svg
+³   ³       ³   ³       flipboard.svg
+³   ³       ³   ³       fly.svg
+³   ³       ³   ³       font-awesome-alt.svg
+³   ³       ³   ³       font-awesome-flag.svg
+³   ³       ³   ³       font-awesome-logo-full.svg
+³   ³       ³   ³       font-awesome.svg
+³   ³       ³   ³       fonticons-fi.svg
+³   ³       ³   ³       fonticons.svg
+³   ³       ³   ³       fort-awesome-alt.svg
+³   ³       ³   ³       fort-awesome.svg
+³   ³       ³   ³       forumbee.svg
+³   ³       ³   ³       foursquare.svg
+³   ³       ³   ³       free-code-camp.svg
+³   ³       ³   ³       freebsd.svg
+³   ³       ³   ³       fulcrum.svg
+³   ³       ³   ³       galactic-republic.svg
+³   ³       ³   ³       galactic-senate.svg
+³   ³       ³   ³       get-pocket.svg
+³   ³       ³   ³       gg-circle.svg
+³   ³       ³   ³       gg.svg
+³   ³       ³   ³       git-alt.svg
+³   ³       ³   ³       git-square.svg
+³   ³       ³   ³       git.svg
+³   ³       ³   ³       github-alt.svg
+³   ³       ³   ³       github-square.svg
+³   ³       ³   ³       github.svg
+³   ³       ³   ³       gitkraken.svg
+³   ³       ³   ³       gitlab.svg
+³   ³       ³   ³       gitter.svg
+³   ³       ³   ³       glide-g.svg
+³   ³       ³   ³       glide.svg
+³   ³       ³   ³       gofore.svg
+³   ³       ³   ³       goodreads-g.svg
+³   ³       ³   ³       goodreads.svg
+³   ³       ³   ³       google-drive.svg
+³   ³       ³   ³       google-pay.svg
+³   ³       ³   ³       google-play.svg
+³   ³       ³   ³       google-plus-g.svg
+³   ³       ³   ³       google-plus-square.svg
+³   ³       ³   ³       google-plus.svg
+³   ³       ³   ³       google-wallet.svg
+³   ³       ³   ³       google.svg
+³   ³       ³   ³       gratipay.svg
+³   ³       ³   ³       grav.svg
+³   ³       ³   ³       gripfire.svg
+³   ³       ³   ³       grunt.svg
+³   ³       ³   ³       guilded.svg
+³   ³       ³   ³       gulp.svg
+³   ³       ³   ³       hacker-news-square.svg
+³   ³       ³   ³       hacker-news.svg
+³   ³       ³   ³       hackerrank.svg
+³   ³       ³   ³       hips.svg
+³   ³       ³   ³       hire-a-helper.svg
+³   ³       ³   ³       hive.svg
+³   ³       ³   ³       hooli.svg
+³   ³       ³   ³       hornbill.svg
+³   ³       ³   ³       hotjar.svg
+³   ³       ³   ³       houzz.svg
+³   ³       ³   ³       html5.svg
+³   ³       ³   ³       hubspot.svg
+³   ³       ³   ³       ideal.svg
+³   ³       ³   ³       imdb.svg
+³   ³       ³   ³       innosoft.svg
+³   ³       ³   ³       instagram-square.svg
+³   ³       ³   ³       instagram.svg
+³   ³       ³   ³       instalod.svg
+³   ³       ³   ³       intercom.svg
+³   ³       ³   ³       internet-explorer.svg
+³   ³       ³   ³       invision.svg
+³   ³       ³   ³       ioxhost.svg
+³   ³       ³   ³       itch-io.svg
+³   ³       ³   ³       itunes-note.svg
+³   ³       ³   ³       itunes.svg
+³   ³       ³   ³       java.svg
+³   ³       ³   ³       jedi-order.svg
+³   ³       ³   ³       jenkins.svg
+³   ³       ³   ³       jira.svg
+³   ³       ³   ³       joget.svg
+³   ³       ³   ³       joomla.svg
+³   ³       ³   ³       js-square.svg
+³   ³       ³   ³       js.svg
+³   ³       ³   ³       jsfiddle.svg
+³   ³       ³   ³       kaggle.svg
+³   ³       ³   ³       keybase.svg
+³   ³       ³   ³       keycdn.svg
+³   ³       ³   ³       kickstarter-k.svg
+³   ³       ³   ³       kickstarter.svg
+³   ³       ³   ³       korvue.svg
+³   ³       ³   ³       laravel.svg
+³   ³       ³   ³       lastfm-square.svg
+³   ³       ³   ³       lastfm.svg
+³   ³       ³   ³       leanpub.svg
+³   ³       ³   ³       less.svg
+³   ³       ³   ³       line.svg
+³   ³       ³   ³       linkedin-in.svg
+³   ³       ³   ³       linkedin.svg
+³   ³       ³   ³       linode.svg
+³   ³       ³   ³       linux.svg
+³   ³       ³   ³       lyft.svg
+³   ³       ³   ³       magento.svg
+³   ³       ³   ³       mailchimp.svg
+³   ³       ³   ³       mandalorian.svg
+³   ³       ³   ³       markdown.svg
+³   ³       ³   ³       mastodon.svg
+³   ³       ³   ³       maxcdn.svg
+³   ³       ³   ³       mdb.svg
+³   ³       ³   ³       medapps.svg
+³   ³       ³   ³       medium-m.svg
+³   ³       ³   ³       medium.svg
+³   ³       ³   ³       medrt.svg
+³   ³       ³   ³       meetup.svg
+³   ³       ³   ³       megaport.svg
+³   ³       ³   ³       mendeley.svg
+³   ³       ³   ³       microblog.svg
+³   ³       ³   ³       microsoft.svg
+³   ³       ³   ³       mix.svg
+³   ³       ³   ³       mixcloud.svg
+³   ³       ³   ³       mixer.svg
+³   ³       ³   ³       mizuni.svg
+³   ³       ³   ³       modx.svg
+³   ³       ³   ³       monero.svg
+³   ³       ³   ³       napster.svg
+³   ³       ³   ³       neos.svg
+³   ³       ³   ³       nimblr.svg
+³   ³       ³   ³       node-js.svg
+³   ³       ³   ³       node.svg
+³   ³       ³   ³       npm.svg
+³   ³       ³   ³       ns8.svg
+³   ³       ³   ³       nutritionix.svg
+³   ³       ³   ³       octopus-deploy.svg
+³   ³       ³   ³       odnoklassniki-square.svg
+³   ³       ³   ³       odnoklassniki.svg
+³   ³       ³   ³       old-republic.svg
+³   ³       ³   ³       opencart.svg
+³   ³       ³   ³       openid.svg
+³   ³       ³   ³       opera.svg
+³   ³       ³   ³       optin-monster.svg
+³   ³       ³   ³       orcid.svg
+³   ³       ³   ³       osi.svg
+³   ³       ³   ³       page4.svg
+³   ³       ³   ³       pagelines.svg
+³   ³       ³   ³       palfed.svg
+³   ³       ³   ³       patreon.svg
+³   ³       ³   ³       paypal.svg
+³   ³       ³   ³       penny-arcade.svg
+³   ³       ³   ³       perbyte.svg
+³   ³       ³   ³       periscope.svg
+³   ³       ³   ³       phabricator.svg
+³   ³       ³   ³       phoenix-framework.svg
+³   ³       ³   ³       phoenix-squadron.svg
+³   ³       ³   ³       php.svg
+³   ³       ³   ³       pied-piper-alt.svg
+³   ³       ³   ³       pied-piper-hat.svg
+³   ³       ³   ³       pied-piper-pp.svg
+³   ³       ³   ³       pied-piper-square.svg
+³   ³       ³   ³       pied-piper.svg
+³   ³       ³   ³       pinterest-p.svg
+³   ³       ³   ³       pinterest-square.svg
+³   ³       ³   ³       pinterest.svg
+³   ³       ³   ³       playstation.svg
+³   ³       ³   ³       product-hunt.svg
+³   ³       ³   ³       pushed.svg
+³   ³       ³   ³       python.svg
+³   ³       ³   ³       qq.svg
+³   ³       ³   ³       quinscape.svg
+³   ³       ³   ³       quora.svg
+³   ³       ³   ³       r-project.svg
+³   ³       ³   ³       raspberry-pi.svg
+³   ³       ³   ³       ravelry.svg
+³   ³       ³   ³       react.svg
+³   ³       ³   ³       reacteurope.svg
+³   ³       ³   ³       readme.svg
+³   ³       ³   ³       rebel.svg
+³   ³       ³   ³       red-river.svg
+³   ³       ³   ³       reddit-alien.svg
+³   ³       ³   ³       reddit-square.svg
+³   ³       ³   ³       reddit.svg
+³   ³       ³   ³       redhat.svg
+³   ³       ³   ³       renren.svg
+³   ³       ³   ³       replyd.svg
+³   ³       ³   ³       researchgate.svg
+³   ³       ³   ³       resolving.svg
+³   ³       ³   ³       rev.svg
+³   ³       ³   ³       rocketchat.svg
+³   ³       ³   ³       rockrms.svg
+³   ³       ³   ³       rust.svg
+³   ³       ³   ³       safari.svg
+³   ³       ³   ³       salesforce.svg
+³   ³       ³   ³       sass.svg
+³   ³       ³   ³       schlix.svg
+³   ³       ³   ³       scribd.svg
+³   ³       ³   ³       searchengin.svg
+³   ³       ³   ³       sellcast.svg
+³   ³       ³   ³       sellsy.svg
+³   ³       ³   ³       servicestack.svg
+³   ³       ³   ³       shirtsinbulk.svg
+³   ³       ³   ³       shopify.svg
+³   ³       ³   ³       shopware.svg
+³   ³       ³   ³       simplybuilt.svg
+³   ³       ³   ³       sistrix.svg
+³   ³       ³   ³       sith.svg
+³   ³       ³   ³       sketch.svg
+³   ³       ³   ³       skyatlas.svg
+³   ³       ³   ³       skype.svg
+³   ³       ³   ³       slack-hash.svg
+³   ³       ³   ³       slack.svg
+³   ³       ³   ³       slideshare.svg
+³   ³       ³   ³       snapchat-ghost.svg
+³   ³       ³   ³       snapchat-square.svg
+³   ³       ³   ³       snapchat.svg
+³   ³       ³   ³       soundcloud.svg
+³   ³       ³   ³       sourcetree.svg
+³   ³       ³   ³       speakap.svg
+³   ³       ³   ³       speaker-deck.svg
+³   ³       ³   ³       spotify.svg
+³   ³       ³   ³       squarespace.svg
+³   ³       ³   ³       stack-exchange.svg
+³   ³       ³   ³       stack-overflow.svg
+³   ³       ³   ³       stackpath.svg
+³   ³       ³   ³       staylinked.svg
+³   ³       ³   ³       steam-square.svg
+³   ³       ³   ³       steam-symbol.svg
+³   ³       ³   ³       steam.svg
+³   ³       ³   ³       sticker-mule.svg
+³   ³       ³   ³       strava.svg
+³   ³       ³   ³       stripe-s.svg
+³   ³       ³   ³       stripe.svg
+³   ³       ³   ³       studiovinari.svg
+³   ³       ³   ³       stumbleupon-circle.svg
+³   ³       ³   ³       stumbleupon.svg
+³   ³       ³   ³       superpowers.svg
+³   ³       ³   ³       supple.svg
+³   ³       ³   ³       suse.svg
+³   ³       ³   ³       swift.svg
+³   ³       ³   ³       symfony.svg
+³   ³       ³   ³       teamspeak.svg
+³   ³       ³   ³       telegram-plane.svg
+³   ³       ³   ³       telegram.svg
+³   ³       ³   ³       tencent-weibo.svg
+³   ³       ³   ³       the-red-yeti.svg
+³   ³       ³   ³       themeco.svg
+³   ³       ³   ³       themeisle.svg
+³   ³       ³   ³       think-peaks.svg
+³   ³       ³   ³       tiktok.svg
+³   ³       ³   ³       trade-federation.svg
+³   ³       ³   ³       trello.svg
+³   ³       ³   ³       tumblr-square.svg
+³   ³       ³   ³       tumblr.svg
+³   ³       ³   ³       twitch.svg
+³   ³       ³   ³       twitter-square.svg
+³   ³       ³   ³       twitter.svg
+³   ³       ³   ³       typo3.svg
+³   ³       ³   ³       uber.svg
+³   ³       ³   ³       ubuntu.svg
+³   ³       ³   ³       uikit.svg
+³   ³       ³   ³       umbraco.svg
+³   ³       ³   ³       uncharted.svg
+³   ³       ³   ³       uniregistry.svg
+³   ³       ³   ³       unity.svg
+³   ³       ³   ³       unsplash.svg
+³   ³       ³   ³       untappd.svg
+³   ³       ³   ³       ups.svg
+³   ³       ³   ³       usb.svg
+³   ³       ³   ³       usps.svg
+³   ³       ³   ³       ussunnah.svg
+³   ³       ³   ³       vaadin.svg
+³   ³       ³   ³       viacoin.svg
+³   ³       ³   ³       viadeo-square.svg
+³   ³       ³   ³       viadeo.svg
+³   ³       ³   ³       viber.svg
+³   ³       ³   ³       vimeo-square.svg
+³   ³       ³   ³       vimeo-v.svg
+³   ³       ³   ³       vimeo.svg
+³   ³       ³   ³       vine.svg
+³   ³       ³   ³       vk.svg
+³   ³       ³   ³       vnv.svg
+³   ³       ³   ³       vuejs.svg
+³   ³       ³   ³       watchman-monitoring.svg
+³   ³       ³   ³       waze.svg
+³   ³       ³   ³       weebly.svg
+³   ³       ³   ³       weibo.svg
+³   ³       ³   ³       weixin.svg
+³   ³       ³   ³       whatsapp-square.svg
+³   ³       ³   ³       whatsapp.svg
+³   ³       ³   ³       whmcs.svg
+³   ³       ³   ³       wikipedia-w.svg
+³   ³       ³   ³       windows.svg
+³   ³       ³   ³       wix.svg
+³   ³       ³   ³       wizards-of-the-coast.svg
+³   ³       ³   ³       wodu.svg
+³   ³       ³   ³       wolf-pack-battalion.svg
+³   ³       ³   ³       wordpress-simple.svg
+³   ³       ³   ³       wordpress.svg
+³   ³       ³   ³       wpbeginner.svg
+³   ³       ³   ³       wpexplorer.svg
+³   ³       ³   ³       wpforms.svg
+³   ³       ³   ³       wpressr.svg
+³   ³       ³   ³       xbox.svg
+³   ³       ³   ³       xing-square.svg
+³   ³       ³   ³       xing.svg
+³   ³       ³   ³       y-combinator.svg
+³   ³       ³   ³       yahoo.svg
+³   ³       ³   ³       yammer.svg
+³   ³       ³   ³       yandex-international.svg
+³   ³       ³   ³       yandex.svg
+³   ³       ³   ³       yarn.svg
+³   ³       ³   ³       yelp.svg
+³   ³       ³   ³       yoast.svg
+³   ³       ³   ³       youtube-square.svg
+³   ³       ³   ³       youtube.svg
+³   ³       ³   ³       zhihu.svg
+³   ³       ³   ³       
+³   ³       ³   ÃÄÄÄregular
+³   ³       ³   ³       address-book.svg
+³   ³       ³   ³       address-card.svg
+³   ³       ³   ³       angry.svg
+³   ³       ³   ³       arrow-alt-circle-down.svg
+³   ³       ³   ³       arrow-alt-circle-left.svg
+³   ³       ³   ³       arrow-alt-circle-right.svg
+³   ³       ³   ³       arrow-alt-circle-up.svg
+³   ³       ³   ³       bell-slash.svg
+³   ³       ³   ³       bell.svg
+³   ³       ³   ³       bookmark.svg
+³   ³       ³   ³       building.svg
+³   ³       ³   ³       calendar-alt.svg
+³   ³       ³   ³       calendar-check.svg
+³   ³       ³   ³       calendar-minus.svg
+³   ³       ³   ³       calendar-plus.svg
+³   ³       ³   ³       calendar-times.svg
+³   ³       ³   ³       calendar.svg
+³   ³       ³   ³       caret-square-down.svg
+³   ³       ³   ³       caret-square-left.svg
+³   ³       ³   ³       caret-square-right.svg
+³   ³       ³   ³       caret-square-up.svg
+³   ³       ³   ³       chart-bar.svg
+³   ³       ³   ³       check-circle.svg
+³   ³       ³   ³       check-square.svg
+³   ³       ³   ³       circle.svg
+³   ³       ³   ³       clipboard.svg
+³   ³       ³   ³       clock.svg
+³   ³       ³   ³       clone.svg
+³   ³       ³   ³       closed-captioning.svg
+³   ³       ³   ³       comment-alt.svg
+³   ³       ³   ³       comment-dots.svg
+³   ³       ³   ³       comment.svg
+³   ³       ³   ³       comments.svg
+³   ³       ³   ³       compass.svg
+³   ³       ³   ³       copy.svg
+³   ³       ³   ³       copyright.svg
+³   ³       ³   ³       credit-card.svg
+³   ³       ³   ³       dizzy.svg
+³   ³       ³   ³       dot-circle.svg
+³   ³       ³   ³       edit.svg
+³   ³       ³   ³       envelope-open.svg
+³   ³       ³   ³       envelope.svg
+³   ³       ³   ³       eye-slash.svg
+³   ³       ³   ³       eye.svg
+³   ³       ³   ³       file-alt.svg
+³   ³       ³   ³       file-archive.svg
+³   ³       ³   ³       file-audio.svg
+³   ³       ³   ³       file-code.svg
+³   ³       ³   ³       file-excel.svg
+³   ³       ³   ³       file-image.svg
+³   ³       ³   ³       file-pdf.svg
+³   ³       ³   ³       file-powerpoint.svg
+³   ³       ³   ³       file-video.svg
+³   ³       ³   ³       file-word.svg
+³   ³       ³   ³       file.svg
+³   ³       ³   ³       flag.svg
+³   ³       ³   ³       flushed.svg
+³   ³       ³   ³       folder-open.svg
+³   ³       ³   ³       folder.svg
+³   ³       ³   ³       font-awesome-logo-full.svg
+³   ³       ³   ³       frown-open.svg
+³   ³       ³   ³       frown.svg
+³   ³       ³   ³       futbol.svg
+³   ³       ³   ³       gem.svg
+³   ³       ³   ³       grimace.svg
+³   ³       ³   ³       grin-alt.svg
+³   ³       ³   ³       grin-beam-sweat.svg
+³   ³       ³   ³       grin-beam.svg
+³   ³       ³   ³       grin-hearts.svg
+³   ³       ³   ³       grin-squint-tears.svg
+³   ³       ³   ³       grin-squint.svg
+³   ³       ³   ³       grin-stars.svg
+³   ³       ³   ³       grin-tears.svg
+³   ³       ³   ³       grin-tongue-squint.svg
+³   ³       ³   ³       grin-tongue-wink.svg
+³   ³       ³   ³       grin-tongue.svg
+³   ³       ³   ³       grin-wink.svg
+³   ³       ³   ³       grin.svg
+³   ³       ³   ³       hand-lizard.svg
+³   ³       ³   ³       hand-paper.svg
+³   ³       ³   ³       hand-peace.svg
+³   ³       ³   ³       hand-point-down.svg
+³   ³       ³   ³       hand-point-left.svg
+³   ³       ³   ³       hand-point-right.svg
+³   ³       ³   ³       hand-point-up.svg
+³   ³       ³   ³       hand-pointer.svg
+³   ³       ³   ³       hand-rock.svg
+³   ³       ³   ³       hand-scissors.svg
+³   ³       ³   ³       hand-spock.svg
+³   ³       ³   ³       handshake.svg
+³   ³       ³   ³       hdd.svg
+³   ³       ³   ³       heart.svg
+³   ³       ³   ³       hospital.svg
+³   ³       ³   ³       hourglass.svg
+³   ³       ³   ³       id-badge.svg
+³   ³       ³   ³       id-card.svg
+³   ³       ³   ³       image.svg
+³   ³       ³   ³       images.svg
+³   ³       ³   ³       keyboard.svg
+³   ³       ³   ³       kiss-beam.svg
+³   ³       ³   ³       kiss-wink-heart.svg
+³   ³       ³   ³       kiss.svg
+³   ³       ³   ³       laugh-beam.svg
+³   ³       ³   ³       laugh-squint.svg
+³   ³       ³   ³       laugh-wink.svg
+³   ³       ³   ³       laugh.svg
+³   ³       ³   ³       lemon.svg
+³   ³       ³   ³       life-ring.svg
+³   ³       ³   ³       lightbulb.svg
+³   ³       ³   ³       list-alt.svg
+³   ³       ³   ³       map.svg
+³   ³       ³   ³       meh-blank.svg
+³   ³       ³   ³       meh-rolling-eyes.svg
+³   ³       ³   ³       meh.svg
+³   ³       ³   ³       minus-square.svg
+³   ³       ³   ³       money-bill-alt.svg
+³   ³       ³   ³       moon.svg
+³   ³       ³   ³       newspaper.svg
+³   ³       ³   ³       object-group.svg
+³   ³       ³   ³       object-ungroup.svg
+³   ³       ³   ³       paper-plane.svg
+³   ³       ³   ³       pause-circle.svg
+³   ³       ³   ³       play-circle.svg
+³   ³       ³   ³       plus-square.svg
+³   ³       ³   ³       question-circle.svg
+³   ³       ³   ³       registered.svg
+³   ³       ³   ³       sad-cry.svg
+³   ³       ³   ³       sad-tear.svg
+³   ³       ³   ³       save.svg
+³   ³       ³   ³       share-square.svg
+³   ³       ³   ³       smile-beam.svg
+³   ³       ³   ³       smile-wink.svg
+³   ³       ³   ³       smile.svg
+³   ³       ³   ³       snowflake.svg
+³   ³       ³   ³       square.svg
+³   ³       ³   ³       star-half.svg
+³   ³       ³   ³       star.svg
+³   ³       ³   ³       sticky-note.svg
+³   ³       ³   ³       stop-circle.svg
+³   ³       ³   ³       sun.svg
+³   ³       ³   ³       surprise.svg
+³   ³       ³   ³       thumbs-down.svg
+³   ³       ³   ³       thumbs-up.svg
+³   ³       ³   ³       times-circle.svg
+³   ³       ³   ³       tired.svg
+³   ³       ³   ³       trash-alt.svg
+³   ³       ³   ³       user-circle.svg
+³   ³       ³   ³       user.svg
+³   ³       ³   ³       window-close.svg
+³   ³       ³   ³       window-maximize.svg
+³   ³       ³   ³       window-minimize.svg
+³   ³       ³   ³       window-restore.svg
+³   ³       ³   ³       
+³   ³       ³   ÀÄÄÄsolid
+³   ³       ³           ad.svg
+³   ³       ³           address-book.svg
+³   ³       ³           address-card.svg
+³   ³       ³           adjust.svg
+³   ³       ³           air-freshener.svg
+³   ³       ³           align-center.svg
+³   ³       ³           align-justify.svg
+³   ³       ³           align-left.svg
+³   ³       ³           align-right.svg
+³   ³       ³           allergies.svg
+³   ³       ³           ambulance.svg
+³   ³       ³           american-sign-language-interpreting.svg
+³   ³       ³           anchor.svg
+³   ³       ³           angle-double-down.svg
+³   ³       ³           angle-double-left.svg
+³   ³       ³           angle-double-right.svg
+³   ³       ³           angle-double-up.svg
+³   ³       ³           angle-down.svg
+³   ³       ³           angle-left.svg
+³   ³       ³           angle-right.svg
+³   ³       ³           angle-up.svg
+³   ³       ³           angry.svg
+³   ³       ³           ankh.svg
+³   ³       ³           apple-alt.svg
+³   ³       ³           archive.svg
+³   ³       ³           archway.svg
+³   ³       ³           arrow-alt-circle-down.svg
+³   ³       ³           arrow-alt-circle-left.svg
+³   ³       ³           arrow-alt-circle-right.svg
+³   ³       ³           arrow-alt-circle-up.svg
+³   ³       ³           arrow-circle-down.svg
+³   ³       ³           arrow-circle-left.svg
+³   ³       ³           arrow-circle-right.svg
+³   ³       ³           arrow-circle-up.svg
+³   ³       ³           arrow-down.svg
+³   ³       ³           arrow-left.svg
+³   ³       ³           arrow-right.svg
+³   ³       ³           arrow-up.svg
+³   ³       ³           arrows-alt-h.svg
+³   ³       ³           arrows-alt-v.svg
+³   ³       ³           arrows-alt.svg
+³   ³       ³           assistive-listening-systems.svg
+³   ³       ³           asterisk.svg
+³   ³       ³           at.svg
+³   ³       ³           atlas.svg
+³   ³       ³           atom.svg
+³   ³       ³           audio-description.svg
+³   ³       ³           award.svg
+³   ³       ³           baby-carriage.svg
+³   ³       ³           baby.svg
+³   ³       ³           backspace.svg
+³   ³       ³           backward.svg
+³   ³       ³           bacon.svg
+³   ³       ³           bacteria.svg
+³   ³       ³           bacterium.svg
+³   ³       ³           bahai.svg
+³   ³       ³           balance-scale-left.svg
+³   ³       ³           balance-scale-right.svg
+³   ³       ³           balance-scale.svg
+³   ³       ³           ban.svg
+³   ³       ³           band-aid.svg
+³   ³       ³           barcode.svg
+³   ³       ³           bars.svg
+³   ³       ³           baseball-ball.svg
+³   ³       ³           basketball-ball.svg
+³   ³       ³           bath.svg
+³   ³       ³           battery-empty.svg
+³   ³       ³           battery-full.svg
+³   ³       ³           battery-half.svg
+³   ³       ³           battery-quarter.svg
+³   ³       ³           battery-three-quarters.svg
+³   ³       ³           bed.svg
+³   ³       ³           beer.svg
+³   ³       ³           bell-slash.svg
+³   ³       ³           bell.svg
+³   ³       ³           bezier-curve.svg
+³   ³       ³           bible.svg
+³   ³       ³           bicycle.svg
+³   ³       ³           biking.svg
+³   ³       ³           binoculars.svg
+³   ³       ³           biohazard.svg
+³   ³       ³           birthday-cake.svg
+³   ³       ³           blender-phone.svg
+³   ³       ³           blender.svg
+³   ³       ³           blind.svg
+³   ³       ³           blog.svg
+³   ³       ³           bold.svg
+³   ³       ³           bolt.svg
+³   ³       ³           bomb.svg
+³   ³       ³           bone.svg
+³   ³       ³           bong.svg
+³   ³       ³           book-dead.svg
+³   ³       ³           book-medical.svg
+³   ³       ³           book-open.svg
+³   ³       ³           book-reader.svg
+³   ³       ³           book.svg
+³   ³       ³           bookmark.svg
+³   ³       ³           border-all.svg
+³   ³       ³           border-none.svg
+³   ³       ³           border-style.svg
+³   ³       ³           bowling-ball.svg
+³   ³       ³           box-open.svg
+³   ³       ³           box-tissue.svg
+³   ³       ³           box.svg
+³   ³       ³           boxes.svg
+³   ³       ³           braille.svg
+³   ³       ³           brain.svg
+³   ³       ³           bread-slice.svg
+³   ³       ³           briefcase-medical.svg
+³   ³       ³           briefcase.svg
+³   ³       ³           broadcast-tower.svg
+³   ³       ³           broom.svg
+³   ³       ³           brush.svg
+³   ³       ³           bug.svg
+³   ³       ³           building.svg
+³   ³       ³           bullhorn.svg
+³   ³       ³           bullseye.svg
+³   ³       ³           burn.svg
+³   ³       ³           bus-alt.svg
+³   ³       ³           bus.svg
+³   ³       ³           business-time.svg
+³   ³       ³           calculator.svg
+³   ³       ³           calendar-alt.svg
+³   ³       ³           calendar-check.svg
+³   ³       ³           calendar-day.svg
+³   ³       ³           calendar-minus.svg
+³   ³       ³           calendar-plus.svg
+³   ³       ³           calendar-times.svg
+³   ³       ³           calendar-week.svg
+³   ³       ³           calendar.svg
+³   ³       ³           camera-retro.svg
+³   ³       ³           camera.svg
+³   ³       ³           campground.svg
+³   ³       ³           candy-cane.svg
+³   ³       ³           cannabis.svg
+³   ³       ³           capsules.svg
+³   ³       ³           car-alt.svg
+³   ³       ³           car-battery.svg
+³   ³       ³           car-crash.svg
+³   ³       ³           car-side.svg
+³   ³       ³           car.svg
+³   ³       ³           caravan.svg
+³   ³       ³           caret-down.svg
+³   ³       ³           caret-left.svg
+³   ³       ³           caret-right.svg
+³   ³       ³           caret-square-down.svg
+³   ³       ³           caret-square-left.svg
+³   ³       ³           caret-square-right.svg
+³   ³       ³           caret-square-up.svg
+³   ³       ³           caret-up.svg
+³   ³       ³           carrot.svg
+³   ³       ³           cart-arrow-down.svg
+³   ³       ³           cart-plus.svg
+³   ³       ³           cash-register.svg
+³   ³       ³           cat.svg
+³   ³       ³           certificate.svg
+³   ³       ³           chair.svg
+³   ³       ³           chalkboard-teacher.svg
+³   ³       ³           chalkboard.svg
+³   ³       ³           charging-station.svg
+³   ³       ³           chart-area.svg
+³   ³       ³           chart-bar.svg
+³   ³       ³           chart-line.svg
+³   ³       ³           chart-pie.svg
+³   ³       ³           check-circle.svg
+³   ³       ³           check-double.svg
+³   ³       ³           check-square.svg
+³   ³       ³           check.svg
+³   ³       ³           cheese.svg
+³   ³       ³           chess-bishop.svg
+³   ³       ³           chess-board.svg
+³   ³       ³           chess-king.svg
+³   ³       ³           chess-knight.svg
+³   ³       ³           chess-pawn.svg
+³   ³       ³           chess-queen.svg
+³   ³       ³           chess-rook.svg
+³   ³       ³           chess.svg
+³   ³       ³           chevron-circle-down.svg
+³   ³       ³           chevron-circle-left.svg
+³   ³       ³           chevron-circle-right.svg
+³   ³       ³           chevron-circle-up.svg
+³   ³       ³           chevron-down.svg
+³   ³       ³           chevron-left.svg
+³   ³       ³           chevron-right.svg
+³   ³       ³           chevron-up.svg
+³   ³       ³           child.svg
+³   ³       ³           church.svg
+³   ³       ³           circle-notch.svg
+³   ³       ³           circle.svg
+³   ³       ³           city.svg
+³   ³       ³           clinic-medical.svg
+³   ³       ³           clipboard-check.svg
+³   ³       ³           clipboard-list.svg
+³   ³       ³           clipboard.svg
+³   ³       ³           clock.svg
+³   ³       ³           clone.svg
+³   ³       ³           closed-captioning.svg
+³   ³       ³           cloud-download-alt.svg
+³   ³       ³           cloud-meatball.svg
+³   ³       ³           cloud-moon-rain.svg
+³   ³       ³           cloud-moon.svg
+³   ³       ³           cloud-rain.svg
+³   ³       ³           cloud-showers-heavy.svg
+³   ³       ³           cloud-sun-rain.svg
+³   ³       ³           cloud-sun.svg
+³   ³       ³           cloud-upload-alt.svg
+³   ³       ³           cloud.svg
+³   ³       ³           cocktail.svg
+³   ³       ³           code-branch.svg
+³   ³       ³           code.svg
+³   ³       ³           coffee.svg
+³   ³       ³           cog.svg
+³   ³       ³           cogs.svg
+³   ³       ³           coins.svg
+³   ³       ³           columns.svg
+³   ³       ³           comment-alt.svg
+³   ³       ³           comment-dollar.svg
+³   ³       ³           comment-dots.svg
+³   ³       ³           comment-medical.svg
+³   ³       ³           comment-slash.svg
+³   ³       ³           comment.svg
+³   ³       ³           comments-dollar.svg
+³   ³       ³           comments.svg
+³   ³       ³           compact-disc.svg
+³   ³       ³           compass.svg
+³   ³       ³           compress-alt.svg
+³   ³       ³           compress-arrows-alt.svg
+³   ³       ³           compress.svg
+³   ³       ³           concierge-bell.svg
+³   ³       ³           cookie-bite.svg
+³   ³       ³           cookie.svg
+³   ³       ³           copy.svg
+³   ³       ³           copyright.svg
+³   ³       ³           couch.svg
+³   ³       ³           credit-card.svg
+³   ³       ³           crop-alt.svg
+³   ³       ³           crop.svg
+³   ³       ³           cross.svg
+³   ³       ³           crosshairs.svg
+³   ³       ³           crow.svg
+³   ³       ³           crown.svg
+³   ³       ³           crutch.svg
+³   ³       ³           cube.svg
+³   ³       ³           cubes.svg
+³   ³       ³           cut.svg
+³   ³       ³           database.svg
+³   ³       ³           deaf.svg
+³   ³       ³           democrat.svg
+³   ³       ³           desktop.svg
+³   ³       ³           dharmachakra.svg
+³   ³       ³           diagnoses.svg
+³   ³       ³           dice-d20.svg
+³   ³       ³           dice-d6.svg
+³   ³       ³           dice-five.svg
+³   ³       ³           dice-four.svg
+³   ³       ³           dice-one.svg
+³   ³       ³           dice-six.svg
+³   ³       ³           dice-three.svg
+³   ³       ³           dice-two.svg
+³   ³       ³           dice.svg
+³   ³       ³           digital-tachograph.svg
+³   ³       ³           directions.svg
+³   ³       ³           disease.svg
+³   ³       ³           divide.svg
+³   ³       ³           dizzy.svg
+³   ³       ³           dna.svg
+³   ³       ³           dog.svg
+³   ³       ³           dollar-sign.svg
+³   ³       ³           dolly-flatbed.svg
+³   ³       ³           dolly.svg
+³   ³       ³           donate.svg
+³   ³       ³           door-closed.svg
+³   ³       ³           door-open.svg
+³   ³       ³           dot-circle.svg
+³   ³       ³           dove.svg
+³   ³       ³           download.svg
+³   ³       ³           drafting-compass.svg
+³   ³       ³           dragon.svg
+³   ³       ³           draw-polygon.svg
+³   ³       ³           drum-steelpan.svg
+³   ³       ³           drum.svg
+³   ³       ³           drumstick-bite.svg
+³   ³       ³           dumbbell.svg
+³   ³       ³           dumpster-fire.svg
+³   ³       ³           dumpster.svg
+³   ³       ³           dungeon.svg
+³   ³       ³           edit.svg
+³   ³       ³           egg.svg
+³   ³       ³           eject.svg
+³   ³       ³           ellipsis-h.svg
+³   ³       ³           ellipsis-v.svg
+³   ³       ³           envelope-open-text.svg
+³   ³       ³           envelope-open.svg
+³   ³       ³           envelope-square.svg
+³   ³       ³           envelope.svg
+³   ³       ³           equals.svg
+³   ³       ³           eraser.svg
+³   ³       ³           ethernet.svg
+³   ³       ³           euro-sign.svg
+³   ³       ³           exchange-alt.svg
+³   ³       ³           exclamation-circle.svg
+³   ³       ³           exclamation-triangle.svg
+³   ³       ³           exclamation.svg
+³   ³       ³           expand-alt.svg
+³   ³       ³           expand-arrows-alt.svg
+³   ³       ³           expand.svg
+³   ³       ³           external-link-alt.svg
+³   ³       ³           external-link-square-alt.svg
+³   ³       ³           eye-dropper.svg
+³   ³       ³           eye-slash.svg
+³   ³       ³           eye.svg
+³   ³       ³           fan.svg
+³   ³       ³           fast-backward.svg
+³   ³       ³           fast-forward.svg
+³   ³       ³           faucet.svg
+³   ³       ³           fax.svg
+³   ³       ³           feather-alt.svg
+³   ³       ³           feather.svg
+³   ³       ³           female.svg
+³   ³       ³           fighter-jet.svg
+³   ³       ³           file-alt.svg
+³   ³       ³           file-archive.svg
+³   ³       ³           file-audio.svg
+³   ³       ³           file-code.svg
+³   ³       ³           file-contract.svg
+³   ³       ³           file-csv.svg
+³   ³       ³           file-download.svg
+³   ³       ³           file-excel.svg
+³   ³       ³           file-export.svg
+³   ³       ³           file-image.svg
+³   ³       ³           file-import.svg
+³   ³       ³           file-invoice-dollar.svg
+³   ³       ³           file-invoice.svg
+³   ³       ³           file-medical-alt.svg
+³   ³       ³           file-medical.svg
+³   ³       ³           file-pdf.svg
+³   ³       ³           file-powerpoint.svg
+³   ³       ³           file-prescription.svg
+³   ³       ³           file-signature.svg
+³   ³       ³           file-upload.svg
+³   ³       ³           file-video.svg
+³   ³       ³           file-word.svg
+³   ³       ³           file.svg
+³   ³       ³           fill-drip.svg
+³   ³       ³           fill.svg
+³   ³       ³           film.svg
+³   ³       ³           filter.svg
+³   ³       ³           fingerprint.svg
+³   ³       ³           fire-alt.svg
+³   ³       ³           fire-extinguisher.svg
+³   ³       ³           fire.svg
+³   ³       ³           first-aid.svg
+³   ³       ³           fish.svg
+³   ³       ³           fist-raised.svg
+³   ³       ³           flag-checkered.svg
+³   ³       ³           flag-usa.svg
+³   ³       ³           flag.svg
+³   ³       ³           flask.svg
+³   ³       ³           flushed.svg
+³   ³       ³           folder-minus.svg
+³   ³       ³           folder-open.svg
+³   ³       ³           folder-plus.svg
+³   ³       ³           folder.svg
+³   ³       ³           font-awesome-logo-full.svg
+³   ³       ³           font.svg
+³   ³       ³           football-ball.svg
+³   ³       ³           forward.svg
+³   ³       ³           frog.svg
+³   ³       ³           frown-open.svg
+³   ³       ³           frown.svg
+³   ³       ³           funnel-dollar.svg
+³   ³       ³           futbol.svg
+³   ³       ³           gamepad.svg
+³   ³       ³           gas-pump.svg
+³   ³       ³           gavel.svg
+³   ³       ³           gem.svg
+³   ³       ³           genderless.svg
+³   ³       ³           ghost.svg
+³   ³       ³           gift.svg
+³   ³       ³           gifts.svg
+³   ³       ³           glass-cheers.svg
+³   ³       ³           glass-martini-alt.svg
+³   ³       ³           glass-martini.svg
+³   ³       ³           glass-whiskey.svg
+³   ³       ³           glasses.svg
+³   ³       ³           globe-africa.svg
+³   ³       ³           globe-americas.svg
+³   ³       ³           globe-asia.svg
+³   ³       ³           globe-europe.svg
+³   ³       ³           globe.svg
+³   ³       ³           golf-ball.svg
+³   ³       ³           gopuram.svg
+³   ³       ³           graduation-cap.svg
+³   ³       ³           greater-than-equal.svg
+³   ³       ³           greater-than.svg
+³   ³       ³           grimace.svg
+³   ³       ³           grin-alt.svg
+³   ³       ³           grin-beam-sweat.svg
+³   ³       ³           grin-beam.svg
+³   ³       ³           grin-hearts.svg
+³   ³       ³           grin-squint-tears.svg
+³   ³       ³           grin-squint.svg
+³   ³       ³           grin-stars.svg
+³   ³       ³           grin-tears.svg
+³   ³       ³           grin-tongue-squint.svg
+³   ³       ³           grin-tongue-wink.svg
+³   ³       ³           grin-tongue.svg
+³   ³       ³           grin-wink.svg
+³   ³       ³           grin.svg
+³   ³       ³           grip-horizontal.svg
+³   ³       ³           grip-lines-vertical.svg
+³   ³       ³           grip-lines.svg
+³   ³       ³           grip-vertical.svg
+³   ³       ³           guitar.svg
+³   ³       ³           h-square.svg
+³   ³       ³           hamburger.svg
+³   ³       ³           hammer.svg
+³   ³       ³           hamsa.svg
+³   ³       ³           hand-holding-heart.svg
+³   ³       ³           hand-holding-medical.svg
+³   ³       ³           hand-holding-usd.svg
+³   ³       ³           hand-holding-water.svg
+³   ³       ³           hand-holding.svg
+³   ³       ³           hand-lizard.svg
+³   ³       ³           hand-middle-finger.svg
+³   ³       ³           hand-paper.svg
+³   ³       ³           hand-peace.svg
+³   ³       ³           hand-point-down.svg
+³   ³       ³           hand-point-left.svg
+³   ³       ³           hand-point-right.svg
+³   ³       ³           hand-point-up.svg
+³   ³       ³           hand-pointer.svg
+³   ³       ³           hand-rock.svg
+³   ³       ³           hand-scissors.svg
+³   ³       ³           hand-sparkles.svg
+³   ³       ³           hand-spock.svg
+³   ³       ³           hands-helping.svg
+³   ³       ³           hands-wash.svg
+³   ³       ³           hands.svg
+³   ³       ³           handshake-alt-slash.svg
+³   ³       ³           handshake-slash.svg
+³   ³       ³           handshake.svg
+³   ³       ³           hanukiah.svg
+³   ³       ³           hard-hat.svg
+³   ³       ³           hashtag.svg
+³   ³       ³           hat-cowboy-side.svg
+³   ³       ³           hat-cowboy.svg
+³   ³       ³           hat-wizard.svg
+³   ³       ³           hdd.svg
+³   ³       ³           head-side-cough-slash.svg
+³   ³       ³           head-side-cough.svg
+³   ³       ³           head-side-mask.svg
+³   ³       ³           head-side-virus.svg
+³   ³       ³           heading.svg
+³   ³       ³           headphones-alt.svg
+³   ³       ³           headphones.svg
+³   ³       ³           headset.svg
+³   ³       ³           heart-broken.svg
+³   ³       ³           heart.svg
+³   ³       ³           heartbeat.svg
+³   ³       ³           helicopter.svg
+³   ³       ³           highlighter.svg
+³   ³       ³           hiking.svg
+³   ³       ³           hippo.svg
+³   ³       ³           history.svg
+³   ³       ³           hockey-puck.svg
+³   ³       ³           holly-berry.svg
+³   ³       ³           home.svg
+³   ³       ³           horse-head.svg
+³   ³       ³           horse.svg
+³   ³       ³           hospital-alt.svg
+³   ³       ³           hospital-symbol.svg
+³   ³       ³           hospital-user.svg
+³   ³       ³           hospital.svg
+³   ³       ³           hot-tub.svg
+³   ³       ³           hotdog.svg
+³   ³       ³           hotel.svg
+³   ³       ³           hourglass-end.svg
+³   ³       ³           hourglass-half.svg
+³   ³       ³           hourglass-start.svg
+³   ³       ³           hourglass.svg
+³   ³       ³           house-damage.svg
+³   ³       ³           house-user.svg
+³   ³       ³           hryvnia.svg
+³   ³       ³           i-cursor.svg
+³   ³       ³           ice-cream.svg
+³   ³       ³           icicles.svg
+³   ³       ³           icons.svg
+³   ³       ³           id-badge.svg
+³   ³       ³           id-card-alt.svg
+³   ³       ³           id-card.svg
+³   ³       ³           igloo.svg
+³   ³       ³           image.svg
+³   ³       ³           images.svg
+³   ³       ³           inbox.svg
+³   ³       ³           indent.svg
+³   ³       ³           industry.svg
+³   ³       ³           infinity.svg
+³   ³       ³           info-circle.svg
+³   ³       ³           info.svg
+³   ³       ³           italic.svg
+³   ³       ³           jedi.svg
+³   ³       ³           joint.svg
+³   ³       ³           journal-whills.svg
+³   ³       ³           kaaba.svg
+³   ³       ³           key.svg
+³   ³       ³           keyboard.svg
+³   ³       ³           khanda.svg
+³   ³       ³           kiss-beam.svg
+³   ³       ³           kiss-wink-heart.svg
+³   ³       ³           kiss.svg
+³   ³       ³           kiwi-bird.svg
+³   ³       ³           landmark.svg
+³   ³       ³           language.svg
+³   ³       ³           laptop-code.svg
+³   ³       ³           laptop-house.svg
+³   ³       ³           laptop-medical.svg
+³   ³       ³           laptop.svg
+³   ³       ³           laugh-beam.svg
+³   ³       ³           laugh-squint.svg
+³   ³       ³           laugh-wink.svg
+³   ³       ³           laugh.svg
+³   ³       ³           layer-group.svg
+³   ³       ³           leaf.svg
+³   ³       ³           lemon.svg
+³   ³       ³           less-than-equal.svg
+³   ³       ³           less-than.svg
+³   ³       ³           level-down-alt.svg
+³   ³       ³           level-up-alt.svg
+³   ³       ³           life-ring.svg
+³   ³       ³           lightbulb.svg
+³   ³       ³           link.svg
+³   ³       ³           lira-sign.svg
+³   ³       ³           list-alt.svg
+³   ³       ³           list-ol.svg
+³   ³       ³           list-ul.svg
+³   ³       ³           list.svg
+³   ³       ³           location-arrow.svg
+³   ³       ³           lock-open.svg
+³   ³       ³           lock.svg
+³   ³       ³           long-arrow-alt-down.svg
+³   ³       ³           long-arrow-alt-left.svg
+³   ³       ³           long-arrow-alt-right.svg
+³   ³       ³           long-arrow-alt-up.svg
+³   ³       ³           low-vision.svg
+³   ³       ³           luggage-cart.svg
+³   ³       ³           lungs-virus.svg
+³   ³       ³           lungs.svg
+³   ³       ³           magic.svg
+³   ³       ³           magnet.svg
+³   ³       ³           mail-bulk.svg
+³   ³       ³           male.svg
+³   ³       ³           map-marked-alt.svg
+³   ³       ³           map-marked.svg
+³   ³       ³           map-marker-alt.svg
+³   ³       ³           map-marker.svg
+³   ³       ³           map-pin.svg
+³   ³       ³           map-signs.svg
+³   ³       ³           map.svg
+³   ³       ³           marker.svg
+³   ³       ³           mars-double.svg
+³   ³       ³           mars-stroke-h.svg
+³   ³       ³           mars-stroke-v.svg
+³   ³       ³           mars-stroke.svg
+³   ³       ³           mars.svg
+³   ³       ³           mask.svg
+³   ³       ³           medal.svg
+³   ³       ³           medkit.svg
+³   ³       ³           meh-blank.svg
+³   ³       ³           meh-rolling-eyes.svg
+³   ³       ³           meh.svg
+³   ³       ³           memory.svg
+³   ³       ³           menorah.svg
+³   ³       ³           mercury.svg
+³   ³       ³           meteor.svg
+³   ³       ³           microchip.svg
+³   ³       ³           microphone-alt-slash.svg
+³   ³       ³           microphone-alt.svg
+³   ³       ³           microphone-slash.svg
+³   ³       ³           microphone.svg
+³   ³       ³           microscope.svg
+³   ³       ³           minus-circle.svg
+³   ³       ³           minus-square.svg
+³   ³       ³           minus.svg
+³   ³       ³           mitten.svg
+³   ³       ³           mobile-alt.svg
+³   ³       ³           mobile.svg
+³   ³       ³           money-bill-alt.svg
+³   ³       ³           money-bill-wave-alt.svg
+³   ³       ³           money-bill-wave.svg
+³   ³       ³           money-bill.svg
+³   ³       ³           money-check-alt.svg
+³   ³       ³           money-check.svg
+³   ³       ³           monument.svg
+³   ³       ³           moon.svg
+³   ³       ³           mortar-pestle.svg
+³   ³       ³           mosque.svg
+³   ³       ³           motorcycle.svg
+³   ³       ³           mountain.svg
+³   ³       ³           mouse-pointer.svg
+³   ³       ³           mouse.svg
+³   ³       ³           mug-hot.svg
+³   ³       ³           music.svg
+³   ³       ³           network-wired.svg
+³   ³       ³           neuter.svg
+³   ³       ³           newspaper.svg
+³   ³       ³           not-equal.svg
+³   ³       ³           notes-medical.svg
+³   ³       ³           object-group.svg
+³   ³       ³           object-ungroup.svg
+³   ³       ³           oil-can.svg
+³   ³       ³           om.svg
+³   ³       ³           otter.svg
+³   ³       ³           outdent.svg
+³   ³       ³           pager.svg
+³   ³       ³           paint-brush.svg
+³   ³       ³           paint-roller.svg
+³   ³       ³           palette.svg
+³   ³       ³           pallet.svg
+³   ³       ³           paper-plane.svg
+³   ³       ³           paperclip.svg
+³   ³       ³           parachute-box.svg
+³   ³       ³           paragraph.svg
+³   ³       ³           parking.svg
+³   ³       ³           passport.svg
+³   ³       ³           pastafarianism.svg
+³   ³       ³           paste.svg
+³   ³       ³           pause-circle.svg
+³   ³       ³           pause.svg
+³   ³       ³           paw.svg
+³   ³       ³           peace.svg
+³   ³       ³           pen-alt.svg
+³   ³       ³           pen-fancy.svg
+³   ³       ³           pen-nib.svg
+³   ³       ³           pen-square.svg
+³   ³       ³           pen.svg
+³   ³       ³           pencil-alt.svg
+³   ³       ³           pencil-ruler.svg
+³   ³       ³           people-arrows.svg
+³   ³       ³           people-carry.svg
+³   ³       ³           pepper-hot.svg
+³   ³       ³           percent.svg
+³   ³       ³           percentage.svg
+³   ³       ³           person-booth.svg
+³   ³       ³           phone-alt.svg
+³   ³       ³           phone-slash.svg
+³   ³       ³           phone-square-alt.svg
+³   ³       ³           phone-square.svg
+³   ³       ³           phone-volume.svg
+³   ³       ³           phone.svg
+³   ³       ³           photo-video.svg
+³   ³       ³           piggy-bank.svg
+³   ³       ³           pills.svg
+³   ³       ³           pizza-slice.svg
+³   ³       ³           place-of-worship.svg
+³   ³       ³           plane-arrival.svg
+³   ³       ³           plane-departure.svg
+³   ³       ³           plane-slash.svg
+³   ³       ³           plane.svg
+³   ³       ³           play-circle.svg
+³   ³       ³           play.svg
+³   ³       ³           plug.svg
+³   ³       ³           plus-circle.svg
+³   ³       ³           plus-square.svg
+³   ³       ³           plus.svg
+³   ³       ³           podcast.svg
+³   ³       ³           poll-h.svg
+³   ³       ³           poll.svg
+³   ³       ³           poo-storm.svg
+³   ³       ³           poo.svg
+³   ³       ³           poop.svg
+³   ³       ³           portrait.svg
+³   ³       ³           pound-sign.svg
+³   ³       ³           power-off.svg
+³   ³       ³           pray.svg
+³   ³       ³           praying-hands.svg
+³   ³       ³           prescription-bottle-alt.svg
+³   ³       ³           prescription-bottle.svg
+³   ³       ³           prescription.svg
+³   ³       ³           print.svg
+³   ³       ³           procedures.svg
+³   ³       ³           project-diagram.svg
+³   ³       ³           pump-medical.svg
+³   ³       ³           pump-soap.svg
+³   ³       ³           puzzle-piece.svg
+³   ³       ³           qrcode.svg
+³   ³       ³           question-circle.svg
+³   ³       ³           question.svg
+³   ³       ³           quidditch.svg
+³   ³       ³           quote-left.svg
+³   ³       ³           quote-right.svg
+³   ³       ³           quran.svg
+³   ³       ³           radiation-alt.svg
+³   ³       ³           radiation.svg
+³   ³       ³           rainbow.svg
+³   ³       ³           random.svg
+³   ³       ³           receipt.svg
+³   ³       ³           record-vinyl.svg
+³   ³       ³           recycle.svg
+³   ³       ³           redo-alt.svg
+³   ³       ³           redo.svg
+³   ³       ³           registered.svg
+³   ³       ³           remove-format.svg
+³   ³       ³           reply-all.svg
+³   ³       ³           reply.svg
+³   ³       ³           republican.svg
+³   ³       ³           restroom.svg
+³   ³       ³           retweet.svg
+³   ³       ³           ribbon.svg
+³   ³       ³           ring.svg
+³   ³       ³           road.svg
+³   ³       ³           robot.svg
+³   ³       ³           rocket.svg
+³   ³       ³           route.svg
+³   ³       ³           rss-square.svg
+³   ³       ³           rss.svg
+³   ³       ³           ruble-sign.svg
+³   ³       ³           ruler-combined.svg
+³   ³       ³           ruler-horizontal.svg
+³   ³       ³           ruler-vertical.svg
+³   ³       ³           ruler.svg
+³   ³       ³           running.svg
+³   ³       ³           rupee-sign.svg
+³   ³       ³           sad-cry.svg
+³   ³       ³           sad-tear.svg
+³   ³       ³           satellite-dish.svg
+³   ³       ³           satellite.svg
+³   ³       ³           save.svg
+³   ³       ³           school.svg
+³   ³       ³           screwdriver.svg
+³   ³       ³           scroll.svg
+³   ³       ³           sd-card.svg
+³   ³       ³           search-dollar.svg
+³   ³       ³           search-location.svg
+³   ³       ³           search-minus.svg
+³   ³       ³           search-plus.svg
+³   ³       ³           search.svg
+³   ³       ³           seedling.svg
+³   ³       ³           server.svg
+³   ³       ³           shapes.svg
+³   ³       ³           share-alt-square.svg
+³   ³       ³           share-alt.svg
+³   ³       ³           share-square.svg
+³   ³       ³           share.svg
+³   ³       ³           shekel-sign.svg
+³   ³       ³           shield-alt.svg
+³   ³       ³           shield-virus.svg
+³   ³       ³           ship.svg
+³   ³       ³           shipping-fast.svg
+³   ³       ³           shoe-prints.svg
+³   ³       ³           shopping-bag.svg
+³   ³       ³           shopping-basket.svg
+³   ³       ³           shopping-cart.svg
+³   ³       ³           shower.svg
+³   ³       ³           shuttle-van.svg
+³   ³       ³           sign-in-alt.svg
+³   ³       ³           sign-language.svg
+³   ³       ³           sign-out-alt.svg
+³   ³       ³           sign.svg
+³   ³       ³           signal.svg
+³   ³       ³           signature.svg
+³   ³       ³           sim-card.svg
+³   ³       ³           sink.svg
+³   ³       ³           sitemap.svg
+³   ³       ³           skating.svg
+³   ³       ³           skiing-nordic.svg
+³   ³       ³           skiing.svg
+³   ³       ³           skull-crossbones.svg
+³   ³       ³           skull.svg
+³   ³       ³           slash.svg
+³   ³       ³           sleigh.svg
+³   ³       ³           sliders-h.svg
+³   ³       ³           smile-beam.svg
+³   ³       ³           smile-wink.svg
+³   ³       ³           smile.svg
+³   ³       ³           smog.svg
+³   ³       ³           smoking-ban.svg
+³   ³       ³           smoking.svg
+³   ³       ³           sms.svg
+³   ³       ³           snowboarding.svg
+³   ³       ³           snowflake.svg
+³   ³       ³           snowman.svg
+³   ³       ³           snowplow.svg
+³   ³       ³           soap.svg
+³   ³       ³           socks.svg
+³   ³       ³           solar-panel.svg
+³   ³       ³           sort-alpha-down-alt.svg
+³   ³       ³           sort-alpha-down.svg
+³   ³       ³           sort-alpha-up-alt.svg
+³   ³       ³           sort-alpha-up.svg
+³   ³       ³           sort-amount-down-alt.svg
+³   ³       ³           sort-amount-down.svg
+³   ³       ³           sort-amount-up-alt.svg
+³   ³       ³           sort-amount-up.svg
+³   ³       ³           sort-down.svg
+³   ³       ³           sort-numeric-down-alt.svg
+³   ³       ³           sort-numeric-down.svg
+³   ³       ³           sort-numeric-up-alt.svg
+³   ³       ³           sort-numeric-up.svg
+³   ³       ³           sort-up.svg
+³   ³       ³           sort.svg
+³   ³       ³           spa.svg
+³   ³       ³           space-shuttle.svg
+³   ³       ³           spell-check.svg
+³   ³       ³           spider.svg
+³   ³       ³           spinner.svg
+³   ³       ³           splotch.svg
+³   ³       ³           spray-can.svg
+³   ³       ³           square-full.svg
+³   ³       ³           square-root-alt.svg
+³   ³       ³           square.svg
+³   ³       ³           stamp.svg
+³   ³       ³           star-and-crescent.svg
+³   ³       ³           star-half-alt.svg
+³   ³       ³           star-half.svg
+³   ³       ³           star-of-david.svg
+³   ³       ³           star-of-life.svg
+³   ³       ³           star.svg
+³   ³       ³           step-backward.svg
+³   ³       ³           step-forward.svg
+³   ³       ³           stethoscope.svg
+³   ³       ³           sticky-note.svg
+³   ³       ³           stop-circle.svg
+³   ³       ³           stop.svg
+³   ³       ³           stopwatch-20.svg
+³   ³       ³           stopwatch.svg
+³   ³       ³           store-alt-slash.svg
+³   ³       ³           store-alt.svg
+³   ³       ³           store-slash.svg
+³   ³       ³           store.svg
+³   ³       ³           stream.svg
+³   ³       ³           street-view.svg
+³   ³       ³           strikethrough.svg
+³   ³       ³           stroopwafel.svg
+³   ³       ³           subscript.svg
+³   ³       ³           subway.svg
+³   ³       ³           suitcase-rolling.svg
+³   ³       ³           suitcase.svg
+³   ³       ³           sun.svg
+³   ³       ³           superscript.svg
+³   ³       ³           surprise.svg
+³   ³       ³           swatchbook.svg
+³   ³       ³           swimmer.svg
+³   ³       ³           swimming-pool.svg
+³   ³       ³           synagogue.svg
+³   ³       ³           sync-alt.svg
+³   ³       ³           sync.svg
+³   ³       ³           syringe.svg
+³   ³       ³           table-tennis.svg
+³   ³       ³           table.svg
+³   ³       ³           tablet-alt.svg
+³   ³       ³           tablet.svg
+³   ³       ³           tablets.svg
+³   ³       ³           tachometer-alt.svg
+³   ³       ³           tag.svg
+³   ³       ³           tags.svg
+³   ³       ³           tape.svg
+³   ³       ³           tasks.svg
+³   ³       ³           taxi.svg
+³   ³       ³           teeth-open.svg
+³   ³       ³           teeth.svg
+³   ³       ³           temperature-high.svg
+³   ³       ³           temperature-low.svg
+³   ³       ³           tenge.svg
+³   ³       ³           terminal.svg
+³   ³       ³           text-height.svg
+³   ³       ³           text-width.svg
+³   ³       ³           th-large.svg
+³   ³       ³           th-list.svg
+³   ³       ³           th.svg
+³   ³       ³           theater-masks.svg
+³   ³       ³           thermometer-empty.svg
+³   ³       ³           thermometer-full.svg
+³   ³       ³           thermometer-half.svg
+³   ³       ³           thermometer-quarter.svg
+³   ³       ³           thermometer-three-quarters.svg
+³   ³       ³           thermometer.svg
+³   ³       ³           thumbs-down.svg
+³   ³       ³           thumbs-up.svg
+³   ³       ³           thumbtack.svg
+³   ³       ³           ticket-alt.svg
+³   ³       ³           times-circle.svg
+³   ³       ³           times.svg
+³   ³       ³           tint-slash.svg
+³   ³       ³           tint.svg
+³   ³       ³           tired.svg
+³   ³       ³           toggle-off.svg
+³   ³       ³           toggle-on.svg
+³   ³       ³           toilet-paper-slash.svg
+³   ³       ³           toilet-paper.svg
+³   ³       ³           toilet.svg
+³   ³       ³           toolbox.svg
+³   ³       ³           tools.svg
+³   ³       ³           tooth.svg
+³   ³       ³           torah.svg
+³   ³       ³           torii-gate.svg
+³   ³       ³           tractor.svg
+³   ³       ³           trademark.svg
+³   ³       ³           traffic-light.svg
+³   ³       ³           trailer.svg
+³   ³       ³           train.svg
+³   ³       ³           tram.svg
+³   ³       ³           transgender-alt.svg
+³   ³       ³           transgender.svg
+³   ³       ³           trash-alt.svg
+³   ³       ³           trash-restore-alt.svg
+³   ³       ³           trash-restore.svg
+³   ³       ³           trash.svg
+³   ³       ³           tree.svg
+³   ³       ³           trophy.svg
+³   ³       ³           truck-loading.svg
+³   ³       ³           truck-monster.svg
+³   ³       ³           truck-moving.svg
+³   ³       ³           truck-pickup.svg
+³   ³       ³           truck.svg
+³   ³       ³           tshirt.svg
+³   ³       ³           tty.svg
+³   ³       ³           tv.svg
+³   ³       ³           umbrella-beach.svg
+³   ³       ³           umbrella.svg
+³   ³       ³           underline.svg
+³   ³       ³           undo-alt.svg
+³   ³       ³           undo.svg
+³   ³       ³           universal-access.svg
+³   ³       ³           university.svg
+³   ³       ³           unlink.svg
+³   ³       ³           unlock-alt.svg
+³   ³       ³           unlock.svg
+³   ³       ³           upload.svg
+³   ³       ³           user-alt-slash.svg
+³   ³       ³           user-alt.svg
+³   ³       ³           user-astronaut.svg
+³   ³       ³           user-check.svg
+³   ³       ³           user-circle.svg
+³   ³       ³           user-clock.svg
+³   ³       ³           user-cog.svg
+³   ³       ³           user-edit.svg
+³   ³       ³           user-friends.svg
+³   ³       ³           user-graduate.svg
+³   ³       ³           user-injured.svg
+³   ³       ³           user-lock.svg
+³   ³       ³           user-md.svg
+³   ³       ³           user-minus.svg
+³   ³       ³           user-ninja.svg
+³   ³       ³           user-nurse.svg
+³   ³       ³           user-plus.svg
+³   ³       ³           user-secret.svg
+³   ³       ³           user-shield.svg
+³   ³       ³           user-slash.svg
+³   ³       ³           user-tag.svg
+³   ³       ³           user-tie.svg
+³   ³       ³           user-times.svg
+³   ³       ³           user.svg
+³   ³       ³           users-cog.svg
+³   ³       ³           users-slash.svg
+³   ³       ³           users.svg
+³   ³       ³           utensil-spoon.svg
+³   ³       ³           utensils.svg
+³   ³       ³           vector-square.svg
+³   ³       ³           venus-double.svg
+³   ³       ³           venus-mars.svg
+³   ³       ³           venus.svg
+³   ³       ³           vest-patches.svg
+³   ³       ³           vest.svg
+³   ³       ³           vial.svg
+³   ³       ³           vials.svg
+³   ³       ³           video-slash.svg
+³   ³       ³           video.svg
+³   ³       ³           vihara.svg
+³   ³       ³           virus-slash.svg
+³   ³       ³           virus.svg
+³   ³       ³           viruses.svg
+³   ³       ³           voicemail.svg
+³   ³       ³           volleyball-ball.svg
+³   ³       ³           volume-down.svg
+³   ³       ³           volume-mute.svg
+³   ³       ³           volume-off.svg
+³   ³       ³           volume-up.svg
+³   ³       ³           vote-yea.svg
+³   ³       ³           vr-cardboard.svg
+³   ³       ³           walking.svg
+³   ³       ³           wallet.svg
+³   ³       ³           warehouse.svg
+³   ³       ³           water.svg
+³   ³       ³           wave-square.svg
+³   ³       ³           weight-hanging.svg
+³   ³       ³           weight.svg
+³   ³       ³           wheelchair.svg
+³   ³       ³           wifi.svg
+³   ³       ³           wind.svg
+³   ³       ³           window-close.svg
+³   ³       ³           window-maximize.svg
+³   ³       ³           window-minimize.svg
+³   ³       ³           window-restore.svg
+³   ³       ³           wine-bottle.svg
+³   ³       ³           wine-glass-alt.svg
+³   ³       ³           wine-glass.svg
+³   ³       ³           won-sign.svg
+³   ³       ³           wrench.svg
+³   ³       ³           x-ray.svg
+³   ³       ³           yen-sign.svg
+³   ³       ³           yin-yang.svg
+³   ³       ³           
+³   ³       ÀÄÄÄwebfonts
+³   ³               fa-brands-400.eot
+³   ³               fa-brands-400.svg
+³   ³               fa-brands-400.ttf
+³   ³               fa-brands-400.woff
+³   ³               fa-brands-400.woff2
+³   ³               fa-regular-400.eot
+³   ³               fa-regular-400.svg
+³   ³               fa-regular-400.ttf
+³   ³               fa-regular-400.woff
+³   ³               fa-regular-400.woff2
+³   ³               fa-solid-900.eot
+³   ³               fa-solid-900.svg
+³   ³               fa-solid-900.ttf
+³   ³               fa-solid-900.woff
+³   ³               fa-solid-900.woff2
+³   ³               
+³   ÃÄÄÄjs
+³   ³       app.js
+³   ³       bootstrap.js
+³   ³       bootstrap.min.js
+³   ³       bottom_menu.js
+³   ³       functions.js
+³   ³       jquery-1-12-1-ui.min.js
+³   ³       jquery-1.12.0-ui.js
+³   ³       jquery-1.12.4.js
+³   ³       jquery-3.1.1.min.js
+³   ³       jquery-3.5.1.min.js
+³   ³       jquery-3.6.0.js
+³   ³       jquery-ui.js
+³   ³       laravel_bootstrap.js
+³   ³       table_crud.js
+³   ³       users.js
+³   ³       videos.js
+³   ³       windows.js
+³   ³       
+³   ÃÄÄÄlang
+³   ÃÄÄÄsass
+³   ³       app.scss
+³   ³       _variables.scss
+³   ³       
+³   ÀÄÄÄviews
+³       ÃÄÄÄauth
+³       ³       login.php
+³       ³       register.blade.php
+³       ³       register.php
+³       ³       
+³       ÃÄÄÄcomponents
+³       ³       alert.md
+³       ³       alert.php
+³       ³       button.md
+³       ³       button.php
+³       ³       card.md
+³       ³       card.php
+³       ³       checkbox.md
+³       ³       checkbox.php
+³       ³       error.md
+³       ³       error.php
+³       ³       form.md
+³       ³       form.php
+³       ³       input.md
+³       ³       input.php
+³       ³       label.md
+³       ³       label.php
+³       ³       Pendientes.md
+³       ³       radio.md
+³       ³       radio.php
+³       ³       select.md
+³       ³       select.php
+³       ³       textarea.md
+³       ³       textarea.php
+³       ³       toolbar-item.md
+³       ³       toolbar-item.php
+³       ³       toolbar.md
+³       ³       toolbar.php
+³       ³       
+³       ÃÄÄÄdashboard
+³       ³       index.blade.php
+³       ³       
+³       ÃÄÄÄlayouts
+³       ³       app.php
+³       ³       
+³       ÀÄÄÄusers
+³               create.blade.php
+³               index.blade.php
+³               
+ÃÄÄÄroutes
+³       web.php
+³       
+ÃÄÄÄstorage
+³   ÀÄÄÄviews
+ÃÄÄÄtests
+ÀÄÄÄvendor
+    ³   autoload.php
+    ³   
+    ÃÄÄÄbin
+    ÃÄÄÄcomposer
+    ³       autoload_classmap.php
+    ³       autoload_files.php
+    ³       autoload_namespaces.php
+    ³       autoload_psr4.php
+    ³       autoload_real.php
+    ³       autoload_static.php
+    ³       ClassLoader.php
+    ³       installed.json
+    ³       installed.php
+    ³       InstalledVersions.php
+    ³       LICENSE
+    ³       platform_check.php
+    ³       
+    ÃÄÄÄgraham-campbell
+    ³   ÀÄÄÄresult-type
+    ³       ³   composer.json
+    ³       ³   LICENSE
+    ³       ³   
+    ³       ÀÄÄÄsrc
+    ³               Error.php
+    ³               Result.php
+    ³               Success.php
+    ³               
+    ÃÄÄÄphpoption
+    ³   ÀÄÄÄphpoption
+    ³       ³   composer.json
+    ³       ³   LICENSE
+    ³       ³   
+    ³       ÀÄÄÄsrc
+    ³           ÀÄÄÄPhpOption
+    ³                   LazyOption.php
+    ³                   None.php
+    ³                   Option.php
+    ³                   Some.php
+    ³                   
+    ÃÄÄÄsymfony
+    ³   ÃÄÄÄpolyfill-ctype
+    ³   ³       bootstrap.php
+    ³   ³       bootstrap80.php
+    ³   ³       composer.json
+    ³   ³       Ctype.php
+    ³   ³       LICENSE
+    ³   ³       README.md
+    ³   ³       
+    ³   ÃÄÄÄpolyfill-mbstring
+    ³   ³   ³   bootstrap.php
+    ³   ³   ³   bootstrap72.php
+    ³   ³   ³   bootstrap80.php
+    ³   ³   ³   composer.json
+    ³   ³   ³   LICENSE
+    ³   ³   ³   Mbstring.php
+    ³   ³   ³   README.md
+    ³   ³   ³   
+    ³   ³   ÀÄÄÄResources
+    ³   ³       ÀÄÄÄunidata
+    ³   ³               caseFolding.php
+    ³   ³               lowerCase.php
+    ³   ³               titleCaseRegexp.php
+    ³   ³               upperCase.php
+    ³   ³               
+    ³   ÀÄÄÄpolyfill-php80
+    ³       ³   bootstrap.php
+    ³       ³   composer.json
+    ³       ³   LICENSE
+    ³       ³   Php80.php
+    ³       ³   PhpToken.php
+    ³       ³   README.md
+    ³       ³   
+    ³       ÀÄÄÄResources
+    ³           ÀÄÄÄstubs
+    ³                   Attribute.php
+    ³                   PhpToken.php
+    ³                   Stringable.php
+    ³                   UnhandledMatchError.php
+    ³                   ValueError.php
+    ³                   
+    ÀÄÄÄvlucas
+        ÀÄÄÄphpdotenv
+            ³   composer.json
+            ³   LICENSE
+            ³   
+            ÀÄÄÄsrc
+                ³   Dotenv.php
+                ³   Validator.php
+                ³   
+                ÃÄÄÄException
+                ³       ExceptionInterface.php
+                ³       InvalidEncodingException.php
+                ³       InvalidFileException.php
+                ³       InvalidPathException.php
+                ³       ValidationException.php
+                ³       
+                ÃÄÄÄLoader
+                ³       Loader.php
+                ³       LoaderInterface.php
+                ³       Resolver.php
+                ³       
+                ÃÄÄÄParser
+                ³       Entry.php
+                ³       EntryParser.php
+                ³       Lexer.php
+                ³       Lines.php
+                ³       Parser.php
+                ³       ParserInterface.php
+                ³       Value.php
+                ³       
+                ÃÄÄÄRepository
+                ³   ³   AdapterRepository.php
+                ³   ³   RepositoryBuilder.php
+                ³   ³   RepositoryInterface.php
+                ³   ³   
+                ³   ÀÄÄÄAdapter
+                ³           AdapterInterface.php
+                ³           ApacheAdapter.php
+                ³           ArrayAdapter.php
+                ³           EnvConstAdapter.php
+                ³           GuardedWriter.php
+                ³           ImmutableWriter.php
+                ³           MultiReader.php
+                ³           MultiWriter.php
+                ³           PutenvAdapter.php
+                ³           ReaderInterface.php
+                ³           ReplacingWriter.php
+                ³           ServerConstAdapter.php
+                ³           WriterInterface.php
+                ³           
+                ÃÄÄÄStore
+                ³   ³   FileStore.php
+                ³   ³   StoreBuilder.php
+                ³   ³   StoreInterface.php
+                ³   ³   StringStore.php
+                ³   ³   
+                ³   ÀÄÄÄFile
+                ³           Paths.php
+                ³           Reader.php
+                ³           
+                ÀÄÄÄUtil
+                        Regex.php
+                        Str.php
+                        
