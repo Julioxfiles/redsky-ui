@@ -1,10 +1,11 @@
 <?php
 
-use RedSky\Routing\Route;
+use RedSky\Framework\Routing\Route;
+use RedSky\Framework\Http\Response;
+
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
-use RedSky\Http\Response;
 
 /*
 |--------------------------------------------------------------------------

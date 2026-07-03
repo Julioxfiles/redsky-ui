@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Providers\AppServiceProvider;
-use RedSky\Foundation\Application;
+use RedSky\Framework\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------

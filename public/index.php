@@ -8,6 +8,11 @@ define('BASE_PATH', dirname(__DIR__));
 
 require_once BASE_PATH . '/vendor/autoload.php';
 
+//var_dump(class_exists(\RedSky\View\Html\Attributes::class));
+
+//var_dump(config('ui.library'));
+//exit;
+
 /**
  * ENV
  */
