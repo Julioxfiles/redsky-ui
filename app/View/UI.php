@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\View;
 
-use RedSky\Framework\View\Contracts\UiLibrary;
+use RedSky\View\Contracts\UiLibrary;
 
 final class UI
 {

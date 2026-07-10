@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use RedSky\Framework\Support\ServiceProvider;
+use RedSky\Framework\Providers\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

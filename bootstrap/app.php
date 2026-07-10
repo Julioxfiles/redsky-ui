@@ -23,8 +23,11 @@ $app = Application::getInstance();
 foreach ([
     AppServiceProvider::class,
 ] as $provider) {
-    (new $provider($app))->register();
+    //(new $provider($app))->register();
+    $app->registerProvider( new $provider($app) );
 }
+
+$app->bootProviders();
 
 /*
 |--------------------------------------------------------------------------

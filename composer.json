@@ -1,14 +1,16 @@
 {
   "name": "redsky/ui",
-  "description": "The PHP user interface for redsky framework ecosystem",
+  "description": "The PHP user interface application for redsky ecosystem",
   "type": "project",
   "license": "proprietary",
 
   "require": {
     "php": ">=8.1",
     "vlucas/phpdotenv": "^5.6",
-    "redsky/bootstrap": "dev-main",
-    "redsky/view": "dev-main"
+
+    "redsky/framework": "dev-main",
+    "redsky/view": "dev-main",
+    "redsky/bootstrap": "dev-main"
   },
 
   "repositories": [
@@ -21,17 +23,17 @@
     },
     {
       "type": "path",
-      "url": "../redsky-bootstrap",
+      "url": "../redsky-view",
       "options": {
         "symlink": true
       }
     },
     {
-        "type": "path",
-        "url": "../redsky-view",
-        "options": {
-            "symlink": true
-        }
+      "type": "path",
+      "url": "../redsky-bootstrap",
+      "options": {
+        "symlink": true
+      }
     }
   ],
 
@@ -48,5 +50,19 @@
   },
 
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+
+  "scripts": {
+    "post-install-cmd": [
+      "@composer dump-autoload"
+    ],
+    "post-update-cmd": [
+      "@composer dump-autoload"
+    ]
+  }
 }
