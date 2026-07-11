@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Providers\AppServiceProvider;
 use RedSky\Framework\Foundation\Application;
+use RedSky\View\ViewManager;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,13 @@ use RedSky\Framework\Foundation\Application;
 */
 
 $app = Application::getInstance();
+
+// Configuración de vistas
+ViewManager::configure([
+    'path' => BASE_PATH . '/resources/views',
+    'layout' => 'layouts.app'
+]);
+
 
 
 /*

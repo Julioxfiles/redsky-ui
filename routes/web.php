@@ -53,7 +53,8 @@ Route::get('/dashboard', function () {
 |--------------------------------------------------------------------------
 */
 
-//Route::get('/users', [UserController::class, 'index'])->middleware(['auth']);
+Route::get('/users', [UserController::class, 'index']);
+//->middleware(['auth']);
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,7 @@ Route::get('/test-bootstrap', function () {
         'text' => 'Hola RedSky',
         'type' => 'success'
     ]);
+    
     /*
     return Card::make([
         'header' => 'Usuario',

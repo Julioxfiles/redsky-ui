@@ -20,9 +20,9 @@ $buttons = [
     'Cancelar' => "console.log('Cancelado')"
 ];
 
-$windowHtml = Windows::messageBox($data, $buttons);
+//$windowHtml = Windows::messageBox($data, $buttons);
 
-echo  $windowHtml;
+//echo  $windowHtml;
 
 
 ?>
