@@ -29,7 +29,10 @@ class UserController
 
         ];
 
-        return view('users.index', compact('users'));
+        //return view('users.index', compact('users'));
+        return view('users.index')
+                ->with('users', $users)
+                ->with('title', 'Listado de usuarios');
     }
     
 }

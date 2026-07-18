@@ -14,12 +14,17 @@ use RedSky\View\ViewManager;
 
 $app = Application::getInstance();
 
-// Configuración de vistas
+
+/*
+|--------------------------------------------------------------------------
+| Configure Views
+|--------------------------------------------------------------------------
+*/
+
 ViewManager::configure([
     'path' => BASE_PATH . '/resources/views',
-    'layout' => 'layouts.app'
+    'layout' => 'layouts.app',
 ]);
-
 
 
 /*
@@ -31,11 +36,13 @@ ViewManager::configure([
 foreach ([
     AppServiceProvider::class,
 ] as $provider) {
-    //(new $provider($app))->register();
-    $app->registerProvider( new $provider($app) );
+    $app->registerProvider(
+        new $provider($app)
+    );
 }
 
 $app->bootProviders();
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +53,7 @@ $app->bootProviders();
 $app->loadRoutes(
     BASE_PATH . '/routes/web.php'
 );
+
 
 /*
 |--------------------------------------------------------------------------
