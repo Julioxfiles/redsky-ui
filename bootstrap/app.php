@@ -3,8 +3,12 @@
 declare(strict_types=1);
 
 use App\Providers\AppServiceProvider;
+use App\UI\Foundation\UiManager;
+use App\UI\Foundation\ComponentRegistry;
+
 use RedSky\Framework\Foundation\Application;
-use RedSky\View\ViewManager;
+use RedSky\View\Foundation\ViewManager;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +19,56 @@ use RedSky\View\ViewManager;
 $app = Application::getInstance();
 
 
+
 /*
 |--------------------------------------------------------------------------
-| Configure Views
+| Configure redsky-view
 |--------------------------------------------------------------------------
+|
+| redsky-view is responsible for:
+|
+| - locating views
+| - rendering PHP files
+| - applying layouts
+|
 */
 
 ViewManager::configure([
     'path' => BASE_PATH . '/resources/views',
-    'layout' => 'layouts.app',
 ]);
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Register redsky-ui services
+|--------------------------------------------------------------------------
+|
+| redsky-ui is responsible for UI orchestration.
+|
+| It does not render views.
+| It coordinates components and UI libraries.
+|
+*/
+
+$app->container()->singleton(
+    ComponentRegistry::class,
+    fn () => new ComponentRegistry()
+);
+
+
+$app->container()->singleton(
+    UiManager::class,
+    function ($container) {
+
+        return new UiManager(
+            $container->make(
+                ComponentRegistry::class
+            )
+        );
+    }
+);
+
 
 
 /*
@@ -36,12 +80,16 @@ ViewManager::configure([
 foreach ([
     AppServiceProvider::class,
 ] as $provider) {
+
     $app->registerProvider(
         new $provider($app)
     );
+
 }
 
+
 $app->bootProviders();
+
 
 
 /*
@@ -55,10 +103,5 @@ $app->loadRoutes(
 );
 
 
-/*
-|--------------------------------------------------------------------------
-| Ready
-|--------------------------------------------------------------------------
-*/
 
 return $app;

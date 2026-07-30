@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Api;
 
 class UserController
 {
     public function index()
     {
-        // Más adelante:
-        // $users = Api::get('/users');
-
-        // Por ahora datos de prueba
-
         $users = [
 
             [
@@ -29,10 +23,12 @@ class UserController
 
         ];
 
-        //return view('users.index', compact('users'));
+
         return view('users.index')
-                ->with('users', $users)
-                ->with('title', 'Listado de usuarios');
+            ->withData([
+                'users' => $users
+            ])
+            ->layout('layouts.app')
+            ->title('Listado de usuarios');
     }
-    
 }

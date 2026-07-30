@@ -10,12 +10,30 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        // bindings globales del UI
-        // helpers, views, componentes, etc.
+        /*
+         * Application specific bindings.
+         *
+         * This provider is responsible only for
+         * services created by the redsky-ui application.
+         *
+         * Examples:
+         *
+         * - User services
+         * - Authentication services
+         * - Application workflows
+         * - Business UI services
+         *
+         * Core packages are registered separately:
+         *
+         * - redsky-framework
+         * - redsky-view
+         * - redsky-bootstrap
+         */
     }
+
 
     public function boot(): void
     {
-        // inicialización después de registrar
+        //
     }
 }
