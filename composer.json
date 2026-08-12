@@ -1,68 +1,67 @@
 {
-  "name": "redsky/ui",
-  "description": "The PHP user interface application for redsky ecosystem",
-  "type": "project",
-  "license": "proprietary",
+    "name": "redsky/ui",
+    "description": "The PHP user interface application for redsky ecosystem",
+    "type": "project",
+    "license": "proprietary",
 
-  "require": {
-    "php": ">=8.1",
-    "vlucas/phpdotenv": "^5.6",
-
-    "redsky/framework": "dev-main",
-    "redsky/view": "dev-main",
-    "redsky/bootstrap": "dev-main"
-  },
-
-  "repositories": [
-    {
-      "type": "path",
-      "url": "../redsky-framework",
-      "options": {
-        "symlink": true
-      }
+    "require": {
+        "php": ">=8.1",
+        "vlucas/phpdotenv": "^5.6",
+        "redsky/framework": "dev-main",
+        "redsky/view": "dev-main",
+        "redsky/html": "dev-main"
     },
-    {
-      "type": "path",
-      "url": "../redsky-view",
-      "options": {
-        "symlink": true
-      }
-    },
-    {
-      "type": "path",
-      "url": "../redsky-bootstrap",
-      "options": {
-        "symlink": true
-      }
-    }
-  ],
 
-  "autoload": {
-    "psr-4": {
-      "App\\": "app/"
-    }
-  },
-
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests/"
-    }
-  },
-
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-
-  "config": {
-    "optimize-autoloader": true,
-    "sort-packages": true
-  },
-
-  "scripts": {
-    "post-install-cmd": [
-      "@composer dump-autoload"
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../redsky-framework",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../redsky-view",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../redsky-html",
+            "options": {
+                "symlink": true
+            }
+        }
     ],
-    "post-update-cmd": [
-      "@composer dump-autoload"
-    ]
-  }
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+
+    "scripts": {
+        "post-install-cmd": [
+            "@composer dump-autoload"
+        ],
+        "post-update-cmd": [
+            "@composer dump-autoload"
+        ]
+    }
 }

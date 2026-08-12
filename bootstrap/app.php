@@ -35,6 +35,7 @@ $app = Application::getInstance();
 
 ViewManager::configure([
     'path' => BASE_PATH . '/resources/views',
+    'layout' => 'layouts.app',
 ]);
 
 

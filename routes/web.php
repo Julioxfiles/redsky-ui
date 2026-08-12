@@ -6,6 +6,7 @@ use RedSky\Framework\Http\Response;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HtmlDocumentationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,3 +91,6 @@ Route::get('/test-bootstrap', function () {
 
     
 });
+
+Route::get('/html/docs', [HtmlDocumentationController::class, 'index']);
+Route::get('/html/docs/components/{component}', [HtmlDocumentationController::class, 'show']);
