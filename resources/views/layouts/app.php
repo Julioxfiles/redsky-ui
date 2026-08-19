@@ -1,4 +1,11 @@
+<?php
+
+declare(strict_types=1);
+
+?>
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -11,7 +18,7 @@
     >
 
     <title>
-        <?= $title ?? 'RedSky UI' ?>
+        <?= htmlspecialchars($title ?? 'RedSky UI') ?>
     </title>
 
 
@@ -19,21 +26,30 @@
 
         <link
             rel="stylesheet"
-            href="<?= $style ?>"
+            href="<?= htmlspecialchars($style) ?>"
         >
 
     <?php endforeach; ?>
 
 
-    <!-- Default application styles -->
-     <link
+    <!-- Bootstrap -->
+
+    <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
+
+    <!-- RedSky UI -->
+
     <link
         rel="stylesheet"
         href="/redsky/redsky-ui/public/assets/css/app.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/redsky/redsky-ui/public/assets/css/prism.css"
     >
 
 </head>
@@ -41,66 +57,45 @@
 
 <body>
 
+    <div class="container">
 
-<div class="container">
+        <?php
 
-    <?php $content = $content ?? ''; ?>
+        $content = $content ?? '';
 
-    <?= $content ?>
+        echo $content;
 
-</div>
+        ?>
+
+    </div>
 
 
-<?php foreach ($scripts ?? [] as $script): ?>
+    <?php foreach ($scripts ?? [] as $script): ?>
 
-    <script src="<?= $script ?>"></script>
+        <script
+            src="<?= htmlspecialchars($script) ?>"
+        ></script>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
+    <script src="/redsky/redsky-ui/public/assets/js/prism.js"></script>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Prism.highlightAll();
+    });
+    </script>
+
+    <!-- Prism Highlight -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightAll();
+            }
+        });
+    </script>
 
 </body>
 
 </html>
-
-
-<?php
-/*
-|--------------------------------------------------------------------------
-| Responsabilidad de este archivo
-|--------------------------------------------------------------------------
-|
-| Este archivo es un layout HTML de la aplicación.
-|
-| Sus responsabilidades son:
-|
-| - Definir la estructura HTML base.
-| - Mostrar el título de la página.
-| - Cargar estilos registrados.
-| - Cargar los estilos principales de la aplicación.
-| - Mostrar el contenido generado por una vista.
-| - Cargar scripts registrados.
-|
-| Variables disponibles:
-|
-| $content
-|   Contenido generado por redsky-view.
-|
-| $title
-|   Título definido por la vista.
-|
-| $styles
-|   Assets CSS registrados.
-|
-| $scripts
-|   Assets JavaScript registrados.
-|
-| Este archivo NO debe:
-|
-| - Crear lógica de negocio.
-| - Elegir la librería UI.
-| - Resolver componentes.
-|
-| Es solamente la plantilla visual final.
-|
-*/
-?>

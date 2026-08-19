@@ -1,0 +1,430 @@
+/**
+ * RedSky UI - Prism Theme
+ *
+ * Visual Studio Code Dark+ inspired syntax highlighting.
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #d4d4d4;
+    background: #1e1e1e;
+
+    text-shadow: none;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
+/*
+ * Code block
+ */
+
+pre[class*="language-"] {
+    margin: 0;
+    padding: 1.25rem;
+
+    overflow: auto;
+
+    background: #1e1e1e;
+
+    border-radius: 0.5rem;
+}
+
+
+/*
+ * Inline code
+ */
+
+:not(pre) > code[class*="language-"] {
+    padding: 0.15em 0.35em;
+
+    background: #1e1e1e;
+
+    border-radius: 0.25rem;
+}
+
+
+/*
+ * Comments
+ *
+ * VS Code green.
+ */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #6a9955;
+}
+
+
+/*
+ * Punctuation
+ */
+
+.token.punctuation {
+    color: #d4d4d4;
+}
+
+
+/*
+ * Keywords
+ *
+ * class
+ * function
+ * return
+ * new
+ * public
+ * private
+ * protected
+ * static
+ * if
+ * else
+ */
+
+.token.keyword {
+    color: #569cd6;
+}
+
+
+/*
+ * Strings
+ */
+
+.token.string,
+.token.char {
+    color: #ce9178;
+}
+
+
+/*
+ * Numbers
+ */
+
+.token.number {
+    color: #b5cea8;
+}
+
+
+/*
+ * Boolean values
+ */
+
+.token.boolean {
+    color: #569cd6;
+}
+
+
+/*
+ * Variables
+ */
+
+.token.variable {
+    color: #9cdcfe;
+}
+
+
+/*
+ * Functions
+ */
+
+.token.function {
+    color: #dcdcaa;
+}
+
+
+/*
+ * Class names
+ */
+
+.token.class-name {
+    color: #4ec9b0;
+}
+
+
+/*
+ * Constants
+ */
+
+.token.constant,
+.token.symbol {
+    color: #4fc1ff;
+}
+
+
+/*
+ * Properties
+ */
+
+.token.property {
+    color: #9cdcfe;
+}
+
+
+/*
+ * Operators
+ */
+
+.token.operator {
+    color: #d4d4d4;
+}
+
+
+/*
+ * PHP variables
+ */
+
+.language-php .token.variable {
+    color: #9cdcfe;
+}
+
+
+/*
+ * PHP class names
+ */
+
+.language-php .token.class-name {
+    color: #4ec9b0;
+}
+
+
+/*
+ * PHP functions
+ */
+
+.language-php .token.function {
+    color: #dcdcaa;
+}
+
+
+/*
+ * PHP keywords
+ */
+
+.language-php .token.keyword {
+    color: #569cd6;
+}
+
+
+/*
+ * HTML / Markup
+ */
+
+.language-markup .token.tag {
+    color: #569cd6;
+}
+
+
+/*
+ * HTML tag punctuation
+ */
+
+.language-markup .token.tag .token.punctuation {
+    color: #808080;
+}
+
+
+/*
+ * HTML tag names
+ */
+
+.language-markup .token.tag .token.tag {
+    color: #569cd6;
+}
+
+
+/*
+ * HTML attributes
+ */
+
+.language-markup .token.attr-name {
+    color: #9cdcfe;
+}
+
+
+/*
+ * HTML attribute values
+ */
+
+.language-markup .token.attr-value {
+    color: #ce9178;
+}
+
+
+/*
+ * HTML attribute punctuation
+ */
+
+.language-markup .token.attr-value .token.punctuation {
+    color: #ce9178;
+}
+
+
+/*
+ * CSS selectors
+ */
+
+.language-css .token.selector {
+    color: #d7ba7d;
+}
+
+
+/*
+ * CSS properties
+ */
+
+.language-css .token.property {
+    color: #9cdcfe;
+}
+
+
+/*
+ * CSS functions
+ */
+
+.language-css .token.function {
+    color: #dcdcaa;
+}
+
+
+/*
+ * JavaScript keywords
+ */
+
+.language-javascript .token.keyword {
+    color: #569cd6;
+}
+
+
+/*
+ * JavaScript functions
+ */
+
+.language-javascript .token.function {
+    color: #dcdcaa;
+}
+
+
+/*
+ * JavaScript strings
+ */
+
+.language-javascript .token.string {
+    color: #ce9178;
+}
+
+
+/*
+ * JSON properties
+ */
+
+.language-json .token.property {
+    color: #9cdcfe;
+}
+
+
+/*
+ * JSON strings
+ */
+
+.language-json .token.string {
+    color: #ce9178;
+}
+
+
+/*
+ * Regular expressions
+ */
+
+.token.regex {
+    color: #d16969;
+}
+
+
+/*
+ * Annotations / attributes
+ */
+
+.token.annotation,
+.token.atrule {
+    color: #dcdcaa;
+}
+
+
+/*
+ * URLs
+ */
+
+.token.url {
+    color: #4ec9b0;
+}
+
+
+/*
+ * Entities
+ */
+
+.token.entity {
+    color: #4ec9b0;
+}
+
+
+/*
+ * Inserted code
+ */
+
+.token.inserted {
+    color: #b5cea8;
+}
+
+
+/*
+ * Deleted code
+ */
+
+.token.deleted {
+    color: #f44747;
+}
+
+
+/*
+ * Important
+ */
+
+.token.important {
+    color: #569cd6;
+}
+
+
+/*
+ * Selection
+ */
+
+code[class*="language-"] ::selection,
+pre[class*="language-"] ::selection {
+    background: #264f78;
+}
+
+
+/*
+ * Bold
+ */
+
+.token.bold {
+    font-weight: bold;
+}
+
+
+/*
+ * Italic
+ */
+
+.token.italic {
+    font-style: italic;
+}

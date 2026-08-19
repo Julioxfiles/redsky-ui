@@ -29,7 +29,7 @@ class HtmlDocumentationController
             ]);
         }
 
-        return view('documentation.component', [
+        return view('documentation.component-details', [
             'component' => $data,
         ]);
     }

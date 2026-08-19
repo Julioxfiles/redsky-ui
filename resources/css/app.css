@@ -49,3 +49,6 @@ img {
   opacity: 1 !important;
 }
 
+.documentation-section h2 {
+    color: #60a5fa;
+}
