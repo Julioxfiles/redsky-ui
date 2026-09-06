@@ -28,12 +28,27 @@ $examples = method_exists($component, 'examples')
 ?>
 
 <style>
+    .documentation-title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: aqua;
+    }
+
+    .documentation-title code {
+        font-family:  "Courier New", monospace;
+        font-size: 1.5rem;
+        font-weight: 0;
+        color:cornflowerblue;
+
+    }
+
     .documentation-section h2 {
-        color: #7dd3fc;
+        color: cornflowerblue;
     }
 
     .documentation-example {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .documentation-example-description {
@@ -42,20 +57,47 @@ $examples = method_exists($component, 'examples')
 
     .documentation-example-code {
         margin-bottom: 1rem;
+        
     }
 
     .documentation-example-code-title {
         margin-bottom: 0.75rem;
         font-weight: 600;
+        color:aqua;
     }
 
     .documentation-example-output {
+        margin-top: 1rem;       
+        
+    }
+
+    .documentation-example-component-rendered {
         margin-top: 1rem;
+        padding: 1.5rem;
+        border: 1px solid #374151;
+        border-radius: 0.5rem;
+        background: #121212;
+        color:cornflowerblue;
+        width: 300px;
     }
 
     .documentation-example-output-title {
         margin-bottom: 0.75rem;
         font-weight: 600;
+        color:aqua;
+        
+    }
+
+    .documentation-method-name code {
+        font-family: "Courier New", monospace;
+        font-size: 1rem;
+        font-weight: 500;
+        color:aqua;
+    }
+
+    .documentation-table th,
+    .documentation-table td {
+        padding: 5px 10px;
     }
 
     .documentation-example-preview {
@@ -89,51 +131,22 @@ $examples = method_exists($component, 'examples')
     }
 </style>
 
-
 <div class="documentation">
 
     <header class="documentation-header">
 
-        <div class="documentation-breadcrumb">
-            HTML Components
-            <span>/</span>
-            <?= htmlspecialchars(
-                $component->category() ?? 'General'
-            ) ?>
-        </div>
-
         <h1 class="documentation-title">
             <?= htmlspecialchars($component->name()) ?>
+            <dd>
+                <code>
+                    <?= htmlspecialchars(
+                        "use " . $component->class()
+                    ) ?>
+                </code>
+            </dd>
         </h1>
 
-        <?php if ($component->description() !== null): ?>
-
-            <p class="documentation-description">
-                <?= htmlspecialchars($component->description()) ?>
-            </p>
-
-        <?php endif; ?>
-
         <div class="documentation-meta">
-
-            <?php if ($component->category() !== null): ?>
-
-                <span class="documentation-badge">
-                    <?= htmlspecialchars($component->category()) ?>
-                </span>
-
-            <?php endif; ?>
-
-            <?php if ($component->version() !== null): ?>
-
-                <span class="documentation-meta-item">
-                    Version:
-                    <code>
-                        <?= htmlspecialchars($component->version()) ?>
-                    </code>
-                </span>
-
-            <?php endif; ?>
 
             <?php if ($component->isDeprecated()): ?>
 
@@ -147,13 +160,9 @@ $examples = method_exists($component, 'examples')
 
     </header>
 
-
     <section class="documentation-section">
 
-        <h2>
-            Description
-        </h2>
-
+       
         <div class="documentation-card">
 
             <?php if ($component->description() !== null): ?>
@@ -178,49 +187,17 @@ $examples = method_exists($component, 'examples')
 
     </section>
 
-
     <?php if (!empty($examples)): ?>
 
         <section class="documentation-section">
 
             <h2>
-                Examples
+                Example
             </h2>
-
-            <p class="documentation-muted">
-                The following examples demonstrate how to use this
-                component, the source code involved, and the resulting
-                HTML output.
-            </p>
-
 
             <?php foreach ($examples as $example): ?>
 
                 <div class="documentation-example documentation-card">
-
-                    <?php if ($example->title() !== ''): ?>
-
-                        <h3>
-                            <?= htmlspecialchars(
-                                $example->title()
-                            ) ?>
-                        </h3>
-
-                    <?php endif; ?>
-
-
-                    <?php if ($example->hasDescription()): ?>
-
-                        <p class="documentation-example-description">
-                            <?= nl2br(
-                                htmlspecialchars(
-                                    $example->description()
-                                )
-                            ) ?>
-                        </p>
-
-                    <?php endif; ?>
-
 
                     <?php if ($example->code() !== ''): ?>
 
@@ -274,7 +251,7 @@ $examples = method_exists($component, 'examples')
 
                             <div class="documentation-example-code-title">
                                 <?= $language === 'php'
-                                    ? 'PHP Source'
+                                    ? 'PHP'
                                     : 'Source'
                                 ?>
                             </div>
@@ -285,28 +262,16 @@ $examples = method_exists($component, 'examples')
 
                         </div>
 
-
                         <?php if ($language === 'php'): ?>
 
                             <?php
 
-                            $phpCode = $example->code();
-
-                            /*
-                             * The example metadata currently stores the
-                             * PHP source code. The rendered HTML is stored
-                             * separately in output().
-                             *
-                             * When the output contains HTML, display that
-                             * HTML source separately for inspection.
-                             */
-
                             $htmlOutput = method_exists(
-                                $example,
-                                'output'
-                            )
-                                ? $example->output()
-                                : null;
+                            $example,
+                            'formattedOutput'
+                        )
+                            ? $example->formattedOutput()
+                            : null;
 
                             ?>
 
@@ -333,22 +298,19 @@ $examples = method_exists($component, 'examples')
 
                     <?php endif; ?>
 
-
-                    <?php if (
-                        method_exists($example, 'hasOutput')
-                        && $example->hasOutput()
+                    <?php if (method_exists($example, 'hasOutput')
+                             && $example->hasOutput()
                     ): ?>
 
                         <div class="documentation-example-output">
 
-                            <div class="documentation-example-output-title">
-                                Rendered Output
+                            <div class="documentation-example-code-title">
+                                Component Rendered
                             </div>
 
-                            
-                                <?= $example->output() ?>
-
-                            
+                            <div class="documentation-example-component-rendered">
+                              <?= $example->output(); ?>
+                            </div>
 
                         </div>
 
@@ -361,81 +323,6 @@ $examples = method_exists($component, 'examples')
         </section>
 
     <?php endif; ?>
-
-
-    <section class="documentation-section">
-
-        <h2>
-            Component Information
-        </h2>
-
-        <div class="documentation-card">
-
-            <dl class="documentation-info">
-
-                <dt>
-                    Class
-                </dt>
-
-                <dd>
-                    <code>
-                        <?= htmlspecialchars(
-                            $component->class()
-                        ) ?>
-                    </code>
-                </dd>
-
-
-                <dt>
-                    Category
-                </dt>
-
-                <dd>
-                    <?= htmlspecialchars(
-                        $component->category() ?? 'None'
-                    ) ?>
-                </dd>
-
-
-                <dt>
-                    Version
-                </dt>
-
-                <dd>
-                    <?= htmlspecialchars(
-                        $component->version() ?? 'Not specified'
-                    ) ?>
-                </dd>
-
-
-                <dt>
-                    Deprecated
-                </dt>
-
-                <dd>
-
-                    <?php if ($component->isDeprecated()): ?>
-
-                        <span class="documentation-badge documentation-badge-danger">
-                            Yes
-                        </span>
-
-                    <?php else: ?>
-
-                        <span class="documentation-badge documentation-badge-success">
-                            No
-                        </span>
-
-                    <?php endif; ?>
-
-                </dd>
-
-            </dl>
-
-        </div>
-
-    </section>
-
 
     <section class="documentation-section">
 
@@ -463,10 +350,7 @@ $examples = method_exists($component, 'examples')
 
                         <tr>
                             <th>Method</th>
-                            <th>Parameters</th>
-                            <th>Returns</th>
                             <th>Description</th>
-                            <th>Declared By</th>
                         </tr>
 
                     </thead>
@@ -474,6 +358,50 @@ $examples = method_exists($component, 'examples')
                     <tbody>
 
                         <?php foreach ($ownMethods as $method): ?>
+
+                            <?php
+
+                            $parameters = [];
+
+                            foreach ($method->parameters() as $parameter) {
+
+                                $parameterType = $parameter->type();
+
+                                $parameterName = '$' . $parameter->name();
+
+                                $parameterValue =
+                                    $parameterType
+                                    . ' '
+                                    . $parameterName;
+
+                                if ($parameter->isVariadic()) {
+                                    $parameterValue =
+                                        '...'
+                                        . $parameterValue;
+                                }
+
+                                if (
+                                    $parameter->isOptional()
+                                    && $parameter->hasDefault()
+                                ) {
+                                    $parameterValue .=
+                                        ' = '
+                                        . var_export(
+                                            $parameter->default(),
+                                            true
+                                        );
+                                }
+
+                                $parameters[] = $parameterValue;
+                            }
+
+                            $signature =
+                                $method->name()
+                                . '('
+                                . implode(', ', $parameters)
+                                . ')';
+
+                            ?>
 
                             <tr>
 
@@ -483,7 +411,7 @@ $examples = method_exists($component, 'examples')
 
                                         <code>
                                             <?= htmlspecialchars(
-                                                $method->name()
+                                                $signature
                                             ) ?>
                                         </code>
 
@@ -519,98 +447,6 @@ $examples = method_exists($component, 'examples')
 
                                 </td>
 
-
-                                <td>
-
-                                    <?php if ($method->hasParameters()): ?>
-
-                                        <ul class="documentation-parameters">
-
-                                            <?php foreach (
-                                                $method->parameters()
-                                                as $parameter
-                                            ): ?>
-
-                                                <li>
-
-                                                    <code>
-                                                        <?= htmlspecialchars(
-                                                            $parameter->name()
-                                                        ) ?>
-                                                    </code>
-
-                                                    :
-
-                                                    <code>
-                                                        <?= htmlspecialchars(
-                                                            $parameter->type()
-                                                        ) ?>
-                                                    </code>
-
-                                                    <?php if (
-                                                        $parameter->isOptional()
-                                                    ): ?>
-
-                                                        <span class="documentation-muted">
-                                                            optional
-                                                        </span>
-
-                                                    <?php endif; ?>
-
-                                                    <?php if (
-                                                        $parameter->isVariadic()
-                                                    ): ?>
-
-                                                        <span class="documentation-muted">
-                                                            variadic
-                                                        </span>
-
-                                                    <?php endif; ?>
-
-                                                    <?php if (
-                                                        $parameter->hasDefault()
-                                                    ): ?>
-
-                                                        <span class="documentation-muted">
-                                                            =
-                                                            <?= htmlspecialchars(
-                                                                var_export(
-                                                                    $parameter->default(),
-                                                                    true
-                                                                )
-                                                            ) ?>
-                                                        </span>
-
-                                                    <?php endif; ?>
-
-                                                </li>
-
-                                            <?php endforeach; ?>
-
-                                        </ul>
-
-                                    <?php else: ?>
-
-                                        <span class="documentation-muted">
-                                            None
-                                        </span>
-
-                                    <?php endif; ?>
-
-                                </td>
-
-
-                                <td>
-
-                                    <code>
-                                        <?= htmlspecialchars(
-                                            $method->returnType()
-                                        ) ?>
-                                    </code>
-
-                                </td>
-
-
                                 <td>
 
                                     <?php if (
@@ -631,29 +467,6 @@ $examples = method_exists($component, 'examples')
 
                                 </td>
 
-
-                                <td>
-
-                                    <?php if (
-                                        $method->declaringClass() !== null
-                                    ): ?>
-
-                                        <code>
-                                            <?= htmlspecialchars(
-                                                $method->declaringClass()
-                                            ) ?>
-                                        </code>
-
-                                    <?php else: ?>
-
-                                        <span class="documentation-muted">
-                                            Unknown
-                                        </span>
-
-                                    <?php endif; ?>
-
-                                </td>
-
                             </tr>
 
                         <?php endforeach; ?>
@@ -667,7 +480,6 @@ $examples = method_exists($component, 'examples')
         <?php endif; ?>
 
     </section>
-
 
     <?php if (!empty($inheritedMethods)): ?>
 
@@ -689,10 +501,7 @@ $examples = method_exists($component, 'examples')
 
                         <tr>
                             <th>Method</th>
-                            <th>Parameters</th>
-                            <th>Returns</th>
                             <th>Description</th>
-                            <th>Declared By</th>
                         </tr>
 
                     </thead>
@@ -700,6 +509,50 @@ $examples = method_exists($component, 'examples')
                     <tbody>
 
                         <?php foreach ($inheritedMethods as $method): ?>
+
+                            <?php
+
+                            $parameters = [];
+
+                            foreach ($method->parameters() as $parameter) {
+
+                                $parameterType = $parameter->type();
+
+                                $parameterName = '$' . $parameter->name();
+
+                                $parameterValue =
+                                    $parameterType
+                                    . ' '
+                                    . $parameterName;
+
+                                if ($parameter->isVariadic()) {
+                                    $parameterValue =
+                                        '...'
+                                        . $parameterValue;
+                                }
+
+                                if (
+                                    $parameter->isOptional()
+                                    && $parameter->hasDefault()
+                                ) {
+                                    $parameterValue .=
+                                        ' = '
+                                        . var_export(
+                                            $parameter->default(),
+                                            true
+                                        );
+                                }
+
+                                $parameters[] = $parameterValue;
+                            }
+
+                            $signature =
+                                $method->name()
+                                . '('
+                                . implode(', ', $parameters)
+                                . ')';
+
+                            ?>
 
                             <tr>
 
@@ -709,7 +562,7 @@ $examples = method_exists($component, 'examples')
 
                                         <code>
                                             <?= htmlspecialchars(
-                                                $method->name()
+                                                $signature
                                             ) ?>
                                         </code>
 
@@ -749,98 +602,6 @@ $examples = method_exists($component, 'examples')
 
                                 </td>
 
-
-                                <td>
-
-                                    <?php if ($method->hasParameters()): ?>
-
-                                        <ul class="documentation-parameters">
-
-                                            <?php foreach (
-                                                $method->parameters()
-                                                as $parameter
-                                            ): ?>
-
-                                                <li>
-
-                                                    <code>
-                                                        <?= htmlspecialchars(
-                                                            $parameter->name()
-                                                        ) ?>
-                                                    </code>
-
-                                                    :
-
-                                                    <code>
-                                                        <?= htmlspecialchars(
-                                                            $parameter->type()
-                                                        ) ?>
-                                                    </code>
-
-                                                    <?php if (
-                                                        $parameter->isOptional()
-                                                    ): ?>
-
-                                                        <span class="documentation-muted">
-                                                            optional
-                                                        </span>
-
-                                                    <?php endif; ?>
-
-                                                    <?php if (
-                                                        $parameter->isVariadic()
-                                                    ): ?>
-
-                                                        <span class="documentation-muted">
-                                                            variadic
-                                                        </span>
-
-                                                    <?php endif; ?>
-
-                                                    <?php if (
-                                                        $parameter->hasDefault()
-                                                    ): ?>
-
-                                                        <span class="documentation-muted">
-                                                            =
-                                                            <?= htmlspecialchars(
-                                                                var_export(
-                                                                    $parameter->default(),
-                                                                    true
-                                                                )
-                                                            ) ?>
-                                                        </span>
-
-                                                    <?php endif; ?>
-
-                                                </li>
-
-                                            <?php endforeach; ?>
-
-                                        </ul>
-
-                                    <?php else: ?>
-
-                                        <span class="documentation-muted">
-                                            None
-                                        </span>
-
-                                    <?php endif; ?>
-
-                                </td>
-
-
-                                <td>
-
-                                    <code>
-                                        <?= htmlspecialchars(
-                                            $method->returnType()
-                                        ) ?>
-                                    </code>
-
-                                </td>
-
-
                                 <td>
 
                                     <?php if (
@@ -861,29 +622,6 @@ $examples = method_exists($component, 'examples')
 
                                 </td>
 
-
-                                <td>
-
-                                    <?php if (
-                                        $method->declaringClass() !== null
-                                    ): ?>
-
-                                        <code>
-                                            <?= htmlspecialchars(
-                                                $method->declaringClass()
-                                            ) ?>
-                                        </code>
-
-                                    <?php else: ?>
-
-                                        <span class="documentation-muted">
-                                            Unknown
-                                        </span>
-
-                                    <?php endif; ?>
-
-                                </td>
-
                             </tr>
 
                         <?php endforeach; ?>
@@ -898,7 +636,6 @@ $examples = method_exists($component, 'examples')
 
     <?php endif; ?>
 
-
     <div class="documentation-navigation">
 
         <a
@@ -911,7 +648,6 @@ $examples = method_exists($component, 'examples')
     </div>
 
 </div>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

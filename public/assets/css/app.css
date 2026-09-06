@@ -31,7 +31,7 @@ body {
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 2rem 3rem;
+    padding: 1rem 2rem;
 }
 
 /* Enlaces */
@@ -229,5 +229,4 @@ hr {
     margin-top: 2rem;
     border-radius: 0.375rem;
 }
-
 
