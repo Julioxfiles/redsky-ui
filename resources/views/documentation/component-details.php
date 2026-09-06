@@ -345,11 +345,10 @@ $examples = method_exists($component, 'examples')
                                 Rendered Output
                             </div>
 
-                            <div class="documentation-example-preview">
-
+                            
                                 <?= $example->output() ?>
 
-                            </div>
+                            
 
                         </div>
 
