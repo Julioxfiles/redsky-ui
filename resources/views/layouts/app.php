@@ -79,6 +79,7 @@ declare(strict_types=1);
     <?php endforeach; ?>
 
     <script src="/redsky/redsky-ui/public/assets/js/prism.js"></script>
+    <script type="module" src="/redsky/redsky-ui/public/assets/js/DataGrid/DataGrid.js"></script>
     
     <script>
     document.addEventListener('DOMContentLoaded', function () {

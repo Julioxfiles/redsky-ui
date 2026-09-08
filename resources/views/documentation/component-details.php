@@ -192,12 +192,20 @@ $examples = method_exists($component, 'examples')
         <section class="documentation-section">
 
             <h2>
-                Example
+                Examples
             </h2>
 
             <?php foreach ($examples as $example): ?>
 
                 <div class="documentation-example documentation-card">
+
+                    <?php if ($example->title() !== ''): ?>
+
+                        <h3>
+                            <?= htmlspecialchars($example->title()) ?>
+                        </h3>
+
+                    <?php endif; ?>
 
                     <?php if ($example->code() !== ''): ?>
 
@@ -267,11 +275,11 @@ $examples = method_exists($component, 'examples')
                             <?php
 
                             $htmlOutput = method_exists(
-                            $example,
-                            'formattedOutput'
-                        )
-                            ? $example->formattedOutput()
-                            : null;
+                                $example,
+                                'formattedOutput'
+                            )
+                                ? $example->formattedOutput()
+                                : null;
 
                             ?>
 
@@ -298,8 +306,9 @@ $examples = method_exists($component, 'examples')
 
                     <?php endif; ?>
 
-                    <?php if (method_exists($example, 'hasOutput')
-                             && $example->hasOutput()
+                    <?php if (
+                        method_exists($example, 'hasOutput')
+                        && $example->hasOutput()
                     ): ?>
 
                         <div class="documentation-example-output">
@@ -309,7 +318,7 @@ $examples = method_exists($component, 'examples')
                             </div>
 
                             <div class="documentation-example-component-rendered">
-                              <?= $example->output(); ?>
+                                <?= $example->output(); ?>
                             </div>
 
                         </div>
