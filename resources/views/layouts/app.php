@@ -121,7 +121,7 @@ declare(strict_types=1);
     
     <script src="/redsky/redsky-ui/public/assets/js/app.js"></script> 
     <script src="/redsky/redsky-ui/public/assets/js/Prism.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/Component.js"></script>
+    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/Component.js"></script>
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/Modal/Modal.js"></script>
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/DataGrid/DataGrid.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/Alert.js"></script>

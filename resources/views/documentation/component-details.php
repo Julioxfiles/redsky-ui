@@ -21,10 +21,9 @@ foreach ($methods as $method) {
     }
 }
 
-$examples = method_exists($component, 'examples')
-    ? $component->examples()
+$examples = method_exists($component, 'exampleFiles')
+    ? $component->exampleFiles()
     : [];
-
 ?>
 
 <style>
@@ -220,133 +219,88 @@ $examples = method_exists($component, 'examples')
 
             <?php foreach ($examples as $example): ?>
 
-                <div class="documentation-example documentation-card">
+                <?php if ($example->cssUrl() !== null): ?>
 
-                    <?php if ($example->title() !== ''): ?>
-
-                        <h5>
-                            <?= htmlspecialchars($example->title()) ?>
-                        </h5>
+                    <link
+                        rel="stylesheet"
+                        href="<?= htmlspecialchars(
+                            $example->cssUrl()
+                        ) ?>"
+                    >
 
                     <?php endif; ?>
 
-                    <?php if ($example->code() !== ''): ?>
+                    <?php if ($example->jsUrl() !== null): ?>
 
-                        <?php
+                    <script
+                        src="<?= htmlspecialchars(
+                            $example->jsUrl()
+                        ) ?>"
+                    ></script>
 
-                        $language = $example->language();
+                    <?php endif; ?>
 
-                        if (
-                            $language === null
-                            || $language === ''
-                        ) {
-                            $language = 'php';
-                        }
 
-                        $language = strtolower($language);
+                <div class="documentation-example documentation-card">
 
-                        $allowedLanguages = [
-                            'php',
-                            'html',
-                            'markup',
-                            'css',
-                            'javascript',
-                            'js',
-                            'json',
-                            'bash',
-                            'sql',
-                            'text',
-                        ];
+                    <h5>
+                        <?= htmlspecialchars($example->title()) ?>
+                    </h5>
 
-                        if (
-                            !in_array(
-                                $language,
-                                $allowedLanguages,
-                                true
-                            )
-                        ) {
-                            $language = 'text';
-                        }
 
-                        if ($language === 'html') {
-                            $language = 'markup';
-                        }
+                    <?php if ($example->description() !== null): ?>
 
-                        if ($language === 'js') {
-                            $language = 'javascript';
-                        }
+                        <p class="documentation-example-description">
+                            <?= htmlspecialchars(
+                                $example->description()
+                            ) ?>
+                        </p>
 
-                        ?>
+                    <?php endif; ?>
+
+
+                    <div class="documentation-example-code">
+
+                        <div class="documentation-example-code-title">
+                            PHP
+                        </div>
+
+                        <pre class="language-php"><code class="language-php"><?= htmlspecialchars(
+                            $example->source()
+                        ) ?></code></pre>
+
+                    </div>
+
+
+                    <?php if ($example->hasOutput()): ?>
 
                         <div class="documentation-example-code">
 
                             <div class="documentation-example-code-title">
-                                <?= $language === 'php'
-                                    ? 'PHP'
-                                    : 'Source'
-                                ?>
+                                HTML Output
                             </div>
 
-                            <pre class="language-<?= htmlspecialchars($language) ?>"><code class="language-<?= htmlspecialchars($language) ?>"><?= htmlspecialchars(
-                                $example->code()
+                            <pre class="language-markup"><code class="language-markup"><?= htmlspecialchars(
+                                $example->output()
                             ) ?></code></pre>
 
                         </div>
 
-                        <?php if ($language === 'php'): ?>
-
-                            <?php
-
-                            $htmlOutput = method_exists(
-                                $example,
-                                'formattedOutput'
-                            )
-                                ? $example->formattedOutput()
-                                : null;
-
-                            ?>
-
-                            <?php if (
-                                $htmlOutput !== null
-                                && $htmlOutput !== ''
-                            ): ?>
-
-                                <div class="documentation-example-code">
-
-                                    <div class="documentation-example-code-title">
-                                        HTML Output
-                                    </div>
-
-                                    <pre class="language-markup"><code class="language-markup"><?= htmlspecialchars(
-                                        $htmlOutput
-                                    ) ?></code></pre>
-
-                                </div>
-
-                            <?php endif; ?>
-
-                        <?php endif; ?>
-
-                    <?php endif; ?>
-
-                    <?php if (
-                        method_exists($example, 'hasOutput')
-                        && $example->hasOutput()
-                    ): ?>
 
                         <div class="documentation-example-output">
 
-                            <div class="documentation-example-code-title">
+                            <div class="documentation-example-output-title">
                                 Component Rendered
                             </div>
 
                             <div class="documentation-example-component-rendered">
-                                <?= $example->output(); ?>
+                                <?= $example->output() ?>
                             </div>
 
                         </div>
 
                     <?php endif; ?>
+
 
                 </div>
 
