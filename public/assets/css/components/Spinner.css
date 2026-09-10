@@ -1,0 +1,42 @@
+[data-redsky-component="spinner"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-redsky-component="spinner"] [data-spinner-indicator] {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 0.25rem solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: redsky-spinner-rotate 0.75s linear infinite;
+}
+
+[data-redsky-component="spinner"][data-spinner-size="small"]
+[data-spinner-indicator] {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15rem;
+}
+
+[data-redsky-component="spinner"][data-spinner-size="medium"]
+[data-spinner-indicator] {
+    width: 2rem;
+    height: 2rem;
+    border-width: 0.25rem;
+}
+
+[data-redsky-component="spinner"][data-spinner-size="large"]
+[data-spinner-indicator] {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.35rem;
+}
+
+@keyframes redsky-spinner-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}

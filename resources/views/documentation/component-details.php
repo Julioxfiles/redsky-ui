@@ -29,10 +29,10 @@ $examples = method_exists($component, 'examples')
 
 <style>
     .documentation-title {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.1rem;
         color: aqua;
+        font-size: 3rem;
+        font-weight: 600;
     }
 
     .documentation-title code {
@@ -77,10 +77,27 @@ $examples = method_exists($component, 'examples')
         border: 1px solid #374151;
         border-radius: 0.5rem;
         background: #121212;
-        color:cornflowerblue;
-        width: 300px;
-    }
+        color: cornflowerblue;
 
+        /*
+        * Let the preview adapt to the rendered component.
+        */
+        width: fit-content;
+        max-width: 100%;
+        height: auto;
+        min-height: 80px;
+
+        /*
+        * Prevent large components from breaking
+        * the documentation page.
+        */
+        overflow: auto;
+
+        /*
+        * Make dimensions include padding and border.
+        */
+        box-sizing: border-box;
+    }
     .documentation-example-output-title {
         margin-bottom: 0.75rem;
         font-weight: 600;
@@ -129,13 +146,19 @@ $examples = method_exists($component, 'examples')
             monospace;
         font-size: 0.9rem;
     }
+    
+    .documentation-section h2 {
+        color: cornflowerblue;
+        font-size: 1.2rem;
+    }
+
 </style>
 
 <div class="documentation">
 
     <header class="documentation-header">
 
-        <h1 class="documentation-title">
+        <h2 class="documentation-title">
             <?= htmlspecialchars($component->name()) ?>
             <dd>
                 <code>
@@ -201,9 +224,9 @@ $examples = method_exists($component, 'examples')
 
                     <?php if ($example->title() !== ''): ?>
 
-                        <h3>
+                        <h5>
                             <?= htmlspecialchars($example->title()) ?>
-                        </h3>
+                        </h5>
 
                     <?php endif; ?>
 

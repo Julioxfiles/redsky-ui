@@ -1,0 +1,558 @@
+[data-redsky-component="modal"] {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 1rem;
+
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+[data-redsky-component="modal"][hidden] {
+    display: none;
+}
+
+
+/* --------------------------------------------------
+   Backdrop
+   -------------------------------------------------- */
+
+[data-modal-backdrop] {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    opacity: 1;
+
+    transition: opacity 0.2s ease;
+}
+
+
+/* --------------------------------------------------
+   Dialog
+   -------------------------------------------------- */
+
+[data-modal-dialog] {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 640px;
+    max-height: calc(100vh - 2rem);
+
+    margin: 0;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+    color: #111827;
+
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+    overflow: hidden;
+
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* --------------------------------------------------
+   Modal sizes
+   -------------------------------------------------- */
+
+[data-modal-size="small"] [data-modal-dialog] {
+    max-width: 400px;
+}
+
+[data-modal-size="medium"] [data-modal-dialog] {
+    max-width: 640px;
+}
+
+[data-modal-size="large"] [data-modal-dialog] {
+    max-width: 1000px;
+}
+
+[data-modal-size="fullscreen"] [data-modal-dialog] {
+    width: 100%;
+    max-width: none;
+
+    height: 100%;
+    max-height: none;
+
+    border-radius: 0;
+}
+
+
+/* --------------------------------------------------
+   Modal positions
+   -------------------------------------------------- */
+
+[data-modal-position="center"] {
+    align-items: center;
+    justify-content: center;
+}
+
+[data-modal-position="top"] {
+    align-items: flex-start;
+    justify-content: center;
+
+    padding-top: 1rem;
+}
+
+[data-modal-position="bottom"] {
+    align-items: flex-end;
+    justify-content: center;
+
+    padding-bottom: 1rem;
+}
+
+[data-modal-position="left"] {
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-left: 1rem;
+}
+
+[data-modal-position="right"] {
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-right: 1rem;
+}
+
+[data-modal-position="anchor"],
+[data-modal-position="custom"] {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+/* --------------------------------------------------
+   Header
+   -------------------------------------------------- */
+
+[data-modal-header] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex: 0 0 auto;
+
+    min-height: 3.5rem;
+
+    padding: 0.75rem 1rem;
+
+    box-sizing: border-box;
+
+    background: #f8fafc;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    user-select: none;
+}
+
+
+/* --------------------------------------------------
+   Title
+   -------------------------------------------------- */
+
+[data-modal-title] {
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5;
+
+    color: #0f172a;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* --------------------------------------------------
+   Close button
+   -------------------------------------------------- */
+
+[data-modal-close] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: 2rem;
+    height: 2rem;
+
+    margin-left: 1rem;
+    padding: 0;
+
+    border: 0;
+    border-radius: 0.375rem;
+
+    background: transparent;
+    color: #64748b;
+
+    font-size: 1.5rem;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+[data-modal-close]:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+[data-modal-close]:active {
+    background: #cbd5e1;
+}
+
+[data-modal-close]:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+
+/* --------------------------------------------------
+   Body
+   -------------------------------------------------- */
+
+[data-modal-body] {
+    flex: 1 1 auto;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 1rem;
+
+    box-sizing: border-box;
+
+    overflow-x: auto;
+    overflow-y: auto;
+
+    overscroll-behavior: contain;
+}
+
+
+/* --------------------------------------------------
+   Footer
+   -------------------------------------------------- */
+
+[data-modal-footer] {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex: 0 0 auto;
+
+    gap: 0.625rem;
+
+    min-height: 3.5rem;
+
+    padding: 0.75rem 1rem;
+
+    box-sizing: border-box;
+
+    background: #f8fafc;
+
+    border-top: 1px solid #e2e8f0;
+}
+
+
+/* --------------------------------------------------
+   Footer buttons
+   -------------------------------------------------- */
+
+[data-modal-footer] button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0.5rem 0.875rem;
+
+    box-sizing: border-box;
+
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+
+    text-align: center;
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.05s ease;
+}
+
+[data-modal-confirm] {
+    background-color:#ffffff;
+}
+
+
+/* --------------------------------------------------
+   Primary button
+   -------------------------------------------------- */
+
+[data-modal-footer] button:last-child {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+[data-modal-footer] button:last-child:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+[data-modal-footer] button:last-child:active {
+    background: #1e40af;
+    border-color: #1e40af;
+
+    transform: translateY(1px);
+}
+
+[data-modal-footer] button:last-child:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+
+/* --------------------------------------------------
+   Secondary button
+   -------------------------------------------------- */
+
+[data-modal-footer] button:not(:last-child) {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    color: #334155;
+}
+
+[data-modal-footer] button:not(:last-child):hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+    color: #0f172a;
+}
+
+[data-modal-footer] button:not(:last-child):active {
+    background: #f1f5f9;
+
+    transform: translateY(1px);
+}
+
+[data-modal-footer] button:not(:last-child):focus-visible {
+    outline: 2px solid #64748b;
+    outline-offset: 2px;
+
+    box-shadow:
+        0 0 0 3px rgba(100, 116, 139, 0.15);
+}
+
+
+/* --------------------------------------------------
+   Disabled buttons
+   -------------------------------------------------- */
+
+[data-modal-footer] button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+    transform: none;
+}
+
+[data-modal-footer] button:disabled:hover,
+[data-modal-footer] button:disabled:active {
+    background: inherit;
+    border-color: inherit;
+    color: inherit;
+
+    transform: none;
+}
+
+
+/* --------------------------------------------------
+   Modal animations
+   -------------------------------------------------- */
+
+[data-redsky-component="modal"][data-modal-animation="none"] [data-modal-dialog],
+[data-redsky-component="modal"][data-modal-animation="none"] [data-modal-backdrop] {
+    transition: none;
+}
+
+[data-redsky-component="modal"][data-modal-animation="fade"] [data-modal-dialog] {
+    transform: translateY(0) scale(1);
+}
+
+[data-redsky-component="modal"][data-modal-animation="slide-down"] [data-modal-dialog] {
+    transform: translateY(-2rem);
+}
+
+[data-redsky-component="modal"][data-modal-animation="slide-up"] [data-modal-dialog] {
+    transform: translateY(2rem);
+}
+
+[data-redsky-component="modal"][data-modal-animation="slide-left"] [data-modal-dialog] {
+    transform: translateX(2rem);
+}
+
+[data-redsky-component="modal"][data-modal-animation="slide-right"] [data-modal-dialog] {
+    transform: translateX(-2rem);
+}
+
+[data-redsky-component="modal"][data-modal-animation="zoom"] [data-modal-dialog] {
+    transform: scale(0.9);
+}
+
+
+/* --------------------------------------------------
+   Dragging
+   -------------------------------------------------- */
+
+[data-redsky-component="modal"][data-modal-draggable="true"] [data-modal-header] {
+    cursor: move;
+    touch-action: none;
+}
+
+[data-redsky-component="modal"][data-modal-draggable="true"] [data-modal-close] {
+    cursor: pointer;
+}
+
+
+/* --------------------------------------------------
+   Custom and anchor positioning
+   -------------------------------------------------- */
+
+[data-redsky-component="modal"][data-modal-position="custom"] [data-modal-dialog],
+[data-redsky-component="modal"][data-modal-position="anchor"] [data-modal-dialog] {
+    position: absolute;
+}
+
+
+/* --------------------------------------------------
+   Form elements
+   -------------------------------------------------- */
+
+[data-redsky-component="modal"] [data-modal-body] form {
+    width: 100%;
+}
+
+[data-redsky-component="modal"] input,
+[data-redsky-component="modal"] textarea,
+[data-redsky-component="modal"] select,
+[data-redsky-component="modal"] button {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------
+   Mobile
+   -------------------------------------------------- */
+
+@media (max-width: 576px) {
+
+    [data-redsky-component="modal"] {
+        padding: 0.75rem;
+    }
+
+    [data-modal-dialog] {
+        width: 100%;
+        max-width: none;
+
+        max-height: calc(100vh - 1.5rem);
+    }
+
+    [data-modal-header] {
+        padding: 0.75rem;
+    }
+
+    [data-modal-body] {
+        padding: 0.75rem;
+    }
+
+    [data-modal-footer] {
+        padding: 0.75rem;
+    }
+
+    [data-modal-title] {
+        font-size: 1rem;
+    }
+
+    [data-modal-footer] button {
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+
+/* --------------------------------------------------
+   Reduced motion
+   -------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    [data-redsky-component="modal"] *,
+    [data-redsky-component="modal"] *::before,
+    [data-redsky-component="modal"] *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

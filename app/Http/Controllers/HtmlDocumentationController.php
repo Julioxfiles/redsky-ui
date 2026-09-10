@@ -10,8 +10,9 @@ class HtmlDocumentationController
 {
     public function index(): mixed
     {
-        $documentation = new Documentation();
 
+        $documentation = new Documentation();
+        
         return view('documentation.index', [
             'components' => $documentation->components(),
         ]);

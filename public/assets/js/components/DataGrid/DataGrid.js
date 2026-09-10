@@ -34,6 +34,12 @@ export default class DataGrid {
         this.bindSorting();
         this.bindSelection();
         this.bindPagination();
+
+        // Apply pagination immediately on initialization.
+        // Without this call, all rows remain visible until
+        // the user clicks Previous or Next.
+        this.updatePagination();
+
         this.bindEditing();
         this.bindActions();
 
@@ -444,6 +450,10 @@ export default class DataGrid {
     }
 
     updatePagination() {
+        if (!this.pagination.isEnabled()) {
+            return;
+        }
+
         const tbody =
             this.element.querySelector('tbody');
 
