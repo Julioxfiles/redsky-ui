@@ -27,129 +27,6 @@ $examples = method_exists($component, 'exampleFiles')
 ?>
 
 <style>
-    .documentation-title {
-        margin-bottom: 0.1rem;
-        color: aqua;
-        font-size: 3rem;
-        font-weight: 600;
-    }
-
-    .documentation-title code {
-        font-family:  "Courier New", monospace;
-        font-size: 1.5rem;
-        font-weight: 0;
-        color:cornflowerblue;
-
-    }
-
-    .documentation-section h2 {
-        color: cornflowerblue;
-    }
-
-    .documentation-example {
-        margin-bottom: 1rem;
-    }
-
-    .documentation-example-description {
-        margin-bottom: 1rem;
-    }
-
-    .documentation-example-code {
-        margin-bottom: 1rem;
-        
-    }
-
-    .documentation-example-code-title {
-        margin-bottom: 0.75rem;
-        font-weight: 600;
-        color:aqua;
-    }
-
-    .documentation-example-output {
-        margin-top: 1rem;       
-        
-    }
-
-    .documentation-example-component-rendered {
-        margin-top: 1rem;
-        padding: 1.5rem;
-        border: 1px solid #374151;
-        border-radius: 0.5rem;
-        background: #121212;
-        color: cornflowerblue;
-
-        /*
-        * Let the preview adapt to the rendered component.
-        */
-        width: fit-content;
-        max-width: 100%;
-        height: auto;
-        min-height: 80px;
-
-        /*
-        * Prevent large components from breaking
-        * the documentation page.
-        */
-        overflow: auto;
-
-        /*
-        * Make dimensions include padding and border.
-        */
-        box-sizing: border-box;
-    }
-    .documentation-example-output-title {
-        margin-bottom: 0.75rem;
-        font-weight: 600;
-        color:aqua;
-        
-    }
-
-    .documentation-method-name code {
-        font-family: "Courier New", monospace;
-        font-size: 1rem;
-        font-weight: 500;
-        color:aqua;
-    }
-
-    .documentation-table th,
-    .documentation-table td {
-        padding: 5px 10px;
-    }
-
-    .documentation-example-preview {
-        padding: 1.5rem;
-        border: 1px solid #374151;
-        border-radius: 0.5rem;
-        background: #ffffff;
-    }
-
-    .documentation-example-preview input,
-    .documentation-example-preview textarea,
-    .documentation-example-preview select,
-    .documentation-example-preview button {
-        max-width: 100%;
-    }
-
-    pre[class*="language-"] {
-        margin: 0 0 1rem 0;
-        border-radius: 0.5rem;
-    }
-
-    code[class*="language-"],
-    pre[class*="language-"] {
-        font-family:
-            Consolas,
-            Monaco,
-            "Andale Mono",
-            "Ubuntu Mono",
-            monospace;
-        font-size: 0.9rem;
-    }
-    
-    .documentation-section h2 {
-        color: cornflowerblue;
-        font-size: 1.2rem;
-    }
 
 </style>
 
@@ -217,7 +94,7 @@ $examples = method_exists($component, 'exampleFiles')
                 Examples
             </h2>
 
-            <?php foreach ($examples as $example): ?>
+            <?php foreach ($examples as $index => $example) : ?>
 
                 <?php if ($example->cssUrl() !== null): ?>
 
@@ -258,46 +135,114 @@ $examples = method_exists($component, 'exampleFiles')
 
                     <?php endif; ?>
 
+                <div class="documentation-example-code">
+
+                    <div class="documentation-example-code-title">
+                        PHP
+
+                        <button
+                            type="button"
+                            class="documentation-example-copy"
+                            data-target="php-source-<?= $index ?>"
+                            title="Copy code">
+
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+
+                                <rect
+                                    x="9"
+                                    y="9"
+                                    width="13"
+                                    height="13"
+                                    rx="2"
+                                    ry="2">
+                                </rect>
+
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                </path>
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                    <pre id="php-source-<?= $index ?>" class="language-php"><code class="language-php"><?= htmlspecialchars(
+                        $example->source()
+                    ) ?></code></pre>
+
+                </div>
+
+
+                <?php if ($example->hasOutput()): ?>
 
                     <div class="documentation-example-code">
 
                         <div class="documentation-example-code-title">
-                            PHP
+                            HTML Output
+
+                            <button
+                                type="button"
+                                class="documentation-example-copy"
+                                data-target="html-output-<?= $index ?>"
+                                title="Copy code">
+
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
+
+                                    <rect
+                                        x="9"
+                                        y="9"
+                                        width="13"
+                                        height="13"
+                                        rx="2"
+                                        ry="2">
+                                    </rect>
+
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                    </path>
+
+                                </svg>
+
+                            </button>
+
                         </div>
 
-                        <pre class="language-php"><code class="language-php"><?= htmlspecialchars(
-                            $example->source()
+                        <pre id="html-output-<?= $index ?>" class="language-markup"><code class="language-markup"><?= htmlspecialchars(
+                            $example->output()
                         ) ?></code></pre>
 
                     </div>
 
 
-                    <?php if ($example->hasOutput()): ?>
+                    <div class="documentation-example-code">
 
-                        <div class="documentation-example-code">
+                        <br>
+                        <div class="documentation-example-output-title">
+                            Component Rendered
+                        </div>
+                        <br>
 
-                            <div class="documentation-example-code-title">
-                                HTML Output
-                            </div>
-
-                            <pre class="language-markup"><code class="language-markup"><?= htmlspecialchars(
-                                $example->output()
-                            ) ?></code></pre>
-
+                        <div class="documentation-example-component-rendered">
+                            <?= $example->output() ?>
                         </div>
 
+                    </div>
 
-                        <div class="documentation-example-output">
-
-                            <div class="documentation-example-output-title">
-                                Component Rendered
-                            </div>
-
-                            <div class="documentation-example-component-rendered">
-                                <?= $example->output() ?>
-                            </div>
-
-                        </div>
 
                     <?php endif; ?>
 

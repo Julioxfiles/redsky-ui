@@ -1,0 +1,207 @@
+/* ==================================================
+   Documentation Typography
+   ================================================== */
+
+
+.documentation h1 {
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:var(--text-color);
+
+    margin-bottom:1.5rem;
+
+}
+
+
+
+.documentation h2 {
+
+    font-size:1.5rem;
+
+    font-weight:600;
+
+    color:var(--primary-color);
+
+    margin-top:2rem;
+
+    margin-bottom:1rem;
+
+}
+
+
+
+.documentation h3 {
+
+    font-size:1.25rem;
+
+    font-weight:600;
+
+    color:var(--text-color);
+
+    margin-top:1.5rem;
+
+    margin-bottom:.75rem;
+
+}
+
+
+
+.documentation h4 {
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+    color:var(--text-color);
+
+    margin-top:1rem;
+
+    margin-bottom:.5rem;
+
+}
+
+
+
+.documentation h5 {
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    color:var(--primary-color);
+
+    margin-bottom:.75rem;
+
+}
+
+
+
+/* Component title */
+
+.documentation-title {
+
+    font-size:3rem;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    margin-bottom:.5rem;
+
+    color:var(--text-color);
+
+}
+
+
+
+/* Class namespace */
+
+.documentation-title code {
+
+    display:block;
+
+    margin-top:.5rem;
+
+    font-family:
+
+        Consolas,
+
+        Monaco,
+
+        'Courier New',
+
+        monospace;
+
+    font-size:.95rem;
+
+    font-weight:400;
+
+    color:var(--muted-color);
+
+}
+
+
+
+/* Section spacing */
+
+.documentation-section {
+
+    margin-bottom:2rem;
+
+}
+
+
+
+/* Paragraph text */
+
+.documentation p {
+
+    font-size:1rem;
+
+    line-height:1.7;
+
+    color:var(--text-color);
+
+}
+
+
+
+/* Muted text */
+
+.documentation-muted {
+
+    color:var(--muted-color);
+
+    font-size:.95rem;
+
+}
+
+
+
+/* Copy button */
+
+.documentation-example-copy {
+
+    margin-left:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:32px;
+
+    height:32px;
+
+    padding:0;
+
+    border:0;
+
+    background:transparent;
+
+    color:var(--text-color);
+
+    cursor:pointer;
+
+}
+
+
+.documentation-example-copy svg {
+
+    color:inherit;
+
+    stroke:currentColor;
+
+}
+
+
+.documentation-example-copy:hover {
+
+    opacity:.75;
+
+}
+

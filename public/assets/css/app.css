@@ -1,232 +1,313 @@
 /* ================================
-   Dark Mode - Laravel Style
-   Autor: Tu nombre
-   Fecha: 2026-01-27
+   Archivo: app.css
+   Proyecto: RedSky UI
+   Theme System: Light / Dark
 ================================ */
 
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 16px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    scroll-behavior: smooth;
-    background-color: #212121; /* más oscuro */
-    color: #f3f4f6; /* gris claro */
-}
-
-/* Contenedores */
-body {
-    line-height: 1.6;
-    /*background-color: #1f2937;*/
-    background-color: #212121; /* más oscuro */
-    color: #f3f4f6;
-}
-
-.container {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 1rem 2rem;
-}
-
-/* Enlaces */
-a {
-    color: #3b82f6; /* azul */
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-
-/* Formulario general */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-/* Inputs, textarea, select */
-input,
-textarea,
-select {
-    background-color: #374151; /* gris más oscuro */
-    border: 1px solid #4b5563;
-    color: #f3f4f6;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.375rem;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    width: 100%;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-}
-
-/* Placeholder */
-::placeholder {
-    color: #9ca3af;
-}
-
-/* Botones */
-button {
-    background-color: #3b82f6;
-    color: #f3f4f6;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-button:hover {
-    background-color: #2563eb;
-}
-
-/* Mensajes de error */
-.error, .text-red-600 {
-    color: #f87171;
-    font-size: 0.875rem;
-    margin-top: -0.25rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Mensaje de éxito */
-.alert-success {
-    background-color: #16a34a;
-    color: #f3f4f6;
-    padding: 0.75rem 1rem;
-    border-radius: 0.375rem;
-    margin-bottom: 1rem;
-}
-
-/* Toolbar / Toolbox */
-.toolbox {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.toolbox-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #f3f4f6;
-    font-size: 1.25rem;
-    transition: color 0.2s;
-}
-
-.toolbox-btn:hover {
-    color: #3b82f6;
-}
-
-/* Misc */
-hr {
-    border: none;
-    border-top: 1px solid #4b5563;
-    margin: 1rem 0;
-}
 
 /* ================================
-   Centrado de formulario en pantalla
+   Theme Variables
 ================================ */
 
-/* Contenedor que ocupa toda la pantalla y centra el formulario */
-.form-container {
-    display: flex;
-    justify-content: center; /* centro horizontal */
-    align-items: center;     /* centro vertical */
-    min-height: 100vh;       /* altura completa de la ventana */
-    padding: 1rem;
-    background-color: #1f2937; /* fondo oscuro */
+
+/* Light Theme (default) */
+
+:root {
+
+    --bg-color: #ffffff;
+
+    --surface-color: #f8fafc;
+
+    --text-color: #1f2937;
+
+    --muted-color: #6b7280;
+
+    --border-color: #e5e7eb;
+
+    --primary-color: #2563eb;
+
+    --primary-hover: #1d4ed8;
+
+    --danger-color: #dc2626;
+
+    --success-color: #16a34a;
+
+    --code-bg-color: #f3f4f6;
+
+    --button-text-color: #ffffff;
+
 }
 
-/* Formulario centrado y con estilo */
-.form.center {
-    width: 100%;
-    max-width: 400px;              /* ancho máximo */
-    background-color: #374151;     /* gris oscuro */
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+
+/* Dark Theme */
+
+html.dark {
+
+    --bg-color: #212121;
+
+    --surface-color: #1f2937;
+
+    --text-color: #f3f4f6;
+
+    --muted-color: #9ca3af;
+
+    --border-color: #374151;
+
+    --primary-color: #3b82f6;
+
+    --primary-hover: #2563eb;
+
+    --danger-color: #f87171;
+
+    --success-color: #22c55e;
+
+    --code-bg-color: #111827;
+
+    --button-text-color: #ffffff;
+
 }
 
-/* Inputs, textarea y select */
-.form.center input,
-.form.center textarea,
-.form.center select {
-    background-color: #1f2937;
-    border: 1px solid #4b5563;
-    color: #f3f4f6;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.375rem;
-    font-size: 1rem;
-    outline: none;
-    width: 100%;
-    transition: border-color 0.2s, box-shadow 0.2s;
+
+
+/* ================================
+   Reset / Normalización básica
+================================ */
+
+* {
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
 }
 
-.form.center input:focus,
-.form.center textarea:focus,
-.form.center select:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+
+
+/* ================================
+   Global
+================================ */
+
+html {
+
+    font-size:16px;
+
+    scroll-behavior:smooth;
+
+    background-color:var(--bg-color);
+
+    color:var(--text-color);
+
 }
 
-/* Placeholder */
-.form.center ::placeholder {
-    color: #9ca3af;
+
+body {
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    line-height:1.6;
+
+    background-color:var(--bg-color);
+
+    color:var(--text-color);
+
+
+    transition:
+
+        background-color .3s ease,
+        color .3s ease;
+
 }
 
-/* Botón */
-.form.center button {
-    background-color: #3b82f6;
-    color: #f3f4f6;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 0.375rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
+
+
+/* ================================
+   Enlaces
+================================ */
+
+a {
+
+    text-decoration:none;
+
+    color:var(--primary-color);
+
 }
 
-.form.center button:hover {
-    background-color: #2563eb;
+
+a:hover {
+
+    color:var(--primary-hover);
+
 }
 
-/* Mensajes de error */
-.text-red-600 {
-    color: #f87171;
-    font-size: 0.875rem;
-    margin-top: -0.25rem;
-    margin-bottom: 0.5rem;
+
+
+/* ================================
+   Listas
+================================ */
+
+ul,
+ol {
+
+    list-style:none;
+
 }
 
-.orangered {
-    background-color: orangered;
+
+
+/* ================================
+   Imágenes
+================================ */
+
+img {
+
+    max-width:100%;
+
+    height:auto;
+
 }
 
-.foot {
-    background-color: #374151;
-    color: #15d21c;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
-    border-radius: 0.375rem;
+
+
+/* ================================
+   Containers
+================================ */
+
+.container {
+
+    width:100%;
+
+    padding:1rem 2rem;
+
 }
 
+
+
+/* ================================
+   Toolbox
+================================ */
+
+.toolbox {
+
+    display:block !important;
+
+    position:relative !important;
+
+    z-index:9999 !important;
+
+    opacity:1 !important;
+
+}
+
+
+
+/* ================================
+   Documentation
+================================ */
+
+.documentation-section h2 {
+
+    color:var(--primary-color);
+
+}
+
+
+
+/* ================================
+   Theme Toggle Button
+================================ */
+
+.dark-button {
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    background-color:var(--primary-color);
+
+    color:var(--button-text-color);
+
+
+    border:none;
+
+    border-radius:.375rem;
+
+
+    padding:.5rem 1rem;
+
+
+    font-size:.875rem;
+
+    font-weight:600;
+
+
+    cursor:pointer;
+
+
+    transition:
+
+        background-color .3s ease,
+
+        transform .2s ease;
+
+}
+
+
+.dark-button:hover {
+
+    background-color:var(--primary-hover);
+
+}
+
+
+.dark-button:active {
+
+    transform:scale(.95);
+
+}
+
+
+.rs-table {
+
+    width:100%;
+
+    color:var(--text-color);
+
+    background-color:var(--bg-color);
+
+    border-collapse:collapse;
+
+}
+
+.rs-table th {
+
+    background-color:var(--surface-color);
+
+    color:var(--text-color);
+
+    border-color:var(--border-color);
+
+}
+
+
+.rs-table td {
+
+    background-color:var(--bg-color);
+
+    color:var(--text-color);
+
+    border-color:var(--border-color);
+
+}
