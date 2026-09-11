@@ -279,7 +279,7 @@ img {
 }
 
 
-.rs-table {
+.table {
 
     width:100%;
 
@@ -291,7 +291,7 @@ img {
 
 }
 
-.rs-table th {
+.table th {
 
     background-color:var(--surface-color);
 
@@ -302,7 +302,7 @@ img {
 }
 
 
-.rs-table td {
+.table td {
 
     background-color:var(--bg-color);
 

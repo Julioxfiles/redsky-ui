@@ -81,6 +81,10 @@ declare(strict_types=1);
         rel="stylesheet"
         href="/redsky/redsky-ui/public/assets/css/Components/Modal.css"
     >
+    <link
+        rel="stylesheet"
+        href="/redsky/redsky-ui/public/assets/css/Components/Tabs.css"
+    >
 
 </head>
 <body>
@@ -147,6 +151,7 @@ declare(strict_types=1);
     <script src="/redsky/redsky-ui/public/assets/js/components/Toast.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/Spinner.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/Progress.js"></script>
+    <script src="/redsky/redsky-ui/public/assets/js/components/Tabs.js"></script>
     
     
    

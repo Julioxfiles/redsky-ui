@@ -121,7 +121,7 @@ $examples = method_exists($component, 'exampleFiles')
                 <div class="documentation-example documentation-card">
 
                     <h5>
-                        <?= htmlspecialchars($example->title()) ?>
+                        <?= htmlspecialchars($example->title()).".php" ?>
                     </h5>
 
 
@@ -135,98 +135,211 @@ $examples = method_exists($component, 'exampleFiles')
 
                     <?php endif; ?>
 
-                <div class="documentation-example-code">
+                <div class="tabs" data-component="tabs">
 
-                    <div class="documentation-example-code-title">
-                        PHP
+    <div class="tabs-navigation">
 
-                        <button
-                            type="button"
-                            class="documentation-example-copy"
-                            data-target="php-source-<?= $index ?>"
-                            title="Copy code">
+        <button
+            type="button"
+            class="tab active"
+            data-tab-target="php-<?= $index ?>"
+            role="tab"
+            aria-selected="true">
+            PHP
+        </button>
 
-                            <svg
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round">
+        <button
+            type="button"
+            class="tab"
+            data-tab-target="html-<?= $index ?>"
+            role="tab"
+            aria-selected="false">
+            HTML
+        </button>
 
-                                <rect
-                                    x="9"
-                                    y="9"
-                                    width="13"
-                                    height="13"
-                                    rx="2"
-                                    ry="2">
-                                </rect>
+        <button
+            type="button"
+            class="tab"
+            data-tab-target="css-<?= $index ?>"
+            role="tab"
+            aria-selected="false">
+            CSS
+        </button>
 
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
-                                </path>
+        <button
+            type="button"
+            class="tab"
+            data-tab-target="javascript-<?= $index ?>"
+            role="tab"
+            aria-selected="false">
+            JavaScript
+        </button>
 
-                            </svg>
-
-                        </button>
-
-                    </div>
-
-                    <pre id="php-source-<?= $index ?>" class="language-php"><code class="language-php"><?= htmlspecialchars(
-                        $example->source()
-                    ) ?></code></pre>
-
-                </div>
+    </div>
 
 
-                <?php if ($example->hasOutput()): ?>
+    <div class="tabs-content">
 
-                    <div class="documentation-example-code">
 
-                        <div class="documentation-example-code-title">
-                            HTML Output
+        <div
+            id="php-<?= $index ?>"
+            class="tab-panel active"
+            data-tab-panel
+            role="tabpanel">
 
-                            <button
-                                type="button"
-                                class="documentation-example-copy"
-                                data-target="html-output-<?= $index ?>"
-                                title="Copy code">
 
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round">
+            <div class="documentation-example-code-title">
 
-                                    <rect
-                                        x="9"
-                                        y="9"
-                                        width="13"
-                                        height="13"
-                                        rx="2"
-                                        ry="2">
-                                    </rect>
+                PHP
 
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
-                                    </path>
+                <button
+                    type="button"
+                    class="documentation-example-copy"
+                    data-target="php-source-<?= $index ?>"
+                    title="Copy code">
 
-                                </svg>
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
 
-                            </button>
+                        <rect
+                            x="9"
+                            y="9"
+                            width="13"
+                            height="13"
+                            rx="2"
+                            ry="2">
+                        </rect>
 
-                        </div>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                        </path>
 
-                        <pre id="html-output-<?= $index ?>" class="language-markup"><code class="language-markup"><?= htmlspecialchars(
-                            $example->output()
-                        ) ?></code></pre>
+                    </svg>
 
-                    </div>
+                </button>
+
+            </div>
+
+
+            <pre id="php-source-<?= $index ?>" class="language-php"><code class="language-php"><?= htmlspecialchars(
+                $example->source()
+            ) ?></code></pre>
+
+
+        </div>
+
+
+
+        <?php if ($example->hasOutput()): ?>
+
+
+        <div
+            id="html-<?= $index ?>"
+            class="tab-panel"
+            data-tab-panel
+            role="tabpanel"
+            hidden>
+
+
+            <div class="documentation-example-code-title">
+
+                HTML
+
+                <button
+                    type="button"
+                    class="documentation-example-copy"
+                    data-target="html-output-<?= $index ?>"
+                    title="Copy code">
+
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <rect
+                            x="9"
+                            y="9"
+                            width="13"
+                            height="13"
+                            rx="2"
+                            ry="2">
+                        </rect>
+
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                        </path>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+
+            <pre id="html-output-<?= $index ?>" class="language-markup"><code class="language-markup"><?= htmlspecialchars(
+                $example->output()
+            ) ?></code></pre>
+
+
+        </div>
+
+
+
+        <div
+            id="css-<?= $index ?>"
+            class="tab-panel"
+            data-tab-panel
+            role="tabpanel"
+            hidden>
+
+
+            <div class="documentation-example-code-title">
+                CSS
+            </div>
+
+
+            <pre class="language-css"><code class="language-css"></code></pre>
+
+
+        </div>
+
+
+
+        <div
+            id="javascript-<?= $index ?>"
+            class="tab-panel"
+            data-tab-panel
+            role="tabpanel"
+            hidden>
+
+
+            <div class="documentation-example-code-title">
+                JavaScript
+            </div>
+
+
+            <pre class="language-javascript"><code class="language-javascript"></code></pre>
+
+
+        </div>
+
+
+        <?php endif; ?>
+
+
+    </div>
+
+</div>
 
 
                     <div class="documentation-example-code">
@@ -244,8 +357,7 @@ $examples = method_exists($component, 'exampleFiles')
                     </div>
 
 
-                    <?php endif; ?>
-
+      
 
                 </div>
 
