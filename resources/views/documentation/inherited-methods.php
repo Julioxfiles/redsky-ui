@@ -148,7 +148,7 @@ declare(strict_types=1);
                         </td>
 
                         <td>
-                            Accepted values:
+                            
                         </td>
 
                     </tr>

@@ -150,7 +150,7 @@ declare(strict_types=1);
                             </td>
 
                             <td>
-                                    Aqui va Accepted values:
+                                    
                             </td>
 
 
