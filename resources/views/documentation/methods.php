@@ -6,35 +6,25 @@ declare(strict_types=1);
 
 <section class="documentation-section">
 
-
     <h2>
         Methods
     </h2>
-
 
     <p class="documentation-muted">
         Methods provided directly by this component.
     </p>
 
-
-
     <?php if (empty($ownMethods)): ?>
-
 
         <div class="documentation-alert">
             No methods documented.
         </div>
 
-
-
     <?php else: ?>
-
 
         <div class="documentation-table-wrapper">
 
-
             <table class="documentation-table">
-
 
                 <thead>
 
@@ -46,12 +36,9 @@ declare(strict_types=1);
                 </thead>
 
 
-
                 <tbody>
 
-
                     <?php foreach ($ownMethods as $method): ?>
-
 
                         <?php
 
@@ -97,7 +84,6 @@ declare(strict_types=1);
 
                         }
 
-
                         $signature =
                             $method->name()
                             . '('
@@ -106,14 +92,8 @@ declare(strict_types=1);
 
                         ?>
 
-
-
                         <tr>
-
-
                             <td>
-
-
                                 <div class="documentation-method-name">
 
                                     <code>
@@ -124,10 +104,7 @@ declare(strict_types=1);
 
                                 </div>
 
-
-
                                 <div class="documentation-method-badges">
-
 
                                     <?php if ($method->isStatic()): ?>
 
@@ -137,8 +114,6 @@ declare(strict_types=1);
 
                                     <?php endif; ?>
 
-
-
                                     <?php if ($method->isFinal()): ?>
 
                                         <span class="documentation-badge">
@@ -146,8 +121,6 @@ declare(strict_types=1);
                                         </span>
 
                                     <?php endif; ?>
-
-
 
                                     <?php if ($method->isAbstract()): ?>
 
@@ -157,37 +130,27 @@ declare(strict_types=1);
 
                                     <?php endif; ?>
 
+                                    <?php if ($method->description() !== ''): ?>
+
+                                        <?= htmlspecialchars(
+                                            $method->description()
+                                        ) ?>
+
+                                    <?php else: ?>
+
+                                        <span class="documentation-muted">
+                                            No description.
+                                        </span>
+
+                                    <?php endif; ?>
 
                                 </div>
 
 
                             </td>
 
-
-
-
                             <td>
-
-
-                                <?php if ($method->description() !== ''): ?>
-
-
-                                    <?= htmlspecialchars(
-                                        $method->description()
-                                    ) ?>
-
-
-                                <?php else: ?>
-
-
-                                    <span class="documentation-muted">
-                                        No description.
-                                    </span>
-
-
-                                <?php endif; ?>
-
-
+                                    Aqui va Accepted values:
                             </td>
 
 

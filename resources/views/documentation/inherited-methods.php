@@ -6,26 +6,19 @@ declare(strict_types=1);
 
 <?php if (!empty($inheritedMethods)): ?>
 
-
 <section class="documentation-section">
-
 
     <h2>
         Inherited Methods
     </h2>
 
-
     <p class="documentation-muted">
         Methods inherited from the component's parent classes.
     </p>
 
-
-
     <div class="documentation-table-wrapper">
 
-
         <table class="documentation-table">
-
 
             <thead>
 
@@ -36,13 +29,9 @@ declare(strict_types=1);
 
             </thead>
 
-
-
             <tbody>
 
-
                 <?php foreach ($inheritedMethods as $method): ?>
-
 
                     <?php
 
@@ -59,7 +48,6 @@ declare(strict_types=1);
                             . ' '
                             . $parameterName;
 
-
                         if ($parameter->isVariadic()) {
 
                             $parameterValue =
@@ -67,7 +55,6 @@ declare(strict_types=1);
                                 . $parameterValue;
 
                         }
-
 
                         if (
                             $parameter->isOptional()
@@ -97,13 +84,9 @@ declare(strict_types=1);
 
                     ?>
 
-
-
                     <tr>
 
-
                         <td>
-
 
                             <div class="documentation-method-name">
 
@@ -115,16 +98,11 @@ declare(strict_types=1);
 
                             </div>
 
-
-
                             <div class="documentation-method-badges">
-
 
                                 <span class="documentation-badge">
                                     inherited
                                 </span>
-
-
 
                                 <?php if ($method->isStatic()): ?>
 
@@ -134,8 +112,6 @@ declare(strict_types=1);
 
                                 <?php endif; ?>
 
-
-
                                 <?php if ($method->isFinal()): ?>
 
                                     <span class="documentation-badge">
@@ -143,8 +119,6 @@ declare(strict_types=1);
                                     </span>
 
                                 <?php endif; ?>
-
-
 
                                 <?php if ($method->isAbstract()): ?>
 
@@ -154,58 +128,39 @@ declare(strict_types=1);
 
                                 <?php endif; ?>
 
+                                <?php if ($method->description() !== ''): ?>
+
+
+                                    <?php echo " - ". htmlspecialchars(
+                                        $method->description()
+                                    ) ?>
+
+                                <?php else: ?>
+
+                                    <span class="documentation-muted">
+                                        No description.
+                                    </span>
+
+                                <?php endif; ?>
 
                             </div>
 
-
                         </td>
-
-
-
 
                         <td>
-
-
-                            <?php if ($method->description() !== ''): ?>
-
-
-                                <?= htmlspecialchars(
-                                    $method->description()
-                                ) ?>
-
-
-                            <?php else: ?>
-
-
-                                <span class="documentation-muted">
-                                    No description.
-                                </span>
-
-
-                            <?php endif; ?>
-
-
+                            Accepted values:
                         </td>
-
-
 
                     </tr>
 
-
-
                 <?php endforeach; ?>
-
 
             </tbody>
 
-
         </table>
-
 
     </div>
 
-
 </section>
-
 
 <?php endif; ?>

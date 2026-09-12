@@ -43,6 +43,7 @@ declare(strict_types=1);
     <!-- RedSky UI -->
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/app.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/prism.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/documentation.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/tabs/tabs.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/modal/modal.css">
     <!-- 
