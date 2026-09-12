@@ -12,7 +12,6 @@
  * Styling is handled by CSS.
  */
 
-
 class Tabs {
 
 

@@ -15,7 +15,8 @@ class HtmlDocumentationController
         
         return view('documentation.index', [
             'components' => $documentation->components(),
-        ]);
+        ])->layout('layouts.app');
+        
     }
 
     public function show(string $component): mixed
@@ -32,6 +33,7 @@ class HtmlDocumentationController
 
         return view('documentation.component', [
             'component' => $data,
-        ]);
+        ])->layout('layouts.app');
+
     }
 }

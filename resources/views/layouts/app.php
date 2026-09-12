@@ -18,22 +18,13 @@ declare(strict_types=1);
         <?= htmlspecialchars($title ?? 'RedSky UI') ?>
     </title>
 
-    <?php foreach ($styles ?? [] as $style): ?>
-
-        <link
-            rel="stylesheet"
-            href="<?= htmlspecialchars($style) ?>"
-        >
-
-    <?php endforeach; ?>
-
-
-    <!-- Bootstrap -->
-
+    <!-- Bootstrap 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
+     -->
+
 
     <!-- Materialize 
     <link
@@ -50,46 +41,19 @@ declare(strict_types=1);
 
 
     <!-- RedSky UI -->
-
-    <link
-        rel="stylesheet"
-        href="/redsky/redsky-ui/public/assets/css/app.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/redsky/redsky-ui/public/assets/css/documentation.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/redsky/redsky-ui/public/assets/css/prism.css"
-    >
-
-    
-    <link
-        rel="stylesheet"
-        href="/redsky/redsky-ui/public/assets/css/Components/Spinner.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/redsky/redsky-ui/public/assets/css/Components/Progress.css"
-    >
- 
-    <link
-        rel="stylesheet"
-        href="/redsky/redsky-ui/public/assets/css/Components/Modal.css"
-    >
-    <link
-        rel="stylesheet"
-        href="/redsky/redsky-ui/public/assets/css/Components/Tabs.css"
-    >
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/app.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/prism.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/tabs/tabs.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/modal/modal.css">
+    <!-- 
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/datagrid/datagrid.css">
+-->
 
 </head>
+
 <body>
 
-<button
+    <button
         id="theme-toggle"
         type="button"
         style="
@@ -129,32 +93,31 @@ declare(strict_types=1);
 
     <?php endforeach; ?>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     ></script>
+     -->
 
-    <!-- Materialize -->
+    <!-- Materialize 
     <script  
         src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
     >
     </script>
+     -->
 
-    
-    <script src="/redsky/redsky-ui/public/assets/js/app.js"></script> 
+    <script src="/redsky/redsky-ui/public/assets/js/app.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/themes.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/prism.js"></script>
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/component.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/modal/Modal.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/datagrid/DataGrid.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/Alert.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/Toast.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/Spinner.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/Progress.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/Tabs.js"></script>
-    
-    
-   
+    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/modal/modal.js"></script>
+    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/datagrid/datagrid.js"></script>
+    <script src="/redsky/redsky-ui/public/assets/js/components/interactive/spinner/spinner.js"></script>
+    <script src="/redsky/redsky-ui/public/assets/js/components/interactive/tabs/tabs.js"></script>
+    <script src="/redsky/redsky-ui/public/assets/js/components/feedback/progress/progress.js"></script>
+    <script src="/redsky/redsky-ui/public/assets/js/components/feedback/alert/alert.js"></script>
+    <script src="/redsky/redsky-ui/public/assets/js/components/feedback/toast/toast.js"></script>
+
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         Prism.highlightAll();
