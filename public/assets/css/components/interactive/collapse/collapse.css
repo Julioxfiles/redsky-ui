@@ -1,0 +1,98 @@
+/*
+ * Collapse
+ */
+
+.collapse {
+    color: var(--collapse-color);
+    background-color: var(--collapse-background);
+
+    border: 1px solid var(--collapse-border-color);
+    border-radius: var(--collapse-border-radius);
+}
+
+
+/*
+ * Collapse button
+ */
+
+.collapse-button {
+    display: block;
+    width: 100%;
+
+    padding: 1rem 1.25rem;
+
+    color: var(--collapse-button-color);
+    text-align: left;
+
+    background-color: var(--collapse-button-background);
+
+    border: 0;
+    border-radius: var(--collapse-border-radius);
+
+    cursor: pointer;
+
+    transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+}
+
+.collapse-button:hover {
+    background-color: var(--collapse-button-hover-background);
+}
+
+.collapse-button:focus {
+    position: relative;
+    z-index: 1;
+
+    outline: 0;
+
+    border-color: var(--collapse-focus-border-color);
+
+    box-shadow:
+        0 0 0 0.25rem
+        var(--collapse-focus-ring-color);
+}
+
+
+/*
+ * Collapse content
+ */
+
+.collapse-content {
+    display: block;
+
+    overflow: hidden;
+
+    color: var(--collapse-body-color);
+    background-color: var(--collapse-body-background);
+
+    border-top: 1px solid var(--collapse-border-color);
+}
+
+.collapse-content.collapsed {
+    display: none;
+}
+
+
+/*
+ * Collapse body
+ */
+
+.collapse-body {
+    padding: 1rem 1.25rem;
+
+    color: var(--collapse-body-color);
+    background-color: var(--collapse-body-background);
+}
+
+
+/*
+ * Disabled collapse button
+ */
+
+.collapse-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}

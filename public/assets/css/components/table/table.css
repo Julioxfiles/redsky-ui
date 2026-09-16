@@ -1,0 +1,316 @@
+/**
+ * Table component styles.
+ *
+ * Provides semantic table styles for the RedSky HTML
+ * component library.
+ *
+ * Main class:
+ *
+ * - .table
+ *
+ * Modifiers:
+ *
+ * - .table-striped
+ * - .table-bordered
+ * - .table-hover
+ * - .table-compact
+ * - .table-responsive
+ *
+ * Colors are based on the global RedSky UI variables
+ * defined in app.css.
+ */
+
+
+/* ==================================================
+   Base Table
+================================================== */
+
+.table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    border-spacing:0;
+
+    color:var(--text-color);
+
+    background-color:var(--bg-color);
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    font-size:.875rem;
+
+    line-height:1.5;
+
+}
+
+
+/* ==================================================
+   Caption
+================================================== */
+
+.table caption {
+
+    padding:.75rem 1rem;
+
+    color:var(--text-color);
+
+    background-color:var(--surface-color);
+
+    font-size:1.125rem;
+
+    font-weight:600;
+
+    text-align:left;
+
+    caption-side:top;
+
+}
+
+
+/* ==================================================
+   Table Header
+================================================== */
+
+.table thead {
+
+    background-color:var(--surface-color);
+
+}
+
+.table th {
+
+    padding:.75rem 1rem;
+
+    color:var(--text-color);
+
+    background-color:var(--surface-color);
+
+    border:1px solid var(--border-color);
+
+    font-weight:600;
+
+    text-align:left;
+
+    vertical-align:middle;
+
+}
+
+
+/* ==================================================
+   Table Body
+================================================== */
+
+.table td {
+
+    padding:.75rem 1rem;
+
+    color:var(--text-color);
+
+    background-color:var(--bg-color);
+
+    border:1px solid var(--border-color);
+
+    text-align:left;
+
+    vertical-align:middle;
+
+}
+
+
+/* ==================================================
+   Table Footer
+================================================== */
+
+.table tfoot {
+
+    background-color:var(--surface-color);
+
+}
+
+.table tfoot th,
+.table tfoot td {
+
+    color:var(--text-color);
+
+    background-color:var(--surface-color);
+
+    border:1px solid var(--border-color);
+
+    font-weight:600;
+
+}
+
+
+/* ==================================================
+   Striped Rows
+================================================== */
+
+.table-striped tbody tr:nth-child(even) td {
+
+    background-color:var(--surface-color);
+
+}
+
+
+/* ==================================================
+   Hover Rows
+================================================== */
+
+.table-hover tbody tr:hover td {
+
+    background-color:var(--surface-color);
+
+}
+
+
+/* ==================================================
+   Bordered Table
+================================================== */
+
+.table-bordered {
+
+    border:1px solid var(--border-color);
+
+}
+
+.table-bordered th,
+.table-bordered td {
+
+    border:1px solid var(--border-color);
+
+}
+
+
+/* ==================================================
+   Compact Table
+================================================== */
+
+.table-compact th,
+.table-compact td {
+
+    padding:.5rem .625rem;
+
+}
+
+
+/* ==================================================
+   Table Links
+================================================== */
+
+.table a {
+
+    color:var(--primary-color);
+
+    text-decoration:none;
+
+}
+
+.table a:hover {
+
+    color:var(--primary-hover);
+
+    text-decoration:underline;
+
+}
+
+
+/* ==================================================
+   Table Buttons
+================================================== */
+
+.table .btn {
+
+    vertical-align:middle;
+
+}
+
+
+/* ==================================================
+   Responsive Table Container
+================================================== */
+
+.table-responsive {
+
+    width:100%;
+
+    overflow-x:auto;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+
+/* ==================================================
+   Responsive Table
+================================================== */
+
+.table-responsive .table {
+
+    min-width:40rem;
+
+}
+
+
+/* ==================================================
+   Empty Table
+================================================== */
+
+.table-empty {
+
+    padding:2rem 1rem;
+
+    color:var(--muted-color);
+
+    background-color:var(--bg-color);
+
+    text-align:center;
+
+}
+
+
+/* ==================================================
+   Alignment
+================================================== */
+
+.table-align-left {
+
+    text-align:left !important;
+
+}
+
+.table-align-center {
+
+    text-align:center !important;
+
+}
+
+.table-align-right {
+
+    text-align:right !important;
+
+}
+
+
+/* ==================================================
+   Reduced Motion
+================================================== */
+
+@media (prefers-reduced-motion:reduce) {
+
+    .table-hover tbody tr {
+
+        transition:none;
+
+    }
+
+}

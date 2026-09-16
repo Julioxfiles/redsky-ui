@@ -1,0 +1,184 @@
+/* =========================================
+   DataTable Component
+   RedSky HTML
+   UI-library agnostic
+========================================= */
+
+.datatable {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-collapse: collapse;
+    border-spacing: 0;
+    vertical-align: middle;
+}
+
+/* Caption */
+
+.datatable caption {
+    padding: .75rem 0;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Header */
+
+.datatable thead {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+}
+
+.datatable th {
+    padding: .75rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-weight: 600;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Body */
+
+.datatable td {
+    padding: .75rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    vertical-align: middle;
+}
+
+/* Footer */
+
+.datatable tfoot {
+    background-color: var(--surface-color);
+}
+
+.datatable tfoot th,
+.datatable tfoot td {
+    font-weight: 600;
+}
+
+/* Striped */
+
+.datatable-striped tbody tr:nth-child(even) td {
+    background-color: var(--surface-color);
+}
+
+/* Hover */
+
+.datatable-hover tbody tr:hover td {
+    background-color: var(--surface-color);
+}
+
+/* Bordered */
+
+.datatable-bordered {
+    border: 1px solid var(--border-color);
+}
+
+.datatable-bordered th,
+.datatable-bordered td {
+    border: 1px solid var(--border-color);
+}
+
+/* Borderless */
+
+.datatable-borderless th,
+.datatable-borderless td {
+    border: none;
+}
+
+/* Compact */
+
+.datatable-compact th,
+.datatable-compact td {
+    padding: .5rem;
+}
+
+/* Large */
+
+.datatable-lg th,
+.datatable-lg td {
+    padding: 1rem;
+}
+
+/* Alignment */
+
+.datatable-align-left {
+    text-align: left;
+}
+
+.datatable-align-center {
+    text-align: center;
+}
+
+.datatable-align-right {
+    text-align: right;
+}
+
+/* Links */
+
+.datatable a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.datatable a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Empty state */
+
+.datatable-empty {
+    padding: 1.5rem;
+    color: var(--muted-color);
+    text-align: center;
+}
+
+/* Responsive wrapper */
+
+.datatable-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive table */
+
+.datatable-responsive > .datatable {
+    min-width: 600px;
+}
+
+/* Focus */
+
+.datatable th:focus,
+.datatable td:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+    .datatable,
+    .datatable a {
+        transition: none;
+    }
+}
+
+/* Small screens */
+
+@media (max-width: 768px) {
+    .datatable th,
+    .datatable td {
+        padding: .5rem;
+    }
+
+    .datatable-responsive > .datatable {
+        min-width: 500px;
+    }
+}

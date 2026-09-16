@@ -1,0 +1,157 @@
+/*
+ * Accordion
+ */
+
+.accordion {
+    color: var(--accordion-color);
+    background-color: var(--accordion-background);
+}
+
+
+/*
+ * Accordion item
+ */
+
+.accordion-item {
+    color: var(--accordion-color);
+    background-color: var(--accordion-background);
+    border: 1px solid var(--accordion-border-color);
+}
+
+.accordion-item:first-child {
+    border-top-left-radius: var(--accordion-border-radius);
+    border-top-right-radius: var(--accordion-border-radius);
+}
+
+.accordion-item:last-child {
+    border-bottom-left-radius: var(--accordion-border-radius);
+    border-bottom-right-radius: var(--accordion-border-radius);
+}
+
+.accordion-item + .accordion-item {
+    border-top: 0;
+}
+
+
+/*
+ * Accordion header
+ */
+
+.accordion-header {
+    margin: 0;
+}
+
+
+/*
+ * Accordion button
+ */
+
+.accordion-button {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem 1.25rem;
+
+    color: var(--accordion-button-color);
+    text-align: left;
+
+    background-color: var(--accordion-button-background);
+    border: 0;
+
+    cursor: pointer;
+
+    transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+}
+
+.accordion-button:hover {
+    background-color: var(--accordion-button-hover-background);
+}
+
+.accordion-button:focus {
+    z-index: 1;
+
+    outline: 0;
+
+    border-color: var(--accordion-focus-border-color);
+
+    box-shadow:
+        0 0 0 0.25rem
+        var(--accordion-focus-ring-color);
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--accordion-button-active-color);
+    background-color: var(--accordion-button-active-background);
+}
+
+
+/*
+ * Accordion toggle indicator
+ */
+
+.accordion-button::after {
+    content: "";
+
+    width: 0.75rem;
+    height: 0.75rem;
+
+    margin-left: auto;
+
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+
+    transform: rotate(45deg);
+
+    transition:
+        transform 0.2s ease-in-out;
+}
+
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(225deg);
+}
+
+
+/*
+ * Accordion collapse
+ */
+
+.accordion-collapse {
+    display: block;
+
+    overflow: hidden;
+
+    background-color: var(--accordion-body-background);
+}
+
+.accordion-collapse.collapsed {
+    display: none;
+}
+
+
+/*
+ * Accordion body
+ */
+
+.accordion-body {
+    padding: 1rem 1.25rem;
+
+    color: var(--accordion-body-color);
+    background-color: var(--accordion-body-background);
+}
+
+
+/*
+ * Disabled accordion button
+ */
+
+.accordion-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}

@@ -1,0 +1,106 @@
+/**
+ * CheckboxInput Component
+ *
+ * Provides Bootstrap-compatible checkbox styling
+ * without requiring Bootstrap.
+ */
+
+/* =========================================================
+   Form Check
+   ========================================================= */
+
+.form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin-bottom: 0.125rem;
+}
+
+.form-check-inline {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
+
+/* =========================================================
+   Form Check Input
+   ========================================================= */
+
+.form-check-input {
+    width: 1em;
+    height: 1em;
+    margin-top: 0.25em;
+    margin-left: -1.5em;
+
+    vertical-align: top;
+    appearance: none;
+
+    color: var(--checkbox-color);
+    background-color: var(--checkbox-background);
+
+    border: 1px solid var(--checkbox-border-color);
+    border-radius: var(--checkbox-border-radius);
+
+    cursor: pointer;
+
+    print-color-adjust: exact;
+
+    transition:
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+}
+
+/* =========================================================
+   Focus
+   ========================================================= */
+
+.form-check-input:focus {
+    outline: 0;
+    border-color: var(--checkbox-focus-border-color);
+    box-shadow: 0 0 0 0.25rem var(--checkbox-focus-ring-color);
+}
+
+/* =========================================================
+   Checked
+   ========================================================= */
+
+.form-check-input:checked {
+    background-color: var(--checkbox-checked-background);
+    border-color: var(--checkbox-checked-border-color);
+}
+
+/* =========================================================
+   Disabled
+   ========================================================= */
+
+.form-check-input:disabled {
+    background-color: var(--checkbox-disabled-background);
+    border-color: var(--checkbox-disabled-border-color);
+    cursor: not-allowed;
+    opacity: var(--checkbox-disabled-opacity);
+}
+
+.form-check-input:disabled ~ .form-check-label {
+    color: var(--checkbox-disabled-label-color);
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   Validation
+   ========================================================= */
+
+.form-check-input.is-valid {
+    border-color: var(--checkbox-valid-border-color);
+}
+
+.form-check-input.is-invalid {
+    border-color: var(--checkbox-invalid-border-color);
+}
+
+.form-check-input.is-invalid:focus {
+    box-shadow: 0 0 0 0.25rem var(--checkbox-invalid-ring-color);
+}

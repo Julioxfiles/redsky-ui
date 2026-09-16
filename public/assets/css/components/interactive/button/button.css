@@ -1,0 +1,445 @@
+/**
+ * Button component styles.
+ *
+ * Provides a semantic button system inspired by
+ * common CSS frameworks.
+ *
+ * Button classes:
+ *
+ * - .btn
+ * - .btn-primary
+ * - .btn-secondary
+ * - .btn-success
+ * - .btn-danger
+ * - .btn-warning
+ * - .btn-info
+ * - .btn-light
+ * - .btn-dark
+ *
+ * Sizes:
+ *
+ * - .btn-sm
+ * - .btn-lg
+ *
+ * Colors are based on the global RedSky UI variables
+ * defined in app.css.
+ */
+
+
+/* ==================================================
+   Base Button
+================================================== */
+
+.btn {
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.5rem;
+
+    min-height:2.5rem;
+
+    padding:.625rem 1rem;
+
+    border:1px solid transparent;
+
+    border-radius:.5rem;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    font-size:.875rem;
+
+    font-weight:600;
+
+    line-height:1.25;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+    vertical-align:middle;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:
+
+        background-color .2s ease,
+
+        border-color .2s ease,
+
+        color .2s ease,
+
+        box-shadow .2s ease,
+
+        transform .1s ease;
+
+}
+
+
+/* ==================================================
+   Button Hover / Active
+================================================== */
+
+.btn:hover {
+
+    text-decoration:none;
+
+}
+
+.btn:active {
+
+    transform:translateY(1px);
+
+}
+
+.btn:focus-visible {
+
+    outline:2px solid var(--primary-color);
+
+    outline-offset:3px;
+
+}
+
+
+/* ==================================================
+   Disabled Button
+================================================== */
+
+.btn:disabled,
+
+.btn[disabled] {
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    box-shadow:none;
+
+    transform:none;
+
+}
+
+.btn:disabled:hover,
+
+.btn[disabled]:hover {
+
+    box-shadow:none;
+
+}
+
+
+/* ==================================================
+   Primary
+================================================== */
+
+.btn-primary {
+
+    color:var(--button-text-color);
+
+    background-color:var(--primary-color);
+
+    border-color:var(--primary-color);
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .08),
+        0 2px 4px rgba(0, 0, 0, .04);
+
+}
+
+.btn-primary:hover {
+
+    color:var(--button-text-color);
+
+    background-color:var(--primary-hover);
+
+    border-color:var(--primary-hover);
+
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, .12),
+        0 1px 2px rgba(0, 0, 0, .08);
+
+}
+
+
+/* ==================================================
+   Secondary
+================================================== */
+
+.btn-secondary {
+
+    color:var(--button-text-color);
+
+    background-color:var(--secondary-color);
+
+    border-color:var(--secondary-color);
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .08);
+
+}
+
+.btn-secondary:hover {
+
+    color:var(--button-text-color);
+
+    background-color:var(--secondary-hover);
+
+    border-color:var(--secondary-hover);
+
+}
+
+
+/* ==================================================
+   Success
+================================================== */
+
+.btn-success {
+
+    color:var(--button-text-color);
+
+    background-color:var(--success-color);
+
+    border-color:var(--success-color);
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .08);
+
+}
+
+.btn-success:hover {
+
+    color:var(--button-text-color);
+
+    background-color:var(--success-hover);
+
+    border-color:var(--success-hover);
+
+}
+
+
+/* ==================================================
+   Danger
+================================================== */
+
+.btn-danger {
+
+    color:var(--button-text-color);
+
+    background-color:var(--danger-color);
+
+    border-color:var(--danger-color);
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .08);
+
+}
+
+.btn-danger:hover {
+
+    color:var(--button-text-color);
+
+    background-color:var(--danger-hover);
+
+    border-color:var(--danger-hover);
+
+}
+
+
+/* ==================================================
+   Warning
+================================================== */
+
+.btn-warning {
+
+    color:var(--button-text-color);
+
+    background-color:var(--warning-color);
+
+    border-color:var(--warning-color);
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .08);
+
+}
+
+.btn-warning:hover {
+
+    color:var(--button-text-color);
+
+    background-color:var(--warning-hover);
+
+    border-color:var(--warning-hover);
+
+}
+
+
+/* ==================================================
+   Info
+================================================== */
+
+.btn-info {
+
+    color:var(--button-text-color);
+
+    background-color:var(--info-color);
+
+    border-color:var(--info-color);
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .08);
+
+}
+
+.btn-info:hover {
+
+    color:var(--button-text-color);
+
+    background-color:var(--info-hover);
+
+    border-color:var(--info-hover);
+
+}
+
+
+/* ==================================================
+   Light
+================================================== */
+
+.btn-light {
+
+    color:var(--text-color);
+
+    background-color:var(--light-color);
+
+    border-color:var(--border-color);
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .05);
+
+}
+
+.btn-light:hover {
+
+    color:var(--text-color);
+
+    background-color:var(--light-hover);
+
+    border-color:var(--border-color);
+
+}
+
+
+/* ==================================================
+   Dark
+================================================== */
+
+.btn-dark {
+
+    color:var(--button-text-color);
+
+    background-color:var(--dark-color);
+
+    border-color:var(--dark-color);
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .12);
+
+}
+
+.btn-dark:hover {
+
+    color:var(--button-text-color);
+
+    background-color:var(--dark-hover);
+
+    border-color:var(--dark-hover);
+
+}
+
+
+/* ==================================================
+   Small Button
+================================================== */
+
+.btn-sm {
+
+    min-height:2rem;
+
+    padding:.375rem .75rem;
+
+    font-size:.8125rem;
+
+    border-radius:.375rem;
+
+}
+
+
+/* ==================================================
+   Large Button
+================================================== */
+
+.btn-lg {
+
+    min-height:3rem;
+
+    padding:.75rem 1.25rem;
+
+    font-size:1rem;
+
+    border-radius:.625rem;
+
+}
+
+
+/* ==================================================
+   Button Content
+================================================== */
+
+.btn i,
+
+.btn svg {
+
+    flex:0 0 auto;
+
+}
+
+
+/* ==================================================
+   Full Width
+================================================== */
+
+.btn-block {
+
+    width:100%;
+
+}
+
+
+/* ==================================================
+   Reduced Motion
+================================================== */
+
+@media (prefers-reduced-motion:reduce) {
+
+    .btn {
+
+        transition:none;
+
+    }
+
+}

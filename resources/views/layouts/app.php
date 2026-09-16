@@ -46,6 +46,12 @@ declare(strict_types=1);
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/documentation.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/tabs/tabs.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/modal/modal.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/button/button.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/accordion/accordion.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/collapse/collapse.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/table/table/table.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/select/select.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/textinput/textinput.css">
     <!-- 
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/datagrid/datagrid.css">
 -->
@@ -112,8 +118,10 @@ declare(strict_types=1);
     <script src="/redsky/redsky-ui/public/assets/js/prism.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/documentation/documentation.js"></script>
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/component.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/modal/modal.js"></script>
+    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/accordion/accordion.js"></script>
+    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/collapse/collapse.js"></script>
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/datagrid/datagrid.js"></script>
+    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/modal/modal.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/interactive/spinner/spinner.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/interactive/tabs/tabs.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/feedback/progress/progress.js"></script>

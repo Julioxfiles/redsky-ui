@@ -40,24 +40,12 @@ $examples = method_exists($component, 'exampleFiles')
 
 <div class="documentation">
 
-
     <?php require __DIR__ . '/header.php'; ?>
-
-
     <?php require __DIR__ . '/description.php'; ?>
-    
-
     <?php require __DIR__ . '/examples.php'; ?>
-
-
     <?php require __DIR__ . '/methods.php'; ?>
-
-
     <?php require __DIR__ . '/inherited-methods.php'; ?>
-
-
     <?php require __DIR__ . '/navigation.php'; ?>
-
 
 </div>
 
