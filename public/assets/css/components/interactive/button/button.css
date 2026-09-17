@@ -25,6 +25,62 @@
  * defined in app.css.
  */
 
+ /* ================================
+   Theme Variables - Light Theme (default)
+================================ */
+ :root {
+    /* Primary */
+    --primary-color:#2563eb;
+    --primary-hover:#1d4ed8;
+    /* Secondary */
+    --secondary-color:#64748b;
+    --secondary-hover:#475569;
+    /* Success */
+    --success-color:#16a34a;
+    --success-hover:#15803d;
+    /* Danger */
+    --danger-color:#dc2626;
+    --danger-hover:#b91c1c;
+    /* Warning */
+    --warning-color:#d97706;
+    --warning-hover:#b45309;
+    /* Info */
+    --info-color:#0891b2;
+    --info-hover:#0e7490;
+    /* Light */
+    --light-color:#f1f5f9;
+    --light-hover:#e2e8f0;
+    /* Dark */
+    --dark-color:#334155;
+    --dark-hover:#1e293b;
+}
+
+html.dark {
+    /* Primary */
+    --primary-color:#3b82f6;
+    --primary-hover:#2563eb;
+    /* Secondary */
+    --secondary-color:#94a3b8;
+    --secondary-hover:#cbd5e1;
+    /* Success */
+    --success-color:#22c55e;
+    --success-hover:#16a34a;
+    /* Danger */
+    --danger-color:#f87171;
+    --danger-hover:#ef4444;
+    /* Warning */
+    --warning-color:#f59e0b;
+    --warning-hover:#d97706;
+    /* Info */
+    --info-color:#22d3ee;
+    --info-hover:#06b6d4;
+    /* Light */
+    --light-color:#e5e7eb;
+    --light-hover:#f3f4f6;
+    /* Dark */
+    --dark-color:#111827;
+    --dark-hover:#0f172a;
+}
 
 /* ==================================================
    Base Button
@@ -33,21 +89,13 @@
 .btn {
 
     display:inline-flex;
-
     align-items:center;
-
     justify-content:center;
-
     gap:.5rem;
-
     min-height:2.5rem;
-
     padding:.625rem 1rem;
-
     border:1px solid transparent;
-
     border-radius:.5rem;
-
     font-family:
         system-ui,
         -apple-system,
@@ -59,35 +107,21 @@
         sans-serif;
 
     font-size:.875rem;
-
     font-weight:600;
-
     line-height:1.25;
-
     text-align:center;
-
     text-decoration:none;
-
     white-space:nowrap;
-
     vertical-align:middle;
-
     cursor:pointer;
-
     user-select:none;
-
     transition:
 
         background-color .2s ease,
-
         border-color .2s ease,
-
         color .2s ease,
-
         box-shadow .2s ease,
-
         transform .1s ease;
-
 }
 
 

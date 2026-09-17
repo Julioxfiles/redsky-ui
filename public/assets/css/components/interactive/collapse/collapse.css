@@ -1,6 +1,43 @@
+
 /*
  * Collapse
  */
+
+/* ================================
+   Theme Variables - Light Theme (default)
+================================ */
+
+ :root {
+    --collapse-color: #212529; 
+    --collapse-background: #ffffff; 
+    --collapse-border-color: #dee2e6; 
+    --collapse-border-radius: 0.375rem;
+    --collapse-button-color: #212529; 
+    --collapse-button-background: #ffffff; 
+    --collapse-button-hover-background: #f8f9fa; 
+    --collapse-focus-border-color: #86b7fe; 
+    --collapse-focus-ring-color: rgba(13, 110, 253, 0.25);
+    --collapse-body-color: #212529; 
+    --collapse-body-background: #ffffff;    
+ }
+
+/* ================================
+   Dark Theme
+================================ */
+
+ html.dark {
+    --collapse-color: #f8f9fa;
+    --collapse-background: #212529;
+    --collapse-border-color: #495057;
+    --collapse-border-radius: 0.375rem;
+    --collapse-button-color: #f8f9fa;
+    --collapse-button-background: #212529;
+    --collapse-button-hover-background: #343a40;
+    --collapse-focus-border-color: #86b7fe;
+    --collapse-focus-ring-color: rgba(110, 168, 254, 0.25);
+    --collapse-body-color: #f8f9fa;
+    --collapse-body-background: #212529;
+ }
 
 .collapse {
     color: var(--collapse-color);

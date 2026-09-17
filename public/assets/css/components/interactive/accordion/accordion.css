@@ -2,6 +2,56 @@
  * Accordion
  */
 
+/* ================================
+   Theme Variables - Light Theme (default)
+================================ */
+
+ :root {
+    /* Accordion */
+    --accordion-color: #212529;
+    --accordion-background: #ffffff;
+    --accordion-border-color: #dee2e6;
+    --accordion-border-radius: 0.375rem;
+
+    --accordion-button-color: #212529;
+    --accordion-button-background: #ffffff;
+    --accordion-button-hover-background: #f8f9fa;
+
+    --accordion-button-active-color: #0d6efd;
+    --accordion-button-active-background: #e7f1ff;
+
+    --accordion-body-color: #212529;
+    --accordion-body-background: #ffffff;
+
+    --accordion-focus-border-color: #86b7fe;
+    --accordion-focus-ring-color: rgba(13, 110, 253, 0.25);
+ }
+
+/* ================================
+   Dark Theme
+================================ */
+
+ html.dark {
+    /* Accordion */
+    --accordion-color: #f8f9fa;
+    --accordion-background: #212529;
+    --accordion-border-color: #495057;
+    --accordion-border-radius: 0.375rem;
+
+    --accordion-button-color: #f8f9fa;
+    --accordion-button-background: #212529;
+    --accordion-button-hover-background: #343a40;
+
+    --accordion-button-active-color: #6ea8fe;
+    --accordion-button-active-background: #263b57;
+
+    --accordion-body-color: #f8f9fa;
+    --accordion-body-background: #212529;
+
+    --accordion-focus-border-color: #86b7fe;
+    --accordion-focus-ring-color: rgba(110, 168, 254, 0.25);    
+ }
+
 .accordion {
     color: var(--accordion-color);
     background-color: var(--accordion-background);

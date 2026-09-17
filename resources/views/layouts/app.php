@@ -51,6 +51,7 @@ declare(strict_types=1);
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/collapse/collapse.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/table/table/table.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/select/select.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/switchinput/switchinput.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/textinput/textinput.css">
     <!-- 
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/datagrid/datagrid.css">
