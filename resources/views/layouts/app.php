@@ -53,6 +53,8 @@ declare(strict_types=1);
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/select/select.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/switchinput/switchinput.css">
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/textinput/textinput.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/searchable-select/searchable-select.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/lists/listgroup/listgroup.css">
     <!-- 
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/datagrid/datagrid.css">
 -->
@@ -128,6 +130,7 @@ declare(strict_types=1);
     <script src="/redsky/redsky-ui/public/assets/js/components/feedback/progress/progress.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/feedback/alert/alert.js"></script>
     <script src="/redsky/redsky-ui/public/assets/js/components/feedback/toast/toast.js"></script>
+    <script src="/redsky/redsky-ui/public/assets/js/components/form/searchable-select/searchable-select.js"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
