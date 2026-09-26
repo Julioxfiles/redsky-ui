@@ -1,0 +1,415 @@
+/**
+ * bar-menu component
+ *
+ * Bootstrap-compatible naming without a Bootstrap dependency.
+ */
+
+:root {
+    --bar-menu-bg: #f8f9fa;
+    --bar-menu-color: #212529;
+    --bar-menu-border-color: #dee2e6;
+
+    --bar-menu-hover-bg: #e9ecef;
+    --bar-menu-hover-color: #212529;
+
+    --bar-menu-active-bg: #e9ecef;
+    --bar-menu-active-color: #212529;
+
+    --bar-menu-menu-bg: #ffffff;
+    --bar-menu-menu-color: #212529;
+    --bar-menu-menu-border-color: #dee2e6;
+    --bar-menu-menu-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+    --bar-menu-item-hover-bg: #f8f9fa;
+    --bar-menu-item-hover-color: #212529;
+
+    --bar-menu-active-item-bg: #0d6efd;
+    --bar-menu-active-item-color: #ffffff;
+
+    --bar-menu-disabled-color: #6c757d;
+
+    --bar-menu-border-radius: 0.375rem;
+
+    --bar-menu-item-padding-y: 0.375rem;
+    --bar-menu-item-padding-x: 0.75rem;
+
+    --bar-menu-menu-padding-y: 0.5rem;
+    --bar-menu-menu-min-width: 10rem;
+
+    --bar-menu-shortcut-margin-left: 3rem;
+}
+
+html.dark {
+    --bar-menu-bg: #212529;
+    --bar-menu-color: #f8f9fa;
+    --bar-menu-border-color: #495057;
+
+    --bar-menu-hover-bg: #343a40;
+    --bar-menu-hover-color: #ffffff;
+
+    --bar-menu-active-bg: #343a40;
+    --bar-menu-active-color: #ffffff;
+
+    --bar-menu-menu-bg: #212529;
+    --bar-menu-menu-color: #f8f9fa;
+    --bar-menu-menu-border-color: #495057;
+    --bar-menu-menu-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+
+    --bar-menu-item-hover-bg: #343a40;
+    --bar-menu-item-hover-color: #ffffff;
+
+    --bar-menu-active-item-bg: #0d6efd;
+    --bar-menu-active-item-color: #ffffff;
+
+    --bar-menu-disabled-color: #adb5bd;
+}
+
+
+/* Menu bar */
+
+.bar-menu {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    padding: 0;
+
+    color: var(--bar-menu-color);
+    background-color: var(--bar-menu-bg);
+
+    border-bottom: 1px solid var(--bar-menu-border-color);
+}
+
+
+/* Root menu */
+
+.bar-menu > .menu {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/* Root menu items */
+
+.bar-menu > .menu > .menu-item {
+    position: relative;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Root menu item with submenu */
+
+.bar-menu > .menu > .menu-item.has-submenu {
+    cursor: pointer;
+}
+
+
+/* Root menu item content */
+
+.bar-menu > .menu > .menu-item > a,
+.bar-menu > .menu > .menu-item > button {
+
+    display: block;
+
+    padding:
+        var(--bar-menu-item-padding-y)
+        var(--bar-menu-item-padding-x);
+
+    color: inherit;
+    text-decoration: none;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+}
+
+
+/* Root menu item without link or button */
+
+.bar-menu > .menu > .menu-item:not(:has(> a)):not(:has(> button)) {
+    padding:
+        var(--bar-menu-item-padding-y)
+        var(--bar-menu-item-padding-x);
+}
+
+
+/* Root menu item hover */
+
+.bar-menu > .menu > .menu-item:hover,
+.bar-menu > .menu > .menu-item:focus {
+
+    color: var(--bar-menu-hover-color);
+    background-color: var(--bar-menu-hover-bg);
+
+    outline: 0;
+}
+
+
+/* Root menu item link/button hover */
+
+.bar-menu > .menu > .menu-item > a:hover,
+.bar-menu > .menu > .menu-item > a:focus,
+.bar-menu > .menu > .menu-item > button:hover,
+.bar-menu > .menu > .menu-item > button:focus {
+
+    color: var(--bar-menu-hover-color);
+    background-color: var(--bar-menu-hover-bg);
+
+    outline: 0;
+}
+
+
+/* Active root menu item */
+
+.bar-menu > .menu > .menu-item.active,
+.bar-menu > .menu > .menu-item[aria-expanded="true"] {
+
+    color: var(--bar-menu-active-color);
+    background-color: var(--bar-menu-active-bg);
+}
+
+
+/* All submenus */
+
+.bar-menu .menu .menu {
+
+    position: absolute;
+    z-index: 1000;
+
+    display: none;
+
+    min-width: var(--bar-menu-menu-min-width);
+    margin: 0;
+    padding: var(--bar-menu-menu-padding-y) 0;
+
+    color: var(--bar-menu-menu-color);
+    text-align: left;
+
+    background-color: var(--bar-menu-menu-bg);
+
+    border: 1px solid var(--bar-menu-menu-border-color);
+    border-radius: var(--bar-menu-border-radius);
+
+    box-shadow: var(--bar-menu-menu-shadow);
+
+    list-style: none;
+}
+
+
+/* Open submenu */
+
+.bar-menu .menu-item.show > .menu {
+    display: block;
+}
+
+
+/* Submenu items */
+
+.bar-menu .menu .menu-item {
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    white-space: nowrap;
+}
+
+
+/* Submenu item content */
+
+.bar-menu .menu .menu-item > a,
+.bar-menu .menu .menu-item > button {
+
+    display: block;
+
+    width: 100%;
+
+    padding:
+        var(--bar-menu-item-padding-y)
+        var(--bar-menu-item-padding-x);
+
+    color: inherit;
+    text-align: left;
+    text-decoration: none;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+}
+
+
+/* Submenu item without link or button */
+
+.bar-menu .menu .menu-item:not(:has(> a)):not(:has(> button)) {
+
+    padding:
+        var(--bar-menu-item-padding-y)
+        var(--bar-menu-item-padding-x);
+}
+
+
+/* Submenu item with another submenu */
+
+.bar-menu .menu .menu-item.has-submenu {
+    cursor: pointer;
+}
+
+
+/* Submenu item hover */
+
+.bar-menu .menu .menu-item:hover,
+.bar-menu .menu .menu-item:focus,
+.bar-menu .menu .menu-item > a:hover,
+.bar-menu .menu .menu-item > a:focus,
+.bar-menu .menu .menu-item > button:hover,
+.bar-menu .menu .menu-item > button:focus {
+
+    color: var(--bar-menu-item-hover-color);
+    background-color: var(--bar-menu-item-hover-bg);
+
+    outline: 0;
+}
+
+
+/* Active submenu item */
+
+.bar-menu .menu .menu-item.active,
+.bar-menu .menu .menu-item:active {
+
+    color: var(--bar-menu-active-item-color);
+    background-color: var(--bar-menu-active-item-bg);
+}
+
+
+/* Disabled menu item */
+
+.bar-menu .menu .menu-item.disabled,
+.bar-menu .menu .menu-item[aria-disabled="true"] {
+
+    color: var(--bar-menu-disabled-color);
+
+    pointer-events: none;
+    cursor: default;
+
+    opacity: 0.65;
+}
+
+
+/* Disabled links and buttons */
+
+.bar-menu .menu .menu-item.disabled > a,
+.bar-menu .menu .menu-item.disabled > button,
+.bar-menu .menu .menu-item[aria-disabled="true"] > a,
+.bar-menu .menu .menu-item[aria-disabled="true"] > button {
+
+    color: inherit;
+    cursor: default;
+}
+
+
+/* Keyboard focus */
+
+.bar-menu .menu-item:focus-visible,
+.bar-menu .menu-item > a:focus-visible,
+.bar-menu .menu-item > button:focus-visible {
+
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
+
+/* Prevent nested menus from affecting root layout */
+
+.bar-menu .menu .menu {
+    flex-direction: column;
+}
+
+
+/* Nested submenu positioning defaults */
+
+.bar-menu .menu .menu .menu {
+    top: 0;
+}
+
+
+/* Menu items containing submenus */
+
+.bar-menu .menu-item.has-submenu > .menu {
+    top: 0;
+}
+
+
+/* Ensure menu text does not wrap */
+
+.bar-menu .menu-item > a,
+.bar-menu .menu-item > button {
+    white-space: nowrap;
+}
+
+
+/* Menu item actions */
+
+.bar-menu .menu .menu-item > a,
+.bar-menu .menu .menu-item > button {
+
+    display: grid;
+
+    grid-template-columns: max-content max-content;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    padding:
+        var(--bar-menu-item-padding-y)
+        var(--bar-menu-item-padding-x);
+
+    color: inherit;
+    text-align: left;
+    text-decoration: none;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+
+/* Menu item text */
+
+.bar-menu .menu-item-text {
+    white-space: nowrap;
+}
+
+
+/* Menu item shortcuts */
+
+.bar-menu .menu-item-shortcut {
+
+    margin-left: var(--bar-menu-shortcut-margin-left);
+
+    color: var(--bar-menu-disabled-color);
+
+    font-size: 0.875em;
+    font-weight: normal;
+
+    text-align: right;
+
+    white-space: nowrap;
+}
