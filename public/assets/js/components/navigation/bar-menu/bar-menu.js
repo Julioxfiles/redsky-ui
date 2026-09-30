@@ -74,15 +74,22 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const getFocusTarget = (item) => {
-            const submenu = getSubmenu(item);
 
-            if (submenu) {
-                return item;
+            const target =
+                item.querySelector(
+                    ':scope > a, :scope > button'
+                );
+
+            if (target) {
+                return target;
             }
 
-            return item.querySelector(
-                ':scope > a, :scope > button'
-            ) ?? item;
+            item.setAttribute(
+                'tabindex',
+                '0'
+            );
+
+            return item;
         };
 
         const focusItem = (item) => {
@@ -512,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 getSubmenu(item);
 
             const parentMenu =
-                item.parentElement;
+                item.closest('.menu');
 
             if (!parentMenu) {
                 return;
@@ -643,6 +650,54 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (nextSubmenu) {
                             openSubmenu(nextItem);
                         }
+
+                        return;
+                    }
+
+                    if (parentMenu !== rootMenu) {
+
+                        const rootItems =
+                            getItems(rootMenu);
+
+                        const rootIndex =
+                            rootItems.findIndex(
+                                (rootItem) => {
+                                    return rootItem.contains(
+                                        item
+                                    );
+                                }
+                            );
+
+
+                        const nextIndex =
+                            (rootIndex + 1) %
+                            rootItems.length;
+
+
+                        const nextItem =
+                            rootItems[nextIndex];
+
+
+                        closeAll();
+
+
+                        focusItem(
+                            nextItem
+                        );
+
+
+                        const nextSubmenu =
+                            getSubmenu(
+                                nextItem
+                            );
+
+
+                        if (nextSubmenu) {
+                            openSubmenu(
+                                nextItem
+                            );
+                        }
+
 
                         return;
                     }

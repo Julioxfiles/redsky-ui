@@ -1,0 +1,60 @@
+:root {
+
+    --mobile-card-bg: var(--menu-item-bg, #ffffff);
+    --mobile-card-color: var(--menu-item-color, #212529);
+    --mobile-card-border: var(--menu-item-border, #dee2e6);
+
+}
+
+
+
+html.dark {
+
+    --mobile-card-bg: var(--menu-item-bg, #1e1e1e);
+    --mobile-card-color: var(--menu-item-color, #f5f5f5);
+    --mobile-card-border: var(--menu-item-border, #444);
+
+}
+
+
+
+.mobile-menu .mobile-card {
+
+    width: 100%;
+
+    min-height: 72px;
+
+    box-sizing: border-box;
+
+    padding: 10px 14px;
+
+    background: var(--mobile-card-bg);
+
+    color: var(--mobile-card-color);
+
+    border: 1px solid var(--mobile-card-border);
+
+    border-radius: 12px;
+
+}
+
+
+
+.mobile-menu .mobile-card header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+
+.mobile-menu .mobile-card h2,
+.mobile-menu .mobile-card section {
+
+    color: var(--mobile-card-color);
+
+}

@@ -1,0 +1,64 @@
+/**
+ * card component
+ *
+ * Base card styles.
+ * UI-library agnostic.
+ */
+
+
+:root {
+
+    --card-bg: #ffffff;
+    --card-color: #212529;
+    --card-border-color: #dee2e6;
+
+    --card-border-radius: 0.5rem;
+
+}
+
+
+html.dark {
+
+    --card-bg: #212529;
+    --card-color: #f8f9fa;
+    --card-border-color: #495057;
+
+}
+
+
+
+.card {
+
+    background-color: var(--card-bg);
+    color: var(--card-color);
+
+    border: 1px solid var(--card-border-color);
+    border-radius: var(--card-border-radius);
+
+    overflow: hidden;
+
+}
+
+
+
+.card > header {
+
+    padding: 1rem;
+
+}
+
+
+
+.card > section {
+
+    padding: 1rem;
+
+}
+
+
+
+.card > footer {
+
+    padding: 1rem;
+
+}
