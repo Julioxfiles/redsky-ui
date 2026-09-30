@@ -1,0 +1,186 @@
+/**
+ * Stack Menu Component Styles
+ *
+ * Styles for the StackMenu navigation component.
+ *
+ * @module StackMenu
+ */
+
+
+:root {
+
+    --stack-menu-background: #ffffff;
+
+    --stack-menu-color: #212529;
+
+    --stack-menu-border-color: #dee2e6;
+
+    --stack-menu-hover-background: #f8f9fa;
+
+    --stack-menu-active-background: #e9ecef;
+
+    --stack-menu-item-padding: 0.75rem 1rem;
+
+    --stack-menu-font-size: 1rem;
+
+}
+
+
+
+html.dark {
+
+    --stack-menu-background: #212529;
+
+    --stack-menu-color: #f8f9fa;
+
+    --stack-menu-border-color: #495057;
+
+    --stack-menu-hover-background: #343a40;
+
+    --stack-menu-active-background: #495057;
+
+}
+
+
+
+/*
+ * Stack menu container
+ */
+
+.stack-menu {
+
+    width: 100%;
+
+    background:
+        var(--stack-menu-background);
+
+    color:
+        var(--stack-menu-color);
+
+    overflow: hidden;
+
+}
+
+
+
+/*
+ * Dynamic navigation container
+ */
+
+.stack-menu-root {
+
+    width: 100%;
+
+}
+
+
+
+/*
+ * Menu list
+ */
+
+.stack-menu .menu {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+/*
+ * Menu items
+ */
+
+.stack-menu .menu-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        var(--stack-menu-item-padding);
+
+    font-size:
+        var(--stack-menu-font-size);
+
+    border-bottom:
+        1px solid var(--stack-menu-border-color);
+
+    cursor: pointer;
+
+}
+
+
+
+/*
+ * Hover and focus states
+ */
+
+.stack-menu .menu-item:hover,
+.stack-menu .menu-item:focus {
+
+    background:
+        var(--stack-menu-hover-background);
+
+    outline: none;
+
+}
+
+
+
+/*
+ * Active menu item
+ */
+
+.stack-menu .menu-item.active {
+
+    background:
+        var(--stack-menu-active-background);
+
+}
+
+
+
+/*
+ * Back navigation item
+ */
+
+.stack-menu .menu-back {
+
+    font-weight: 600;
+
+}
+
+
+
+/*
+ * Submenu indicator
+ */
+
+.stack-menu .menu-arrow {
+
+    margin-left: auto;
+
+    font-size: 0.9rem;
+
+}
+
+
+
+/*
+ * Disabled menu item
+ */
+
+.stack-menu .disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+}

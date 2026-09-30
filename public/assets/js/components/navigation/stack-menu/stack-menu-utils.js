@@ -1,5 +1,7 @@
 /**
- * Mobile Menu utilities
+ * Stack Menu utilities
+ *
+ * Provides helper functions for StackMenu navigation.
  */
 
 

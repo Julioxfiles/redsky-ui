@@ -1,13 +1,23 @@
-import {
-    enterSubmenu,
-    goBack
-} from './mobile-menu-navigation.js';
-
+/**
+ * Stack Menu Keyboard Navigation
+ *
+ * Provides keyboard navigation support for StackMenu.
+ *
+ * Handles:
+ * - ArrowDown / ArrowUp navigation between menu items.
+ * - Enter / ArrowRight to open submenus.
+ * - ArrowLeft / Escape to return to the previous menu level.
+ *
+ * This module only manages keyboard interaction.
+ * Menu rendering and navigation state remain handled
+ * by the StackMenu controller.
+ *
+ * @module StackMenuKeyboard
+ */
 
 import {
     hasSubmenu
-} from './mobile-menu-utils.js';
-
+} from './stack-menu-utils.js';
 
 
 export function enableKeyboardNavigation(
@@ -95,8 +105,7 @@ export function enableKeyboardNavigation(
                         event.preventDefault();
 
 
-                        enterSubmenu(
-                            controller,
+                        controller.enterSubmenu(
                             active
                         );
 
@@ -116,9 +125,7 @@ export function enableKeyboardNavigation(
                         event.preventDefault();
 
 
-                        goBack(
-                            controller
-                        );
+                        controller.goBack();
 
                     }
 

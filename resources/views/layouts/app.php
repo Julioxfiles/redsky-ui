@@ -54,7 +54,7 @@ declare(strict_types=1);
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/layout/card/mobile-card.css">
 
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/navigation/bar-menu/bar-menu.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/navigation/mobile-menu/mobile-menu.css">
+    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/navigation/stack-menu/stack-menu.css">
     
 
     <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/table/table/table.css">
@@ -131,12 +131,8 @@ declare(strict_types=1);
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/component.js"></script>
     
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/navigation/bar-menu/bar-menu.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/navigation/mobile-menu/mobile-menu.js"></script>
-
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/navigation/mobile-menu/mobile-menu.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/navigation/side-menu/side-menu.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/navigation/slide-menu/slide-menu.js"></script>
-
+    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/navigation/stack-menu/stack-menu.js"></script>
+    
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/accordion/accordion.js"></script>
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/collapse/collapse.js"></script>
     <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/dropdown/dropdown.js"></script>
