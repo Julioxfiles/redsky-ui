@@ -8,7 +8,7 @@
  * No jQuery dependency.
  */
 
-import { ModalInstance } from './ModalInstance.js';
+import { ModalInstance } from './modal-instance.js';
 
 
 export class ModalManager {

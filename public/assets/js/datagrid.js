@@ -1,13 +1,13 @@
-import DataGridConfig from './DataGridConfig.js';
-import DataGridColumns from './DataGridColumns.js';
-import DataGridSelection from './DataGridSelection.js';
-import DataGridSorting from './DataGridSorting.js';
-import DataGridPagination from './DataGridPagination.js';
-import DataGridEditing from './DataGridEditing.js';
-import DataGridActions from './DataGridActions.js';
-import DataGridAjax from './DataGridAjax.js';
-import DataGridPersistence from './DataGridPersistence.js';
-import DataGridEvents from './DataGridEvents.js';
+import DataGridConfig from './datagrid-config.js';
+import DataGridColumns from './datagrid-columns.js';
+import DataGridSelection from './datagrid-selection.js';
+import DataGridSorting from './datagrid-sorting.js';
+import DataGridPagination from './datagrid-pagination.js';
+import DataGridEditing from './datagrid-editing.js';
+import DataGridActions from './datagrid-actions.js';
+import DataGridAjax from './datagrid-ajax.js';
+import DataGridPersistence from './datagrid-persistence.js';
+import DataGridEvents from './datagrid-events.js';
 
 export default class DataGrid {
 

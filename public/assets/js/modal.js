@@ -11,8 +11,8 @@
  * No jQuery dependency.
  */
 
-import { ModalManager } from './ModalManager.js';
-import { ModalInstance } from './ModalInstance.js';
+import { ModalManager } from './modal-manager.js';
+import { ModalInstance } from './modal-instance.js';
 
 
 class RedSkyModalAPI {

@@ -39,32 +39,19 @@ declare(strict_types=1);
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     >
 
+    <?php
+        //var_dump(__DIR__);
+        //var_dump(glob(__DIR__ . '/public/assets/css/*.css'));
 
-    <!-- RedSky UI -->
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/app.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/prism.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/documentation.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/tabs/tabs.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/modal/modal.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/button/button.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/accordion/accordion.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/collapse/collapse.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/dropdown/dropdown.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/layout/card/card.css">
-    
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/navigation/menu-bar/menu-bar.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/navigation/stack-menu/stack-menu.css">
-    
+        foreach (glob(__DIR__ . '/../../../public/assets/css/*.css') as $file) {
+            $filename = basename($file);
 
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/table/table/table.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/select/select.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/switchinput/switchinput.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/textinput/textinput.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/form/searchable-select/searchable-select.css">
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/lists/listgroup/listgroup.css">
-    <!-- 
-    <link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/components/interactive/datagrid/datagrid.css">
--->
+            echo '<link rel="stylesheet" href="/redsky/redsky-ui/public/assets/css/'
+                . htmlspecialchars($filename, ENT_QUOTES, 'UTF-8')
+                . '">' . PHP_EOL;
+        }
+
+    ?>
 
 </head>
 
@@ -101,14 +88,15 @@ declare(strict_types=1);
 
     </div>
 
+    <?php
+        foreach (glob(__DIR__ . '/../../../public/assets/js/*.js') as $file) {
+            $filename = basename($file);
 
-    <?php foreach ($scripts ?? [] as $script): ?>
-
-        <script
-            src="<?= htmlspecialchars($script) ?>"
-        ></script>
-
-    <?php endforeach; ?>
+            echo '<script type="module" src="/redsky/redsky-ui/public/assets/js/'
+                . htmlspecialchars($filename, ENT_QUOTES, 'UTF-8')
+                . '"></script>' . PHP_EOL;
+        }
+    ?>
 
     <!-- Bootstrap 
     <script
@@ -123,31 +111,12 @@ declare(strict_types=1);
     </script>
      -->
 
-    <script src="/redsky/redsky-ui/public/assets/js/app.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/themes.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/prism.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/documentation/documentation.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/component.js"></script>
-    
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/navigation/menu-bar/menu-bar.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/navigation/stack-menu/stack-menu.js"></script>
-    
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/accordion/accordion.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/collapse/collapse.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/dropdown/dropdown.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/datagrid/datagrid.js"></script>
-    <script type="module" src="/redsky/redsky-ui/public/assets/js/components/interactive/modal/modal.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/interactive/spinner/spinner.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/interactive/tabs/tabs.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/feedback/progress/progress.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/feedback/alert/alert.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/feedback/toast/toast.js"></script>
-    <script src="/redsky/redsky-ui/public/assets/js/components/form/searchable-select/searchable-select.js"></script>
-
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        Prism.highlightAll();
-    });
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            Prism.highlightAll();
+        });
+        
     </script>
 
     <!-- Prism Highlight -->

@@ -2,20 +2,28 @@
     --modal-background: #ffffff;
     --modal-color: #111827;
     --modal-border-color: #d1d5db;
+    --modal-border-radius: 0.625rem;
 
     --modal-header-background: #f8fafc;
     --modal-header-border-color: #e2e8f0;
     --modal-title-color: #0f172a;
+    --modal-description-color: #64748b;
 
     --modal-close-color: #64748b;
-    --modal-close-hover-background: #e2e8f0;
+    --modal-close-hover-background: #f1f5f9;
     --modal-close-hover-color: #0f172a;
-    --modal-close-active-background: #cbd5e1;
+    --modal-close-active-background: #e2e8f0;
 
     --modal-footer-background: #f8fafc;
     --modal-footer-border-color: #e2e8f0;
 
-    --modal-backdrop-background: rgba(0, 0, 0, 0.65);
+    --modal-backdrop-background: rgba(15, 23, 42, 0.65);
+
+    --modal-box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.12),
+        0 8px 10px -6px rgba(0, 0, 0, 0.08);
+
+    --modal-button-border-radius: 0.375rem;
 
     --modal-primary-background: #2563eb;
     --modal-primary-border-color: #2563eb;
@@ -32,12 +40,12 @@
     --modal-secondary-hover-border-color: #94a3b8;
     --modal-secondary-hover-color: #0f172a;
     --modal-secondary-active-background: #f1f5f9;
-    --modal-secondary-focus-color: #64748b;
 
     --modal-focus-color: #2563eb;
     --modal-primary-focus-shadow: rgba(37, 99, 235, 0.2);
     --modal-secondary-focus-shadow: rgba(100, 116, 139, 0.15);
 }
+
 
 html.dark {
     --modal-background: #212529;
@@ -47,6 +55,7 @@ html.dark {
     --modal-header-background: #343a40;
     --modal-header-border-color: #495057;
     --modal-title-color: #ffffff;
+    --modal-description-color: #adb5bd;
 
     --modal-close-color: #adb5bd;
     --modal-close-hover-background: #495057;
@@ -73,13 +82,16 @@ html.dark {
     --modal-secondary-hover-border-color: #adb5bd;
     --modal-secondary-hover-color: #ffffff;
     --modal-secondary-active-background: #6c757d;
-    --modal-secondary-focus-color: #adb5bd;
 
     --modal-focus-color: #6ea8fe;
     --modal-primary-focus-shadow: rgba(110, 168, 254, 0.25);
     --modal-secondary-focus-shadow: rgba(173, 181, 189, 0.2);
 }
 
+
+/* --------------------------------------------------
+   Modal
+   -------------------------------------------------- */
 
 [data-redsky-component="modal"] {
     position: fixed;
@@ -97,6 +109,7 @@ html.dark {
     padding: 1rem;
 
     box-sizing: border-box;
+
     overflow: hidden;
 }
 
@@ -147,11 +160,9 @@ html.dark {
     color: var(--modal-color);
 
     border: 1px solid var(--modal-border-color);
-    border-radius: 0.5rem;
+    border-radius: var(--modal-border-radius);
 
-    box-shadow:
-        0 20px 25px -5px rgba(0, 0, 0, 0.1),
-        0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--modal-box-shadow);
 
     overflow: hidden;
 
@@ -243,7 +254,6 @@ html.dark {
 [data-modal-header] {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
     flex: 0 0 auto;
 
@@ -266,18 +276,44 @@ html.dark {
    -------------------------------------------------- */
 
 [data-modal-title] {
+    flex: 1 1 auto;
+
+    min-width: 0;
+
     margin: 0;
     padding: 0;
+
+    color: var(--modal-title-color);
 
     font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.5;
 
-    color: var(--modal-title-color);
-
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+
+/* --------------------------------------------------
+   Description
+   -------------------------------------------------- */
+
+[data-modal-description] {
+    flex: 1 1 auto;
+
+    min-width: 0;
+
+    margin: 0.125rem 0 0 0.75rem;
+
+    color: var(--modal-description-color);
+
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -299,12 +335,14 @@ html.dark {
     padding: 0;
 
     border: 0;
-    border-radius: 0.375rem;
+    border-radius: var(--modal-button-border-radius);
 
     background: transparent;
     color: var(--modal-close-color);
 
+    font-family: inherit;
     font-size: 1.5rem;
+    font-weight: 400;
     line-height: 1;
 
     cursor: pointer;
@@ -394,7 +432,7 @@ html.dark {
     box-sizing: border-box;
 
     border: 1px solid transparent;
-    border-radius: 0.375rem;
+    border-radius: var(--modal-button-border-radius);
 
     font-family: inherit;
     font-size: 0.875rem;
@@ -416,8 +454,35 @@ html.dark {
         transform 0.05s ease;
 }
 
-[data-modal-confirm] {
-    background-color: var(--modal-secondary-background);
+
+/* --------------------------------------------------
+   Secondary button
+   -------------------------------------------------- */
+
+[data-modal-footer] button:not(:last-child) {
+    background: var(--modal-secondary-background);
+    border-color: var(--modal-secondary-border-color);
+    color: var(--modal-secondary-color);
+}
+
+[data-modal-footer] button:not(:last-child):hover {
+    background: var(--modal-secondary-hover-background);
+    border-color: var(--modal-secondary-hover-border-color);
+    color: var(--modal-secondary-hover-color);
+}
+
+[data-modal-footer] button:not(:last-child):active {
+    background: var(--modal-secondary-active-background);
+
+    transform: translateY(1px);
+}
+
+[data-modal-footer] button:not(:last-child):focus-visible {
+    outline: 2px solid var(--modal-focus-color);
+    outline-offset: 2px;
+
+    box-shadow:
+        0 0 0 3px var(--modal-secondary-focus-shadow);
 }
 
 
@@ -452,37 +517,6 @@ html.dark {
 
     box-shadow:
         0 0 0 3px var(--modal-primary-focus-shadow);
-}
-
-
-/* --------------------------------------------------
-   Secondary button
-   -------------------------------------------------- */
-
-[data-modal-footer] button:not(:last-child) {
-    background: var(--modal-secondary-background);
-    border-color: var(--modal-secondary-border-color);
-    color: var(--modal-secondary-color);
-}
-
-[data-modal-footer] button:not(:last-child):hover {
-    background: var(--modal-secondary-hover-background);
-    border-color: var(--modal-secondary-hover-border-color);
-    color: var(--modal-secondary-hover-color);
-}
-
-[data-modal-footer] button:not(:last-child):active {
-    background: var(--modal-secondary-active-background);
-
-    transform: translateY(1px);
-}
-
-[data-modal-footer] button:not(:last-child):focus-visible {
-    outline: 2px solid var(--modal-secondary-focus-color);
-    outline-offset: 2px;
-
-    box-shadow:
-        0 0 0 3px var(--modal-secondary-focus-shadow);
 }
 
 
@@ -605,16 +639,22 @@ html.dark {
         padding: 0.75rem;
     }
 
+    [data-modal-title] {
+        font-size: 1rem;
+    }
+
+    [data-modal-description] {
+        margin-left: 0.5rem;
+
+        font-size: 0.8125rem;
+    }
+
     [data-modal-body] {
         padding: 0.75rem;
     }
 
     [data-modal-footer] {
         padding: 0.75rem;
-    }
-
-    [data-modal-title] {
-        font-size: 1rem;
     }
 
     [data-modal-footer] button {

@@ -17,11 +17,11 @@
  * No jQuery dependency.
  */
 
-import { ModalPositioning } from './ModalPositioning.js';
-import { ModalDragging } from './ModalDragging.js';
-import { ModalFocus } from './ModalFocus.js';
-import { ModalContent } from './ModalContent.js';
-import { ModalEvents } from './ModalEvents.js';
+import { ModalPositioning } from './modal-positioning.js';
+import { ModalDragging } from './modal-dragging.js';
+import { ModalFocus } from './modal-focus.js';
+import { ModalContent } from './modal-content.js';
+import { ModalEvents } from './modal-events.js';
 
 
 export class ModalInstance {

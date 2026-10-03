@@ -6,7 +6,7 @@
  * No jQuery dependency.
  */
 
-import { ModalSecurity } from './ModalSecurity.js';
+import { ModalSecurity } from './modal-security.js';
 
 export class ModalContent {
 
