@@ -1,0 +1,111 @@
+/**
+ * TimeInput component styles.
+ *
+ * Provides theme-aware styling for native time inputs.
+ * The component is UI-library agnostic and uses semantic CSS
+ * classes compatible with common form-control naming conventions.
+ */
+
+:root {
+    --time-input-background: #ffffff;
+    --time-input-color: #111827;
+    --time-input-border-color: #d1d5db;
+    --time-input-border-radius: 0.375rem;
+    --time-input-padding: 0.5rem 0.75rem;
+    --time-input-font-size: 1rem;
+    --time-input-line-height: 1.5;
+    --time-input-placeholder-color: #6b7280;
+    --time-input-color-scheme: light;
+
+    --time-input-focus-border-color: #3b82f6;
+    --time-input-focus-ring-color: rgb(59 130 246 / 25%);
+
+    --time-input-disabled-background: #f3f4f6;
+    --time-input-disabled-color: #6b7280;
+    --time-input-disabled-border-color: #d1d5db;
+
+    --time-input-invalid-border-color: #dc2626;
+    --time-input-invalid-focus-ring-color: rgb(220 38 38 / 20%);
+
+    --time-input-transition: border-color 0.15s ease-in-out,
+                             box-shadow 0.15s ease-in-out;
+}
+
+html.dark {
+    --time-input-background: #1f2937;
+    --time-input-color: #f9fafb;
+    --time-input-border-color: #4b5563;
+    --time-input-placeholder-color: #9ca3af;
+    --time-input-color-scheme: dark;
+
+    --time-input-focus-border-color: #60a5fa;
+    --time-input-focus-ring-color: rgb(96 165 250 / 25%);
+
+    --time-input-disabled-background: #374151;
+    --time-input-disabled-color: #9ca3af;
+    --time-input-disabled-border-color: #4b5563;
+
+    --time-input-invalid-border-color: #f87171;
+    --time-input-invalid-focus-ring-color: rgb(248 113 113 / 20%);
+}
+
+[data-redsky-component="time-input"] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: var(--time-input-padding);
+
+    font-family: inherit;
+    font-size: var(--time-input-font-size);
+    font-weight: 400;
+    line-height: var(--time-input-line-height);
+
+    color: var(--time-input-color);
+    background-color: var(--time-input-background);
+    color-scheme: var(--time-input-color-scheme);
+
+    border: 1px solid var(--time-input-border-color);
+    border-radius: var(--time-input-border-radius);
+
+    transition: var(--time-input-transition);
+}
+
+[data-redsky-component="time-input"]:focus {
+    outline: 0;
+    border-color: var(--time-input-focus-border-color);
+    box-shadow: 0 0 0 0.2rem var(--time-input-focus-ring-color);
+}
+
+[data-redsky-component="time-input"]:disabled {
+    color: var(--time-input-disabled-color);
+    background-color: var(--time-input-disabled-background);
+    border-color: var(--time-input-disabled-border-color);
+
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+[data-redsky-component="time-input"][aria-invalid="true"],
+[data-redsky-component="time-input"].is-invalid {
+    border-color: var(--time-input-invalid-border-color);
+}
+
+[data-redsky-component="time-input"][aria-invalid="true"]:focus,
+[data-redsky-component="time-input"].is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem var(--time-input-invalid-focus-ring-color);
+}
+
+[data-redsky-component="time-input"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+html.dark [data-redsky-component="time-input"]::-webkit-calendar-picker-indicator {
+    filter: brightness(0) invert(1);
+}
+
+[data-redsky-component="time-input"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}

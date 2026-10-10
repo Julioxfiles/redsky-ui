@@ -1,0 +1,103 @@
+
+/**
+ * WeekInput component styles.
+ *
+ * Provides theme-aware styling for native week inputs.
+ * The component is UI-library agnostic and uses semantic CSS
+ * classes compatible with common form-control naming conventions.
+ */
+
+:root {
+    --week-input-background: #ffffff;
+    --week-input-color: #111827;
+    --week-input-border-color: #d1d5db;
+    --week-input-border-radius: 0.375rem;
+    --week-input-padding: 0.5rem 0.75rem;
+    --week-input-font-size: 1rem;
+    --week-input-line-height: 1.5;
+    --week-input-placeholder-color: #6b7280;
+    --week-input-color-scheme: light;
+
+    --week-input-focus-border-color: #3b82f6;
+    --week-input-focus-ring-color: rgb(59 130 246 / 25%);
+
+    --week-input-disabled-background: #f3f4f6;
+    --week-input-disabled-color: #6b7280;
+    --week-input-disabled-border-color: #d1d5db;
+
+    --week-input-invalid-border-color: #dc2626;
+    --week-input-invalid-focus-ring-color: rgb(220 38 38 / 20%);
+
+    --week-input-transition: border-color 0.15s ease-in-out,
+                             box-shadow 0.15s ease-in-out;
+}
+
+html.dark {
+    --week-input-background: #1f2937;
+    --week-input-color: #f9fafb;
+    --week-input-border-color: #4b5563;
+    --week-input-placeholder-color: #9ca3af;
+    --week-input-color-scheme: dark;
+
+    --week-input-focus-border-color: #60a5fa;
+    --week-input-focus-ring-color: rgb(96 165 250 / 25%);
+
+    --week-input-disabled-background: #374151;
+    --week-input-disabled-color: #9ca3af;
+    --week-input-disabled-border-color: #4b5563;
+
+    --week-input-invalid-border-color: #f87171;
+    --week-input-invalid-focus-ring-color: rgb(248 113 113 / 20%);
+}
+
+[data-redsky-component="week-input"] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: var(--week-input-padding);
+
+    font-family: inherit;
+    font-size: var(--week-input-font-size);
+    font-weight: 400;
+    line-height: var(--week-input-line-height);
+
+    color: var(--week-input-color);
+    background-color: var(--week-input-background);
+    color-scheme: var(--week-input-color-scheme);
+
+    border: 1px solid var(--week-input-border-color);
+    border-radius: var(--week-input-border-radius);
+
+    transition: var(--week-input-transition);
+}
+
+[data-redsky-component="week-input"]:focus {
+    outline: 0;
+    border-color: var(--week-input-focus-border-color);
+    box-shadow: 0 0 0 0.2rem var(--week-input-focus-ring-color);
+}
+
+[data-redsky-component="week-input"]:disabled {
+    color: var(--week-input-disabled-color);
+    background-color: var(--week-input-disabled-background);
+    border-color: var(--week-input-disabled-border-color);
+
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+[data-redsky-component="week-input"]:read-only {
+    background-color: var(--week-input-disabled-background);
+}
+
+[data-redsky-component="week-input"][aria-invalid="true"],
+[data-redsky-component="week-input"].is-invalid {
+    border-color: var(--week-input-invalid-border-color);
+}
+
+[data-redsky-component="week-input"][aria-invalid="true"]:focus,
+[data-redsky-component="week-input"].is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem var(--week-input-invalid-focus-ring-color);
+}

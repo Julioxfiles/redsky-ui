@@ -1,0 +1,108 @@
+
+/**
+ * TelInput component styles.
+ *
+ * Provides theme-aware styling for native telephone inputs.
+ * The component is UI-library agnostic and uses semantic CSS
+ * classes compatible with common form-control naming conventions.
+ */
+
+:root {
+    --tel-input-background: #ffffff;
+    --tel-input-color: #111827;
+    --tel-input-border-color: #d1d5db;
+    --tel-input-border-radius: 0.375rem;
+    --tel-input-padding: 0.5rem 0.75rem;
+    --tel-input-font-size: 1rem;
+    --tel-input-line-height: 1.5;
+    --tel-input-placeholder-color: #6b7280;
+    --tel-input-color-scheme: light;
+
+    --tel-input-focus-border-color: #3b82f6;
+    --tel-input-focus-ring-color: rgb(59 130 246 / 25%);
+
+    --tel-input-disabled-background: #f3f4f6;
+    --tel-input-disabled-color: #6b7280;
+    --tel-input-disabled-border-color: #d1d5db;
+
+    --tel-input-invalid-border-color: #dc2626;
+    --tel-input-invalid-focus-ring-color: rgb(220 38 38 / 20%);
+
+    --tel-input-transition: border-color 0.15s ease-in-out,
+                            box-shadow 0.15s ease-in-out;
+}
+
+html.dark {
+    --tel-input-background: #1f2937;
+    --tel-input-color: #f9fafb;
+    --tel-input-border-color: #4b5563;
+    --tel-input-placeholder-color: #9ca3af;
+    --tel-input-color-scheme: dark;
+
+    --tel-input-focus-border-color: #60a5fa;
+    --tel-input-focus-ring-color: rgb(96 165 250 / 25%);
+
+    --tel-input-disabled-background: #374151;
+    --tel-input-disabled-color: #9ca3af;
+    --tel-input-disabled-border-color: #4b5563;
+
+    --tel-input-invalid-border-color: #f87171;
+    --tel-input-invalid-focus-ring-color: rgb(248 113 113 / 20%);
+}
+
+[data-redsky-component="tel-input"] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: var(--tel-input-padding);
+
+    font-family: inherit;
+    font-size: var(--tel-input-font-size);
+    font-weight: 400;
+    line-height: var(--tel-input-line-height);
+
+    color: var(--tel-input-color);
+    background-color: var(--tel-input-background);
+    color-scheme: var(--tel-input-color-scheme);
+
+    border: 1px solid var(--tel-input-border-color);
+    border-radius: var(--tel-input-border-radius);
+
+    transition: var(--tel-input-transition);
+}
+
+[data-redsky-component="tel-input"]::placeholder {
+    color: var(--tel-input-placeholder-color);
+    opacity: 1;
+}
+
+[data-redsky-component="tel-input"]:focus {
+    outline: 0;
+    border-color: var(--tel-input-focus-border-color);
+    box-shadow: 0 0 0 0.2rem var(--tel-input-focus-ring-color);
+}
+
+[data-redsky-component="tel-input"]:disabled {
+    color: var(--tel-input-disabled-color);
+    background-color: var(--tel-input-disabled-background);
+    border-color: var(--tel-input-disabled-border-color);
+
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+[data-redsky-component="tel-input"]:read-only {
+    background-color: var(--tel-input-disabled-background);
+}
+
+[data-redsky-component="tel-input"][aria-invalid="true"],
+[data-redsky-component="tel-input"].is-invalid {
+    border-color: var(--tel-input-invalid-border-color);
+}
+
+[data-redsky-component="tel-input"][aria-invalid="true"]:focus,
+[data-redsky-component="tel-input"].is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem var(--tel-input-invalid-focus-ring-color);
+}

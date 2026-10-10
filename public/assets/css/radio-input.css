@@ -1,0 +1,54 @@
+
+/**
+ * RadioInput component styles.
+ *
+ * Provides theme-aware styling for native radio inputs.
+ * The component is UI-library agnostic and uses CSS variables
+ * for theme customization.
+ */
+
+:root {
+    --radio-input-accent-color: #2563eb;
+    --radio-input-background: #ffffff;
+    --radio-input-border-color: #9ca3af;
+    --radio-input-disabled-accent-color: #9ca3af;
+    --radio-input-focus-ring-color: rgb(59 130 246 / 30%);
+    --radio-input-size: 1rem;
+    --radio-input-color-scheme: light;
+    --radio-input-transition: accent-color 0.15s ease-in-out;
+}
+
+html.dark {
+    --radio-input-accent-color: #60a5fa;
+    --radio-input-background: #1f2937;
+    --radio-input-border-color: #6b7280;
+    --radio-input-disabled-accent-color: #6b7280;
+    --radio-input-focus-ring-color: rgb(96 165 250 / 35%);
+    --radio-input-color-scheme: dark;
+}
+
+[data-component="radio-input"] {
+    width: var(--radio-input-size);
+    height: var(--radio-input-size);
+    margin: 0;
+
+    accent-color: var(--radio-input-accent-color);
+    color-scheme: var(--radio-input-color-scheme);
+
+    cursor: pointer;
+    vertical-align: middle;
+
+    transition: var(--radio-input-transition);
+}
+
+[data-component="radio-input"]:focus-visible {
+    outline: 2px solid var(--radio-input-accent-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 0.2rem var(--radio-input-focus-ring-color);
+}
+
+[data-component="radio-input"]:disabled {
+    accent-color: var(--radio-input-disabled-accent-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}

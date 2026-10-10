@@ -1,17 +1,46 @@
+:root {
+    --progress-background: #e5e7eb;
+    --progress-border-radius: 0.375rem;
+
+    --progress-primary-color: #3b82f6;
+    --progress-success-color: #22c55e;
+    --progress-warning-color: #f59e0b;
+    --progress-danger-color: #ef4444;
+    --progress-info-color: #06b6d4;
+}
+
+html.dark {
+    --progress-background: #374151;
+
+    --progress-primary-color: #60a5fa;
+    --progress-success-color: #4ade80;
+    --progress-warning-color: #fbbf24;
+    --progress-danger-color: #f87171;
+    --progress-info-color: #22d3ee;
+}
+
+/*
+ * Progress
+ */
+
 [data-redsky-component="progress"] {
     display: block;
     width: 100%;
     height: 1rem;
     overflow: hidden;
-    background-color: #e5e7eb;
-    border-radius: 0.375rem;
+    background-color: var(--progress-background);
+    border-radius: var(--progress-border-radius);
 }
+
+/*
+ * Progress indicator
+ */
 
 [data-redsky-component="progress"] [data-progress-indicator] {
     display: block;
-    height: 100%;
     width: 0;
-    background-color: currentColor;
+    height: 100%;
+    background-color: var(--progress-primary-color);
     border-radius: inherit;
     transition: width 0.3s ease;
 }
@@ -33,27 +62,32 @@
 }
 
 /*
- * Default semantic colors
+ * Semantic colors
  */
 
-[data-redsky-component="progress"][data-progress-type="primary"] {
-    color: #3b82f6;
+[data-redsky-component="progress"][data-progress-type="primary"]
+[data-progress-indicator] {
+    background-color: var(--progress-primary-color);
 }
 
-[data-redsky-component="progress"][data-progress-type="success"] {
-    color: #22c55e;
+[data-redsky-component="progress"][data-progress-type="success"]
+[data-progress-indicator] {
+    background-color: var(--progress-success-color);
 }
 
-[data-redsky-component="progress"][data-progress-type="warning"] {
-    color: #f59e0b;
+[data-redsky-component="progress"][data-progress-type="warning"]
+[data-progress-indicator] {
+    background-color: var(--progress-warning-color);
 }
 
-[data-redsky-component="progress"][data-progress-type="danger"] {
-    color: #ef4444;
+[data-redsky-component="progress"][data-progress-type="danger"]
+[data-progress-indicator] {
+    background-color: var(--progress-danger-color);
 }
 
-[data-redsky-component="progress"][data-progress-type="info"] {
-    color: #06b6d4;
+[data-redsky-component="progress"][data-progress-type="info"]
+[data-progress-indicator] {
+    background-color: var(--progress-info-color);
 }
 
 /*

@@ -1,0 +1,275 @@
+/* =========================================
+   DataTable Component
+   RedSky HTML
+   UI-library agnostic
+========================================= */
+
+:root {
+    --datatable-color: var(--text-color);
+    --datatable-background: var(--bg-color);
+    --datatable-surface: var(--surface-color);
+    --datatable-border-color: var(--border-color);
+    --datatable-primary-color: var(--primary-color);
+    --datatable-primary-hover: var(--primary-hover);
+    --datatable-muted-color: var(--muted-color);
+}
+
+html.dark {
+    --datatable-color: var(--text-color);
+    --datatable-background: var(--bg-color);
+    --datatable-surface: var(--surface-color);
+    --datatable-border-color: var(--border-color);
+    --datatable-primary-color: var(--primary-color);
+    --datatable-primary-hover: var(--primary-hover);
+    --datatable-muted-color: var(--muted-color);
+}
+
+/*
+ * DataTable
+ */
+
+[data-redsky-component="datatable"].datatable {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    color: var(--datatable-color);
+    background-color: var(--datatable-background);
+
+    border: 1px solid var(--datatable-border-color);
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    vertical-align: middle;
+}
+
+/*
+ * Caption
+ */
+
+[data-redsky-component="datatable"].datatable caption {
+    padding: 0.75rem 0;
+    color: var(--datatable-color);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+/*
+ * Header
+ */
+
+[data-redsky-component="datatable"].datatable thead {
+    color: var(--datatable-color);
+    background-color: var(--datatable-surface);
+}
+
+[data-redsky-component="datatable"].datatable th {
+    padding: 0.75rem;
+    color: var(--datatable-color);
+    font-weight: 600;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/*
+ * Body
+ */
+
+[data-redsky-component="datatable"].datatable td {
+    padding: 0.75rem;
+    color: var(--datatable-color);
+    background-color: var(--datatable-background);
+    vertical-align: middle;
+}
+
+/*
+ * Grid lines
+ *
+ * The table owns the outer border.
+ * Cells draw only right and bottom grid lines.
+ */
+
+[data-redsky-component="datatable"].datatable th,
+[data-redsky-component="datatable"].datatable td {
+    border: none;
+    border-right: 1px solid var(--datatable-border-color);
+    border-bottom: 1px solid var(--datatable-border-color);
+}
+
+/* Avoid a doubled edge on the right side */
+
+[data-redsky-component="datatable"].datatable tr > :last-child {
+    border-right: none;
+}
+
+/* Keep the table's outer border as the bottom edge */
+
+[data-redsky-component="datatable"].datatable tr:last-child > th,
+[data-redsky-component="datatable"].datatable tr:last-child > td {
+    border-bottom: none;
+}
+
+/*
+ * Footer
+ */
+
+[data-redsky-component="datatable"].datatable tfoot {
+    color: var(--datatable-color);
+    background-color: var(--datatable-surface);
+}
+
+[data-redsky-component="datatable"].datatable tfoot th,
+[data-redsky-component="datatable"].datatable tfoot td {
+    font-weight: 600;
+}
+
+/*
+ * Striped
+ */
+
+[data-redsky-component="datatable"].datatable-striped tbody tr:nth-child(even) td {
+    background-color: var(--datatable-surface);
+}
+
+/*
+ * Hover
+ */
+
+[data-redsky-component="datatable"].datatable-hover tbody tr:hover td {
+    background-color: var(--datatable-surface);
+}
+
+/*
+ * Bordered
+ *
+ * The outer border is already enabled by default.
+ */
+
+[data-redsky-component="datatable"].datatable-bordered {
+    border: 1px solid var(--datatable-border-color);
+}
+
+/*
+ * Borderless
+ */
+
+[data-redsky-component="datatable"].datatable-borderless {
+    border: none;
+}
+
+[data-redsky-component="datatable"].datatable-borderless th,
+[data-redsky-component="datatable"].datatable-borderless td {
+    border: none;
+}
+
+/*
+ * Compact
+ */
+
+[data-redsky-component="datatable"].datatable-compact th,
+[data-redsky-component="datatable"].datatable-compact td {
+    padding: 0.5rem;
+}
+
+/*
+ * Large
+ */
+
+[data-redsky-component="datatable"].datatable-lg th,
+[data-redsky-component="datatable"].datatable-lg td {
+    padding: 1rem;
+}
+
+/*
+ * Alignment
+ */
+
+[data-redsky-component="datatable"].datatable-align-left {
+    text-align: left;
+}
+
+[data-redsky-component="datatable"].datatable-align-center {
+    text-align: center;
+}
+
+[data-redsky-component="datatable"].datatable-align-right {
+    text-align: right;
+}
+
+/*
+ * Links
+ */
+
+[data-redsky-component="datatable"].datatable a {
+    color: var(--datatable-primary-color);
+    text-decoration: none;
+}
+
+[data-redsky-component="datatable"].datatable a:hover {
+    color: var(--datatable-primary-hover);
+    text-decoration: underline;
+}
+
+/*
+ * Empty state
+ */
+
+[data-redsky-component="datatable"].datatable .datatable-empty {
+    padding: 1.5rem;
+    color: var(--datatable-muted-color);
+    text-align: center;
+}
+
+/*
+ * Responsive wrapper
+ */
+
+.datatable-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*
+ * Responsive table
+ */
+
+.datatable-responsive > [data-redsky-component="datatable"].datatable {
+    min-width: 600px;
+}
+
+/*
+ * Focus
+ */
+
+[data-redsky-component="datatable"].datatable th:focus,
+[data-redsky-component="datatable"].datatable td:focus {
+    outline: 2px solid var(--datatable-primary-color);
+    outline-offset: -2px;
+}
+
+/*
+ * Reduced motion
+ */
+
+@media (prefers-reduced-motion: reduce) {
+    [data-redsky-component="datatable"].datatable,
+    [data-redsky-component="datatable"].datatable a {
+        transition: none;
+    }
+}
+
+/*
+ * Small screens
+ */
+
+@media (max-width: 768px) {
+    [data-redsky-component="datatable"].datatable th,
+    [data-redsky-component="datatable"].datatable td {
+        padding: 0.5rem;
+    }
+
+    .datatable-responsive > [data-redsky-component="datatable"].datatable {
+        min-width: 500px;
+    }
+}

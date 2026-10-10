@@ -2,7 +2,7 @@
     --alert-padding: 0.75rem 1rem;
     --alert-margin-bottom: 1rem;
     --alert-border-width: 1px;
-    --alert-border-radius: 0.5rem;
+    --alert-border-radius: 0rem;
     --alert-font-size: 1rem;
     --alert-line-height: 1.5;
     --alert-font-weight: 400;
@@ -23,24 +23,41 @@
     --alert-danger-background: #fff0f1;
     --alert-danger-border: #f3b4b9;
     --alert-danger-color: #9f1239;
+
+    --alert-light-background: #f8f9fa;
+    --alert-light-border: #dee2e6;
+    --alert-light-color: #212529;
+
+    --alert-dark-background: #212529;
+    --alert-dark-border: #495057;
+    --alert-dark-color: #f8f9fa;
 }
 
 html.dark {
-    --alert-info-background: #e6f60a;
-    --alert-info-border: #b6b014;
-    --alert-info-color: #060e11;
+    --alert-info-background: #e6f7ff;
+    --alert-info-border: #a8e3f7;
+    --alert-info-color: #075985;
 
-    --alert-success-background: hwb(87 19% 23%);
-    --alert-success-border: #50cd0c;
-    --alert-success-color: black;
+    --alert-success-background: #e9f9ee;
+    --alert-success-border: #a9e6bb;
+    --alert-success-color: #166534;
 
-    --alert-warning-background: #bc1aac;
-    --alert-warning-border: #a01faa;
-    --alert-warning-color: #f1f1f1;
+    --alert-warning-background: #fff8df;
+    --alert-warning-border: #f5dc91;
+    --alert-warning-color: #854d0e;
 
-    --alert-danger-background: hwb(0 1% 0%);
-    --alert-danger-border: #9a0528;
-    --alert-danger-color: #f8f8f8;
+    --alert-danger-background: #fff0f1;
+    --alert-danger-border: #f3b4b9;
+    --alert-danger-color: #9f1239;
+
+    --alert-light-background: #f8f9fa;
+    --alert-light-border: #dee2e6;
+    --alert-light-color: #212529;
+
+    --alert-dark-background: #212529;
+    --alert-dark-border: #495057;
+    --alert-dark-color: #f8f9fa;
+   
 }
 
 [data-redsky-component="alert"] {
@@ -77,6 +94,18 @@ html.dark {
     color: var(--alert-danger-color);
     background-color: var(--alert-danger-background);
     border-color: var(--alert-danger-border);
+}
+
+[data-redsky-component="alert"][data-alert-type="dark"] {
+    color: var(--alert-dark-color);
+    background-color: var(--alert-dark-background);
+    border-color: var(--alert-dark-border);
+}
+
+[data-redsky-component="alert"][data-alert-type="light"] {
+    color: var(--alert-light-color);
+    background-color: var(--alert-light-background);
+    border-color: var(--alert-light-border);
 }
 
 [data-redsky-component="alert"] [data-alert-dismiss] {

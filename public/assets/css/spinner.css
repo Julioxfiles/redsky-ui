@@ -1,39 +1,127 @@
+:root {
+    --spinner-primary-color: #3b82f6;
+    --spinner-secondary-color: #6b7280;
+    --spinner-success-color: #22c55e;
+    --spinner-danger-color: #ef4444;
+    --spinner-warning-color: #f59e0b;
+    --spinner-info-color: #06b6d4;
+    --spinner-light-color: #f3f4f6;
+    --spinner-dark-color: #1f2937;
+
+    --spinner-size-small: 1rem;
+    --spinner-size-medium: 2rem;
+    --spinner-size-large: 3rem;
+
+    --spinner-border-small: 0.15rem;
+    --spinner-border-medium: 0.25rem;
+    --spinner-border-large: 0.35rem;
+
+    --spinner-animation-duration: 0.75s;
+}
+
+html.dark {
+    --spinner-primary-color: #60a5fa;
+    --spinner-secondary-color: #9ca3af;
+    --spinner-success-color: #4ade80;
+    --spinner-danger-color: #f87171;
+    --spinner-warning-color: #fbbf24;
+    --spinner-info-color: #22d3ee;
+    --spinner-light-color: #e5e7eb;
+    --spinner-dark-color: #111827;
+}
+
+/*
+ * Spinner
+ */
+
 [data-redsky-component="spinner"] {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
+[data-redsky-component="spinner"][hidden] {
+    display: none;
+}
+
+/*
+ * Spinner types
+ */
+
+[data-redsky-component="spinner"][data-spinner-type="primary"] {
+    color: var(--spinner-primary-color);
+}
+
+[data-redsky-component="spinner"][data-spinner-type="secondary"] {
+    color: var(--spinner-secondary-color);
+}
+
+[data-redsky-component="spinner"][data-spinner-type="success"] {
+    color: var(--spinner-success-color);
+}
+
+[data-redsky-component="spinner"][data-spinner-type="danger"] {
+    color: var(--spinner-danger-color);
+}
+
+[data-redsky-component="spinner"][data-spinner-type="warning"] {
+    color: var(--spinner-warning-color);
+}
+
+[data-redsky-component="spinner"][data-spinner-type="info"] {
+    color: var(--spinner-info-color);
+}
+
+[data-redsky-component="spinner"][data-spinner-type="light"] {
+    color: var(--spinner-light-color);
+}
+
+[data-redsky-component="spinner"][data-spinner-type="dark"] {
+    color: var(--spinner-dark-color);
+}
+
+/*
+ * Spinner indicator
+ */
+
 [data-redsky-component="spinner"] [data-spinner-indicator] {
     display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    border: 0.25rem solid currentColor;
+    width: var(--spinner-size-medium);
+    height: var(--spinner-size-medium);
+    border: var(--spinner-border-medium) solid currentColor;
     border-right-color: transparent;
     border-radius: 50%;
-    animation: redsky-spinner-rotate 0.75s linear infinite;
+    animation: redsky-spinner-rotate var(--spinner-animation-duration) linear infinite;
 }
+
+/*
+ * Spinner sizes
+ */
 
 [data-redsky-component="spinner"][data-spinner-size="small"]
 [data-spinner-indicator] {
-    width: 1rem;
-    height: 1rem;
-    border-width: 0.15rem;
+    width: var(--spinner-size-small);
+    height: var(--spinner-size-small);
+    border-width: var(--spinner-border-small);
 }
 
 [data-redsky-component="spinner"][data-spinner-size="medium"]
 [data-spinner-indicator] {
-    width: 2rem;
-    height: 2rem;
-    border-width: 0.25rem;
+    width: var(--spinner-size-medium);
+    height: var(--spinner-size-medium);
+    border-width: var(--spinner-border-medium);
 }
 
 [data-redsky-component="spinner"][data-spinner-size="large"]
 [data-spinner-indicator] {
-    width: 3rem;
-    height: 3rem;
-    border-width: 0.35rem;
+    width: var(--spinner-size-large);
+    height: var(--spinner-size-large);
+    border-width: var(--spinner-border-large);
 }
+
+/*
+ * Animation
+ */
 
 @keyframes redsky-spinner-rotate {
     to {

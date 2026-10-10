@@ -1,0 +1,80 @@
+:root {
+    --search-input-width: 100%;
+    --search-input-padding: 0.5rem 0.75rem;
+    --search-input-background: #ffffff;
+    --search-input-color: #111827;
+    --search-input-border-color: #d1d5db;
+    --search-input-border-radius: 0.375rem;
+    --search-input-focus-border-color: #2563eb;
+
+    --search-input-disabled-background: #f3f4f6;
+    --search-input-disabled-color: #6b7280;
+    --search-input-disabled-border-color: #d1d5db;
+
+    --search-input-invalid-border-color: #dc2626;
+    --search-input-transition: border-color 0.15s ease-in-out;
+}
+
+html.dark {
+    --search-input-background: #1f2937;
+    --search-input-color: #f9fafb;
+    --search-input-border-color: #4b5563;
+    --search-input-focus-border-color: #60a5fa;
+
+    --search-input-disabled-background: #374151;
+    --search-input-disabled-color: #9ca3af;
+    --search-input-disabled-border-color: #4b5563;
+
+    --search-input-invalid-border-color: #f87171;
+}
+
+[data-redsky-component="search-input"] {
+    box-sizing: border-box;
+    display: block;
+    width: var(--search-input-width);
+    min-width: 0;
+    padding: var(--search-input-padding);
+
+    background-color: var(--search-input-background);
+    color: var(--search-input-color);
+
+    border: 1px solid var(--search-input-border-color);
+    border-radius: var(--search-input-border-radius);
+
+    font: inherit;
+    line-height: 1.5;
+
+    transition: var(--search-input-transition);
+}
+
+[data-redsky-component="search-input"]:focus {
+    outline: none;
+    border-color: var(--search-input-focus-border-color);
+}
+
+[data-redsky-component="search-input"]:disabled {
+    background-color: var(--search-input-disabled-background);
+    color: var(--search-input-disabled-color);
+    border-color: var(--search-input-disabled-border-color);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+[data-redsky-component="search-input"]:read-only {
+    background-color: var(--search-input-disabled-background);
+    cursor: default;
+}
+
+[data-redsky-component="search-input"]:invalid {
+    border-color: var(--search-input-invalid-border-color);
+}
+
+[data-redsky-component="search-input"]:disabled:invalid {
+    border-color: var(--search-input-disabled-border-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-redsky-component="search-input"] {
+        transition: none;
+    }
+}

@@ -1,0 +1,156 @@
+
+/**
+ * SearchableSelect component
+ *
+ * UI-library agnostic styles with Bootstrap-compatible class names.
+ */
+
+:root {
+    --searchable-select-width: 100%;
+    --searchable-select-background: #ffffff;
+    --searchable-select-color: #111827;
+    --searchable-select-border-color: #d1d5db;
+    --searchable-select-focus-border-color: #3b82f6;
+    --searchable-select-hover-background: #f3f4f6;
+    --searchable-select-selected-background: #3b82f6;
+    --searchable-select-selected-color: #ffffff;
+    --searchable-select-disabled-background: #f3f4f6;
+    --searchable-select-disabled-color: #6b7280;
+    --searchable-select-placeholder-color: #6b7280;
+    --searchable-select-border-radius: 0.375rem;
+    --searchable-select-padding: 0.5rem 0.75rem;
+    --searchable-select-font-size: 1rem;
+    --searchable-select-line-height: 1.5;
+    --searchable-select-menu-max-height: 15rem;
+    --searchable-select-menu-z-index: 1000;
+    --searchable-select-disabled-opacity: 0.65;
+}
+
+html.dark {
+    --searchable-select-background: #1f2937;
+    --searchable-select-color: #f9fafb;
+    --searchable-select-border-color: #4b5563;
+    --searchable-select-focus-border-color: #60a5fa;
+    --searchable-select-hover-background: #374151;
+    --searchable-select-selected-background: #2563eb;
+    --searchable-select-selected-color: #ffffff;
+    --searchable-select-disabled-background: #374151;
+    --searchable-select-disabled-color: #9ca3af;
+    --searchable-select-placeholder-color: #9ca3af;
+}
+
+/* Container */
+
+[data-redsky-component="searchable-select"] {
+    position: relative;
+    width: var(--searchable-select-width);
+    min-width: 0;
+}
+
+/* Search field */
+
+[data-redsky-component="searchable-select"] .form-control {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: var(--searchable-select-padding);
+    font-family: inherit;
+    font-size: var(--searchable-select-font-size);
+    line-height: var(--searchable-select-line-height);
+    color: var(--searchable-select-color);
+    background-color: var(--searchable-select-background);
+    border: 1px solid var(--searchable-select-border-color);
+    border-radius: var(--searchable-select-border-radius);
+    outline: none;
+}
+
+[data-redsky-component="searchable-select"] .form-control:focus {
+    border-color: var(--searchable-select-focus-border-color);
+    box-shadow: none;
+}
+
+[data-redsky-component="searchable-select"] .form-control::placeholder {
+    color: var(--searchable-select-placeholder-color);
+    opacity: 1;
+}
+
+[data-redsky-component="searchable-select"] .form-control:disabled {
+    color: var(--searchable-select-disabled-color);
+    background-color: var(--searchable-select-disabled-background);
+    cursor: not-allowed;
+}
+
+/* Options menu */
+
+[data-redsky-component="searchable-select"] .searchable-select-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: var(--searchable-select-menu-z-index);
+    display: none;
+    box-sizing: border-box;
+    max-height: var(--searchable-select-menu-max-height);
+    margin-top: 0.125rem;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--searchable-select-background);
+    border: 1px solid var(--searchable-select-border-color);
+    border-radius: var(--searchable-select-border-radius);
+}
+
+/* Open state */
+
+[data-redsky-component="searchable-select"].open .searchable-select-menu {
+    display: block;
+}
+
+/* Options */
+
+[data-redsky-component="searchable-select"] .searchable-select-option {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--searchable-select-padding);
+    color: var(--searchable-select-color);
+    background-color: var(--searchable-select-background);
+    cursor: pointer;
+}
+
+[data-redsky-component="searchable-select"] .searchable-select-option:hover,
+[data-redsky-component="searchable-select"] .searchable-select-option.active {
+    background-color: var(--searchable-select-hover-background);
+}
+
+[data-redsky-component="searchable-select"] .searchable-select-option[aria-selected="true"] {
+    color: var(--searchable-select-selected-color);
+    background-color: var(--searchable-select-selected-background);
+}
+
+[data-redsky-component="searchable-select"] .searchable-select-option[aria-disabled="true"] {
+    color: var(--searchable-select-disabled-color);
+    background-color: var(--searchable-select-disabled-background);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+[data-redsky-component="searchable-select"] .searchable-select-option[hidden] {
+    display: none;
+}
+
+/* Disabled component */
+
+[data-redsky-component="searchable-select"][data-disabled="true"] {
+    opacity: var(--searchable-select-disabled-opacity);
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-redsky-component="searchable-select"] *,
+    [data-redsky-component="searchable-select"] *::before,
+    [data-redsky-component="searchable-select"] *::after {
+        scroll-behavior: auto;
+    }
+}

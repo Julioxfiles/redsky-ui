@@ -7,18 +7,12 @@ class Spinner
 {
     static initialize()
     {
-        const spinners = document.querySelectorAll(
-            '[data-redsky-component="spinner"]'
-        );
-
-        spinners.forEach(spinner => {
-            spinner.hidden = false;
-        });
+        // Preserve the initial visibility state defined by the markup.
     }
 
     static show(spinner)
     {
-        if (!spinner) {
+        if (!this.isSpinner(spinner)) {
             return;
         }
 
@@ -27,14 +21,24 @@ class Spinner
 
     static hide(spinner)
     {
-        if (!spinner) {
+        if (!this.isSpinner(spinner)) {
             return;
         }
 
         spinner.hidden = true;
     }
+
+    static isSpinner(spinner)
+    {
+        return spinner instanceof HTMLElement &&
+            spinner.matches(
+                '[data-redsky-component="spinner"]'
+            );
+    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+window.Spinner = Spinner;
+
+document.addEventListener('DOMContentLoaded', function () {
     Spinner.initialize();
 });

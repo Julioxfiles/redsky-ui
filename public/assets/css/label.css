@@ -1,0 +1,49 @@
+
+:root {
+    --label-color: #374151;
+    --label-font-size: 0.875rem;
+    --label-font-weight: 500;
+    --label-line-height: 1.5;
+    --label-margin-bottom: 0.375rem;
+    --label-required-color: #dc2626;
+    --label-disabled-color: #9ca3af;
+    --label-transition: color 0.2s ease;
+}
+
+html.dark {
+    --label-color: #e5e7eb;
+    --label-required-color: #f87171;
+    --label-disabled-color: #6b7280;
+}
+
+[data-redsky-component="label"] {
+    display: inline-block;
+    margin-bottom: var(--label-margin-bottom);
+    color: var(--label-color);
+    font-size: var(--label-font-size);
+    font-weight: var(--label-font-weight);
+    line-height: var(--label-line-height);
+    transition: var(--label-transition);
+}
+
+/* Optional required indicator */
+
+[data-redsky-component="label"].required::after {
+    content: " *";
+    color: var(--label-required-color);
+}
+
+/* Optional disabled state */
+
+[data-redsky-component="label"].disabled {
+    color: var(--label-disabled-color);
+    cursor: not-allowed;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+    [data-redsky-component="label"] {
+        transition: none;
+    }
+}
