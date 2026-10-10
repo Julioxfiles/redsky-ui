@@ -45,7 +45,7 @@ html.dark {
     --switch-input-disabled-border-color: #495057;
 }
 
-.form-switch {
+[data-redsky-component="switch-input"].form-switch {
     width: var(--switch-input-width);
     height: var(--switch-input-height);
 
@@ -74,7 +74,7 @@ html.dark {
         box-shadow var(--switch-input-transition);
 }
 
-.form-switch::before {
+[data-redsky-component="switch-input"].form-switch::before {
     content: "";
 
     position: absolute;
@@ -98,16 +98,16 @@ html.dark {
         background-color var(--switch-input-transition);
 }
 
-.form-switch:hover:not(:disabled) {
+[data-redsky-component="switch-input"].form-switch:hover:not(:disabled) {
     background-color: var(--switch-input-hover-background);
 }
 
-.form-switch:checked {
+[data-redsky-component="switch-input"].form-switch:checked {
     background-color: var(--switch-input-checked-background);
     border-color: var(--switch-input-checked-border-color);
 }
 
-.form-switch:checked::before {
+[data-redsky-component="switch-input"].form-switch:checked::before {
     transform:
         translate(
             calc(
@@ -119,11 +119,11 @@ html.dark {
         );
 }
 
-.form-switch:checked:hover:not(:disabled) {
+[data-redsky-component="switch-input"].form-switch:checked:hover:not(:disabled) {
     background-color: var(--switch-input-hover-checked-background);
 }
 
-.form-switch:focus-visible {
+[data-redsky-component="switch-input"].form-switch:focus-visible {
     outline: 0;
 
     border-color: var(--switch-input-focus-border-color);
@@ -132,7 +132,7 @@ html.dark {
         0 0 0 0.25rem var(--switch-input-focus-ring-color);
 }
 
-.form-switch:disabled {
+[data-redsky-component="switch-input"].form-switch:disabled {
     background-color: var(--switch-input-disabled-background);
     border-color: var(--switch-input-disabled-border-color);
 
