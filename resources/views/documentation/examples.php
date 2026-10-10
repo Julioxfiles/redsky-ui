@@ -44,13 +44,14 @@ if ($component === null) {
 
             <div
                 class="tabs"
-                data-component="tabs">
+                data-redsky-component="tabs">
 
                 <div class="tabs-navigation">
 
                     <button
                         type="button"
                         class="tab active"
+                        data-redsky-component="tab"
                         data-tab-target="php-<?= $index ?>"
                         role="tab"
                         aria-selected="true">
@@ -64,6 +65,7 @@ if ($component === null) {
                         <button
                             type="button"
                             class="tab"
+                            data-redsky-component="tab"
                             data-tab-target="html-<?= $index ?>"
                             role="tab"
                             aria-selected="false">
@@ -77,6 +79,7 @@ if ($component === null) {
                         <button
                             type="button"
                             class="tab"
+                            data-redsky-component="tab"
                             data-tab-target="css-<?= $index ?>"
                             role="tab"
                             aria-selected="false">
@@ -88,6 +91,7 @@ if ($component === null) {
                         <button
                             type="button"
                             class="tab"
+                            data-redsky-component="tab"
                             data-tab-target="javascript-<?= $index ?>"
                             role="tab"
                             aria-selected="false">
@@ -105,6 +109,7 @@ if ($component === null) {
 
                     <div
                         id="php-<?= $index ?>"
+                        data-redsky-component="tab-panel"
                         class="tab-panel active"
                         data-tab-panel
                         role="tabpanel">
@@ -154,6 +159,7 @@ if ($component === null) {
 
                         <div
                             id="html-<?= $index ?>"
+                            data-redsky-component="tab-panel"
                             class="tab-panel"
                             data-tab-panel
                             role="tabpanel"
@@ -199,6 +205,7 @@ if ($component === null) {
 
                         <div
                             id="css-<?= $index ?>"
+                            data-redsky-component="tab-panel"
                             class="tab-panel"
                             data-tab-panel
                             role="tabpanel"
@@ -242,6 +249,7 @@ if ($component === null) {
 
                         <div
                             id="javascript-<?= $index ?>"
+                            data-redsky-component="tab-panel"
                             class="tab-panel"
                             data-tab-panel
                             role="tabpanel"

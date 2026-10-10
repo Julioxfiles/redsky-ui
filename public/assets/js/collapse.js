@@ -11,16 +11,16 @@
  * - Update accessibility attributes.
  *
  * Styling is handled by CSS.
+ *
+ * @package RedSky\Html\Components\Interactive\Collapse
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const collapses = document.querySelectorAll(
-        '[data-component="collapse"]'
+        '[data-redsky-component="collapse"]'
     );
 
     collapses.forEach((collapse) => {
-
         const toggle = collapse.querySelector(
             '[data-collapse-toggle]'
         );
@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         toggle.addEventListener('click', () => {
-
             const isOpen =
                 toggle.getAttribute('aria-expanded') === 'true';
 
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             toggle.setAttribute(
                 'aria-expanded',
-                newState ? 'true' : 'false'
+                String(newState)
             );
 
             toggle.classList.toggle(
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             panel.setAttribute(
                 'aria-hidden',
-                newState ? 'false' : 'true'
+                String(!newState)
             );
         });
     });

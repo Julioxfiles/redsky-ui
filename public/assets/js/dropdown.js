@@ -1,5 +1,5 @@
 /**
- * Dropdown component
+ * Dropdown component.
  *
  * Provides dropdown open/close behavior,
  * keyboard navigation, and viewport-aware positioning.
@@ -15,10 +15,14 @@
  * - Navigate to first and last items with Home and End.
  *
  * Styling is handled by CSS.
+ *
+ * @package RedSky\Html\Components\Interactive\Dropdown
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const dropdowns = document.querySelectorAll('.dropdown');
+    const dropdowns = document.querySelectorAll(
+        '[data-redsky-component="dropdown"]'
+    );
 
     dropdowns.forEach((dropdown) => {
         const toggle = dropdown.querySelector('.dropdown-toggle');
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const getItems = () => {
             return Array.from(
-                dropdown.querySelectorAll('.dropdown-item')
+                menu.querySelectorAll('.dropdown-item')
             ).filter((item) => {
                 return !item.disabled &&
                     !item.classList.contains('disabled') &&
@@ -43,89 +47,81 @@ document.addEventListener('DOMContentLoaded', () => {
             menu.style.bottom = '';
             menu.style.left = '';
             menu.style.right = '';
+            menu.style.maxHeight = '';
+            menu.style.overflowY = '';
         };
 
         const positionMenu = () => {
-    resetPosition();
+            resetPosition();
 
-    const toggleRect = toggle.getBoundingClientRect();
-    const menuRect = menu.getBoundingClientRect();
+            const toggleRect = toggle.getBoundingClientRect();
+            const menuRect = menu.getBoundingClientRect();
 
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
 
-    const spaceBelow =
-        viewportHeight - toggleRect.bottom;
+            const spaceBelow = viewportHeight - toggleRect.bottom;
+            const spaceAbove = toggleRect.top;
 
-    const spaceAbove =
-        toggleRect.top;
+            const spaceRight = viewportWidth - toggleRect.left;
+            const spaceLeft = toggleRect.right;
 
-    const spaceRight =
-        viewportWidth - toggleRect.left;
+            /*
+             * Vertical positioning.
+             *
+             * Prefer below when there is enough space.
+             * Otherwise use above when possible.
+             */
+            if (spaceBelow >= menuRect.height) {
+                menu.style.top = `${toggle.offsetHeight}px`;
+            } else if (spaceAbove >= menuRect.height) {
+                menu.style.top = 'auto';
+                menu.style.bottom = `${toggle.offsetHeight}px`;
+            } else if (spaceBelow >= spaceAbove) {
+                menu.style.top = `${toggle.offsetHeight}px`;
+                menu.style.maxHeight = `${Math.max(spaceBelow - 8, 0)}px`;
+                menu.style.overflowY = 'auto';
+            } else {
+                menu.style.top = 'auto';
+                menu.style.bottom = `${toggle.offsetHeight}px`;
+                menu.style.maxHeight = `${Math.max(spaceAbove - 8, 0)}px`;
+                menu.style.overflowY = 'auto';
+            }
 
-    const spaceLeft =
-        toggleRect.right;
+            /*
+             * Horizontal positioning.
+             *
+             * Prefer left alignment.
+             */
+            if (toggleRect.left + menuRect.width <= viewportWidth) {
+                menu.style.left = '0';
+                menu.style.right = 'auto';
 
-    /*
-     * Vertical positioning.
-     *
-     * Prefer below when there is enough space.
-     * Otherwise use above when possible.
-     */
-    if (spaceBelow >= menuRect.height) {
-        menu.style.top = `${toggle.offsetHeight}px`;
-    } else if (spaceAbove >= menuRect.height) {
-        menu.style.top = 'auto';
-        menu.style.bottom = `${toggle.offsetHeight}px`;
-    } else if (spaceBelow >= spaceAbove) {
-        menu.style.top = `${toggle.offsetHeight}px`;
-        menu.style.maxHeight = `${Math.max(spaceBelow - 8, 0)}px`;
-        menu.style.overflowY = 'auto';
-    } else {
-        menu.style.top = 'auto';
-        menu.style.bottom = `${toggle.offsetHeight}px`;
-        menu.style.maxHeight = `${Math.max(spaceAbove - 8, 0)}px`;
-        menu.style.overflowY = 'auto';
-    }
+                return;
+            }
 
-    /*
-     * Horizontal positioning.
-     *
-     * Prefer left alignment.
-     */
-    if (
-        toggleRect.left + menuRect.width <= viewportWidth
-    ) {
-        menu.style.left = '0';
-        menu.style.right = 'auto';
+            /*
+             * Align to the right edge of the dropdown.
+             */
+            if (toggleRect.right - menuRect.width >= 0) {
+                menu.style.left = 'auto';
+                menu.style.right = '0';
 
-        return;
-    }
+                return;
+            }
 
-    /*
-     * Align to the right edge of the dropdown.
-     */
-    if (
-        toggleRect.right - menuRect.width >= 0
-    ) {
-        menu.style.left = 'auto';
-        menu.style.right = '0';
-
-        return;
-    }
-
-    /*
-     * Menu is wider than the available space.
-     * Keep it inside the viewport as much as possible.
-     */
-    if (spaceRight >= spaceLeft) {
-        menu.style.left = '0';
-        menu.style.right = 'auto';
-    } else {
-        menu.style.left = 'auto';
-        menu.style.right = '0';
-    }
-};
+            /*
+             * Menu is wider than the available space.
+             * Keep it inside the viewport as much as possible.
+             */
+            if (spaceRight >= spaceLeft) {
+                menu.style.left = '0';
+                menu.style.right = 'auto';
+            } else {
+                menu.style.left = 'auto';
+                menu.style.right = '0';
+            }
+        };
 
         const open = () => {
             dropdown.classList.add('show');
@@ -206,105 +202,90 @@ document.addEventListener('DOMContentLoaded', () => {
             open();
         };
 
-        toggle.addEventListener(
-            'click',
-            toggleDropdown
-        );
+        toggle.addEventListener('click', toggleDropdown);
 
-        toggle.addEventListener(
-            'keydown',
-            (event) => {
-                switch (event.key) {
-                    case 'ArrowDown':
-                        event.preventDefault();
+        toggle.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'ArrowDown':
+                    event.preventDefault();
 
-                        open();
-                        focusFirst();
+                    open();
+                    focusFirst();
 
-                        break;
+                    break;
 
-                    case 'ArrowUp':
-                        event.preventDefault();
+                case 'ArrowUp':
+                    event.preventDefault();
 
-                        open();
-                        focusLast();
+                    open();
+                    focusLast();
 
-                        break;
+                    break;
 
-                    case 'Escape':
-                        event.preventDefault();
+                case 'Escape':
+                    event.preventDefault();
 
-                        close();
-
-                        break;
-                }
-            }
-        );
-
-        dropdown.addEventListener(
-            'keydown',
-            (event) => {
-                if (!dropdown.classList.contains('show')) {
-                    return;
-                }
-
-                switch (event.key) {
-                    case 'ArrowDown':
-                        event.preventDefault();
-
-                        focusNext();
-
-                        break;
-
-                    case 'ArrowUp':
-                        event.preventDefault();
-
-                        focusPrevious();
-
-                        break;
-
-                    case 'Home':
-                        event.preventDefault();
-
-                        focusFirst();
-
-                        break;
-
-                    case 'End':
-                        event.preventDefault();
-
-                        focusLast();
-
-                        break;
-
-                    case 'Escape':
-                        event.preventDefault();
-
-                        close();
-                        toggle.focus();
-
-                        break;
-                }
-            }
-        );
-
-        document.addEventListener(
-            'click',
-            (event) => {
-                if (!dropdown.contains(event.target)) {
                     close();
-                }
-            }
-        );
 
-        window.addEventListener(
-            'resize',
-            () => {
-                if (dropdown.classList.contains('show')) {
-                    positionMenu();
-                }
+                    break;
             }
-        );
+        });
+
+        dropdown.addEventListener('keydown', (event) => {
+            if (!dropdown.classList.contains('show')) {
+                return;
+            }
+
+            switch (event.key) {
+                case 'ArrowDown':
+                    event.preventDefault();
+
+                    focusNext();
+
+                    break;
+
+                case 'ArrowUp':
+                    event.preventDefault();
+
+                    focusPrevious();
+
+                    break;
+
+                case 'Home':
+                    event.preventDefault();
+
+                    focusFirst();
+
+                    break;
+
+                case 'End':
+                    event.preventDefault();
+
+                    focusLast();
+
+                    break;
+
+                case 'Escape':
+                    event.preventDefault();
+
+                    close();
+                    toggle.focus();
+
+                    break;
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!dropdown.contains(event.target)) {
+                close();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (dropdown.classList.contains('show')) {
+                positionMenu();
+            }
+        });
 
         window.addEventListener(
             'scroll',

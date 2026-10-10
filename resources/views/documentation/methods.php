@@ -130,7 +130,15 @@ declare(strict_types=1);
 
                                     <?php endif; ?>
 
-                                    <?php if ($method->description() !== ''): ?>
+                                    
+
+                                </div>
+
+
+                            </td>
+
+                            <td>
+                                <?php if ($method->description() !== ''): ?>
 
                                         <?= htmlspecialchars(
                                             $method->description()
@@ -143,13 +151,6 @@ declare(strict_types=1);
                                         </span>
 
                                     <?php endif; ?>
-
-                                </div>
-
-
-                            </td>
-
-                            <td>
                                     
                             </td>
 

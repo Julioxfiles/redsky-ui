@@ -6,8 +6,7 @@
    Theme Variables - Light Theme (default)
 ================================ */
 
- :root {
-    /* Accordion */
+:root {
     --accordion-color: #212529;
     --accordion-background: #ffffff;
     --accordion-border-color: #dee2e6;
@@ -25,14 +24,13 @@
 
     --accordion-focus-border-color: #86b7fe;
     --accordion-focus-ring-color: rgba(13, 110, 253, 0.25);
- }
+}
 
 /* ================================
    Dark Theme
 ================================ */
 
- html.dark {
-    /* Accordion */
+html.dark {
     --accordion-color: #f8f9fa;
     --accordion-background: #212529;
     --accordion-border-color: #495057;
@@ -49,54 +47,55 @@
     --accordion-body-background: #212529;
 
     --accordion-focus-border-color: #86b7fe;
-    --accordion-focus-ring-color: rgba(110, 168, 254, 0.25);    
- }
+    --accordion-focus-ring-color: rgba(110, 168, 254, 0.25);
+}
 
-.accordion {
+/* ================================
+   Accordion container
+================================ */
+
+[data-redsky-component="accordion"].accordion {
     color: var(--accordion-color);
     background-color: var(--accordion-background);
 }
 
+/* ================================
+   Accordion item
+================================ */
 
-/*
- * Accordion item
- */
-
-.accordion-item {
+[data-redsky-component="accordion"] .accordion-item {
     color: var(--accordion-color);
     background-color: var(--accordion-background);
     border: 1px solid var(--accordion-border-color);
 }
 
-.accordion-item:first-child {
+[data-redsky-component="accordion"] .accordion-item:first-child {
     border-top-left-radius: var(--accordion-border-radius);
     border-top-right-radius: var(--accordion-border-radius);
 }
 
-.accordion-item:last-child {
+[data-redsky-component="accordion"] .accordion-item:last-child {
     border-bottom-left-radius: var(--accordion-border-radius);
     border-bottom-right-radius: var(--accordion-border-radius);
 }
 
-.accordion-item + .accordion-item {
+[data-redsky-component="accordion"] .accordion-item + .accordion-item {
     border-top: 0;
 }
 
+/* ================================
+   Accordion header
+================================ */
 
-/*
- * Accordion header
- */
-
-.accordion-header {
+[data-redsky-component="accordion"] .accordion-header {
     margin: 0;
 }
 
+/* ================================
+   Accordion button
+================================ */
 
-/*
- * Accordion button
- */
-
-.accordion-button {
+[data-redsky-component="accordion"] .accordion-button {
     position: relative;
     display: flex;
     width: 100%;
@@ -120,11 +119,11 @@
         box-shadow 0.15s ease-in-out;
 }
 
-.accordion-button:hover {
+[data-redsky-component="accordion"] .accordion-button:hover {
     background-color: var(--accordion-button-hover-background);
 }
 
-.accordion-button:focus {
+[data-redsky-component="accordion"] .accordion-button:focus {
     z-index: 1;
 
     outline: 0;
@@ -136,22 +135,22 @@
         var(--accordion-focus-ring-color);
 }
 
-.accordion-button:not(.collapsed) {
+[data-redsky-component="accordion"] .accordion-button:not(.collapsed) {
     color: var(--accordion-button-active-color);
     background-color: var(--accordion-button-active-background);
 }
 
+/* ================================
+   Accordion toggle indicator
+================================ */
 
-/*
- * Accordion toggle indicator
- */
-
-.accordion-button::after {
+[data-redsky-component="accordion"] .accordion-button::after {
     content: "";
 
     width: 0.75rem;
     height: 0.75rem;
 
+    flex-shrink: 0;
     margin-left: auto;
 
     border-right: 2px solid currentColor;
@@ -159,20 +158,18 @@
 
     transform: rotate(45deg);
 
-    transition:
-        transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
-.accordion-button:not(.collapsed)::after {
+[data-redsky-component="accordion"] .accordion-button:not(.collapsed)::after {
     transform: rotate(225deg);
 }
 
+/* ================================
+   Accordion collapse
+================================ */
 
-/*
- * Accordion collapse
- */
-
-.accordion-collapse {
+[data-redsky-component="accordion"] .accordion-collapse {
     display: block;
 
     overflow: hidden;
@@ -180,28 +177,26 @@
     background-color: var(--accordion-body-background);
 }
 
-.accordion-collapse.collapsed {
+[data-redsky-component="accordion"] .accordion-collapse.collapsed {
     display: none;
 }
 
+/* ================================
+   Accordion body
+================================ */
 
-/*
- * Accordion body
- */
-
-.accordion-body {
+[data-redsky-component="accordion"] .accordion-body {
     padding: 1rem 1.25rem;
 
     color: var(--accordion-body-color);
     background-color: var(--accordion-body-background);
 }
 
+/* ================================
+   Disabled accordion button
+================================ */
 
-/*
- * Disabled accordion button
- */
-
-.accordion-button:disabled {
+[data-redsky-component="accordion"] .accordion-button:disabled {
     opacity: 0.65;
     cursor: not-allowed;
 }

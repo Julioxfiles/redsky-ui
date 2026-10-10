@@ -101,7 +101,7 @@ declare(strict_types=1);
                             <div class="documentation-method-badges">
 
                                 <span class="documentation-badge">
-                                    inherited
+                                    
                                 </span>
 
                                 <?php if ($method->isStatic()): ?>
@@ -127,8 +127,14 @@ declare(strict_types=1);
                                     </span>
 
                                 <?php endif; ?>
+                                
 
-                                <?php if ($method->description() !== ''): ?>
+                            </div>
+
+                        </td>
+
+                        <td>
+                            <?php if ($method->description() !== ''): ?>
 
 
                                     <?php echo " - ". htmlspecialchars(
@@ -142,12 +148,6 @@ declare(strict_types=1);
                                     </span>
 
                                 <?php endif; ?>
-
-                            </div>
-
-                        </td>
-
-                        <td>
                             
                         </td>
 

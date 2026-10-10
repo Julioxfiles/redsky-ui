@@ -4,98 +4,82 @@
  * Provides a semantic button system inspired by
  * common CSS frameworks.
  *
- * Button classes:
- *
- * - .btn
- * - .btn-primary
- * - .btn-secondary
- * - .btn-success
- * - .btn-danger
- * - .btn-warning
- * - .btn-info
- * - .btn-light
- * - .btn-dark
- *
- * Sizes:
- *
- * - .btn-sm
- * - .btn-lg
- *
- * Colors are based on the global RedSky UI variables
- * defined in app.css.
+ * The component is identified by
+ * [data-redsky-component="button"].
  */
 
- /* ================================
-   Theme Variables - Light Theme (default)
+/* ================================
+   Theme Variables - Light Theme
 ================================ */
- :root {
-    /* Primary */
-    --primary-color:#2563eb;
-    --primary-hover:#1d4ed8;
-    /* Secondary */
-    --secondary-color:#64748b;
-    --secondary-hover:#475569;
-    /* Success */
-    --success-color:#16a34a;
-    --success-hover:#15803d;
-    /* Danger */
-    --danger-color:#dc2626;
-    --danger-hover:#b91c1c;
-    /* Warning */
-    --warning-color:#d97706;
-    --warning-hover:#b45309;
-    /* Info */
-    --info-color:#0891b2;
-    --info-hover:#0e7490;
-    /* Light */
-    --light-color:#f1f5f9;
-    --light-hover:#e2e8f0;
-    /* Dark */
-    --dark-color:#334155;
-    --dark-hover:#1e293b;
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    --secondary-color: #64748b;
+    --secondary-hover: #475569;
+
+    --success-color: #16a34a;
+    --success-hover: #15803d;
+
+    --danger-color: #dc2626;
+    --danger-hover: #b91c1c;
+
+    --warning-color: #d97706;
+    --warning-hover: #b45309;
+
+    --info-color: #0891b2;
+    --info-hover: #0e7490;
+
+    --light-color: #f1f5f9;
+    --light-hover: #e2e8f0;
+
+    --dark-color: #334155;
+    --dark-hover: #1e293b;
 }
 
 html.dark {
-    /* Primary */
-    --primary-color:#3b82f6;
-    --primary-hover:#2563eb;
-    /* Secondary */
-    --secondary-color:#94a3b8;
-    --secondary-hover:#cbd5e1;
-    /* Success */
-    --success-color:#22c55e;
-    --success-hover:#16a34a;
-    /* Danger */
-    --danger-color:#f87171;
-    --danger-hover:#ef4444;
-    /* Warning */
-    --warning-color:#f59e0b;
-    --warning-hover:#d97706;
-    /* Info */
-    --info-color:#22d3ee;
-    --info-hover:#06b6d4;
-    /* Light */
-    --light-color:#e5e7eb;
-    --light-hover:#f3f4f6;
-    /* Dark */
-    --dark-color:#111827;
-    --dark-hover:#0f172a;
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+
+    --secondary-color: #94a3b8;
+    --secondary-hover: #cbd5e1;
+
+    --success-color: #22c55e;
+    --success-hover: #16a34a;
+
+    --danger-color: #f87171;
+    --danger-hover: #ef4444;
+
+    --warning-color: #f59e0b;
+    --warning-hover: #d97706;
+
+    --info-color: #22d3ee;
+    --info-hover: #06b6d4;
+
+    --light-color: #e5e7eb;
+    --light-hover: #f3f4f6;
+
+    --dark-color: #111827;
+    --dark-hover: #0f172a;
 }
 
-/* ==================================================
+/* ================================
    Base Button
-================================================== */
+================================ */
 
-.btn {
+[data-redsky-component="button"].btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:.5rem;
-    min-height:2.5rem;
-    padding:.625rem 1rem;
-    border:1px solid transparent;
-    border-radius:.5rem;
+    min-height: 2.5rem;
+    padding: 0.625rem 1rem;
+
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+
     font-family:
         system-ui,
         -apple-system,
@@ -106,374 +90,259 @@ html.dark {
         Arial,
         sans-serif;
 
-    font-size:.875rem;
-    font-weight:600;
-    line-height:1.25;
-    text-align:center;
-    text-decoration:none;
-    white-space:nowrap;
-    vertical-align:middle;
-    cursor:pointer;
-    user-select:none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25;
+
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+
+    cursor: pointer;
+    user-select: none;
+
     transition:
-
-        background-color .2s ease,
-        border-color .2s ease,
-        color .2s ease,
-        box-shadow .2s ease,
-        transform .1s ease;
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.1s ease;
 }
 
-
-/* ==================================================
+/* ================================
    Button Hover / Active
-================================================== */
+================================ */
 
-.btn:hover {
-
-    text-decoration:none;
-
+[data-redsky-component="button"].btn:hover {
+    text-decoration: none;
 }
 
-.btn:active {
-
-    transform:translateY(1px);
-
+[data-redsky-component="button"].btn:active {
+    transform: translateY(1px);
 }
 
-.btn:focus-visible {
-
-    outline:2px solid var(--primary-color);
-
-    outline-offset:3px;
-
+[data-redsky-component="button"].btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
 }
 
-
-/* ==================================================
+/* ================================
    Disabled Button
-================================================== */
+================================ */
 
-.btn:disabled,
-
-.btn[disabled] {
-
-    opacity:.55;
-
-    cursor:not-allowed;
-
-    box-shadow:none;
-
-    transform:none;
-
+[data-redsky-component="button"].btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
 
-.btn:disabled:hover,
-
-.btn[disabled]:hover {
-
-    box-shadow:none;
-
+[data-redsky-component="button"].btn:disabled:hover {
+    box-shadow: none;
 }
 
-
-/* ==================================================
+/* ================================
    Primary
-================================================== */
+================================ */
 
-.btn-primary {
-
-    color:var(--button-text-color);
-
-    background-color:var(--primary-color);
-
-    border-color:var(--primary-color);
+[data-redsky-component="button"].btn-primary {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 
     box-shadow:
-        0 1px 2px rgba(0, 0, 0, .08),
-        0 2px 4px rgba(0, 0, 0, .04);
-
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.btn-primary:hover {
-
-    color:var(--button-text-color);
-
-    background-color:var(--primary-hover);
-
-    border-color:var(--primary-hover);
+[data-redsky-component="button"].btn-primary:hover {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
 
     box-shadow:
-        0 3px 6px rgba(0, 0, 0, .12),
-        0 1px 2px rgba(0, 0, 0, .08);
-
+        0 3px 6px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-
-/* ==================================================
+/* ================================
    Secondary
-================================================== */
+================================ */
 
-.btn-secondary {
+[data-redsky-component="button"].btn-secondary {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
 
-    color:var(--button-text-color);
-
-    background-color:var(--secondary-color);
-
-    border-color:var(--secondary-color);
-
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .08);
-
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-.btn-secondary:hover {
-
-    color:var(--button-text-color);
-
-    background-color:var(--secondary-hover);
-
-    border-color:var(--secondary-hover);
-
+[data-redsky-component="button"].btn-secondary:hover {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--secondary-hover);
+    border-color: var(--secondary-hover);
 }
 
-
-/* ==================================================
+/* ================================
    Success
-================================================== */
+================================ */
 
-.btn-success {
+[data-redsky-component="button"].btn-success {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--success-color);
+    border-color: var(--success-color);
 
-    color:var(--button-text-color);
-
-    background-color:var(--success-color);
-
-    border-color:var(--success-color);
-
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .08);
-
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-.btn-success:hover {
-
-    color:var(--button-text-color);
-
-    background-color:var(--success-hover);
-
-    border-color:var(--success-hover);
-
+[data-redsky-component="button"].btn-success:hover {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--success-hover);
+    border-color: var(--success-hover);
 }
 
-
-/* ==================================================
+/* ================================
    Danger
-================================================== */
+================================ */
 
-.btn-danger {
+[data-redsky-component="button"].btn-danger {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
 
-    color:var(--button-text-color);
-
-    background-color:var(--danger-color);
-
-    border-color:var(--danger-color);
-
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .08);
-
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-.btn-danger:hover {
-
-    color:var(--button-text-color);
-
-    background-color:var(--danger-hover);
-
-    border-color:var(--danger-hover);
-
+[data-redsky-component="button"].btn-danger:hover {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--danger-hover);
+    border-color: var(--danger-hover);
 }
 
-
-/* ==================================================
+/* ================================
    Warning
-================================================== */
+================================ */
 
-.btn-warning {
+[data-redsky-component="button"].btn-warning {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
 
-    color:var(--button-text-color);
-
-    background-color:var(--warning-color);
-
-    border-color:var(--warning-color);
-
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .08);
-
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-.btn-warning:hover {
-
-    color:var(--button-text-color);
-
-    background-color:var(--warning-hover);
-
-    border-color:var(--warning-hover);
-
+[data-redsky-component="button"].btn-warning:hover {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--warning-hover);
+    border-color: var(--warning-hover);
 }
 
-
-/* ==================================================
+/* ================================
    Info
-================================================== */
+================================ */
 
-.btn-info {
+[data-redsky-component="button"].btn-info {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--info-color);
+    border-color: var(--info-color);
 
-    color:var(--button-text-color);
-
-    background-color:var(--info-color);
-
-    border-color:var(--info-color);
-
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .08);
-
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-.btn-info:hover {
-
-    color:var(--button-text-color);
-
-    background-color:var(--info-hover);
-
-    border-color:var(--info-hover);
-
+[data-redsky-component="button"].btn-info:hover {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--info-hover);
+    border-color: var(--info-hover);
 }
 
-
-/* ==================================================
+/* ================================
    Light
-================================================== */
+================================ */
 
-.btn-light {
+[data-redsky-component="button"].btn-light {
+    color: var(--text-color, #212529);
+    background-color: var(--light-color);
+    border-color: var(--border-color, #dee2e6);
 
-    color:var(--text-color);
-
-    background-color:var(--light-color);
-
-    border-color:var(--border-color);
-
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .05);
-
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.btn-light:hover {
-
-    color:var(--text-color);
-
-    background-color:var(--light-hover);
-
-    border-color:var(--border-color);
-
+[data-redsky-component="button"].btn-light:hover {
+    color: var(--text-color, #212529);
+    background-color: var(--light-hover);
+    border-color: var(--border-color, #dee2e6);
 }
 
-
-/* ==================================================
+/* ================================
    Dark
-================================================== */
+================================ */
 
-.btn-dark {
+[data-redsky-component="button"].btn-dark {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--dark-color);
+    border-color: var(--dark-color);
 
-    color:var(--button-text-color);
-
-    background-color:var(--dark-color);
-
-    border-color:var(--dark-color);
-
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .12);
-
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
-.btn-dark:hover {
-
-    color:var(--button-text-color);
-
-    background-color:var(--dark-hover);
-
-    border-color:var(--dark-hover);
-
+[data-redsky-component="button"].btn-dark:hover {
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--dark-hover);
+    border-color: var(--dark-hover);
 }
 
-
-/* ==================================================
+/* ================================
    Small Button
-================================================== */
+================================ */
 
-.btn-sm {
+[data-redsky-component="button"].btn-sm {
+    min-height: 2rem;
+    padding: 0.375rem 0.75rem;
 
-    min-height:2rem;
-
-    padding:.375rem .75rem;
-
-    font-size:.8125rem;
-
-    border-radius:.375rem;
-
+    font-size: 0.8125rem;
+    border-radius: 0.375rem;
 }
 
-
-/* ==================================================
+/* ================================
    Large Button
-================================================== */
+================================ */
 
-.btn-lg {
+[data-redsky-component="button"].btn-lg {
+    min-height: 3rem;
+    padding: 0.75rem 1.25rem;
 
-    min-height:3rem;
-
-    padding:.75rem 1.25rem;
-
-    font-size:1rem;
-
-    border-radius:.625rem;
-
+    font-size: 1rem;
+    border-radius: 0.625rem;
 }
 
-
-/* ==================================================
+/* ================================
    Button Content
-================================================== */
+================================ */
 
-.btn i,
-
-.btn svg {
-
-    flex:0 0 auto;
-
+[data-redsky-component="button"].btn i,
+[data-redsky-component="button"].btn svg {
+    flex: 0 0 auto;
 }
 
-
-/* ==================================================
+/* ================================
    Full Width
-================================================== */
+================================ */
 
-.btn-block {
-
-    width:100%;
-
+[data-redsky-component="button"].btn-block {
+    width: 100%;
 }
 
-
-/* ==================================================
+/* ================================
    Reduced Motion
-================================================== */
+================================ */
 
-@media (prefers-reduced-motion:reduce) {
-
-    .btn {
-
-        transition:none;
-
+@media (prefers-reduced-motion: reduce) {
+    [data-redsky-component="button"].btn {
+        transition: none;
     }
 
+    [data-redsky-component="button"].btn:active {
+        transform: none;
+    }
 }
