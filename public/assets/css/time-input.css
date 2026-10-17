@@ -15,7 +15,6 @@
     --time-input-font-size: 1rem;
     --time-input-line-height: 1.5;
     --time-input-placeholder-color: #6b7280;
-    --time-input-color-scheme: light;
 
     --time-input-focus-border-color: #3b82f6;
     --time-input-focus-ring-color: rgb(59 130 246 / 25%);
@@ -36,7 +35,6 @@ html.dark {
     --time-input-color: #f9fafb;
     --time-input-border-color: #4b5563;
     --time-input-placeholder-color: #9ca3af;
-    --time-input-color-scheme: dark;
 
     --time-input-focus-border-color: #60a5fa;
     --time-input-focus-ring-color: rgb(96 165 250 / 25%);
@@ -64,7 +62,6 @@ html.dark {
 
     color: var(--time-input-color);
     background-color: var(--time-input-background);
-    color-scheme: var(--time-input-color-scheme);
 
     border: 1px solid var(--time-input-border-color);
     border-radius: var(--time-input-border-radius);
@@ -103,7 +100,7 @@ html.dark {
 }
 
 html.dark [data-redsky-component="time-input"]::-webkit-calendar-picker-indicator {
-    filter: brightness(0) invert(1);
+    filter: invert(1);
 }
 
 [data-redsky-component="time-input"]::-webkit-calendar-picker-indicator:hover {

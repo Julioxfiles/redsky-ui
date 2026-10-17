@@ -1,58 +1,66 @@
 /**
- * CheckboxInput Component
+ * CheckboxInput component styles.
  *
- * Provides Bootstrap-compatible checkbox styling
- * without requiring Bootstrap.
+ * Provides theme-aware checkbox styling with Bootstrap-compatible
+ * class names without requiring Bootstrap.
  */
 
 /* =========================================================
-   Form Check
+   Theme Variables
    ========================================================= */
+
 :root {
-    /* Checkbox */
     --checkbox-color: #212529;
     --checkbox-background: #ffffff;
     --checkbox-border-color: #6c757d;
     --checkbox-border-radius: 0.25rem;
-    /* Focus */
+
     --checkbox-focus-border-color: #86b7fe;
-    --checkbox-focus-ring-color: rgba(13, 110, 253, 0.25);
-    /* Checked */
+    --checkbox-focus-ring-color: rgb(13 110 253 / 25%);
+
     --checkbox-checked-background: #0d6efd;
     --checkbox-checked-border-color: #0d6efd;
-    /* Disabled */
+    --checkbox-check-color: #ffffff;
+
     --checkbox-disabled-background: #e9ecef;
     --checkbox-disabled-border-color: #ced4da;
     --checkbox-disabled-opacity: 0.65;
     --checkbox-disabled-label-color: #6c757d;
-    /* Validation */
+
     --checkbox-valid-border-color: #198754;
     --checkbox-invalid-border-color: #dc3545;
-    --checkbox-invalid-ring-color: rgba(220, 53, 69, 0.25);
+    --checkbox-invalid-ring-color: rgb(220 53 69 / 25%);
+
+    --checkbox-size: 1rem;
+    --checkbox-transition: background-color 0.15s ease-in-out,
+                           border-color 0.15s ease-in-out,
+                           box-shadow 0.15s ease-in-out;
 }
 
-.html.dark {
-    /* Checkbox */
+html.dark {
     --checkbox-color: #f8f9fa;
     --checkbox-background: #212529;
     --checkbox-border-color: #adb5bd;
-    --checkbox-border-radius: 0.25rem;
-    /* Focus */
+
     --checkbox-focus-border-color: #86b7fe;
-    --checkbox-focus-ring-color: rgba(110, 168, 254, 0.25);
-    /* Checked */
+    --checkbox-focus-ring-color: rgb(110 168 254 / 25%);
+
     --checkbox-checked-background: #0d6efd;
     --checkbox-checked-border-color: #0d6efd;
-    /* Disabled */
+    --checkbox-check-color: #ffffff;
+
     --checkbox-disabled-background: #343a40;
     --checkbox-disabled-border-color: #495057;
-    --checkbox-disabled-opacity: 0.65;
     --checkbox-disabled-label-color: #868e96;
-    /* Validation */
+
     --checkbox-valid-border-color: #75b798;
     --checkbox-invalid-border-color: #ea868f;
-    --checkbox-invalid-ring-color: rgba(234, 134, 143, 0.25);
-}   
+    --checkbox-invalid-ring-color: rgb(234 134 143 / 25%);
+}
+
+/* =========================================================
+   Form Check Layout
+   ========================================================= */
 
 .form-check {
     display: block;
@@ -67,69 +75,108 @@
 }
 
 .form-check-label {
+    color: var(--checkbox-color);
     cursor: pointer;
 }
 
 /* =========================================================
-   Form Check Input
+   Checkbox Input
    ========================================================= */
 
-.form-check-input {
-    width: 1em;
-    height: 1em;
+[data-redsky-component="checkbox-input"],
+.form-check-input[type="checkbox"] {
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     margin-top: 0.25em;
     margin-left: -1.5em;
 
     vertical-align: top;
     appearance: none;
+    -webkit-appearance: none;
 
-    color: var(--checkbox-color);
+    display: inline-grid;
+    place-content: center;
+    flex-shrink: 0;
+
+    color: var(--checkbox-check-color);
     background-color: var(--checkbox-background);
 
     border: 1px solid var(--checkbox-border-color);
     border-radius: var(--checkbox-border-radius);
 
     cursor: pointer;
-
     print-color-adjust: exact;
 
-    transition:
-        background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out,
-        box-shadow 0.15s ease-in-out;
+    transition: var(--checkbox-transition);
+}
+
+/* =========================================================
+   Checked State
+   ========================================================= */
+
+[data-redsky-component="checkbox-input"]:checked,
+.form-check-input[type="checkbox"]:checked {
+    background-color: var(--checkbox-checked-background);
+    border-color: var(--checkbox-checked-border-color);
+}
+
+[data-redsky-component="checkbox-input"]:checked::before,
+.form-check-input[type="checkbox"]:checked::before {
+    content: "";
+    width: 0.3rem;
+    height: 0.55rem;
+
+    border: solid var(--checkbox-check-color);
+    border-width: 0 2px 2px 0;
+
+    transform: rotate(45deg);
+    margin-top: -0.1rem;
+}
+
+/* =========================================================
+   Indeterminate State
+   ========================================================= */
+
+[data-redsky-component="checkbox-input"]:indeterminate,
+.form-check-input[type="checkbox"]:indeterminate {
+    background-color: var(--checkbox-checked-background);
+    border-color: var(--checkbox-checked-border-color);
+}
+
+[data-redsky-component="checkbox-input"]:indeterminate::before,
+.form-check-input[type="checkbox"]:indeterminate::before {
+    content: "";
+    width: 0.5rem;
+    height: 2px;
+
+    background-color: var(--checkbox-check-color);
 }
 
 /* =========================================================
    Focus
    ========================================================= */
 
-.form-check-input:focus {
+[data-redsky-component="checkbox-input"]:focus-visible,
+.form-check-input[type="checkbox"]:focus-visible {
     outline: 0;
     border-color: var(--checkbox-focus-border-color);
     box-shadow: 0 0 0 0.25rem var(--checkbox-focus-ring-color);
 }
 
 /* =========================================================
-   Checked
-   ========================================================= */
-
-.form-check-input:checked {
-    background-color: var(--checkbox-checked-background);
-    border-color: var(--checkbox-checked-border-color);
-}
-
-/* =========================================================
    Disabled
    ========================================================= */
 
-.form-check-input:disabled {
+[data-redsky-component="checkbox-input"]:disabled,
+.form-check-input[type="checkbox"]:disabled {
     background-color: var(--checkbox-disabled-background);
     border-color: var(--checkbox-disabled-border-color);
     cursor: not-allowed;
     opacity: var(--checkbox-disabled-opacity);
 }
 
-.form-check-input:disabled ~ .form-check-label {
+[data-redsky-component="checkbox-input"]:disabled ~ .form-check-label,
+.form-check-input[type="checkbox"]:disabled ~ .form-check-label {
     color: var(--checkbox-disabled-label-color);
     cursor: not-allowed;
 }
@@ -138,14 +185,21 @@
    Validation
    ========================================================= */
 
-.form-check-input.is-valid {
+[data-redsky-component="checkbox-input"].is-valid,
+.form-check-input[type="checkbox"].is-valid {
     border-color: var(--checkbox-valid-border-color);
 }
 
-.form-check-input.is-invalid {
+[data-redsky-component="checkbox-input"].is-invalid,
+.form-check-input[type="checkbox"].is-invalid,
+[data-redsky-component="checkbox-input"][aria-invalid="true"],
+.form-check-input[type="checkbox"][aria-invalid="true"] {
     border-color: var(--checkbox-invalid-border-color);
 }
 
-.form-check-input.is-invalid:focus {
+[data-redsky-component="checkbox-input"].is-invalid:focus-visible,
+.form-check-input[type="checkbox"].is-invalid:focus-visible,
+[data-redsky-component="checkbox-input"][aria-invalid="true"]:focus-visible,
+.form-check-input[type="checkbox"][aria-invalid="true"]:focus-visible {
     box-shadow: 0 0 0 0.25rem var(--checkbox-invalid-ring-color);
 }

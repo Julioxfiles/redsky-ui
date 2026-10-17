@@ -54,9 +54,11 @@ html.dark {
  * TextInput
  */
 
-[data-redsky-component="text-input"].form-control {
+[data-redsky-component="text-input"] {
     display: block;
+    box-sizing: border-box;
     width: 100%;
+    min-width: 0;
     padding: 0.375rem 0.75rem;
 
     font: inherit;
@@ -79,7 +81,7 @@ html.dark {
  * Placeholder
  */
 
-[data-redsky-component="text-input"].form-control::placeholder {
+[data-redsky-component="text-input"]::placeholder {
     color: var(--text-input-placeholder-color);
     opacity: 1;
 }
@@ -88,17 +90,21 @@ html.dark {
  * Focus
  */
 
-[data-redsky-component="text-input"].form-control:focus {
+[data-redsky-component="text-input"]:focus {
     outline: 0;
     border-color: var(--text-input-focus-border-color);
     box-shadow: 0 0 0 0.2rem var(--text-input-focus-ring-color);
+}
+
+[data-redsky-component="text-input"]:focus-visible {
+    outline: 0;
 }
 
 /*
  * Disabled
  */
 
-[data-redsky-component="text-input"].form-control:disabled {
+[data-redsky-component="text-input"]:disabled {
     color: var(--text-input-disabled-color);
     background-color: var(--text-input-disabled-background);
     border-color: var(--text-input-disabled-border-color);
@@ -109,7 +115,7 @@ html.dark {
  * Readonly
  */
 
-[data-redsky-component="text-input"].form-control[readonly] {
+[data-redsky-component="text-input"][readonly] {
     background-color: var(--text-input-readonly-background);
 }
 
@@ -117,15 +123,25 @@ html.dark {
  * Validation
  */
 
-[data-redsky-component="text-input"].form-control.is-valid {
+[data-redsky-component="text-input"].is-valid {
     border-color: var(--text-input-valid-border-color);
 }
 
-[data-redsky-component="text-input"].form-control.is-invalid {
+[data-redsky-component="text-input"].is-invalid {
     border-color: var(--text-input-invalid-border-color);
 }
 
-[data-redsky-component="text-input"].form-control.is-invalid:focus {
+[data-redsky-component="text-input"].is-invalid:focus {
     border-color: var(--text-input-invalid-border-color);
     box-shadow: 0 0 0 0.2rem var(--text-input-invalid-ring-color);
+}
+
+/*
+ * Reduced Motion
+ */
+
+@media (prefers-reduced-motion: reduce) {
+    [data-redsky-component="text-input"] {
+        transition: none;
+    }
 }

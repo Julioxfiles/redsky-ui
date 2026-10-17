@@ -1,0 +1,108 @@
+
+/**
+ * UrlInput component styles.
+ *
+ * Provides theme-aware styling for native URL inputs.
+ * The component is UI-library agnostic and uses semantic CSS
+ * classes compatible with common form-control naming conventions.
+ */
+
+:root {
+    --url-input-background: #ffffff;
+    --url-input-color: #111827;
+    --url-input-border-color: #d1d5db;
+    --url-input-border-radius: 0.375rem;
+    --url-input-padding: 0.5rem 0.75rem;
+    --url-input-font-size: 1rem;
+    --url-input-line-height: 1.5;
+    --url-input-placeholder-color: #6b7280;
+    --url-input-color-scheme: light;
+
+    --url-input-focus-border-color: #3b82f6;
+    --url-input-focus-ring-color: rgb(59 130 246 / 25%);
+
+    --url-input-disabled-background: #f3f4f6;
+    --url-input-disabled-color: #6b7280;
+    --url-input-disabled-border-color: #d1d5db;
+
+    --url-input-invalid-border-color: #dc2626;
+    --url-input-invalid-focus-ring-color: rgb(220 38 38 / 20%);
+
+    --url-input-transition: border-color 0.15s ease-in-out,
+                            box-shadow 0.15s ease-in-out;
+}
+
+html.dark {
+    --url-input-background: #1f2937;
+    --url-input-color: #f9fafb;
+    --url-input-border-color: #4b5563;
+    --url-input-placeholder-color: #9ca3af;
+    --url-input-color-scheme: dark;
+
+    --url-input-focus-border-color: #60a5fa;
+    --url-input-focus-ring-color: rgb(96 165 250 / 25%);
+
+    --url-input-disabled-background: #374151;
+    --url-input-disabled-color: #9ca3af;
+    --url-input-disabled-border-color: #4b5563;
+
+    --url-input-invalid-border-color: #f87171;
+    --url-input-invalid-focus-ring-color: rgb(248 113 113 / 20%);
+}
+
+[data-redsky-component="url-input"] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: var(--url-input-padding);
+
+    font-family: inherit;
+    font-size: var(--url-input-font-size);
+    font-weight: 400;
+    line-height: var(--url-input-line-height);
+
+    color: var(--url-input-color);
+    background-color: var(--url-input-background);
+    color-scheme: var(--url-input-color-scheme);
+
+    border: 1px solid var(--url-input-border-color);
+    border-radius: var(--url-input-border-radius);
+
+    transition: var(--url-input-transition);
+}
+
+[data-redsky-component="url-input"]::placeholder {
+    color: var(--url-input-placeholder-color);
+    opacity: 1;
+}
+
+[data-redsky-component="url-input"]:focus {
+    outline: 0;
+    border-color: var(--url-input-focus-border-color);
+    box-shadow: 0 0 0 0.2rem var(--url-input-focus-ring-color);
+}
+
+[data-redsky-component="url-input"]:disabled {
+    color: var(--url-input-disabled-color);
+    background-color: var(--url-input-disabled-background);
+    border-color: var(--url-input-disabled-border-color);
+
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+[data-redsky-component="url-input"]:read-only {
+    background-color: var(--url-input-disabled-background);
+}
+
+[data-redsky-component="url-input"][aria-invalid="true"],
+[data-redsky-component="url-input"].is-invalid {
+    border-color: var(--url-input-invalid-border-color);
+}
+
+[data-redsky-component="url-input"][aria-invalid="true"]:focus,
+[data-redsky-component="url-input"].is-invalid:focus {
+    box-shadow: 0 0 0 0.2rem var(--url-input-invalid-focus-ring-color);
+}

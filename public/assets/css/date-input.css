@@ -32,7 +32,7 @@ html.dark {
     --date-input-calendar-filter: brightness(0) invert(1);
 }
 
-[data-component="date-input"] {
+[data-redsky-component="date-input"] {
     display: inline-block;
     width: var(--date-input-width);
     min-width: var(--date-input-min-width);
@@ -48,18 +48,18 @@ html.dark {
     transition: var(--date-input-transition);
 }
 
-
-[data-component="date-input"]:focus {
+[data-redsky-component="date-input"]:focus {
     outline: none;
     border-color: var(--date-input-focus-border-color);
-    box-shadow: none;
+    box-shadow: 0 0 0 0.2rem var(--date-input-focus-ring-color);
 }
 
-[data-component="date-input"]:focus-visible {
-    outline: none;
+[data-redsky-component="date-input"]:focus-visible {
+    outline: 2px solid var(--date-input-focus-border-color);
+    outline-offset: 2px;
 }
 
-[data-component="date-input"]:disabled {
+[data-redsky-component="date-input"]:disabled {
     color: var(--date-input-disabled-color);
     background-color: var(--date-input-disabled-background);
     border-color: var(--date-input-disabled-border-color);
@@ -67,27 +67,27 @@ html.dark {
     opacity: 0.75;
 }
 
-[data-component="date-input"]:read-only {
+[data-redsky-component="date-input"]:read-only {
     background-color: var(--date-input-disabled-background);
     cursor: default;
 }
 
-[data-component="date-input"]:invalid {
+[data-redsky-component="date-input"]:invalid {
     border-color: var(--date-input-invalid-border-color);
 }
 
-html.dark [data-component="date-input"]::-webkit-calendar-picker-indicator {
+html.dark [data-redsky-component="date-input"]::-webkit-calendar-picker-indicator {
     filter: var(--date-input-calendar-filter);
     cursor: pointer;
 }
 
-[data-component="date-input"]:disabled::-webkit-calendar-picker-indicator {
+[data-redsky-component="date-input"]:disabled::-webkit-calendar-picker-indicator {
     cursor: not-allowed;
     opacity: 0.5;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    [data-component="date-input"] {
+    [data-redsky-component="date-input"] {
         transition: none;
     }
 }

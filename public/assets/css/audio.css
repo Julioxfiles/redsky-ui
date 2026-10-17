@@ -1,0 +1,68 @@
+/**
+ * Audio component styles.
+ *
+ * Defines the appearance of the native HTML audio player
+ * within the RedSky HTML component system.
+ *
+ * @package RedSky\Html\Components\Media\Audio
+ */
+
+:root {
+    --audio-width: 100%;
+    --audio-max-width: 100%;
+    --audio-background: transparent;
+    --audio-border-radius: 0.375rem;
+    --audio-margin: 0;
+    --audio-opacity: 1;
+    --audio-focus-color: #3b82f6;
+    --audio-focus-width: 2px;
+    --audio-focus-offset: 3px;
+}
+
+html.dark {
+    --audio-background: transparent;
+    --audio-focus-color: #60a5fa;
+}
+
+/* Base component */
+
+[data-redsky-component="audio"] {
+    display: block;
+    width: var(--audio-width);
+    max-width: var(--audio-max-width);
+    margin: var(--audio-margin);
+    background-color: var(--audio-background);
+    border-radius: var(--audio-border-radius);
+    opacity: var(--audio-opacity);
+}
+
+/* Keyboard focus */
+
+[data-redsky-component="audio"]:focus-visible {
+    outline: var(--audio-focus-width) solid var(--audio-focus-color);
+    outline-offset: var(--audio-focus-offset);
+}
+
+/* Disabled or unavailable state */
+
+[data-redsky-component="audio"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive behavior */
+
+@media (max-width: 576px) {
+    [data-redsky-component="audio"] {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Reduced transparency */
+
+@media (prefers-reduced-transparency: reduce) {
+    [data-redsky-component="audio"] {
+        opacity: 1;
+    }
+}

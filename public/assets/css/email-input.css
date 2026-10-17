@@ -25,7 +25,7 @@ html.dark {
     --email-input-invalid-border-color: #f87171;
 }
 
-[data-component="email-input"] {
+[data-redsky-component="email-input"] {
     display: inline-block;
     width: var(--email-input-width);
     padding: var(--email-input-padding);
@@ -38,16 +38,16 @@ html.dark {
     transition: var(--email-input-transition);
 }
 
-[data-component="email-input"]:focus {
+[data-redsky-component="email-input"]:focus {
     outline: none;
     border-color: var(--email-input-focus-border-color);
 }
 
-[data-component="email-input"]:focus-visible {
+[data-redsky-component="email-input"]:focus-visible {
     outline: none;
 }
 
-[data-component="email-input"]:disabled {
+[data-redsky-component="email-input"]:disabled {
     color: var(--email-input-disabled-color);
     background-color: var(--email-input-disabled-background);
     border-color: var(--email-input-disabled-border-color);
@@ -55,17 +55,17 @@ html.dark {
     opacity: 0.75;
 }
 
-[data-component="email-input"]:read-only {
+[data-redsky-component="email-input"]:read-only {
     background-color: var(--email-input-disabled-background);
     cursor: default;
 }
 
-[data-component="email-input"]:invalid {
+[data-redsky-component="email-input"]:invalid {
     border-color: var(--email-input-invalid-border-color);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    [data-component="email-input"] {
+    [data-redsky-component="email-input"] {
         transition: none;
     }
 }

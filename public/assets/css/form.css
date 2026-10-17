@@ -1,0 +1,64 @@
+/**
+ * Form component styles.
+ *
+ * Provides layout and visual configuration for HTML forms.
+ * Does not impose styles on individual form controls.
+ *
+ * @package RedSky\Html\Components\Form\Form
+ */
+
+:root {
+    --form-width: 100%;
+    --form-max-width: 100%;
+    --form-margin: 0;
+    --form-padding: 0;
+    --form-gap: 1rem;
+
+    --form-background: transparent;
+    --form-color: #111827;
+
+    --form-border-width: 0;
+    --form-border-style: solid;
+    --form-border-color: transparent;
+    --form-border-radius: 0;
+
+    --form-transition: color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+html.dark {
+    --form-background: transparent;
+    --form-color: #f9fafb;
+
+    --form-border-color: transparent;
+}
+
+[data-redsky-component="form"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-gap);
+
+    width: var(--form-width);
+    max-width: var(--form-max-width);
+
+    margin: var(--form-margin);
+    padding: var(--form-padding);
+
+    color: var(--form-color);
+    background-color: var(--form-background);
+
+    border-width: var(--form-border-width);
+    border-style: var(--form-border-style);
+    border-color: var(--form-border-color);
+    border-radius: var(--form-border-radius);
+
+    font: inherit;
+    transition: var(--form-transition);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-redsky-component="form"] {
+        transition: none;
+    }
+}

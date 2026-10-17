@@ -8,16 +8,14 @@ define('BASE_PATH', dirname(__DIR__));
 
 require_once BASE_PATH . '/vendor/autoload.php';
 
-//var_dump(class_exists(\RedSky\View\Html\Attributes::class));
+/*
+|--------------------------------------------------------------------------
+| Load .env
+|--------------------------------------------------------------------------
+*/
+use RedSky\Framework\Support\Env;
+Env::load(dirname(__DIR__) . '/.env');
 
-//var_dump(config('ui.library'));
-//exit;
-
-/**
- * ENV
- */
-$dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
-$dotenv->load();
 
 /**
  * BOOTSTRAP

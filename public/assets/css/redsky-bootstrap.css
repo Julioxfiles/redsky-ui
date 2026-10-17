@@ -1,0 +1,1169 @@
+/**
+ * RedSky Bootstrap-Compatible Utilities
+ *
+ * Provides a reusable subset of Bootstrap-style classes
+ * without requiring the Bootstrap framework.
+ *
+ * Includes:
+ * - Forms and form controls
+ * - Buttons
+ * - Grid and responsive columns
+ * - Spacing utilities
+ * - Flexbox and display utilities
+ * - Typography and text alignment
+ * - Sizing, borders, backgrounds and colors
+ * - Responsive helpers
+ *
+ * Color variables are theme-aware. Layout and spacing utilities
+ * do not depend on the active theme.
+ */
+
+/* ==================================================
+   1. Theme variables
+================================================== */
+
+:root {
+    --rs-primary: #315bd6;
+    --rs-primary-hover: #2549b6;
+    --rs-primary-text: #ffffff;
+
+    --rs-secondary: #64748b;
+    --rs-secondary-hover: #475569;
+    --rs-secondary-text: #ffffff;
+
+    --rs-success: #198754;
+    --rs-success-text: #ffffff;
+
+    --rs-danger: #dc3545;
+    --rs-danger-text: #ffffff;
+
+    --rs-warning: #ffc107;
+    --rs-warning-text: #212529;
+
+    --rs-info: #0dcaf0;
+    --rs-info-text: #212529;
+
+    --rs-light: #f8f9fa;
+    --rs-light-text: #212529;
+
+    --rs-dark: #212529;
+    --rs-dark-text: #ffffff;
+
+    --rs-body-bg: #ffffff;
+    --rs-body-color: #212529;
+    --rs-muted: #6c757d;
+
+    --rs-border-color: #dee2e6;
+    --rs-surface: #ffffff;
+    --rs-surface-secondary: #f8f9fa;
+
+    --rs-input-bg: #ffffff;
+    --rs-input-color: #212529;
+    --rs-input-border: #ced4da;
+    --rs-input-placeholder: #6c757d;
+    --rs-input-focus: #86b7fe;
+    --rs-input-focus-ring: rgb(13 110 253 / 25%);
+
+    --rs-link-color: #315bd6;
+    --rs-link-hover: #2549b6;
+
+    --rs-invalid: #dc3545;
+    --rs-valid: #198754;
+
+    --rs-border-radius: 0.375rem;
+    --rs-border-radius-sm: 0.25rem;
+    --rs-border-radius-lg: 0.5rem;
+    --rs-border-radius-xl: 1rem;
+    --rs-border-radius-pill: 50rem;
+
+    --rs-transition: 150ms ease-in-out;
+}
+
+html.dark {
+    --rs-primary: #7195ff;
+    --rs-primary-hover: #91acff;
+    --rs-primary-text: #101827;
+
+    --rs-secondary: #94a3b8;
+    --rs-secondary-hover: #b7c3d3;
+    --rs-secondary-text: #17202e;
+
+    --rs-success: #55c797;
+    --rs-success-text: #10271d;
+
+    --rs-danger: #ff8793;
+    --rs-danger-text: #32151a;
+
+    --rs-warning: #ffda6a;
+    --rs-warning-text: #302609;
+
+    --rs-info: #6edff6;
+    --rs-info-text: #10282e;
+
+    --rs-light: #e9edf3;
+    --rs-light-text: #202938;
+
+    --rs-dark: #202938;
+    --rs-dark-text: #e9edf3;
+
+    --rs-body-bg: #111722;
+    --rs-body-color: #e7ecf4;
+    --rs-muted: #a1adbf;
+
+    --rs-border-color: #414d60;
+    --rs-surface: #1b2432;
+    --rs-surface-secondary: #151d29;
+
+    --rs-input-bg: #151d29;
+    --rs-input-color: #e7ecf4;
+    --rs-input-border: #414d60;
+    --rs-input-placeholder: #8492a7;
+    --rs-input-focus: #83a8ff;
+    --rs-input-focus-ring: rgb(131 168 255 / 20%);
+
+    --rs-link-color: #91afff;
+    --rs-link-hover: #b4c8ff;
+
+    --rs-invalid: #ff9ca6;
+    --rs-valid: #55c797;
+}
+
+/* ==================================================
+   2. Box sizing and basic elements
+================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+img,
+video {
+    height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+[type="button"],
+[type="submit"],
+[type="reset"] {
+    cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    cursor: not-allowed;
+}
+
+a {
+    color: var(--rs-link-color);
+}
+
+a:hover {
+    color: var(--rs-link-hover);
+}
+
+/* ==================================================
+   3. Container
+================================================== */
+
+.container,
+.container-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.container-fluid {
+    max-width: 100%;
+}
+
+/* ==================================================
+   4. Grid system
+================================================== */
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    min-width: 0;
+}
+
+.row > * {
+    min-width: 0;
+}
+
+.col {
+    grid-column: 1 / -1;
+    min-width: 0;
+}
+
+.col-auto {
+    grid-column: auto;
+    width: auto;
+}
+
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* ==================================================
+   5. Grid gaps
+================================================== */
+
+.g-0 { gap: 0; }
+.g-1 { gap: 0.25rem; }
+.g-2 { gap: 0.5rem; }
+.g-3 { gap: 1rem; }
+.g-4 { gap: 1.5rem; }
+.g-5 { gap: 3rem; }
+
+.gx-0 { column-gap: 0; }
+.gx-1 { column-gap: 0.25rem; }
+.gx-2 { column-gap: 0.5rem; }
+.gx-3 { column-gap: 1rem; }
+.gx-4 { column-gap: 1.5rem; }
+.gx-5 { column-gap: 3rem; }
+
+.gy-0 { row-gap: 0; }
+.gy-1 { row-gap: 0.25rem; }
+.gy-2 { row-gap: 0.5rem; }
+.gy-3 { row-gap: 1rem; }
+.gy-4 { row-gap: 1.5rem; }
+.gy-5 { row-gap: 3rem; }
+
+/* ==================================================
+   6. Form layout and labels
+================================================== */
+
+.form {
+    width: 100%;
+}
+
+.form-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: var(--rs-body-color);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.form-text {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--rs-muted);
+    font-size: 0.875em;
+    line-height: 1.5;
+}
+
+/* ==================================================
+   7. Form controls
+================================================== */
+
+.form-control,
+.form-select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 0.375rem 0.75rem;
+
+    border: 1px solid var(--rs-input-border);
+    border-radius: var(--rs-border-radius);
+
+    background-color: var(--rs-input-bg);
+    color: var(--rs-input-color);
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    transition:
+        border-color var(--rs-transition),
+        box-shadow var(--rs-transition),
+        background-color var(--rs-transition);
+}
+
+.form-control {
+    min-height: calc(1.5em + 0.75rem + 2px);
+}
+
+.form-select {
+    min-height: calc(1.5em + 0.75rem + 2px);
+    padding-right: 2.25rem;
+}
+
+.form-control::placeholder {
+    color: var(--rs-input-placeholder);
+    opacity: 1;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--rs-input-focus);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem var(--rs-input-focus-ring);
+}
+
+.form-control:disabled,
+.form-control[readonly],
+.form-select:disabled {
+    background-color: var(--rs-surface-secondary);
+    opacity: 1;
+}
+
+.form-control[readonly] {
+    cursor: default;
+}
+
+.form-control[type="file"] {
+    overflow: hidden;
+    padding: 0.375rem 0.75rem;
+}
+
+.form-control[type="file"]::file-selector-button {
+    margin: -0.375rem 0.75rem -0.375rem -0.75rem;
+    padding: 0.375rem 0.75rem;
+    border: 0;
+    border-right: 1px solid var(--rs-input-border);
+    background: var(--rs-surface-secondary);
+    color: var(--rs-body-color);
+    cursor: pointer;
+}
+
+.form-control[type="range"] {
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    accent-color: var(--rs-primary);
+}
+
+.form-control[type="color"] {
+    min-height: 2.75rem;
+    padding: 0.25rem;
+}
+
+.form-control[type="date"],
+.form-control[type="time"],
+.form-control[type="datetime-local"] {
+    color-scheme: light;
+}
+
+html.dark .form-control[type="date"],
+html.dark .form-control[type="time"],
+html.dark .form-control[type="datetime-local"] {
+    color-scheme: dark;
+}
+
+/* Form control sizes */
+
+.form-control-sm,
+.form-select-sm {
+    min-height: calc(1.5em + 0.5rem + 2px);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--rs-border-radius-sm);
+    font-size: 0.875rem;
+}
+
+.form-control-lg,
+.form-select-lg {
+    min-height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem 1rem;
+    border-radius: var(--rs-border-radius-lg);
+    font-size: 1.25rem;
+}
+
+/* ==================================================
+   8. Checkboxes and switches
+================================================== */
+
+.form-check {
+    display: flex;
+    min-height: 1.5rem;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-check-input {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 auto;
+    margin-top: 0.25rem;
+    accent-color: var(--rs-primary);
+}
+
+.form-check-label {
+    color: var(--rs-body-color);
+    line-height: 1.5;
+}
+
+.form-check-input:disabled + .form-check-label {
+    color: var(--rs-muted);
+    cursor: not-allowed;
+}
+
+.form-switch .form-check-input {
+    width: 2rem;
+    height: 1rem;
+    border-radius: var(--rs-border-radius-pill);
+}
+
+/* ==================================================
+   9. Input groups
+================================================== */
+
+.input-group {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.input-group > .form-control,
+.input-group > .form-select {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+}
+
+.input-group > :not(:first-child) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group > :not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--rs-input-border);
+    border-radius: var(--rs-border-radius);
+    background: var(--rs-surface-secondary);
+    color: var(--rs-body-color);
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ==================================================
+   10. Validation
+================================================== */
+
+.is-invalid,
+.form-control.is-invalid,
+.form-select.is-invalid,
+.form-control[aria-invalid="true"] {
+    border-color: var(--rs-invalid);
+}
+
+.is-invalid:focus,
+.form-control.is-invalid:focus,
+.form-select.is-invalid:focus,
+.form-control[aria-invalid="true"]:focus {
+    border-color: var(--rs-invalid);
+    box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--rs-invalid) 25%, transparent);
+}
+
+.is-valid,
+.form-control.is-valid,
+.form-select.is-valid {
+    border-color: var(--rs-valid);
+}
+
+.invalid-feedback,
+.valid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+}
+
+.invalid-feedback {
+    color: var(--rs-invalid);
+}
+
+.valid-feedback {
+    color: var(--rs-valid);
+}
+
+.is-invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-feedback,
+.form-select.is-invalid ~ .invalid-feedback,
+.is-valid ~ .valid-feedback,
+.form-control.is-valid ~ .valid-feedback,
+.form-select.is-valid ~ .valid-feedback {
+    display: block;
+}
+
+/* ==================================================
+   11. Buttons
+================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    padding: 0.375rem 0.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--rs-border-radius);
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+
+    transition:
+        color var(--rs-transition),
+        background-color var(--rs-transition),
+        border-color var(--rs-transition),
+        box-shadow var(--rs-transition);
+}
+
+.btn:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem var(--rs-input-focus-ring);
+}
+
+.btn:disabled,
+.btn.disabled {
+    pointer-events: none;
+    opacity: 0.65;
+}
+
+.btn-primary {
+    border-color: var(--rs-primary);
+    background-color: var(--rs-primary);
+    color: var(--rs-primary-text);
+}
+
+.btn-primary:hover {
+    border-color: var(--rs-primary-hover);
+    background-color: var(--rs-primary-hover);
+    color: var(--rs-primary-text);
+}
+
+.btn-secondary {
+    border-color: var(--rs-secondary);
+    background-color: var(--rs-secondary);
+    color: var(--rs-secondary-text);
+}
+
+.btn-secondary:hover {
+    border-color: var(--rs-secondary-hover);
+    background-color: var(--rs-secondary-hover);
+    color: var(--rs-secondary-text);
+}
+
+.btn-success {
+    border-color: var(--rs-success);
+    background-color: var(--rs-success);
+    color: var(--rs-success-text);
+}
+
+.btn-danger {
+    border-color: var(--rs-danger);
+    background-color: var(--rs-danger);
+    color: var(--rs-danger-text);
+}
+
+.btn-warning {
+    border-color: var(--rs-warning);
+    background-color: var(--rs-warning);
+    color: var(--rs-warning-text);
+}
+
+.btn-info {
+    border-color: var(--rs-info);
+    background-color: var(--rs-info);
+    color: var(--rs-info-text);
+}
+
+.btn-light {
+    border-color: var(--rs-light);
+    background-color: var(--rs-light);
+    color: var(--rs-light-text);
+}
+
+.btn-dark {
+    border-color: var(--rs-dark);
+    background-color: var(--rs-dark);
+    color: var(--rs-dark-text);
+}
+
+.btn-outline-primary {
+    border-color: var(--rs-primary);
+    background: transparent;
+    color: var(--rs-primary);
+}
+
+.btn-outline-primary:hover {
+    background: var(--rs-primary);
+    color: var(--rs-primary-text);
+}
+
+.btn-link {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--rs-link-color);
+    text-decoration: underline;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--rs-border-radius-sm);
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: 0.5rem 1rem;
+    border-radius: var(--rs-border-radius-lg);
+    font-size: 1.25rem;
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+/* ==================================================
+   12. Display
+================================================== */
+
+.d-none { display: none !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-block { display: block !important; }
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-grid { display: grid !important; }
+
+/* ==================================================
+   13. Flexbox
+================================================== */
+
+.flex-row { flex-direction: row !important; }
+.flex-column { flex-direction: column !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+
+.flex-fill { flex: 1 1 auto !important; }
+.flex-grow-0 { flex-grow: 0 !important; }
+.flex-grow-1 { flex-grow: 1 !important; }
+.flex-shrink-0 { flex-shrink: 0 !important; }
+.flex-shrink-1 { flex-shrink: 1 !important; }
+
+.justify-content-start { justify-content: flex-start !important; }
+.justify-content-end { justify-content: flex-end !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around { justify-content: space-around !important; }
+.justify-content-evenly { justify-content: space-evenly !important; }
+
+.align-items-start { align-items: flex-start !important; }
+.align-items-end { align-items: flex-end !important; }
+.align-items-center { align-items: center !important; }
+.align-items-baseline { align-items: baseline !important; }
+.align-items-stretch { align-items: stretch !important; }
+
+.align-self-start { align-self: flex-start !important; }
+.align-self-end { align-self: flex-end !important; }
+.align-self-center { align-self: center !important; }
+.align-self-stretch { align-self: stretch !important; }
+
+/* ==================================================
+   14. Spacing
+   Scale: 0, 0.25rem, 0.5rem, 1rem, 1.5rem, 3rem
+================================================== */
+
+/* Margin */
+
+.m-0 { margin: 0 !important; }
+.m-1 { margin: 0.25rem !important; }
+.m-2 { margin: 0.5rem !important; }
+.m-3 { margin: 1rem !important; }
+.m-4 { margin: 1.5rem !important; }
+.m-5 { margin: 3rem !important; }
+.m-auto { margin: auto !important; }
+
+.mx-0 { margin-right: 0 !important; margin-left: 0 !important; }
+.mx-1 { margin-right: 0.25rem !important; margin-left: 0.25rem !important; }
+.mx-2 { margin-right: 0.5rem !important; margin-left: 0.5rem !important; }
+.mx-3 { margin-right: 1rem !important; margin-left: 1rem !important; }
+.mx-4 { margin-right: 1.5rem !important; margin-left: 1.5rem !important; }
+.mx-5 { margin-right: 3rem !important; margin-left: 3rem !important; }
+.mx-auto { margin-right: auto !important; margin-left: auto !important; }
+
+.my-0 { margin-top: 0 !important; margin-bottom: 0 !important; }
+.my-1 { margin-top: 0.25rem !important; margin-bottom: 0.25rem !important; }
+.my-2 { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
+.my-3 { margin-top: 1rem !important; margin-bottom: 1rem !important; }
+.my-4 { margin-top: 1.5rem !important; margin-bottom: 1.5rem !important; }
+.my-5 { margin-top: 3rem !important; margin-bottom: 3rem !important; }
+.my-auto { margin-top: auto !important; margin-bottom: auto !important; }
+
+.mt-0 { margin-top: 0 !important; }
+.mt-1 { margin-top: 0.25rem !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-3 { margin-top: 1rem !important; }
+.mt-4 { margin-top: 1.5rem !important; }
+.mt-5 { margin-top: 3rem !important; }
+.mt-auto { margin-top: auto !important; }
+
+.me-0 { margin-right: 0 !important; }
+.me-1 { margin-right: 0.25rem !important; }
+.me-2 { margin-right: 0.5rem !important; }
+.me-3 { margin-right: 1rem !important; }
+.me-4 { margin-right: 1.5rem !important; }
+.me-5 { margin-right: 3rem !important; }
+.me-auto { margin-right: auto !important; }
+
+.mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: 0.25rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.mb-3 { margin-bottom: 1rem !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+.mb-auto { margin-bottom: auto !important; }
+
+.ms-0 { margin-left: 0 !important; }
+.ms-1 { margin-left: 0.25rem !important; }
+.ms-2 { margin-left: 0.5rem !important; }
+.ms-3 { margin-left: 1rem !important; }
+.ms-4 { margin-left: 1.5rem !important; }
+.ms-5 { margin-left: 3rem !important; }
+.ms-auto { margin-left: auto !important; }
+
+/* Padding */
+
+.p-0 { padding: 0 !important; }
+.p-1 { padding: 0.25rem !important; }
+.p-2 { padding: 0.5rem !important; }
+.p-3 { padding: 1rem !important; }
+.p-4 { padding: 1.5rem !important; }
+.p-5 { padding: 3rem !important; }
+
+.px-0 { padding-right: 0 !important; padding-left: 0 !important; }
+.px-1 { padding-right: 0.25rem !important; padding-left: 0.25rem !important; }
+.px-2 { padding-right: 0.5rem !important; padding-left: 0.5rem !important; }
+.px-3 { padding-right: 1rem !important; padding-left: 1rem !important; }
+.px-4 { padding-right: 1.5rem !important; padding-left: 1.5rem !important; }
+.px-5 { padding-right: 3rem !important; padding-left: 3rem !important; }
+
+.py-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+.py-1 { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+.py-2 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+.py-3 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+.py-4 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+.py-5 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+.pt-0 { padding-top: 0 !important; }
+.pt-1 { padding-top: 0.25rem !important; }
+.pt-2 { padding-top: 0.5rem !important; }
+.pt-3 { padding-top: 1rem !important; }
+.pt-4 { padding-top: 1.5rem !important; }
+.pt-5 { padding-top: 3rem !important; }
+
+.pe-0 { padding-right: 0 !important; }
+.pe-1 { padding-right: 0.25rem !important; }
+.pe-2 { padding-right: 0.5rem !important; }
+.pe-3 { padding-right: 1rem !important; }
+.pe-4 { padding-right: 1.5rem !important; }
+.pe-5 { padding-right: 3rem !important; }
+
+.pb-0 { padding-bottom: 0 !important; }
+.pb-1 { padding-bottom: 0.25rem !important; }
+.pb-2 { padding-bottom: 0.5rem !important; }
+.pb-3 { padding-bottom: 1rem !important; }
+.pb-4 { padding-bottom: 1.5rem !important; }
+.pb-5 { padding-bottom: 3rem !important; }
+
+.ps-0 { padding-left: 0 !important; }
+.ps-1 { padding-left: 0.25rem !important; }
+.ps-2 { padding-left: 0.5rem !important; }
+.ps-3 { padding-left: 1rem !important; }
+.ps-4 { padding-left: 1.5rem !important; }
+.ps-5 { padding-left: 3rem !important; }
+
+/* ==================================================
+   15. Sizing
+================================================== */
+
+.w-25 { width: 25% !important; }
+.w-50 { width: 50% !important; }
+.w-75 { width: 75% !important; }
+.w-100 { width: 100% !important; }
+.w-auto { width: auto !important; }
+
+.h-25 { height: 25% !important; }
+.h-50 { height: 50% !important; }
+.h-75 { height: 75% !important; }
+.h-100 { height: 100% !important; }
+.h-auto { height: auto !important; }
+
+.mw-100 { max-width: 100% !important; }
+.mh-100 { max-height: 100% !important; }
+
+.min-vw-100 { min-width: 100vw !important; }
+.min-vh-100 { min-height: 100vh !important; }
+.vw-100 { width: 100vw !important; }
+.vh-100 { height: 100vh !important; }
+
+/* ==================================================
+   16. Typography
+================================================== */
+
+.fw-light { font-weight: 300 !important; }
+.fw-normal { font-weight: 400 !important; }
+.fw-medium { font-weight: 500 !important; }
+.fw-semibold { font-weight: 600 !important; }
+.fw-bold { font-weight: 700 !important; }
+.fw-bolder { font-weight: bolder !important; }
+
+.fst-italic { font-style: italic !important; }
+.fst-normal { font-style: normal !important; }
+
+.fs-1 { font-size: calc(1.375rem + 1.5vw) !important; }
+.fs-2 { font-size: calc(1.325rem + 0.9vw) !important; }
+.fs-3 { font-size: calc(1.3rem + 0.6vw) !important; }
+.fs-4 { font-size: calc(1.275rem + 0.3vw) !important; }
+.fs-5 { font-size: 1.25rem !important; }
+.fs-6 { font-size: 1rem !important; }
+
+.text-start { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-end { text-align: right !important; }
+
+.text-decoration-none { text-decoration: none !important; }
+.text-decoration-underline { text-decoration: underline !important; }
+.text-decoration-line-through { text-decoration: line-through !important; }
+
+.text-lowercase { text-transform: lowercase !important; }
+.text-uppercase { text-transform: uppercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
+
+.text-wrap { white-space: normal !important; }
+.text-nowrap { white-space: nowrap !important; }
+.text-break { overflow-wrap: break-word !important; }
+
+.text-truncate {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.text-muted { color: var(--rs-muted) !important; }
+.text-primary { color: var(--rs-primary) !important; }
+.text-secondary { color: var(--rs-secondary) !important; }
+.text-success { color: var(--rs-success) !important; }
+.text-danger { color: var(--rs-danger) !important; }
+.text-warning { color: var(--rs-warning) !important; }
+.text-info { color: var(--rs-info) !important; }
+.text-light { color: var(--rs-light) !important; }
+.text-dark { color: var(--rs-dark) !important; }
+.text-body { color: var(--rs-body-color) !important; }
+.text-reset { color: inherit !important; }
+
+/* ==================================================
+   17. Background colors
+================================================== */
+
+.bg-primary { background-color: var(--rs-primary) !important; }
+.bg-secondary { background-color: var(--rs-secondary) !important; }
+.bg-success { background-color: var(--rs-success) !important; }
+.bg-danger { background-color: var(--rs-danger) !important; }
+.bg-warning { background-color: var(--rs-warning) !important; }
+.bg-info { background-color: var(--rs-info) !important; }
+.bg-light { background-color: var(--rs-light) !important; }
+.bg-dark { background-color: var(--rs-dark) !important; }
+.bg-body { background-color: var(--rs-body-bg) !important; }
+.bg-white { background-color: #ffffff !important; }
+.bg-transparent { background-color: transparent !important; }
+
+/* ==================================================
+   18. Borders and radius
+================================================== */
+
+.border {
+    border: 1px solid var(--rs-border-color) !important;
+}
+
+.border-0 { border: 0 !important; }
+.border-top { border-top: 1px solid var(--rs-border-color) !important; }
+.border-end { border-right: 1px solid var(--rs-border-color) !important; }
+.border-bottom { border-bottom: 1px solid var(--rs-border-color) !important; }
+.border-start { border-left: 1px solid var(--rs-border-color) !important; }
+
+.border-primary { border-color: var(--rs-primary) !important; }
+.border-secondary { border-color: var(--rs-secondary) !important; }
+.border-success { border-color: var(--rs-success) !important; }
+.border-danger { border-color: var(--rs-danger) !important; }
+.border-warning { border-color: var(--rs-warning) !important; }
+
+.rounded { border-radius: var(--rs-border-radius) !important; }
+.rounded-0 { border-radius: 0 !important; }
+.rounded-1 { border-radius: var(--rs-border-radius-sm) !important; }
+.rounded-2 { border-radius: var(--rs-border-radius) !important; }
+.rounded-3 { border-radius: var(--rs-border-radius-lg) !important; }
+.rounded-4 { border-radius: var(--rs-border-radius-xl) !important; }
+.rounded-pill { border-radius: var(--rs-border-radius-pill) !important; }
+.rounded-circle { border-radius: 50% !important; }
+
+/* ==================================================
+   19. Position
+================================================== */
+
+.position-static { position: static !important; }
+.position-relative { position: relative !important; }
+.position-absolute { position: absolute !important; }
+.position-fixed { position: fixed !important; }
+.position-sticky { position: sticky !important; }
+
+.top-0 { top: 0 !important; }
+.top-50 { top: 50% !important; }
+.top-100 { top: 100% !important; }
+
+.start-0 { left: 0 !important; }
+.start-50 { left: 50% !important; }
+.start-100 { left: 100% !important; }
+
+.end-0 { right: 0 !important; }
+.end-50 { right: 50% !important; }
+.end-100 { right: 100% !important; }
+
+.bottom-0 { bottom: 0 !important; }
+.bottom-50 { bottom: 50% !important; }
+.bottom-100 { bottom: 100% !important; }
+
+.translate-middle {
+    transform: translate(-50%, -50%) !important;
+}
+
+.translate-middle-x {
+    transform: translateX(-50%) !important;
+}
+
+.translate-middle-y {
+    transform: translateY(-50%) !important;
+}
+
+/* ==================================================
+   20. Overflow and visibility
+================================================== */
+
+.overflow-auto { overflow: auto !important; }
+.overflow-hidden { overflow: hidden !important; }
+.overflow-visible { overflow: visible !important; }
+.overflow-scroll { overflow: scroll !important; }
+
+.visible { visibility: visible !important; }
+.invisible { visibility: hidden !important; }
+
+/* ==================================================
+   21. Responsive breakpoints
+================================================== */
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .col-sm-1  { grid-column: span 1; }
+    .col-sm-2  { grid-column: span 2; }
+    .col-sm-3  { grid-column: span 3; }
+    .col-sm-4  { grid-column: span 4; }
+    .col-sm-5  { grid-column: span 5; }
+    .col-sm-6  { grid-column: span 6; }
+    .col-sm-7  { grid-column: span 7; }
+    .col-sm-8  { grid-column: span 8; }
+    .col-sm-9  { grid-column: span 9; }
+    .col-sm-10 { grid-column: span 10; }
+    .col-sm-11 { grid-column: span 11; }
+    .col-sm-12 { grid-column: span 12; }
+
+    .d-sm-none { display: none !important; }
+    .d-sm-block { display: block !important; }
+    .d-sm-flex { display: flex !important; }
+    .d-sm-grid { display: grid !important; }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .col-md-1  { grid-column: span 1; }
+    .col-md-2  { grid-column: span 2; }
+    .col-md-3  { grid-column: span 3; }
+    .col-md-4  { grid-column: span 4; }
+    .col-md-5  { grid-column: span 5; }
+    .col-md-6  { grid-column: span 6; }
+    .col-md-7  { grid-column: span 7; }
+    .col-md-8  { grid-column: span 8; }
+    .col-md-9  { grid-column: span 9; }
+    .col-md-10 { grid-column: span 10; }
+    .col-md-11 { grid-column: span 11; }
+    .col-md-12 { grid-column: span 12; }
+
+    .d-md-none { display: none !important; }
+    .d-md-block { display: block !important; }
+    .d-md-flex { display: flex !important; }
+    .d-md-grid { display: grid !important; }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .col-lg-1  { grid-column: span 1; }
+    .col-lg-2  { grid-column: span 2; }
+    .col-lg-3  { grid-column: span 3; }
+    .col-lg-4  { grid-column: span 4; }
+    .col-lg-5  { grid-column: span 5; }
+    .col-lg-6  { grid-column: span 6; }
+    .col-lg-7  { grid-column: span 7; }
+    .col-lg-8  { grid-column: span 8; }
+    .col-lg-9  { grid-column: span 9; }
+    .col-lg-10 { grid-column: span 10; }
+    .col-lg-11 { grid-column: span 11; }
+    .col-lg-12 { grid-column: span 12; }
+
+    .d-lg-none { display: none !important; }
+    .d-lg-block { display: block !important; }
+    .d-lg-flex { display: flex !important; }
+    .d-lg-grid { display: grid !important; }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .col-xl-1  { grid-column: span 1; }
+    .col-xl-2  { grid-column: span 2; }
+    .col-xl-3  { grid-column: span 3; }
+    .col-xl-4  { grid-column: span 4; }
+    .col-xl-5  { grid-column: span 5; }
+    .col-xl-6  { grid-column: span 6; }
+    .col-xl-7  { grid-column: span 7; }
+    .col-xl-8  { grid-column: span 8; }
+    .col-xl-9  { grid-column: span 9; }
+    .col-xl-10 { grid-column: span 10; }
+    .col-xl-11 { grid-column: span 11; }
+    .col-xl-12 { grid-column: span 12; }
+
+    .d-xl-none { display: none !important; }
+    .d-xl-block { display: block !important; }
+    .d-xl-flex { display: flex !important; }
+    .d-xl-grid { display: grid !important; }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .col-xxl-1  { grid-column: span 1; }
+    .col-xxl-2  { grid-column: span 2; }
+    .col-xxl-3  { grid-column: span 3; }
+    .col-xxl-4  { grid-column: span 4; }
+    .col-xxl-5  { grid-column: span 5; }
+    .col-xxl-6  { grid-column: span 6; }
+    .col-xxl-7  { grid-column: span 7; }
+    .col-xxl-8  { grid-column: span 8; }
+    .col-xxl-9  { grid-column: span 9; }
+    .col-xxl-10 { grid-column: span 10; }
+    .col-xxl-11 { grid-column: span 11; }
+    .col-xxl-12 { grid-column: span 12; }
+
+    .d-xxl-none { display: none !important; }
+    .d-xxl-block { display: block !important; }
+    .d-xxl-flex { display: flex !important; }
+    .d-xxl-grid { display: grid !important; }
+}
+
+/**
+ * Responsive form controls.
+ *
+ * Prevents form inputs from shrinking below their
+ * available container width on narrow screens.
+ */
+
+.form,
+.form > *,
+.form-control,
+.form-select,
+.input-group {
+    min-width: 0;
+}
+
+.form-control,
+.form-select {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.row {
+    width: 100%;
+    min-width: 0;
+}
+
+.row > [class*="col-"] {
+    min-width: 0;
+    max-width: 100%;
+}
+
+@media (max-width: 575.98px) {
+    .row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .row > [class*="col-"] {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .form-control,
+    .form-select {
+        width: 100%;
+        max-width: 100%;
+    }
+}

@@ -30,7 +30,7 @@ html.dark {
     --input-accent-color: #60a5fa;
 }
 
-[data-component="input"] {
+[data-redsky-component="input"] {
     box-sizing: border-box;
     width: var(--input-width);
     min-width: 0;
@@ -44,36 +44,36 @@ html.dark {
     transition: var(--input-transition);
 }
 
-[data-component="input"]::placeholder {
+[data-redsky-component="input"]::placeholder {
     color: var(--input-placeholder-color);
     opacity: 1;
 }
 
-[data-component="input"]:focus {
+[data-redsky-component="input"]:focus {
     outline: none;
     border-color: var(--input-focus-border-color);
     box-shadow: none;
 }
 
-[data-component="input"]:focus-visible {
+[data-redsky-component="input"]:focus-visible {
     outline: none;
 }
 
-[data-component="input"]:disabled {
+[data-redsky-component="input"]:disabled {
     color: var(--input-disabled-color);
     background-color: var(--input-disabled-background);
     border-color: var(--input-disabled-border-color);
     cursor: not-allowed;
 }
 
-[data-component="input"]:read-only:not([type="checkbox"]):not([type="radio"]):not([type="range"]) {
+[data-redsky-component="input"]:read-only:not([type="checkbox"]):not([type="radio"]):not([type="range"]) {
     background-color: var(--input-disabled-background);
 }
 
 /* Native choice controls */
 
-[data-component="input"][type="checkbox"],
-[data-component="input"][type="radio"] {
+[data-redsky-component="input"][type="checkbox"],
+[data-redsky-component="input"][type="radio"] {
     width: 1rem;
     height: 1rem;
     padding: 0;
@@ -82,43 +82,43 @@ html.dark {
     cursor: pointer;
 }
 
-[data-component="input"][type="checkbox"]:disabled,
-[data-component="input"][type="radio"]:disabled {
+[data-redsky-component="input"][type="checkbox"]:disabled,
+[data-redsky-component="input"][type="radio"]:disabled {
     cursor: not-allowed;
 }
 
 /* Range */
 
-[data-component="input"][type="range"] {
+[data-redsky-component="input"][type="range"] {
     padding: 0;
     accent-color: var(--input-accent-color);
     cursor: pointer;
 }
 
-[data-component="input"][type="range"]:disabled {
+[data-redsky-component="input"][type="range"]:disabled {
     cursor: not-allowed;
 }
 
 /* Color */
 
-[data-component="input"][type="color"] {
+[data-redsky-component="input"][type="color"] {
     width: 3rem;
     height: 2.5rem;
     padding: 0.25rem;
     cursor: pointer;
 }
 
-[data-component="input"][type="color"]:disabled {
+[data-redsky-component="input"][type="color"]:disabled {
     cursor: not-allowed;
 }
 
 /* File */
 
-[data-component="input"][type="file"] {
+[data-redsky-component="input"][type="file"] {
     padding: 0.375rem;
 }
 
-[data-component="input"][type="file"]::file-selector-button {
+[data-redsky-component="input"][type="file"]::file-selector-button {
     margin: -0.125rem 0.75rem -0.125rem -0.125rem;
     padding: 0.375rem 0.75rem;
     color: var(--input-color);
@@ -129,24 +129,24 @@ html.dark {
     cursor: pointer;
 }
 
-[data-component="input"][type="file"]::file-selector-button:hover {
+[data-redsky-component="input"][type="file"]::file-selector-button:hover {
     background-color: var(--input-border-color);
 }
 
-[data-component="input"][type="file"]:disabled::file-selector-button {
+[data-redsky-component="input"][type="file"]:disabled::file-selector-button {
     cursor: not-allowed;
 }
 
 /* Validation */
 
-[data-component="input"]:invalid:not(:placeholder-shown) {
+[data-redsky-component="input"]:invalid:not(:placeholder-shown) {
     border-color: var(--input-invalid-border-color);
 }
 
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
-    [data-component="input"] {
+    [data-redsky-component="input"] {
         transition: none;
     }
 }

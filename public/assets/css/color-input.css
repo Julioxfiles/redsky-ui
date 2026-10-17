@@ -26,7 +26,7 @@ html.dark {
     --color-input-color-scheme: dark;
 }
 
-[data-component="color-input"] {
+[data-redsky-component="color-input"] {
     display: inline-block;
     width: var(--color-input-width);
     height: var(--color-input-height);
@@ -40,44 +40,44 @@ html.dark {
     transition: var(--color-input-transition);
 }
 
-[data-component="color-input"]:focus {
+[data-redsky-component="color-input"]:focus {
     outline: none;
     border-color: var(--color-input-focus-border-color);
     box-shadow: 0 0 0 0.2rem var(--color-input-focus-ring-color);
 }
 
-[data-component="color-input"]:focus-visible {
+[data-redsky-component="color-input"]:focus-visible {
     outline: 2px solid var(--color-input-focus-border-color);
     outline-offset: 2px;
 }
 
-[data-component="color-input"]:disabled {
+[data-redsky-component="color-input"]:disabled {
     background-color: var(--color-input-disabled-background);
     border-color: var(--color-input-disabled-border-color);
     cursor: not-allowed;
     opacity: 0.65;
 }
 
-[data-component="color-input"]:invalid {
+[data-redsky-component="color-input"]:invalid {
     border-color: var(--color-input-invalid-border-color);
 }
 
-[data-component="color-input"]::-webkit-color-swatch-wrapper {
+[data-redsky-component="color-input"]::-webkit-color-swatch-wrapper {
     padding: 0;
 }
 
-[data-component="color-input"]::-webkit-color-swatch {
+[data-redsky-component="color-input"]::-webkit-color-swatch {
     border: none;
     border-radius: calc(var(--color-input-border-radius) - 0.125rem);
 }
 
-[data-component="color-input"]::-moz-color-swatch {
+[data-redsky-component="color-input"]::-moz-color-swatch {
     border: none;
     border-radius: calc(var(--color-input-border-radius) - 0.125rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    [data-component="color-input"] {
+    [data-redsky-component="color-input"] {
         transition: none;
     }
 }
